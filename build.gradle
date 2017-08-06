@@ -1,0 +1,60 @@
+group 'org.fundacionjala.sfdc'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    CUCUMBER_VERSION = '1.2.5'
+    SELENIUM_VERSION = '3.4.0'
+}
+
+dependencies {
+    compile group: 'info.cukes', name: 'cucumber-java', version: ${CUCUMBER_VERSION}
+    compile group: 'info.cukes', name: 'cucumber-testng', version: ${CUCUMBER_VERSION}
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: ${SELENIUM_VERSION}
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: ${SELENIUM_VERSION}
+
+}
+
+// Checkstyle configuration
+checkstyle {
+    toolVersion = '8.1'
+}
+
+// FindBugs configuration
+findbugs {
+    toolVersion = "3.0.2"
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+// PMD Configuration
+pmd {
+    toolVersion = '5.8.1'
+}
+tasks.withType(Pmd) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
+}
