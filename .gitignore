@@ -4,5 +4,8 @@ out
 *.class
 .idea/
 .gradle/
+gradle/
+gradlew
+gradlew.bat
 build/
 target/
