@@ -28,7 +28,7 @@ public final class CommonActions {
      * This method set a Input Field.
      *
      * @param webElement WebElement to wait and fill.
-     * @param text       Text to fill.
+     * @param text Text to fill.
      */
     public static void setInputField(WebElement webElement, String text) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
@@ -67,5 +67,4 @@ public final class CommonActions {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.isDisplayed();
     }
-
 }

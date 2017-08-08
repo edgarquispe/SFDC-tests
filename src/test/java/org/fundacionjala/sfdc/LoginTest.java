@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc;
 
 import org.fundacionjala.sfdc.pages.Home;
-import org.fundacionjala.sfdc.pages.Login;
+import org.fundacionjala.sfdc.pages.login.Login;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;

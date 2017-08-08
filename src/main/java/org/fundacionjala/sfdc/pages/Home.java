@@ -2,6 +2,7 @@ package org.fundacionjala.sfdc.pages;
 
 import org.fundacionjala.sfdc.CommonActions;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.login.Login;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;

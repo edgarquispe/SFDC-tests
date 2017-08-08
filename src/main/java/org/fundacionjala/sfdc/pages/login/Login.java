@@ -1,7 +1,9 @@
-package org.fundacionjala.sfdc.pages;
+package org.fundacionjala.sfdc.pages.login;
 
 import org.fundacionjala.sfdc.CommonActions;
 import org.fundacionjala.sfdc.DriverManager;
+import org.fundacionjala.sfdc.pages.Home;
+import org.fundacionjala.sfdc.pages.Profile;
 import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -67,7 +69,8 @@ public class Login extends BasePage {
 
     /**
      * This Method make a login to Salesforce application.
-     * @param username  User Name for Sales Force.
+     *
+     * @param username User Name for Sales Force.
      * @param password Password for Sales Force.
      * @return Home page after login to Salesforce application.
      */
@@ -77,6 +80,7 @@ public class Login extends BasePage {
 
     /**
      * This Method make a login with other user to Salesforce application.
+     *
      * @param userName User Name for Sales Force with other user.
      * @param password Password for Sales Force with other user.
      * @return Home page after login to Salesforce application.
@@ -86,11 +90,7 @@ public class Login extends BasePage {
         try {
             DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
             homePage = new Home();
-            Profile profile = homePage.clickProfileLinkLabel();
-            if (!profile.isCorrectUserLogged(userName)) {
-                homePage.clickLinkLogOut();
-                homePage = loginAs(userName, password);
-            }
+            homePage = verifyCorrectUser(userName, password, homePage);
             homePage.clickHomeLink();
         } catch (WebDriverException e) {
             DriverManager.getInstance().getDriver().get(URL);
@@ -102,7 +102,25 @@ public class Login extends BasePage {
     }
 
     /**
+     * This method logs in if we are not in the correct session.
+     *
+     * @param userName User Name for Sales Force with other user.
+     * @param password Password for Sales Force with other user.
+     * @param homePage pageObject.
+     * @return Home page after login with correct session.
+     */
+    private Home verifyCorrectUser(String userName, String password, Home homePage) {
+        Profile profile = homePage.clickProfileLinkLabel();
+        if (!profile.isCorrectUserLogged(userName)) {
+            homePage.clickLinkLogOut();
+            homePage = loginAs(userName, password);
+        }
+        return homePage;
+    }
+
+    /**
      * This method verify is the user is logged.
+     *
      * @return True if the user is logged.
      */
     public boolean isUserLogged() {
@@ -113,6 +131,7 @@ public class Login extends BasePage {
 
     /**
      * This method make a login Initial.
+     *
      * @param userName User Name for Sales Force with other user.
      * @param password Password for Sales Force with other user.
      * @return Home page after login to Salesforce application.
