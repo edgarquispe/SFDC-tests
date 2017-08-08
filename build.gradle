@@ -19,21 +19,20 @@ ext {
 }
 
 dependencies {
-    compile group: 'info.cukes', name: 'cucumber-java', version: ${CUCUMBER_VERSION}
-    compile group: 'info.cukes', name: 'cucumber-testng', version: ${CUCUMBER_VERSION}
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: ${SELENIUM_VERSION}
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: ${SELENIUM_VERSION}
-
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    compile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
 }
 
 // Checkstyle configuration
 checkstyle {
-    toolVersion = '8.1'
+    toolVersion = '7.8'
 }
 
 // FindBugs configuration
 findbugs {
-    toolVersion = "3.0.2"
+    toolVersion = "3.0.1"
 }
 tasks.withType(FindBugs) {
     reports {
