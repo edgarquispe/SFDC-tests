@@ -35,9 +35,6 @@ public class Home extends BasePage {
     @FindBy(css = "a[href='#/home']")
     private WebElement homeLink;
 
-//    public Home() {
-//        loadUrlPage(URL);
-//    }
 
     /**
      * Wait for page load and get the title from Home Page.
@@ -59,19 +56,24 @@ public class Home extends BasePage {
     /**
      * Method that get the username of the main page.
      *
-     * @return
+     * @return name profile label of the user.
      */
     public String getUserNameOfHomePage() {
         clickProfileIcon();
         return CommonActions.getTextElement(nameProfileLabel);
     }
 
+    /**
+     * This method verify that error message is Displayed.
+     * @return True if the element is Displayed.
+     */
     public boolean isErrorMessageDisplayed() {
         return CommonActions.isElementDisplayed(errorMessageId);
     }
 
     /**
      * Method that makes click on logout link.
+     * @return Login pageObject.
      */
     public Login clickLinkLogOut() {
         clickProfileIcon();
@@ -79,13 +81,20 @@ public class Home extends BasePage {
         return new Login();
     }
 
-
+    /**
+     * This method make  click on Profile link label.
+     * @return Profile pageObject.
+     */
     public Profile clickProfileLinkLabel() {
         clickProfileIcon();
         CommonActions.clickElement(profileLinkLabel);
         return new Profile();
     }
 
+    /**
+     * This method make click on Home link label.
+     * @return Home pageObject.
+     */
     public Home clickHomeLink() {
         CommonActions.clickElement(homeLink);
         return new Home();

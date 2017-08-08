@@ -12,7 +12,12 @@ public class Profile extends BasePage {
     @FindBy(css = ".uiOutputEmail")
     private WebElement currentUserEmail;
 
-    public boolean isCorrectUserLogged(String username) {
-        return username.equals(currentUserEmail.getText());
+    /**
+     * This method checks if the user is correct logged.
+     * @param userName userName of Sales Force.
+     * @return True if the user is correct logged.
+     */
+    public boolean isCorrectUserLogged(String userName) {
+        return userName.equals(currentUserEmail.getText());
     }
 }

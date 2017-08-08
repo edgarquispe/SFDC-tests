@@ -38,19 +38,34 @@ public final class DriverManager {
         return instance;
     }
 
+    /**
+     * Set time implicit wait.
+     * @param implicitTimeWait time for wait.
+     */
     public void setImplicitTimeWait(int implicitTimeWait) {
         driver.manage().timeouts().implicitlyWait(implicitTimeWait, TimeUnit.SECONDS);
     }
 
+    /**
+     * Set time explicit wait.
+     * @param explicitTimeWait time for wait.
+     */
     public void setExplicitTimeWait(int explicitTimeWait) {
         wait = new WebDriverWait(driver, explicitTimeWait);
     }
 
-    public void seUpdateWait(int time) {
+    /**
+     * Set update waits.
+     * @param time time for implicit and explicit.
+     */
+    public void setUpdateWait(int time) {
         setImplicitTimeWait(time);
         setExplicitTimeWait(time);
     }
 
+    /**
+     * Back previous set default times.
+     */
     public void backPreviousWait() {
         final int implicitTimeWait = 15;
         final int explicitTimeWait = 30;

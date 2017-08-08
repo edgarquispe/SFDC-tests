@@ -10,7 +10,8 @@ apply plugin: 'findbugs'
 sourceCompatibility = 1.8
 
 repositories {
-    jcenter()
+    mavenCentral()
+    //jcenter()
 }
 
 ext {
@@ -32,7 +33,7 @@ checkstyle {
 
 // FindBugs configuration
 findbugs {
-    toolVersion = "3.0.2"
+    toolVersion = "3.0.1"
 }
 tasks.withType(FindBugs) {
     reports {

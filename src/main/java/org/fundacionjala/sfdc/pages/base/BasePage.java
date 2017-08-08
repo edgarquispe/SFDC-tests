@@ -29,6 +29,10 @@ public abstract class BasePage {
         driver.get(url);
     }
 
+    /**
+     * This method get page title.
+     * @return title for Page.
+     */
     public String getPageTitle() {
         return driver.getTitle();
     }
