@@ -22,7 +22,8 @@ public abstract class BasePage {
     }
 
     /**
-     *  Load page Url to web driver.
+     * Load page Url to web driver.
+     *
      * @param url Url of web page.
      */
     public void loadUrlPage(String url) {
@@ -31,13 +32,19 @@ public abstract class BasePage {
 
     /**
      * This method get page title.
+     *
      * @return title for Page.
      */
     public String getPageTitle() {
         return driver.getTitle();
     }
 
-
-
-
+    /**
+     * This method get current url.
+     *
+     * @return url for Page.
+     */
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
 }
