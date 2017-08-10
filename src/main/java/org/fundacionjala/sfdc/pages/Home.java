@@ -74,7 +74,7 @@ public class Home extends BasePage {
     /**
      * Method that makes click on logout link.
      */
-    public void clickLinkLogOut() {
+    public void clickLogOutLink() {
         clickProfileIcon();
         CommonActions.clickElement(logOutButton);
     }

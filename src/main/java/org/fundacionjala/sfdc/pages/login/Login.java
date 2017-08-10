@@ -111,7 +111,7 @@ public class Login extends BasePage {
     private Home verifyCorrectUser(String userName, String password, Home homePage) {
         Profile profile = homePage.clickProfileLinkLabel();
         if (!profile.isCorrectUserLogged(userName)) {
-            homePage.clickLinkLogOut();
+            homePage.clickLogOutLink();
             homePage = loginAs(userName, password);
         }
         return homePage;
