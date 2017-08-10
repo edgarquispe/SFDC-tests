@@ -15,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 public class Login extends BasePage {
 
     private static final String URL = "https://login.salesforce.com";
-    private static final String URL_HOME = "https://na59.lightning.force.com";
     private static final int TIME_WAIT_DURATION = 5;
 
     //All WebElements are identified by @FindBy annotation.
@@ -112,7 +111,7 @@ public class Login extends BasePage {
     private Home verifyCorrectUser(String userName, String password, Home homePage) {
         Profile profile = homePage.clickProfileLinkLabel();
         if (!profile.isCorrectUserLogged(userName)) {
-            homePage.clickLinkLogOut();
+            homePage.clickLogOutLink();
             homePage = loginAs(userName, password);
         }
         return homePage;
@@ -124,8 +123,8 @@ public class Login extends BasePage {
      * @return True if the user is logged.
      */
     public boolean isUserLogged() {
-        DriverManager.getInstance().getDriver().get(URL_HOME);
-        return getPageTitle().contains("Home");
+        return getCurrentUrl().contains(".lightning.force.com");
+
     }
 
 
