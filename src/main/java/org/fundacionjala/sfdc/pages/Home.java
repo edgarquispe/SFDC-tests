@@ -35,6 +35,9 @@ public class Home extends BasePage {
     @FindBy(css = "a[href='#/home']")
     private WebElement homeLink;
 
+    @FindBy(className = "slds-icon-waffle")
+    private WebElement appLauncherButton;
+
 
     /**
      * Wait for page load and get the title from Home Page.
@@ -96,5 +99,14 @@ public class Home extends BasePage {
     public Home clickHomeLink() {
         CommonActions.clickElement(homeLink);
         return new Home();
+    }
+
+    /**
+     * Loads the App Launcher by clicking on its button.
+     * @return AppLauncher.
+     */
+    public AppLauncher clickAppLauncher() {
+        CommonActions.clickElement(appLauncherButton);
+        return new AppLauncher();
     }
 }
