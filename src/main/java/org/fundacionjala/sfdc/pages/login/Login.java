@@ -1,6 +1,7 @@
 package org.fundacionjala.sfdc.pages.login;
 
 import org.fundacionjala.sfdc.CommonActions;
+import org.fundacionjala.sfdc.Env;
 import org.fundacionjala.sfdc.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.Home;
 import org.fundacionjala.sfdc.pages.Profile;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Login extends BasePage {
 
-    private static final String URL = "https://login.salesforce.com";
+    private static final String URL = Env.getInstance().getLoginUrl();
     private static final int TIME_WAIT_DURATION = 5;
 
     //All WebElements are identified by @FindBy annotation.

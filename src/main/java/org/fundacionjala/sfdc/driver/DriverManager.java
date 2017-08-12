@@ -1,5 +1,6 @@
 package org.fundacionjala.sfdc.driver;
 
+import org.fundacionjala.sfdc.Env;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,7 +10,8 @@ import java.util.concurrent.TimeUnit;
  * Created by Simon on 07/08/2017.
  */
 public final class DriverManager {
-    private static final String BASE_URL = "https://salesforce.com";
+
+    private static final String BASE_URL = Env.getInstance().getBaseUrl();
     private static DriverManager instance;
     private WebDriver driver;
     private WebDriverWait wait;
