@@ -1,6 +1,6 @@
 package org.fundacionjala.sfdc.pages.base;
 
-import org.fundacionjala.sfdc.DriverManager;
+import org.fundacionjala.sfdc.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
