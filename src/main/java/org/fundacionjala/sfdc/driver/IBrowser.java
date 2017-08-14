@@ -3,7 +3,7 @@ package org.fundacionjala.sfdc.driver;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Created by abelb on 8/12/2017.
+ * Interface for getting the current browser.
  */
 public interface IBrowser {
 

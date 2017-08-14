@@ -1,17 +1,21 @@
 package org.fundacionjala.sfdc;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by abelb on 8/12/2017.
+ * Class that gets the Environment config.
  */
 public  final class Env {
 
     private static Env instance;
     private Properties properties;
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Private constructor for Env.
@@ -22,10 +26,10 @@ public  final class Env {
             properties.load(input);
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            LOGGER.error("File not found.");
             throw new RuntimeException(e);
         } catch (IOException e) {
-            System.out.println("File broken.");
+            LOGGER.error("File broken.");
             throw new RuntimeException(e);
         }
     }
@@ -86,5 +90,14 @@ public  final class Env {
      */
     public String getLoginUrl() {
         return getEnv("loginUrl");
+    }
+
+    /**
+     * Gets the Browser to use.
+     *
+     * @return String.
+     */
+    public String getBrowser() {
+        return getEnv("browser");
     }
 }

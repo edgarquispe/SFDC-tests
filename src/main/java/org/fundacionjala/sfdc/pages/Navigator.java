@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc.pages;
 
 /**
- * Created by abelb on 8/12/2017.
+ * Final class Navigator to access the different pages.
  */
 public final class Navigator {
     /**

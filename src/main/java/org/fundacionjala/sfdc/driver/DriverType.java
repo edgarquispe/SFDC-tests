@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc.driver;
 
 /**
- * Created by abelb on 8/12/2017.
+ * Enum for the different types of Drivers.
  */
 public enum DriverType {
     CHROME,

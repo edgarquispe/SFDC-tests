@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by OvidioMiranda on 8/8/2017.
+ * Class for the Profile page.
  */
 public class Profile extends BasePage {
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Created by abelb on 8/12/2017.
+ * FirefoxBrowser class that implements IBrowsers.
  */
 public class FirefoxBrowser implements IBrowser {
 

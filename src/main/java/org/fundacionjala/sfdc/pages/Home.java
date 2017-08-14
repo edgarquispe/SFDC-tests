@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Class for the Home Page.
  */
 public class Home extends BasePage {
 

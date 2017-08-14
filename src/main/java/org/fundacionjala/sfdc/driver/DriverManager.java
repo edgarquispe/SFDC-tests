@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Driver Manager class that implements singleton Instance.
  */
 public final class DriverManager {
 
@@ -20,7 +20,8 @@ public final class DriverManager {
      * Constructor.
      */
     private DriverManager() {
-        driver = DriverFactory.getDriverManager(DriverType.CHROME);
+        driver = DriverFactory.getDriverManager(DriverType.valueOf(
+                Env.getInstance().getBrowser().toUpperCase()));
         backPreviousWait();
     }
 

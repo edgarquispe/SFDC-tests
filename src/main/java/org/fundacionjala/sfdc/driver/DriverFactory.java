@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by abelb on 8/12/2017.
+ * Driver Factory class that gets the browser.
  */
 public final class DriverFactory {
 

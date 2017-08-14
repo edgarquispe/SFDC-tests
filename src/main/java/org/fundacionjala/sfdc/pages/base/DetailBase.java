@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by abelb on 8/9/2017.
+ * Abstract class that gets common info in Details Page.
  */
 public abstract class DetailBase extends BasePage {
 

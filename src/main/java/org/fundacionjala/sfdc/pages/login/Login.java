@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Class for the login page.
  */
 public class Login extends BasePage {
 

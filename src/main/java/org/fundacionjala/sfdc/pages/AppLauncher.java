@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by abelb on 8/9/2017.
+ * Class for the App Launcher.
  */
 public class AppLauncher extends BasePage {
 

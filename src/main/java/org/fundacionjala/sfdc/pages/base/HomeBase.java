@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by abelb on 8/8/2017.
+ * Abstract class that gets common info in Home Page.
  */
 public abstract class HomeBase extends BasePage {
 

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
- * Created by abelb on 8/12/2017.
+ * ChromeBrowser class that implements IBrowsers.
  */
 public class ChromeBrowser implements IBrowser {
 

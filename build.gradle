@@ -22,6 +22,8 @@ dependencies {
     compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
     compile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
     testCompile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.5'
 }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Class containing the common actions for the framework.
  */
 public final class CommonActions {
 

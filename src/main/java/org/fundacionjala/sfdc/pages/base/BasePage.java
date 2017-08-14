@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Abstract Class BasePage implementing Page Object pattern.
  */
 public abstract class BasePage {
     protected WebDriver driver;
