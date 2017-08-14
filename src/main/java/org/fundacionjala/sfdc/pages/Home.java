@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Created by Simon on 07/08/2017.
+ * Class for the Home Page.
  */
 public class Home extends BasePage {
 
@@ -34,6 +34,9 @@ public class Home extends BasePage {
 
     @FindBy(css = "a[href='#/home']")
     private WebElement homeLink;
+
+    @FindBy(className = "slds-icon-waffle")
+    private WebElement appLauncherButton;
 
 
     /**
@@ -96,5 +99,14 @@ public class Home extends BasePage {
     public Home clickHomeLink() {
         CommonActions.clickElement(homeLink);
         return new Home();
+    }
+
+    /**
+     * Loads the App Launcher by clicking on its button.
+     * @return AppLauncher.
+     */
+    public AppLauncher clickAppLauncher() {
+        CommonActions.clickElement(appLauncherButton);
+        return new AppLauncher();
     }
 }
