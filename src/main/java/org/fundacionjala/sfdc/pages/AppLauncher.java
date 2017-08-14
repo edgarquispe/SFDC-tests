@@ -2,6 +2,7 @@ package org.fundacionjala.sfdc.pages;
 
 import org.fundacionjala.sfdc.CommonActions;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.products.ProductHome;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -27,5 +28,17 @@ public class AppLauncher extends BasePage {
      */
     private void waitModal() {
         CommonActions.isElementDisplayed(windowModal);
+    }
+
+    /**
+     * Clicks the Product Text Link.
+     *
+     * @return ProductHome.
+     */
+    public ProductHome clickProductsTextLink() {
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(productsTextLink);
+        return new ProductHome();
     }
 }

@@ -1,9 +1,12 @@
 package org.fundacionjala.sfdc.pages.base;
 
 import org.fundacionjala.sfdc.CommonActions;
+import org.fundacionjala.sfdc.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Abstract class that gets common info in Details Page.
@@ -27,6 +30,7 @@ public abstract class DetailBase extends BasePage {
      */
     public String getItemName(String name) {
         String cssSelector = String.format("h1[title='%s']", name);
+//        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssSelector)));
         WebElement createdItem = driver.findElement(By.cssSelector(cssSelector));
         return createdItem.getText();
     }

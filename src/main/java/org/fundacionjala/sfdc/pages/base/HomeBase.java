@@ -1,6 +1,7 @@
 package org.fundacionjala.sfdc.pages.base;
 
 import org.fundacionjala.sfdc.CommonActions;
+import org.fundacionjala.sfdc.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -118,9 +119,19 @@ public abstract class HomeBase extends BasePage {
      *
      * @param name String.
      */
-    public void deleteElement(String name) {
-        clickDropDownListLink(name);
-        clickDeleteButton();
-        clickConfirmDeleteButton();
+    public static void deleteElement(String name) {
+//        clickDropDownListLink(name);
+//        clickDeleteButton();
+//        clickConfirmDeleteButton();
+//        String xpathSelector = String.format("//a[contains(text(),'%s')]/ancestor::tr/"
+//                + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]", name);
+        String xpathSelector = "//a[contains(text(),'AutomatedDemoAT04')]/ancestor::tr/"
+                + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]";
+        WebElement dropDownListLink = DriverManager.getInstance().getDriver().findElement(By.xpath(xpathSelector));
+        CommonActions.clickElement(dropDownListLink);
+        WebElement deleteButton = DriverManager.getInstance().getDriver().findElement(By.cssSelector("a[title='Delete']"));
+        CommonActions.clickElement(deleteButton);
+        WebElement confirmDeleteButton = DriverManager.getInstance().getDriver().findElement(By.cssSelector("button[title='Delete']"));
+        CommonActions.clickElement(confirmDeleteButton);
     }
 }
