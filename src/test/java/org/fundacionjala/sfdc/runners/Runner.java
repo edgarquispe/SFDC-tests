@@ -6,7 +6,7 @@ import org.fundacionjala.sfdc.driver.DriverManager;
 import org.testng.annotations.AfterTest;
 
 /**
- * Created by abelb on 8/14/2017.
+ * Runner class for all tests.
  */
 @CucumberOptions(
         plugin = {"pretty"},

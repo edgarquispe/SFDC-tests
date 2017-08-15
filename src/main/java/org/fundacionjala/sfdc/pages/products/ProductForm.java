@@ -2,7 +2,6 @@ package org.fundacionjala.sfdc.pages.products;
 
 import org.fundacionjala.sfdc.CommonActions;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
-import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,7 +33,7 @@ public class ProductForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public DetailBase newItem(String name) {
+    public ProductDetail newItem(String name) {
         setProductNameInputText(name);
         clickSaveButton();
         return new ProductDetail();
@@ -43,7 +42,7 @@ public class ProductForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public DetailBase setObject(Map<ProductFormField, String> formMapData) {
+    public ProductDetail fillAndSaveForm(Map<ProductFormField, String> formMapData) {
         formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
         clickSaveButton();
         return new ProductDetail();
@@ -84,7 +83,7 @@ public class ProductForm extends FormBase {
     private void setProductFamilySelect(String productFamily) {
         CommonActions.clickElement(productFamilySelect);
         String cssSelector = String.format("a[title='%s']", productFamily);
-        CommonActions.clickElement(driver.findElement(By.cssSelector(cssSelector)));
+        driver.findElement(By.cssSelector(cssSelector)).click();
     }
 
     /**

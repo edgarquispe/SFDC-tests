@@ -1,52 +1,64 @@
 package org.fundacionjala.sfdc.stepdefinitions.products;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import org.fundacionjala.sfdc.entities.Helper;
-import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.products.ProductDetail;
-import org.fundacionjala.sfdc.pages.products.ProductForm;
 import org.fundacionjala.sfdc.pages.products.ProductFormField;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertTrue;
 
 /**
- * Created by abelb on 8/14/2017.
+ * Create Steps for Products.
  */
 public class CreateSteps {
 
-    private ProductHome productHome;
     private ProductDetail productDetail;
     private Helper helper;
 
+    /**
+     * Constructor with Dependency Injection.
+     *
+     * @param helper Helper.
+     */
     public CreateSteps(Helper helper) {
         this.helper = helper;
     }
 
-    @Given("^I go to Products Home Page$")
-    public void iGoToProductsHomePage() {
-        productHome = Navigator.goToProductsHome();
+    /**
+     * The Product data should be displayed on Product Detail Page.
+     *
+     * @param data String.
+     */
+    @Then("^the \"([^\"]*)\" should be displayed$")
+    public void theShouldBeDisplayed(String data) {
+        productDetail = new ProductDetail();
+        assertTrue(productDetail.getProductNameText().equals(helper.getDataMap().get(ProductFormField.PRODUCT_NAME)));
+        assertTrue(productDetail.getProductCodeText().equals(helper.getDataMap().get(ProductFormField.PRODUCT_CODE)));
+        assertTrue(productDetail.getProductDescriptionText().equals(
+                helper.getDataMap().get(ProductFormField.PRODUCT_DESCRIPTION)));
+        assertTrue(productDetail.getProductFamilyText().equals(
+                helper.getDataMap().get(ProductFormField.PRODUCT_FAMILY)));
     }
 
-    @When("^I create a new Product with:$")
-    public void iCreateANewProductWith(Map<ProductFormField, String> formMapData) {
-        ProductForm productForm = (ProductForm) productHome.clickNewButton();
-        helper.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
-        productDetail = (ProductDetail) productForm.setObject(formMapData);
-    }
-
-    @Then("^On Products Details Page the new Product should be displayed$")
-    public void onProductsDetailsPageTheNewProductShouldBeDisplayed() {
-        assertTrue(productDetail.getItemName(helper.getItemName()).equals("AutomatedDemoAT04"));
-    }
-
-    @And("^On Products Home Page the new Product should be displayed$")
-    public void onProductsHomePageTheNewProductShouldBeDisplayed() {
-        assertTrue(productHome.isDisplayedItem(helper.getItemName()));
+    /**
+     * The Product Data should be displayed on Product Home Page.
+     *
+     * @param data String.
+     */
+    @And("^the \"([^\"]*)\" should be displayed on Home Page$")
+    public void theShouldBeDisplayedOnHomePage(String data) {
+        ProductHome productHome = new ProductHome();
+        assertTrue(productHome.isDisplayedItem(helper.getDataMap().get(ProductFormField.PRODUCT_NAME).toString()));
+        assertTrue(productHome.isProductFieldDisplayed(
+                helper.getDataMap().get(ProductFormField.PRODUCT_NAME).toString(),
+                helper.getDataMap().get(ProductFormField.PRODUCT_CODE).toString()));
+        assertTrue(productHome.isProductFieldDisplayed(
+                helper.getDataMap().get(ProductFormField.PRODUCT_NAME).toString(),
+                helper.getDataMap().get(ProductFormField.PRODUCT_DESCRIPTION).toString()));
+        assertTrue(productHome.isProductFieldDisplayed(
+                helper.getDataMap().get(ProductFormField.PRODUCT_NAME).toString(),
+                helper.getDataMap().get(ProductFormField.PRODUCT_FAMILY).toString()));
     }
 }

@@ -3,20 +3,23 @@ package org.fundacionjala.sfdc.hooks;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.fundacionjala.sfdc.Env;
-import org.fundacionjala.sfdc.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
-import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.login.Login;
+import org.fundacionjala.sfdc.pages.products.ProductFormField;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
- * Created by abelb on 8/14/2017.
+ * Hooks Class for actions to run before and after Scenarios.
  */
 public class Hooks {
 
     private static final Env ENV = Env.getInstance();
     private Helper helper;
 
+    /**
+     * Default Constructor.
+     * @param helper Helper.
+     */
     public Hooks(Helper helper) {
         this.helper = helper;
     }
@@ -34,13 +37,6 @@ public class Hooks {
      */
     @After(value = "@deleteProduct")
     public void deleteCreatedItem() {
-//        ProductHome productHome = Navigator.goToProductsHome();
-//        productHome.deleteElement(helper.getItemName());
-        ProductHome.deleteElement(helper.getItemName());
-//        ProductHome productHome = DriverManager.getInstance().getDriver().navigate().refresh();
-        //For delete inside Details
-//        helper.setProductHome((ProductHome) helper.getProductDetail().deleteItem());
-//        helper.getProductHome().deleteElement("Automated");
-//        helper.getProductDetail().deleteItem();
+        new ProductHome().deleteElement(helper.getDataMap().get(ProductFormField.PRODUCT_NAME).toString());
     }
 }
