@@ -3,7 +3,9 @@ package org.fundacionjala.sfdc.pages;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
+import org.fundacionjala.sfdc.pages.chatter.PostForm;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
@@ -37,15 +39,25 @@ public final class Navigator {
     }
 
     /**
+     * Go to Chatter Home Page.
+     * @return PostForm.
+     */
+    public static PostForm goToChatterHome() {
+        new AppLauncher().clickChatterTextLink();
+        return new PostForm();
+    }
+    /**
      * Static method to go to any page on Enum SObject.
      *
      * @param endPoint SObject.
      * @return HomeBase.
      */
-    public static HomeBase gotoPage(SObject endPoint) {
+    public static BasePage gotoPage(SObject endPoint) {
         switch (endPoint) {
-            default: PRODUCT:
-                return Navigator.goToProductsHome();
+            case CHATTER:
+                return goToChatterHome();
+            default:
+                return goToProductsHome();
         }
     }
 
@@ -56,7 +68,7 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase mapActions(SObject item) {
-        Map<SObject, ProductHome> map = new HashMap<>();
+        Map<SObject, HomeBase> map = new HashMap<>();
         map.put(SObject.PRODUCT, new ProductHome());
         return map.get(item);
     }
