@@ -13,3 +13,8 @@ Feature: Edit Post
   Scenario: Delete the Post
     When I Delete the Post
     Then On the Chatter page should not display the "This is Test for Delete"
+
+  @deletePost
+  Scenario: Comment an existing Post
+    When I comment in Post "Comment the post"
+    Then On the Chatter page the comment should be displayed

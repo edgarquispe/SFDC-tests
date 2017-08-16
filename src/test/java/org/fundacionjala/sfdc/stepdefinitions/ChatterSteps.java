@@ -91,5 +91,27 @@ public class ChatterSteps {
         PostForm postForm = new PostForm();
         assertFalse(postForm.isPostDisplayed(message));
     }
+
+    //Comment
+
+    /**
+     * Comment in Post.
+     * @param comment
+     */
+    @When("^I comment in Post \"([^\"]*)\"$")
+    public void iCommentInPost(String comment) {
+        helper.setCommentPostMessage(comment);
+        PostForm postForm = new PostForm();
+        postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
+    }
+
+    /**
+     * The comment for the Post should be displayed.
+     */
+    @Then("^On the Chatter page the comment should be displayed$")
+    public void onTheChatterPageTheCommentShouldBeDisplayed() {
+        PostForm postForm = new PostForm();
+        assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
+    }
 }
 
