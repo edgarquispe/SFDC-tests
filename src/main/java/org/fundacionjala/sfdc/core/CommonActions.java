@@ -1,6 +1,6 @@
-package org.fundacionjala.sfdc;
+package org.fundacionjala.sfdc.core;
 
-import org.fundacionjala.sfdc.driver.DriverManager;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

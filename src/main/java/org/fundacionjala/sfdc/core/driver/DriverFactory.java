@@ -1,9 +1,9 @@
-package org.fundacionjala.sfdc.driver;
-
-import org.openqa.selenium.WebDriver;
+package org.fundacionjala.sfdc.core.driver;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
 
 /**
  * Driver Factory class that gets the browser.

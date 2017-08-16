@@ -1,9 +1,11 @@
 package org.fundacionjala.sfdc.pages;
 
-import org.fundacionjala.sfdc.CommonActions;
-import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
  * Class for the App Launcher.
@@ -19,7 +21,8 @@ public class AppLauncher extends BasePage {
     @FindBy(css = ".salesforceIdentityAppLauncherDesktopInternal .uiButton")
     private WebElement openAllAppsButton;
 
-    @FindBy(css = "one-app-launcher-header")
+//    @FindBy(css = "one-app-launcher-header")
+    @FindBy(xpath = "//button[@class='slds-button']")
     private WebElement openAllItemsButton;
 
     /**
@@ -27,5 +30,17 @@ public class AppLauncher extends BasePage {
      */
     private void waitModal() {
         CommonActions.isElementDisplayed(windowModal);
+    }
+
+    /**
+     * Clicks the Product Text Link.
+     *
+     * @return ProductHome.
+     */
+    public ProductHome clickProductsTextLink() {
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(productsTextLink);
+        return new ProductHome();
     }
 }
