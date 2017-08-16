@@ -1,5 +1,6 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -37,29 +38,7 @@ public class ChatterSteps {
 
     }
 
-    /**
-     * The post should be displayed.
-     *
-     * @param message String.
-     */
-    @Then("^On Chatter Home Page \"([^\"]*)\" should be displayed$")
-    public void onChatterHomePageShouldBeDisplayed(String message) {
-        PostForm postForm = new PostForm();
-        assertTrue(postForm.isPostDisplayed(message));
-    }
-
     //Edit
-
-    /**
-     * The post edited should be displayed.
-     *
-     * @param message String.
-     */
-    @Then("^On the Chatter page should be display the \"([^\"]*)\"$")
-    public void onTheChatterPageShouldBeDisplayThe(String message) {
-        PostForm postForm = new PostForm();
-        assertTrue(postForm.isPostDisplayed(message));
-    }
 
     /**
      * Edit a the post.
@@ -112,6 +91,12 @@ public class ChatterSteps {
     public void onTheChatterPageTheCommentShouldBeDisplayed() {
         PostForm postForm = new PostForm();
         assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
+    }
+
+    @Then("^On the Chatter page should be displayed$")
+    public void onTheChatterPageShouldBeDisplayed() {
+        PostForm postForm = new PostForm();
+        assertTrue(postForm.isPostDisplayed(helper.getPostMessage()));
     }
 }
 

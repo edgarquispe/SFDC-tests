@@ -8,11 +8,11 @@ Feature: Edit Post
   @deletePost
   Scenario: Edit an existing Post
     When I Edit the Post with "Hi my name is Simon Ovidio Miranda Chiri"
-    Then On the Chatter page should be display the "Hi my name is Simon Ovidio Miranda Chiri"
+    Then On the Chatter page should be displayed
 
   Scenario: Delete the Post
     When I Delete the Post
-    Then On the Chatter page should not display the "This is Test for Delete"
+    Then On the Chatter page should not display the "Hi my name is Simon"
 
   @deletePost
   Scenario: Comment an existing Post
