@@ -43,9 +43,10 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase gotoPage(SObject endPoint) {
-        Map<SObject, HomeBase> map = new HashMap<>();
-        map.put(SObject.PRODUCT, Navigator.goToProductsHome());
-        return map.get(endPoint);
+        switch (endPoint) {
+            default: PRODUCT:
+                return Navigator.goToProductsHome();
+        }
     }
 
     /**

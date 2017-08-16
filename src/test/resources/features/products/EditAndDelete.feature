@@ -8,7 +8,7 @@ Feature: Edit Product
 
   @deleteProduct
   Scenario: Edit the Product on Detail Page
-    When I click on Edit
+    When I click on Edit from Product
     And I fill the Product form with:
       | PRODUCT_NAME        | AutomatedDemoAT04Edited |
       | PRODUCT_CODE        | 123Edited               |
@@ -31,7 +31,7 @@ Feature: Edit Product
 #    Then the Product should be displayed on Home Page
 
   Scenario: Delete the Product on Detail Page
-    When I Click on Delete
+    When I Click on Delete from Product
     Then the Product should not be displayed on Home Page
 
 #  Scenario: Delete the Product on Home Page

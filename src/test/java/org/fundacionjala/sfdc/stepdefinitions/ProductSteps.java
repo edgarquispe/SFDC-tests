@@ -48,8 +48,8 @@ public class ProductSteps {
     /**
      * Click on Edit inside Product Detail.
      */
-    @When("^I click on Edit$")
-    public void iClickOnEdit() {
+    @When("^I click on Edit from Product$")
+    public void iClickOnEditFromProduct() {
         new ProductDetail().clickEditButton();
     }
 
@@ -91,8 +91,8 @@ public class ProductSteps {
     /**
      * Click on Delete button on Detail Page.
      */
-    @When("^I Click on Delete$")
-    public void iClickOnDelete() {
+    @When("^I Click on Delete from Product$")
+    public void iClickOnDeleteFromProduct() {
         new ProductDetail().deleteItem();
     }
 
