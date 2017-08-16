@@ -1,6 +1,5 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -75,7 +74,7 @@ public class ChatterSteps {
 
     /**
      * Comment in Post.
-     * @param comment
+     * @param comment String.
      */
     @When("^I comment in Post \"([^\"]*)\"$")
     public void iCommentInPost(String comment) {
@@ -93,6 +92,9 @@ public class ChatterSteps {
         assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
     }
 
+    /**
+     * The Chatter page should be displayed.
+     */
     @Then("^On the Chatter page should be displayed$")
     public void onTheChatterPageShouldBeDisplayed() {
         PostForm postForm = new PostForm();
