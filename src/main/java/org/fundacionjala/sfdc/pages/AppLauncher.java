@@ -1,5 +1,6 @@
 package org.fundacionjala.sfdc.pages;
 
+import org.fundacionjala.sfdc.pages.chatter.PostForm;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,6 +26,9 @@ public class AppLauncher extends BasePage {
     @FindBy(xpath = "//button[@class='slds-button']")
     private WebElement openAllItemsButton;
 
+    @FindBy(css = "a[title='Chatter']")
+    private WebElement chatterButton;
+
     /**
      * Waits for the modal is displayed.
      */
@@ -42,5 +46,14 @@ public class AppLauncher extends BasePage {
         CommonActions.clickElement(openAllAppsButton);
         CommonActions.clickElement(productsTextLink);
         return new ProductHome();
+    }
+
+    /**
+     * Clicks the Chatter Text Link.
+     * @return PostForm
+     */
+    public PostForm clickChatterTextLink() {
+        CommonActions.clickElement(chatterButton);
+        return new PostForm();
     }
 }
