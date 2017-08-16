@@ -5,10 +5,6 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.products.ProductDetail;
 import org.fundacionjala.sfdc.pages.products.ProductForm;
@@ -16,6 +12,7 @@ import org.fundacionjala.sfdc.pages.products.ProductFormField;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
 
 /**
  * Create Steps for Products.
@@ -44,7 +41,8 @@ public class ProductSteps {
         map = formMapData;
         helper.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
         new ProductForm().fillAndSaveForm(formMapData);
-//        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getItemName()));
+        new ProductHome().waitUntilSpinnerIsHidden();
+
     }
 
     /**
@@ -60,11 +58,9 @@ public class ProductSteps {
      */
     @Then("^the Product should be displayed$")
     public void theProductShouldBeDisplayed() {
-//        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("view"));
-//        DriverManager.getInstance().getDriver().navigate().refresh();
-        DriverManager.getInstance().getWait().until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector(String.format("h1[title='%s']", helper.getItemName()))));
         ProductDetail productDetail = new ProductDetail();
+        productDetail.waitProductNameIs(helper.getItemName());
+        productDetail.waitUntilSuccessMessage();
         assertTrue(productDetail.getProductNameText().equals(map.get(ProductFormField.PRODUCT_NAME)));
         assertTrue(productDetail.getProductCodeText().equals(map.get(ProductFormField.PRODUCT_CODE)));
         assertTrue(productDetail.getProductDescriptionText().equals(
@@ -79,7 +75,7 @@ public class ProductSteps {
     @And("^the Product should be displayed on Home Page$")
     public void theProductShouldBeDisplayedOnHomePage() {
         ProductHome productHome = new ProductHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Product2"));
+        productHome.waitUntilSpinnerIsHidden();
         assertTrue(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
         assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
@@ -90,5 +86,22 @@ public class ProductSteps {
         assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
                 map.get(ProductFormField.PRODUCT_FAMILY)));
+    }
+
+    /**
+     * Click on Delete button on Detail Page.
+     */
+    @When("^I Click on Delete$")
+    public void iClickOnDelete() {
+        new ProductDetail().deleteItem();
+    }
+
+    /**
+     * The Product shouldn't be displayed on Home Page After Delete.
+     */
+    @Then("^the Product should not be displayed on Home Page$")
+    public void theProductShouldNotBeDisplayedOnHomePage() {
+        ProductHome productHome = new ProductHome();
+        assertFalse(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
     }
 }

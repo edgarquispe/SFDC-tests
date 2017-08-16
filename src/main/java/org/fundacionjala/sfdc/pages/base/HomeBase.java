@@ -1,7 +1,9 @@
 package org.fundacionjala.sfdc.pages.base;
 
 import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +29,12 @@ public abstract class HomeBase extends BasePage {
     @FindBy(css = "button[title='Delete']")
     protected WebElement confirmDeleteButton;
 
+    @FindBy(xpath = "//div[@class='slds-spinner_container slds-grid slds-hide']")
+    protected WebElement spinner;
+
+    @FindBy(xpath = "//span[contains(@class, 'toastMessage')]")
+    protected WebElement successMessage;
+
     /**
      * Gets the Displayed Item.
      *
@@ -43,9 +51,16 @@ public abstract class HomeBase extends BasePage {
      * @return Boolean.
      */
     public boolean isDisplayedItem(String name) {
-        String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
-        displayedItem = driver.findElement(By.xpath(xpathSelector));
-        return displayedItem.isDisplayed();
+        try {
+            DriverManager.getInstance().setUpdateWait(5);
+            String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
+            displayedItem = driver.findElement(By.xpath(xpathSelector));
+            return displayedItem.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        } finally {
+            DriverManager.getInstance().backPreviousWait();
+        }
     }
 
     /**
@@ -109,4 +124,12 @@ public abstract class HomeBase extends BasePage {
         clickDeleteButton();
         clickConfirmDeleteButton();
     }
+
+    /**
+     * Waits until the spinner is hidden.
+     */
+    public void waitUntilSpinnerIsHidden() {
+        wait.until(ExpectedConditions.invisibilityOf(spinner));
+    }
+
 }

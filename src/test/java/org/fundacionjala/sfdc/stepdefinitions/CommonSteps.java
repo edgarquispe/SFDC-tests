@@ -3,12 +3,12 @@ package org.fundacionjala.sfdc.stepdefinitions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import org.apache.commons.lang3.StringUtils;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.SObject;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Common Steps for all features.
@@ -34,8 +34,8 @@ public class CommonSteps {
     @Given("^I go to \"([^\"]*)\" Home Page$")
     public void iGoToHomePage(SObject sObject) {
         Navigator.gotoPage(sObject);
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains("Product"));
-        //TODO Check if this wait can be implemented inside and be dynamic
+        String title = StringUtils.capitalize(sObject.toString().toLowerCase());
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(title));
     }
 
     /**
@@ -55,5 +55,14 @@ public class CommonSteps {
     @When("^I click on Edit \"([^\"]*)\"$")
     public void iClickOnEdit(SObject sObject) {
         Navigator.mapActions(sObject).clickEditButton(helper.getItemName());
+    }
+
+    /**
+     * Delete the selected Object.
+     * @param sObject SObject.
+     */
+    @And("^I delete the \"([^\"]*)\"$")
+    public void iDeleteThe(SObject sObject) {
+        Navigator.mapActions(sObject).deleteElement(helper.getItemName());
     }
 }
