@@ -1,5 +1,9 @@
 package org.fundacionjala.sfdc.pages;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.fundacionjala.sfdc.pages.base.HomeBase;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
@@ -30,5 +34,29 @@ public final class Navigator {
     public static ProductHome goToProductsHome() {
         clickAppLauncher().clickProductsTextLink();
         return new ProductHome();
+    }
+
+    /**
+     * Static method to go to any page on Enum SObject.
+     *
+     * @param endPoint SObject.
+     * @return HomeBase.
+     */
+    public static HomeBase gotoPage(SObject endPoint) {
+        Map<SObject, HomeBase> map = new HashMap<>();
+        map.put(SObject.PRODUCT, Navigator.goToProductsHome());
+        return map.get(endPoint);
+    }
+
+    /**
+     * Static method  to map Actions.
+     *
+     * @param item SObject.
+     * @return HomeBase.
+     */
+    public static HomeBase mapActions(SObject item) {
+        Map<SObject, ProductHome> map = new HashMap<>();
+        map.put(SObject.PRODUCT, new ProductHome());
+        return map.get(item);
     }
 }

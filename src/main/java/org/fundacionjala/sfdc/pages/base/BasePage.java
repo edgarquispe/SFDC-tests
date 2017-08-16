@@ -1,9 +1,10 @@
 package org.fundacionjala.sfdc.pages.base;
 
-import org.fundacionjala.sfdc.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 
 /**
  * Abstract Class BasePage implementing Page Object pattern.

@@ -2,8 +2,12 @@ package org.fundacionjala.sfdc.runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.sfdc.driver.DriverManager;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+import org.fundacionjala.sfdc.core.Env;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.login.Login;
 
 /**
  * Runner class for all tests.
@@ -13,6 +17,16 @@ import org.testng.annotations.AfterTest;
         features = {"src/test/resources/features/products"},
         glue = {"org.fundacionjala.sfdc"})
 public class Runner extends AbstractTestNGCucumberTests {
+
+    private static final Env ENV = Env.getInstance();
+
+    /**
+     * Opens the browser and Logins to Sales Force.
+     */
+    @BeforeTest()
+    public void loginToSalesForce() {
+        Login.loginInitial(ENV.getUsername(), ENV.getPassword());
+    }
 
     /**
      * Close the browser.

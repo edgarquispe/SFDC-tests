@@ -1,6 +1,6 @@
 package org.fundacionjala.sfdc.pages.products;
 
-import org.fundacionjala.sfdc.CommonActions;
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.openqa.selenium.By;

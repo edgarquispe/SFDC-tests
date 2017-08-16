@@ -1,14 +1,15 @@
 package org.fundacionjala.sfdc.pages.login;
 
-import org.fundacionjala.sfdc.CommonActions;
-import org.fundacionjala.sfdc.Env;
-import org.fundacionjala.sfdc.driver.DriverManager;
-import org.fundacionjala.sfdc.pages.Home;
-import org.fundacionjala.sfdc.pages.Profile;
-import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.Env;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.Home;
+import org.fundacionjala.sfdc.pages.Profile;
+import org.fundacionjala.sfdc.pages.base.BasePage;
 
 /**
  * Class for the login page.

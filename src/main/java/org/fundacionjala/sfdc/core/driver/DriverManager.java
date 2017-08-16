@@ -1,10 +1,11 @@
-package org.fundacionjala.sfdc.driver;
+package org.fundacionjala.sfdc.core.driver;
 
-import org.fundacionjala.sfdc.Env;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import org.fundacionjala.sfdc.core.Env;
 
 /**
  * Driver Manager class that implements singleton Instance.
