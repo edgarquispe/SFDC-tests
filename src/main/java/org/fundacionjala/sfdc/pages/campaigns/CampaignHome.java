@@ -7,7 +7,7 @@ import org.fundacionjala.sfdc.pages.base.HomeBase;
 import org.openqa.selenium.By;
 
 /**
- * Created by Administrator on 8/14/2017.
+ * Class containing Campaign Home Page.
  */
 public class CampaignHome extends HomeBase {
 
@@ -39,8 +39,6 @@ public class CampaignHome extends HomeBase {
     CommonActions.clickElement(displayedItem);
     return new CampaignDetail();
   }
-
-
 
   /**
    * Determines if the Product Field Data is displayed on Home Page.

@@ -10,13 +10,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by Administrator on 8/14/2017.
+ * Class containing Campaign Form Page.
  */
 public class CampaignForm extends FormBase {
 
     @FindBy(xpath = "//span[contains(text(), 'Campaign Name')]/parent::label/following-sibling::input")
     private WebElement campaignNameInputText;
-
 
     /**
      * Set the campaign Name.
@@ -48,6 +47,5 @@ public class CampaignForm extends FormBase {
                 () -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));
         return strategyMap;
     }
-
 
 }

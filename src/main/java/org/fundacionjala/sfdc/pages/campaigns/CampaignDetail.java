@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by Administrator on 8/14/2017.
+ * Class containing Campaign Detail Page.
  */
 public class CampaignDetail extends DetailBase {
 

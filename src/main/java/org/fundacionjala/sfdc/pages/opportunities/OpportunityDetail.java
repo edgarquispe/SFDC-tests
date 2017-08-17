@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by Administrator on 8/8/2017.
+ *  Class containing Opportunity Detail Page.
  */
 public class OpportunityDetail extends DetailBase {
 

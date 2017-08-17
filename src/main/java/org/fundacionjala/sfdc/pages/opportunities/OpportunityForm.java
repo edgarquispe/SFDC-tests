@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Class containing Opportunity Form Page.
+ * Class containing Opportunity Form Page..
  */
 public class OpportunityForm extends FormBase {
 
@@ -62,10 +62,8 @@ public class OpportunityForm extends FormBase {
     @FindBy(xpath = "//span[contains(text(),'Loss Reason')]/parent::span/following-sibling::div/descendant::a")
     private WebElement opportunityLossReasonInputField;
 
-
     @FindBy(xpath = "//span[contains(text(),'Lead Source')]/parent::span/following-sibling::div/descendant::a")
     private WebElement opportunityLeadInputField;
-
 
     @FindBy(xpath = "//span[contains(text(),'Next Step')]/parent::label/following-sibling::input")
     private WebElement opportunityNextStepInputField;
@@ -223,7 +221,6 @@ public class OpportunityForm extends FormBase {
         CommonActions.setInputField(opportunityDescriptionInputField, description);
         return this;
     }
-
 
     /**
      * {@inheritDoc}

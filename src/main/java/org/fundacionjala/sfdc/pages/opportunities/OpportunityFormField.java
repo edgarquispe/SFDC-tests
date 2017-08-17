@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc.pages.opportunities;
 
 /**
- * Created by Administrator on 8/10/2017.
+ * Class containing Opportunity Form field Page.
  */
 public enum OpportunityFormField {
   OPPORTUNITY_NAME,

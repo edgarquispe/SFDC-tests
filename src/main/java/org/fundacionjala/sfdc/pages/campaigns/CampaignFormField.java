@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc.pages.campaigns;
 
 /**
- * Created by Administrator on 8/14/2017.
+ * Class containing Campaign Form Field Page.
  */
 public enum CampaignFormField {
   CAMPAIGN_NAME,

@@ -7,10 +7,9 @@ import org.fundacionjala.sfdc.pages.base.HomeBase;
 import org.openqa.selenium.By;
 
 /**
- * Created by Administrator on 8/8/2017.
+ * Class containing Opportunity Home Page.
  */
 public class OpportunityHome extends HomeBase {
-
 
     /**
      * {@inheritDoc}
