@@ -47,9 +47,7 @@ public final class Navigator {
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
-//        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("chatter")) {
             new AppLauncher().clickChatterTextLink();
-//        }
         return new PostForm();
     }
     /**

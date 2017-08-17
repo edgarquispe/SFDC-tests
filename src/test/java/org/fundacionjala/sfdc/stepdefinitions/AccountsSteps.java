@@ -59,17 +59,6 @@ public class AccountsSteps {
         assertTrue(accountDetail.getPhoneText().equals(map.get(AccountFormField.ACCOUNT_PHONE)));
         assertTrue(accountDetail.getIndustryText().equals(map.get(AccountFormField.ACCOUNT_INDUSTRY)));
         assertTrue(accountDetail.getEmployeesText().equals(map.get(AccountFormField.ACCOUNT_EMPLOYEES)));
-
-     /*   ACCOUNT_BILLING_STREET
-          ACCOUNT_BILLING_CITY
-          ACCOUNT_BILLING_ZIP
-          ACCOUNT_BILLING_STATE
-          ACCOUNT_BILLING_COUNTRY
-          ACCOUNT_SHIPPING_STREET
-          ACCOUNT_SHIPPING_CITY
-          ACCOUNT_SHIPPING_ZIP
-          ACCOUNT_SHIPPING_STATE
-          ACCOUNT_SHIPPING_COUNTRY*/
     }
 
     /**

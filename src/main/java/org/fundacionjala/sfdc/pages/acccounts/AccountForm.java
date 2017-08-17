@@ -128,7 +128,6 @@ public class AccountForm extends FormBase {
     private void setDescriptionInputText(String description) {
         CommonActions.setInputField(descriptionInputField, description);
     }
-    //parentAccountSearch //Falta OJO
 
     /**
      * Set Phone.
@@ -216,7 +215,7 @@ public class AccountForm extends FormBase {
     }
 
     /**
-     * Set ShippingCity.
+     * Set Shipping City.
      *
      * @param shippingCity String.
      */

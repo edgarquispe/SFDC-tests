@@ -47,14 +47,10 @@ public class AppLauncher extends BasePage {
      * @return ProductHome.
      */
     public ProductHome clickProductsTextLink() {
-        if (!driver.getCurrentUrl().contains("Product")) {
-//        wait.until(ExpectedConditions.urlContains(""))
             waitModal();
             CommonActions.clickElement(openAllAppsButton);
             CommonActions.clickElement(productsTextLink);
-        }
         return new ProductHome();
-
     }
 
     /**
