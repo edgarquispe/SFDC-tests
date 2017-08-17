@@ -36,7 +36,9 @@ public final class Navigator {
      * @return ProductHome.
      */
     public static ProductHome goToProductsHome() {
-        clickAppLauncher().clickProductsTextLink();
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Product")) {
+            clickAppLauncher().clickProductsTextLink();
+        }
         return new ProductHome();
     }
 
@@ -45,7 +47,9 @@ public final class Navigator {
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
-        new AppLauncher().clickChatterTextLink();
+//        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("chatter")) {
+            new AppLauncher().clickChatterTextLink();
+//        }
         return new PostForm();
     }
     /**

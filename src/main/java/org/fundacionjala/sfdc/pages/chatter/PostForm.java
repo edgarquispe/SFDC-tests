@@ -25,7 +25,7 @@ public class PostForm extends BasePage {
     @FindBy(xpath = "//span[text()='Post']")
     private WebElement clickPostTabBar;
 
-    @FindBy(css = ".dummyControlsContainer .uiButton")
+    @FindBy(css = ".dummyControlsContainer .slds-button--neutral.uiButton")
     private WebElement sectionPostTextAreaField;
 
     @FindBy(css = ".slds-rich-text-area__content")
