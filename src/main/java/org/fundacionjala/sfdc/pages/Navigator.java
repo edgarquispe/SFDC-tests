@@ -7,7 +7,9 @@ import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
@@ -44,12 +46,38 @@ public final class Navigator {
 
     /**
      * Go to Chatter Home Page.
+     *
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
-            new AppLauncher().clickChatterTextLink();
+        new AppLauncher().clickChatterTextLink();
         return new PostForm();
     }
+
+    /**
+     * Go to Opportunity Home Page.
+     *
+     * @return OpportunityHome.
+     */
+    public static OpportunityHome goToOpportunityHome() {
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Opportunity")) {
+            new AppLauncher().clickOpportunityButton();
+        }
+        return new OpportunityHome();
+    }
+
+    /**
+     * Go to Campaign Home Page.
+     *
+     * @return CampaignHome.
+     */
+    public static CampaignHome goToCampaignHome() {
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Campaign")) {
+            clickAppLauncher().clickCampaignTextLink();
+        }
+        return new CampaignHome();
+    }
+
     /**
      * Static method to go to any page on Enum SObject.
      *
@@ -62,6 +90,10 @@ public final class Navigator {
                 return goToAccountsHome();
             case CHATTER:
                 return goToChatterHome();
+            case OPPORTUNIT:
+                return Navigator.goToOpportunityHome();
+            case CAMPAIGN:
+                return Navigator.goToCampaignHome();
             default:
                 return goToProductsHome();
         }
@@ -89,6 +121,8 @@ public final class Navigator {
         Map<SObject, HomeBase> map = new HashMap<>();
         map.put(SObject.PRODUCT, new ProductHome());
         map.put(SObject.ACCOUNT, new AccountHome());
+        map.put(SObject.OPPORTUNIT, new OpportunityHome());
+        map.put(SObject.CAMPAIGN, new OpportunityHome());
         return map.get(item);
     }
 }

@@ -1,0 +1,22 @@
+package org.fundacionjala.sfdc.pages.opportunities;
+
+/**
+ * Created by Administrator on 8/10/2017.
+ */
+public enum OpportunityFormField {
+  OPPORTUNITY_NAME,
+  OPPORTUNITY_ACCOUNT,
+  DATE,
+  OPPORTUNITY_STAGE,
+  OPPORTUNITY_TYPE,
+  OPPORTUNITY_PROBABILITY,
+  OPPORTUNITY_CAMPAIGN,
+  OPPORTUNITY_AMOUNT,
+  BUDGE,
+  DISCOVERY,
+  ROI,
+  OPPORTUNITY_REASON,
+  OPPORTUNITY_LEAD,
+  OPPORTUNITY_NEXT,
+  OPPORTUNITY_DESCRIPTION,
+}

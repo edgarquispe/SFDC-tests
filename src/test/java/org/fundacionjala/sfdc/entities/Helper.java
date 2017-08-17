@@ -8,6 +8,8 @@ public class Helper {
     private String itemName;
     private String postMessage;
     private String commentPostMessage;
+    private String campaignName;
+    private String oportunityName;
 
     /**
      * Get the Item Name for edit and delete purposes.
@@ -61,5 +63,37 @@ public class Helper {
      */
     public void setCommentPostMessage(String commentPostMessage) {
         this.commentPostMessage = commentPostMessage;
+    }
+
+    /**
+     * Get Campaign Name.
+     * @return String.
+     */
+    public String getCampaignName() {
+        return campaignName;
+    }
+
+    /**
+     * Set Account Name.
+     * @param campaignName String.
+     */
+    public void setCampaignName(String campaignName) {
+        this.campaignName = campaignName;
+    }
+
+    /**
+     * Get Opportunity Name.
+     * @return String.
+     */
+    public String getOportunityName() {
+        return oportunityName;
+    }
+
+    /**
+     * Set Opportunity Name.
+     * @param oportunityName String.
+     */
+    public void setOportunityName(String oportunityName) {
+        this.oportunityName = oportunityName;
     }
 }

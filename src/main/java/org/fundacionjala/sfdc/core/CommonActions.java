@@ -29,7 +29,7 @@ public final class CommonActions {
      * This method set a Input Field.
      *
      * @param webElement WebElement to wait and fill.
-     * @param text Text to fill.
+     * @param text       Text to fill.
      */
     public static void setInputField(WebElement webElement, String text) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
@@ -67,5 +67,28 @@ public final class CommonActions {
     public static boolean isElementDisplayed(WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.isDisplayed();
+    }
+
+    /**
+     * Check if the element is selected.
+     *
+     * @param element WebElement.
+     * @return boolean.
+     */
+    public static boolean isElementSelected(final WebElement element) {
+        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(element));
+        return element.isSelected();
+    }
+
+    /**
+     * Set Check Box status.
+     *
+     * @param element WebElement.
+     * @param flag    boolean.
+     */
+    public static void setCheckBox(WebElement element, boolean flag) {
+        if (!CommonActions.isElementSelected(element) && flag) {
+            CommonActions.clickElement(element);
+        }
     }
 }
