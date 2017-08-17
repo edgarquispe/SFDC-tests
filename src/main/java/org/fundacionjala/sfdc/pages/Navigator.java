@@ -3,6 +3,8 @@ package org.fundacionjala.sfdc.pages;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
@@ -54,11 +56,25 @@ public final class Navigator {
      */
     public static BasePage gotoPage(SObject endPoint) {
         switch (endPoint) {
+            case ACCOUNT:
+                return goToAccountsHome();
             case CHATTER:
                 return goToChatterHome();
             default:
                 return goToProductsHome();
         }
+    }
+
+    /**
+     * Go to Accounts Home Page.
+     *
+     * @return ProductHome.
+     */
+    public static AccountHome goToAccountsHome() {
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Account")) {
+            clickAppLauncher().clickAccountTextLink();
+        }
+        return new AccountHome();
     }
 
     /**
@@ -70,6 +86,7 @@ public final class Navigator {
     public static HomeBase mapActions(SObject item) {
         Map<SObject, HomeBase> map = new HashMap<>();
         map.put(SObject.PRODUCT, new ProductHome());
+        map.put(SObject.ACCOUNT, new AccountHome());
         return map.get(item);
     }
 }
