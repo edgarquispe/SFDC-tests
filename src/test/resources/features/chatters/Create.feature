@@ -1,4 +1,3 @@
-@chatter
 Feature: Create Post
 
   @deletePost

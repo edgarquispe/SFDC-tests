@@ -3,12 +3,10 @@ package org.fundacionjala.sfdc.stepdefinitions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import org.apache.commons.lang3.StringUtils;
-import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.SObject;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Common Steps for all features.
@@ -33,9 +31,8 @@ public class CommonSteps {
      */
     @Given("^I go to \"([^\"]*)\" Home Page$")
     public void iGoToHomePage(SObject sObject) {
+        CommonActions.waitForAppear();
         Navigator.gotoPage(sObject);
-        String title = StringUtils.capitalize(sObject.toString().toLowerCase());
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(title));
     }
 
     /**
@@ -45,11 +42,13 @@ public class CommonSteps {
      */
     @And("^I click on New \"([^\"]*)\"$")
     public void iClickOnNew(SObject sObject) {
+        CommonActions.waitForAppear();
         Navigator.mapActions(sObject).clickNewButton();
     }
 
     /**
      * Click on Edit Button.
+     *
      * @param sObject SObject.
      */
     @When("^I click on Edit \"([^\"]*)\"$")
@@ -59,6 +58,7 @@ public class CommonSteps {
 
     /**
      * Delete the selected Object.
+     *
      * @param sObject SObject.
      */
     @And("^I delete the \"([^\"]*)\"$")

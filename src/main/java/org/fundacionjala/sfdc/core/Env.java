@@ -14,7 +14,9 @@ import org.apache.logging.log4j.Logger;
 public  final class Env {
 
     private static Env instance;
+
     private Properties properties;
+
     private static final Logger LOGGER = LogManager.getLogger();
 
     /**

@@ -1,4 +1,3 @@
-
 Feature: Edit Account
 
   Background:

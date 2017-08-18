@@ -6,11 +6,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountFormField;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -19,7 +22,9 @@ import static org.testng.AssertJUnit.assertFalse;
  * Create Steps for Accounts.
  */
 public class AccountsSteps {
+
     private Helper helper;
+
     private Map<AccountFormField, String> map;
 
     /**
@@ -51,7 +56,8 @@ public class AccountsSteps {
     public void theAccountShouldBeDisplayed() {
         AccountDetail accountDetail = new AccountDetail();
         accountDetail.waitObjectNameIs(helper.getItemName());
-        accountDetail.waitUntilSuccessMessage();
+        CommonActions.waitForAppear();
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getItemName()));
         accountDetail.clickDetailButton();
         assertTrue(accountDetail.getAccountNameText().equals(map.get(AccountFormField.ACCOUNT_NAME)));
         assertTrue(accountDetail.getTypeText().equals(map.get(AccountFormField.ACCOUNT_TYPE)));
@@ -68,9 +74,8 @@ public class AccountsSteps {
     public void theAccountShouldBeDisplayedOnHomePage() {
         AccountHome accountHome = new AccountHome();
         accountHome.waitUntilSpinnerIsHidden();
-
+        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Account"));
         assertTrue(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
-
         assertTrue(accountHome.isAccountFieldDisplayed(
                 map.get(AccountFormField.ACCOUNT_NAME),
                 map.get(AccountFormField.ACCOUNT_PHONE)));

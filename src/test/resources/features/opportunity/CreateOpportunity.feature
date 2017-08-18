@@ -1,4 +1,3 @@
-@op
 Feature: Create Opportunity
 
   Background: Create Campaign
@@ -10,8 +9,8 @@ Feature: Create Opportunity
 
 #    Given I go to "Account" Home Page
 #    And I click on New "Account"
-#    When I fill the Campaign form with:
-#      | ACCOUNT_NAME          | account5    |
+#    When I fill the Account form with:
+#      | ACCOUNT_NAME          | New Account 1    |
 
   @deleteOpportunity @deleteCampaign
   Scenario: Create a new Opportunity

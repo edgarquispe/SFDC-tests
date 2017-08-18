@@ -6,9 +6,13 @@ package org.fundacionjala.sfdc.entities;
 public class Helper {
 
     private String itemName;
+
     private String postMessage;
+
     private String commentPostMessage;
+
     private String campaignName;
+
     private String oportunityName;
 
     /**

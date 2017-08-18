@@ -2,8 +2,11 @@ package org.fundacionjala.sfdc.pages.acccounts;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,8 +20,11 @@ import org.fundacionjala.sfdc.pages.base.FormBase;
 public class AccountForm extends FormBase {
 
     //Account Information
+    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div/descendant::input")
+    private WebElement accountNameNewInputField;
+
     @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::input")
-    private WebElement accountNameInputField;
+    private WebElement accountNameEditInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
     private WebElement typeDropDownList;
@@ -57,7 +63,6 @@ public class AccountForm extends FormBase {
     @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input")
     private WebElement billingCountryInputField;
 
-
     @FindBy(xpath = "//span[text()='Shipping Street']/parent::label/following-sibling::textarea")
     private WebElement shippingStreetInputField;
 
@@ -76,7 +81,6 @@ public class AccountForm extends FormBase {
     @FindBy(css = "button[title='Save']")
     private WebElement saveAccountButton;
 
-    //OJO
     @FindBy(xpath = "//div[@title='Edit']")
     private WebElement selectParent;
 
@@ -97,7 +101,16 @@ public class AccountForm extends FormBase {
      * @param accountName String.
      */
     private void setAccountNameInputText(String accountName) {
-        CommonActions.setInputField(accountNameInputField, accountName);
+        try {
+            DriverManager.getInstance().setUpdateWait(3);
+            CommonActions.setInputField(accountNameNewInputField, accountName);
+        } catch (TimeoutException e) {
+            CommonActions.setInputField(accountNameEditInputField, accountName);
+        } catch (NoSuchElementException e) {
+            CommonActions.setInputField(accountNameEditInputField, accountName);
+        } finally {
+            DriverManager.getInstance().backPreviousWait();
+        }
     }
 
     /**

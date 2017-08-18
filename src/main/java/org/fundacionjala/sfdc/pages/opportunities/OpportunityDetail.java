@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
  */
 public class OpportunityDetail extends DetailBase {
 
-
     @FindBy(xpath = "//p[contains(text(), 'Opportunity')]/following-sibling::h1")
     private WebElement opportunityNameText;
 

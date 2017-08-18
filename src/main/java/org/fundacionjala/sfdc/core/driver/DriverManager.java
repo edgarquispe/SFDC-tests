@@ -13,8 +13,11 @@ import org.fundacionjala.sfdc.core.Env;
 public final class DriverManager {
 
     private static final String BASE_URL = Env.getInstance().getBaseUrl();
+
     private static DriverManager instance;
+
     private WebDriver driver;
+
     private WebDriverWait wait;
 
     /**

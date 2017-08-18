@@ -9,6 +9,7 @@ import org.fundacionjala.sfdc.pages.base.HomeBase;
  * Class containing Account Home Page.
  */
 public class AccountHome extends HomeBase {
+
     /**
      * {@inheritDoc}
      */
@@ -37,6 +38,7 @@ public class AccountHome extends HomeBase {
         CommonActions.clickElement(editButton);
         return new AccountForm();
     }
+
     /**
      * Determines if the Account Field Data is displayed on Home Page.
      *

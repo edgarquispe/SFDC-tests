@@ -1,4 +1,3 @@
-@chatter
 Feature: Edit Post
 
   Background: Create Post

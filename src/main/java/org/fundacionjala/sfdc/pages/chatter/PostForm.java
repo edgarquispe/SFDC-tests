@@ -17,9 +17,13 @@ import java.util.Map;
 public class PostForm extends BasePage {
 
     private static final String ACTION_MENU = "cuf-feedItemActionTrigger";
+
     private static final String ACTION_COMMENT = "cuf-commentTrigger";
+
     private static final String ACTION_LIKE = "like-target";
+
     private static final String ACTION_UNLIKE = "unlike-target";
+
     private static final String ACTION_SHARED = "shareMenuTrigger";
 
     @FindBy(xpath = "//span[text()='Post']")
@@ -46,7 +50,7 @@ public class PostForm extends BasePage {
     @FindBy(css = "div[data-placeholder='Update your post...']")
     private WebElement editTextAreaField;
 
-    @FindBy(xpath = "//span[text()='Save']")
+    @FindBy(xpath = "//div[contains(@class, 'modal-footer')]/descendant::span[text()='Save']")
     private WebElement saveEditButton;
 
     @FindBy(css = "div[data-placeholder='Write a comment...']")

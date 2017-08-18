@@ -2,12 +2,10 @@ package org.fundacionjala.sfdc.stepdefinitions;
 
 import java.util.Map;
 
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
@@ -16,12 +14,16 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
+
 /**
  * Created by Administrator on 8/16/2017.
  */
 public class OpportunitySteps {
 
     private Helper helper;
+
     private Map<OpportunityFormField, String> map;
 
     /**
@@ -63,7 +65,6 @@ public class OpportunitySteps {
     public void theOpportunityShouldBeDisplayed() {
         OpportunityDetail opportunityDetail1Detail = new OpportunityDetail();
         opportunityDetail1Detail.waitObjectNameIs(helper.getOportunityName());
-        opportunityDetail1Detail.waitUntilSuccessMessage();
         OpportunityDetail opportunityDetail = new OpportunityDetail();
         assertTrue(opportunityDetail.getOpportunityNameText().equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertTrue(opportunityDetail.getOpportunityAccountText()
@@ -103,5 +104,15 @@ public class OpportunitySteps {
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         assertFalse(opportunityHome.isDisplayedItem(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
+    }
+
+    /**
+     * Click on New Opportunity special for a weird behavior.
+     */
+    @And("^I click on New Opportunit$")
+    public void iClickOnNewOpportunit() {
+        CommonActions.waitForAppear();
+        DriverManager.getInstance().getDriver().navigate().refresh();
+        new OpportunityHome().clickNewButton();
     }
 }
