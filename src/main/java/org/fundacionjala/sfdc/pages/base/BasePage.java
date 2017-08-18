@@ -10,7 +10,9 @@ import org.fundacionjala.sfdc.core.driver.DriverManager;
  * Abstract Class BasePage implementing Page Object pattern.
  */
 public abstract class BasePage {
+
     protected WebDriver driver;
+
     protected WebDriverWait wait;
 
     /**

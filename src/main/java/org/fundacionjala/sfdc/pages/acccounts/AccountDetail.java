@@ -41,8 +41,8 @@ public class AccountDetail extends DetailBase {
     @FindBy(xpath = "//span[text()='Shipping Address']/parent::div/following-sibling::div")
     private WebElement shippingAddressTextLink;
 
-
-    @FindBy(xpath = "//span[@class='title' and text()='Details']")
+//    @FindBy(xpath = "//span[@class='title' and text()='Details']")
+    @FindBy(xpath = "//span[text()='Details']")
     private WebElement detailClick;
 
     //Show Details

@@ -5,5 +5,4 @@ package org.fundacionjala.sfdc.pages.campaigns;
  */
 public enum CampaignFormField {
   CAMPAIGN_NAME,
-
 }

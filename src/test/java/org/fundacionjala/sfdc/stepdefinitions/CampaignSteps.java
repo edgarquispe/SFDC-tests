@@ -22,6 +22,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class CampaignSteps {
 
     private Helper helper;
+
     private Map<CampaignFormField, String> map;
 
     /**

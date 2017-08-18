@@ -20,6 +20,7 @@ import static org.testng.AssertJUnit.assertFalse;
 public class ProductSteps {
 
     private Helper helper;
+
     private Map<ProductFormField, String> map;
 
     /**

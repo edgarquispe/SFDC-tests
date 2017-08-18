@@ -66,6 +66,5 @@ public abstract class DetailBase extends BasePage {
      */
     public void waitUntilSuccessMessage() {
         wait.until(ExpectedConditions.visibilityOf(successMessage));
-//        wait.until(ExpectedConditions.not(ExpectedConditions.visibilityOf(successMessage)));
     }
 }

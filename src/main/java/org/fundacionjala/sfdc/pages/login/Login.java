@@ -17,6 +17,7 @@ import org.fundacionjala.sfdc.pages.base.BasePage;
 public class Login extends BasePage {
 
     private static final String URL = Env.getInstance().getLoginUrl();
+
     private static final int TIME_WAIT_DURATION = 5;
 
     //All WebElements are identified by @FindBy annotation.

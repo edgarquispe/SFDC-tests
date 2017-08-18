@@ -1,6 +1,8 @@
 package org.fundacionjala.sfdc.core;
 
 import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -89,6 +91,21 @@ public final class CommonActions {
     public static void setCheckBox(WebElement element, boolean flag) {
         if (!CommonActions.isElementSelected(element) && flag) {
             CommonActions.clickElement(element);
+        }
+    }
+
+    /**
+     * Method for wait 1 second.
+     */
+    public static void waitForAppear() {
+        try {
+            DriverManager.getInstance().setUpdateWait(1);
+            DriverManager.getInstance().getWait()
+                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
+        } catch (TimeoutException e) {
+
+        } finally {
+            DriverManager.getInstance().backPreviousWait();
         }
     }
 }

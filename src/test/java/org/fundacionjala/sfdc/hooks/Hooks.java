@@ -2,6 +2,7 @@ package org.fundacionjala.sfdc.hooks;
 
 import cucumber.api.java.After;
 
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 
@@ -21,9 +22,9 @@ public class Hooks {
     }
 
     /**
-     * Delete Item.
+     * Delete Product.
      */
-    @After(value = "@deleteProduct")
+    @After(value = "@deleteProduct", order = 10)
     public void deleteCreatedItem() {
         Navigator.goToProductsHome().deleteElement(helper.getItemName());
     }
@@ -31,32 +32,40 @@ public class Hooks {
     /**
      * Delete Post.
      */
-    @After(value = "@deletePost")
+    @After(value = "@deletePost", order = 10)
     public void deleteCreatedIPost() {
         Navigator.goToChatterHome().deletePost(helper.getPostMessage());
     }
 
     /**
-     * Delete Item.
+     * Delete Account.
      */
-    @After(value = "@deleteAccount")
+    @After(value = "@deleteAccount", order = 10)
     public void deleteCreatedAccount() {
         Navigator.goToAccountsHome().deleteElement(helper.getItemName());
     }
 
     /**
-     * Delete Item.
+     * Delete Opportunity.
      */
-    @After(value = "@deleteOpportunity")
+    @After(value = "@deleteOpportunity", order = 10)
     public void deleteCreatedItemOpportunity() {
         Navigator.goToOpportunityHome().deleteElement(helper.getOportunityName());
     }
 
     /**
-     * Delete Item.
+     * Delete Campaign.
      */
-    @After(value = "@deleteCampaign")
+    @After(value = "@deleteCampaign", order = 10)
     public void deleteCreatedItemCampaign() {
         Navigator.goToCampaignHome().deleteElement(helper.getCampaignName());
+    }
+
+    /**
+     * Refresh Page for an initial fresh state.
+     */
+    @After(order = 5)
+    public void refreshCurrentPage() {
+        DriverManager.getInstance().getDriver().navigate().refresh();
     }
 }

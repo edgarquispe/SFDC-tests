@@ -13,6 +13,7 @@ import static org.testng.Assert.assertTrue;
  * Create Steps for Chatter.
  */
 public class ChatterSteps {
+
     private Helper helper;
 
     /**

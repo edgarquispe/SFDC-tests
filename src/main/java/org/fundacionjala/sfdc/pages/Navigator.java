@@ -3,6 +3,7 @@ package org.fundacionjala.sfdc.pages;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
@@ -16,6 +17,7 @@ import org.fundacionjala.sfdc.pages.products.ProductHome;
  * Final class Navigator to access the different pages.
  */
 public final class Navigator {
+
     /**
      * Private Constructor.
      */
@@ -50,6 +52,7 @@ public final class Navigator {
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
+        CommonActions.waitForAppear();
         new AppLauncher().clickChatterTextLink();
         return new PostForm();
     }

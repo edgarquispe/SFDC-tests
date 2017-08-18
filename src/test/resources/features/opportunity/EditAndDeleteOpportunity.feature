@@ -1,11 +1,10 @@
-@op
 Feature: Edit Opportunity
 
   Background:
-  #   Given I go to "Account" Home Page
- #    And I click on New "Account"
- #    When I fill the Campaign form with:
- #      | ACCOUNT_NAME          | account5    |
+#    Given I go to "Account" Home Page
+#    And I click on New "Account"
+#    When I fill the Account form with:
+#      | ACCOUNT_NAME          | New Account 1    |
     Given I go to "Campaign" Home Page
     And I click on New "Campaign"
     When I fill the Campaign form with:
@@ -13,7 +12,8 @@ Feature: Edit Opportunity
     And the Campaign should be displayed
 
     Given I go to "Opportunit" Home Page
-    And I click on New "Opportunit"
+#    And I click on New "Opportunit"
+    And I click on New Opportunit
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME    | OpportunityDemo1 |
       | OPPORTUNITY_ACCOUNT | New Account 1    |
@@ -67,6 +67,7 @@ Feature: Edit Opportunity
 #    And I go to "Opportunit" Home Page
 #    Then the Opportunity should be displayed on Home Page
 
+  @deleteCampaign
   Scenario: Delete the Opportunity on Detail Page
     When I Click on Delete from Opportunity
     Then the Opportunity should not be displayed on Home Page
