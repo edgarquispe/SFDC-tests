@@ -59,7 +59,7 @@ public class ProductSteps {
     @Then("^the Product should be displayed$")
     public void theProductShouldBeDisplayed() {
         ProductDetail productDetail = new ProductDetail();
-        productDetail.waitProductNameIs(helper.getItemName());
+        productDetail.waitObjectNameIs(helper.getItemName());
         productDetail.waitUntilSuccessMessage();
         assertTrue(productDetail.getProductNameText().equals(map.get(ProductFormField.PRODUCT_NAME)));
         assertTrue(productDetail.getProductCodeText().equals(map.get(ProductFormField.PRODUCT_CODE)));

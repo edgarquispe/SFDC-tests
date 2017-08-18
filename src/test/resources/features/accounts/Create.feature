@@ -1,4 +1,4 @@
-@acc
+
 Feature: Create Account
 
   @deleteAccount

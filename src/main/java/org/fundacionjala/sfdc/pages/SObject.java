@@ -6,5 +6,7 @@ package org.fundacionjala.sfdc.pages;
 public enum SObject {
     ACCOUNT,
     PRODUCT,
-    CHATTER
+    CHATTER,
+    OPPORTUNIT,
+    CAMPAIGN
 }

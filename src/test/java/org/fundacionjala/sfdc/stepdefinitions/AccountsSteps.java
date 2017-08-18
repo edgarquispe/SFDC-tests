@@ -50,7 +50,7 @@ public class AccountsSteps {
     @Then("^the Account should be displayed$")
     public void theAccountShouldBeDisplayed() {
         AccountDetail accountDetail = new AccountDetail();
-        accountDetail.waitProductNameIs(helper.getItemName());
+        accountDetail.waitObjectNameIs(helper.getItemName());
         accountDetail.waitUntilSuccessMessage();
         accountDetail.clickDetailButton();
         assertTrue(accountDetail.getAccountNameText().equals(map.get(AccountFormField.ACCOUNT_NAME)));

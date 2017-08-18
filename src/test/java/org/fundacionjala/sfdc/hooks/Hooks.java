@@ -43,4 +43,20 @@ public class Hooks {
     public void deleteCreatedAccount() {
         Navigator.goToAccountsHome().deleteElement(helper.getItemName());
     }
+
+    /**
+     * Delete Item.
+     */
+    @After(value = "@deleteOpportunity")
+    public void deleteCreatedItemOpportunity() {
+        Navigator.goToOpportunityHome().deleteElement(helper.getOportunityName());
+    }
+
+    /**
+     * Delete Item.
+     */
+    @After(value = "@deleteCampaign")
+    public void deleteCreatedItemCampaign() {
+        Navigator.goToCampaignHome().deleteElement(helper.getCampaignName());
+    }
 }

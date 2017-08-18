@@ -28,7 +28,7 @@ public abstract class DetailBase extends BasePage {
      *
      * @param name String.
      */
-    public void waitProductNameIs(String name) {
+    public void waitObjectNameIs(String name) {
         String cssSelector = String.format("h1[title='%s']", name);
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssSelector)));
     }

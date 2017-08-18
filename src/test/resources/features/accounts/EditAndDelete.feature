@@ -1,4 +1,4 @@
-@acc
+
 Feature: Edit Account
 
   Background:

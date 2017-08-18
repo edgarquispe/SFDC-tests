@@ -1,8 +1,10 @@
 package org.fundacionjala.sfdc.pages;
 
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
 
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -33,6 +35,15 @@ public class AppLauncher extends BasePage {
 
     @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Accounts']")
     private WebElement accountsTextLink;
+
+    @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Opportunities']")
+    private WebElement opportunitiesTextLink;
+
+    @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Campaigns']")
+    private WebElement campaignTextLink;
+
+    @FindBy(css = "a[title='Opportunities']")
+    private WebElement opportunityButton;
 
     /**
      * Waits for the modal is displayed.
@@ -73,5 +84,38 @@ public class AppLauncher extends BasePage {
         CommonActions.clickElement(openAllAppsButton);
         CommonActions.clickElement(accountsTextLink);
         return new AccountHome();
+    }
+
+    /**
+     * Clicks the Opportunity Text Link.
+     *
+     * @return OpportunityHome.
+     */
+    public OpportunityHome clickOpportunityTextLink() {
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(opportunitiesTextLink);
+        return new OpportunityHome();
+    }
+
+    /**
+     * Clicks the Opportunity Button.
+     * @return OpportunityHome.
+     */
+    public OpportunityHome clickOpportunityButton() {
+        CommonActions.clickElement(opportunityButton);
+        return new OpportunityHome();
+    }
+
+    /**
+     * Clicks the Campaign Text Link.
+     *
+     * @return CampaignHome.
+     */
+    public CampaignHome clickCampaignTextLink() {
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(campaignTextLink);
+        return new CampaignHome();
     }
 }
