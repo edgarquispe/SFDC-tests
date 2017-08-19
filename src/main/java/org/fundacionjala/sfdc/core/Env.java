@@ -11,19 +11,19 @@ import org.apache.logging.log4j.Logger;
 /**
  * Class that gets the Environment config.
  */
-public  final class Env {
+public final class Env {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static Env instance;
 
     private Properties properties;
 
-    private static final Logger LOGGER = LogManager.getLogger();
-
     /**
      * Private constructor for Env.
      */
     private Env() {
-        try (FileInputStream input = new FileInputStream("env.properties")) {
+        try (FileInputStream input = new FileInputStream("gradle.properties")) {
             properties = new Properties();
             properties.load(input);
 
@@ -55,7 +55,11 @@ public  final class Env {
      * @return String result.
      */
     public String getEnv(String env) {
-        return properties.getProperty(env);
+        String property = System.getProperty(env);
+        if (property == null) {
+            return properties.getProperty(env);
+        }
+        return property;
     }
 
     /**

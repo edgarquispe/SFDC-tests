@@ -13,7 +13,11 @@ import org.fundacionjala.sfdc.pages.login.Login;
  * Runner class for all tests.
  */
 @CucumberOptions(
-        plugin = {"pretty"},
+        monochrome = true,
+        format = {"pretty",
+                "html:target/test-report",
+                "json:target/test-report.json",
+                "junit:target/test-report.xml"},
         features = {"src/test/resources/features"},
         glue = {"org.fundacionjala.sfdc"})
 public class Runner extends AbstractTestNGCucumberTests {
@@ -21,7 +25,7 @@ public class Runner extends AbstractTestNGCucumberTests {
     private static final Env ENV = Env.getInstance();
 
     /**
-     * Opens the browser and Logins to Sales Force.
+     * Opens the browser and log in to Sales Force.
      */
     @BeforeTest()
     public void loginToSalesForce() {

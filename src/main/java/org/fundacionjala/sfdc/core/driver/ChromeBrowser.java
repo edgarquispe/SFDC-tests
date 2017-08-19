@@ -9,12 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class ChromeBrowser implements IBrowser {
 
     /**
-     * Default Constructor.
-     */
-    public ChromeBrowser() {
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override

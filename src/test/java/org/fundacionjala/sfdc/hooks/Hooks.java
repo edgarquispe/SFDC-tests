@@ -50,7 +50,7 @@ public class Hooks {
      */
     @After(value = "@deleteOpportunity", order = 10)
     public void deleteCreatedItemOpportunity() {
-        Navigator.goToOpportunityHome().deleteElement(helper.getOportunityName());
+        Navigator.goToOpportunityHome().deleteElement(helper.getOpportunityName());
     }
 
     /**

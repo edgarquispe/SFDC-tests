@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 
@@ -104,9 +104,7 @@ public class AccountForm extends FormBase {
         try {
             DriverManager.getInstance().setUpdateWait(3);
             CommonActions.setInputField(accountNameNewInputField, accountName);
-        } catch (TimeoutException e) {
-            CommonActions.setInputField(accountNameEditInputField, accountName);
-        } catch (NoSuchElementException e) {
+        } catch (TimeoutException | NoSuchElementException e) {
             CommonActions.setInputField(accountNameEditInputField, accountName);
         } finally {
             DriverManager.getInstance().backPreviousWait();

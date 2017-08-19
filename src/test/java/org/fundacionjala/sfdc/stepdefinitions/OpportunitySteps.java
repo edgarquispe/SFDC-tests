@@ -5,6 +5,8 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
@@ -12,7 +14,6 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -43,7 +44,7 @@ public class OpportunitySteps {
     @When("^I fill the Opportunity form with:$")
     public void iFillTheOpportunityFormWith(Map<OpportunityFormField, String> formMapData) {
         map = formMapData;
-        helper.setOportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
+        helper.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
         new OpportunityForm().fillAndSaveForm(formMapData);
     }
 
@@ -52,7 +53,7 @@ public class OpportunitySteps {
      */
     @When("^I click on Edit Opportunity$")
     public void iClickOnEditOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOportunityName()));
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().clickEditButton();
     }
@@ -64,7 +65,7 @@ public class OpportunitySteps {
     @Then("^the Opportunity should be displayed$")
     public void theOpportunityShouldBeDisplayed() {
         OpportunityDetail opportunityDetail1Detail = new OpportunityDetail();
-        opportunityDetail1Detail.waitObjectNameIs(helper.getOportunityName());
+        opportunityDetail1Detail.waitObjectNameIs(helper.getOpportunityName());
         OpportunityDetail opportunityDetail = new OpportunityDetail();
         assertTrue(opportunityDetail.getOpportunityNameText().equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertTrue(opportunityDetail.getOpportunityAccountText()
@@ -92,7 +93,7 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOportunityName()));
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().deleteItem();
     }

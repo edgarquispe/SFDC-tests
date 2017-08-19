@@ -1,9 +1,10 @@
 package org.fundacionjala.sfdc.pages.opportunities;
 
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.base.DetailBase;
 
 /**
  *  Class containing Opportunity Detail Page.
@@ -22,7 +23,6 @@ public class OpportunityDetail extends DetailBase {
     @FindBy(xpath = " //p[contains(text(), 'Amount')]/following-sibling::P")
     private WebElement amountText;
 
-    //span[contains(@class,'current')]/following-sibling::span
     @FindBy(xpath = "//span[contains(@class,'current')]/following-sibling::span")
     private WebElement stageText;
 

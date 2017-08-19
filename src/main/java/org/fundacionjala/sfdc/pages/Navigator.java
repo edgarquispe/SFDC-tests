@@ -94,9 +94,9 @@ public final class Navigator {
             case CHATTER:
                 return goToChatterHome();
             case OPPORTUNIT:
-                return Navigator.goToOpportunityHome();
+                return goToOpportunityHome();
             case CAMPAIGN:
-                return Navigator.goToCampaignHome();
+                return goToCampaignHome();
             default:
                 return goToProductsHome();
         }

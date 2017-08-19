@@ -5,6 +5,7 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -13,7 +14,6 @@ import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountFormField;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -76,8 +76,7 @@ public class AccountsSteps {
         accountHome.waitUntilSpinnerIsHidden();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Account"));
         assertTrue(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
-        assertTrue(accountHome.isAccountFieldDisplayed(
-                map.get(AccountFormField.ACCOUNT_NAME),
+        assertTrue(accountHome.isAccountFieldDisplayed(map.get(AccountFormField.ACCOUNT_NAME),
                 map.get(AccountFormField.ACCOUNT_PHONE)));
     }
 

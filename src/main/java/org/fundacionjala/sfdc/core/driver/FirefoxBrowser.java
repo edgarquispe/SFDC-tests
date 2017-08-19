@@ -9,12 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FirefoxBrowser implements IBrowser {
 
     /**
-     * Default Constructor.
-     */
-    public FirefoxBrowser() {
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override

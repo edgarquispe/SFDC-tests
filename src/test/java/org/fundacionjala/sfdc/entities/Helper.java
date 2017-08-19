@@ -13,7 +13,7 @@ public class Helper {
 
     private String campaignName;
 
-    private String oportunityName;
+    private String opportunityName;
 
     /**
      * Get the Item Name for edit and delete purposes.
@@ -89,15 +89,15 @@ public class Helper {
      * Get Opportunity Name.
      * @return String.
      */
-    public String getOportunityName() {
-        return oportunityName;
+    public String getOpportunityName() {
+        return opportunityName;
     }
 
     /**
      * Set Opportunity Name.
-     * @param oportunityName String.
+     * @param opportunityName String.
      */
-    public void setOportunityName(String oportunityName) {
-        this.oportunityName = oportunityName;
+    public void setOpportunityName(String opportunityName) {
+        this.opportunityName = opportunityName;
     }
 }

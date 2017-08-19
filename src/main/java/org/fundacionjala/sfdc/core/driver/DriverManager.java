@@ -26,6 +26,7 @@ public final class DriverManager {
     private DriverManager() {
         driver = DriverFactory.getDriverManager(DriverType.valueOf(
                 Env.getInstance().getBrowser().toUpperCase()));
+        driver.manage().window().maximize();
         backPreviousWait();
     }
 

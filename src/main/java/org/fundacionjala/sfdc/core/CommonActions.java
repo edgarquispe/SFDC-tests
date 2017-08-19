@@ -1,10 +1,11 @@
 package org.fundacionjala.sfdc.core;
 
-import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 
 /**
  * Class containing the common actions for the framework.
@@ -89,8 +90,8 @@ public final class CommonActions {
      * @param flag    boolean.
      */
     public static void setCheckBox(WebElement element, boolean flag) {
-        if (!CommonActions.isElementSelected(element) && flag) {
-            CommonActions.clickElement(element);
+        if (!isElementSelected(element) && flag) {
+            clickElement(element);
         }
     }
 

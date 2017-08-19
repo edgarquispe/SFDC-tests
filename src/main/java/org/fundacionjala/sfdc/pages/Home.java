@@ -1,17 +1,16 @@
 package org.fundacionjala.sfdc.pages;
 
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.pages.base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.base.BasePage;
 
 /**
  * Class for the Home Page.
  */
 public class Home extends BasePage {
-
-    private static final String URL = "na59.salesforce.com";
 
     //All WebElements are identified by @FindBy annotation.
     @FindBy(css = ".oneUserProfileCardTrigger")
