@@ -106,4 +106,22 @@ public final class Env {
     public String getBrowser() {
         return getEnv("browser");
     }
+
+    /**
+     * Gets the Docker Chrome Url to use.
+     *
+     * @return String.
+     */
+    public String getDockerChromeUrl() {
+        return getEnv("dockerChromeUrl");
+    }
+
+    /**
+     * Gets the Docker Firefox Url to use.
+     *
+     * @return String.
+     */
+    public String getDockerFirefoxUrl() {
+        return getEnv("dockerFirefoxUrl");
+    }
 }
