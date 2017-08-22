@@ -29,10 +29,10 @@ public class DockerFirefoxBrowser implements IBrowser {
      */
     @Override
     public WebDriver getBrowser() {
-        Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+        Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
         WebDriver driver = null;
         try {
-            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerFirefoxUrl()), chromeCapabilities);
+            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerFirefoxUrl()), firefoxCapabilities);
 
         } catch (MalformedURLException e) {
             LOGGER.error(e.getMessage());
