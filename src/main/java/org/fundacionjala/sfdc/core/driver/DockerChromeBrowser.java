@@ -32,7 +32,7 @@ public class DockerChromeBrowser implements IBrowser {
         Capabilities chromeCapabilities = DesiredCapabilities.chrome();
         WebDriver driver = null;
         try {
-            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerChromeUrl()), chromeCapabilities);
+            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerUrl()), chromeCapabilities);
 
         } catch (MalformedURLException e) {
             LOGGER.error(e.getMessage());

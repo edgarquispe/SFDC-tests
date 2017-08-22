@@ -32,7 +32,7 @@ public class DockerFirefoxBrowser implements IBrowser {
         Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
         WebDriver driver = null;
         try {
-            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerFirefoxUrl()), firefoxCapabilities);
+            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerUrl()), firefoxCapabilities);
 
         } catch (MalformedURLException e) {
             LOGGER.error(e.getMessage());
