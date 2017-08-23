@@ -84,6 +84,14 @@ task executeFeatures(type: Test) {
         jvmArgs = ['-Dusername=' + username]
         jvmArgs = ['-Dpassword=' + password]
         jvmArgs = ['-Dbrowser=' + browser]
+        jvmArgs = ['-DremoteUserName=' + remoteUserName]
+        jvmArgs = ['-DremoteKey=' + remoteKey]
+        jvmArgs = ['-DremoteBrowser=' + remoteBrowser]
+        jvmArgs = ['-DremoteBrowserVersion=' + remoteBrowserVersion]
+        jvmArgs = ['-DremotePlatform=' + remotePlatform]
+        jvmArgs = ['-DremotePlatformVersion=' + remotePlatformVersion]
+        jvmArgs = ['-DremoteResolution=' + remoteResolution]
+        jvmArgs = ['-DdockerUrl=' + dockerUrl]
     }
 
     // show standard out and standard error of the test JVM(s) on the console
@@ -125,6 +133,7 @@ task reExecuteFeatures(type: Test) {
             jvmArgs = ['-DremotePlatform=' + remotePlatform]
             jvmArgs = ['-DremotePlatformVersion=' + remotePlatformVersion]
             jvmArgs = ['-DremoteResolution=' + remoteResolution]
+            jvmArgs = ['-DdockerUrl=' + dockerUrl]
         }
 
         // show standard out and standard error of the test JVM(s) on the console

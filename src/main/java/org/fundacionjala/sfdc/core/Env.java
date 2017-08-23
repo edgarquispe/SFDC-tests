@@ -168,4 +168,13 @@ public final class Env {
     public String getRemoteKey() {
         return getEnv("remoteKey");
     }
+
+    /**
+     * Gets the Docker Url to use.
+     *
+     * @return String.
+     */
+    public String getDockerUrl() {
+        return getEnv("dockerUrl");
+    }
 }
