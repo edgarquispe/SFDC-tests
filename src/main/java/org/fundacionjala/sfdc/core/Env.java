@@ -26,7 +26,6 @@ public final class Env {
         try (FileInputStream input = new FileInputStream("gradle.properties")) {
             properties = new Properties();
             properties.load(input);
-
         } catch (FileNotFoundException e) {
             LOGGER.error("File not found.");
             throw new RuntimeException(e);
@@ -105,6 +104,69 @@ public final class Env {
      */
     public String getBrowser() {
         return getEnv("browser");
+    }
+
+    /**
+     * Gets the type Browser to use.
+     *
+     * @return String.
+     */
+    public String getRemoteBrowser() {
+        return getEnv("Browser");
+    }
+
+    /**
+     * Gets the version Browser to use.
+     *
+     * @return String.
+     */
+    public String getRemoteBrowserVersion() {
+        return getEnv("BrowserVersion");
+    }
+
+    /**
+     * Gets the operative system to use.
+     *
+     * @return String.
+     */
+    public String getRemotePlatform() {
+        return getEnv("remotePlatform");
+    }
+
+    /**
+     * Gets the version operative system to use.
+     *
+     * @return String.
+     */
+    public String getRemotePlatformVersion() {
+        return getEnv("remotePlatformVersion");
+    }
+
+    /**
+     * Gets the resolution to use.
+     *
+     * @return String.
+     */
+    public String getRemoteResolution() {
+        return getEnv("remoteResolution");
+    }
+
+    /**
+     * Gets the remote user name to use.
+     *
+     * @return String.
+     */
+    public String getRemoteUserName() {
+        return getEnv("remoteUserName");
+    }
+
+    /**
+     * Gets the remote user key to use.
+     *
+     * @return String.
+     */
+    public String getRemoteKey() {
+        return getEnv("remoteKey");
     }
 
     /**

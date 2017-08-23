@@ -6,6 +6,8 @@ package org.fundacionjala.sfdc.core.driver;
 public enum DriverType {
     CHROME,
     FIREFOX,
+    SAUCELABS,
+    BROWSERSTACK,
     DOCKER_CHROME,
     DOCKER_FIREFOX
 }
