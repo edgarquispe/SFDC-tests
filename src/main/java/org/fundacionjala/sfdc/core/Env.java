@@ -121,7 +121,7 @@ public final class Env {
      * @return String.
      */
     public String getRemoteBrowserVersion() {
-        return getEnv("BrowserVersion");
+        return getEnv("remoteBrowserVersion");
     }
 
     /**
