@@ -112,7 +112,7 @@ public final class Env {
      * @return String.
      */
     public String getRemoteBrowser() {
-        return getEnv("Browser");
+        return getEnv("remoteBrowser");
     }
 
     /**

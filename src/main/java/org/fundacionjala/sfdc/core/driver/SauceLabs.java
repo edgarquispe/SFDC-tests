@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.fundacionjala.sfdc.core.Env;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -30,7 +31,9 @@ public class SauceLabs implements IBrowser {
      * @return setting capabilities SauceLabs.
      */
     private DesiredCapabilities setCapabilities() {
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability(CapabilityType.BROWSER_NAME, ENV.getRemoteBrowser());
+        caps.setCapability(CapabilityType.VERSION, ENV.getRemoteBrowserVersion());
         caps.setCapability(PLATFORM, String.format("%s %s",
                 ENV.getRemotePlatform(),
                 ENV.getRemotePlatformVersion()));
