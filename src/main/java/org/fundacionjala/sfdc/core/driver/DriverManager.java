@@ -74,10 +74,8 @@ public final class DriverManager {
      * Back previous set default times.
      */
     public void backPreviousWait() {
-        final int implicitTimeWait = 15;
-        final int explicitTimeWait = 30;
-        setImplicitTimeWait(implicitTimeWait);
-        setExplicitTimeWait(explicitTimeWait);
+        setImplicitTimeWait(Env.getInstance().getImplicitTimeWait());
+        setExplicitTimeWait(Env.getInstance().getExplicitTimeWait());
     }
 
     /**

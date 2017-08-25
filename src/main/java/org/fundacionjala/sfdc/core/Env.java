@@ -177,4 +177,22 @@ public final class Env {
     public String getDockerUrl() {
         return getEnv("dockerUrl");
     }
+
+    /**
+     * Gets the Implicit Time Wait.
+     *
+     * @return the value of implicit time wait.
+     */
+    public int getImplicitTimeWait() {
+        return Integer.parseInt(getEnv("implicitTimeWait"));
+    }
+
+    /**
+     * Gets the ExplicitT Time Wait.
+     *
+     * @return the value of explicit time wait.
+     */
+    public int getExplicitTimeWait() {
+        return Integer.parseInt(getEnv("explicitTimeWait"));
+    }
 }
