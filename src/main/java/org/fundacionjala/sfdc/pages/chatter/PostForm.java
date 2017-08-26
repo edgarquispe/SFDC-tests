@@ -1,7 +1,6 @@
 package org.fundacionjala.sfdc.pages.chatter;
 
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.pages.base.BasePage;
+import java.util.EnumMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,8 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.base.BasePage;
 
 /**
  * Class for the Post Form page for Chatter.
@@ -176,12 +175,12 @@ public class PostForm extends BasePage {
     /**
      * Generate Xpath.
      *
-     * @param chatterActions     action.
-     * @param messagePost message.
+     * @param chatterActions action.
+     * @param messagePost    message.
      * @return xpath final.
      */
     public String generateXpath(ChatterActions chatterActions, String messagePost) {
-        Map<ChatterActions, String> actionMap = new HashMap<>();
+        EnumMap<ChatterActions, String> actionMap = new EnumMap<>(ChatterActions.class);
         actionMap.put(ChatterActions.MENU, concatXpath(messagePost, ACTION_MENU));
         actionMap.put(ChatterActions.COMMENT, concatXpath(messagePost, ACTION_COMMENT));
         actionMap.put(ChatterActions.LIKE, concatXpath(messagePost, ACTION_LIKE));
@@ -193,8 +192,8 @@ public class PostForm extends BasePage {
     /**
      * Click Action on Post.
      *
-     * @param chatterActions     enum.
-     * @param messagePost String.
+     * @param chatterActions enum.
+     * @param messagePost    String.
      */
     public void clickActionOnPost(ChatterActions chatterActions, String messagePost) {
         WebElement webElement = driver.findElement(By.xpath(generateXpath(chatterActions, messagePost)));
