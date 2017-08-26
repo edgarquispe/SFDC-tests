@@ -47,7 +47,7 @@ public class OpportunityForm extends FormBase {
     @FindBy(css = ".uiMenu.uiInput")
     private WebElement opportunityStageInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Probability (%)')]/parent::div/following-sibling::div/descendant::input")
+    @FindBy(xpath = "//span[contains(text(),'Probability (%)')]/parent::label/following-sibling::input")
     private WebElement opportunityProbabilityInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Amount')]/parent::label/following-sibling::input")

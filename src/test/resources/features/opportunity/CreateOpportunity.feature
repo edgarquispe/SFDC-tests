@@ -4,14 +4,13 @@ Feature: Create Opportunity
   Background: Create Campaign
     Given I go to "Campaign" Home Page
     And I click on New "Campaign"
-    When I fill the Campaign form with:
+    And I fill the Campaign form with:
       | CAMPAIGN_NAME | campaign9 |
     And the Campaign should be displayed
-
-#    Given I go to "Account" Home Page
-#    And I click on New "Account"
-#    When I fill the Account form with:
-#      | ACCOUNT_NAME          | New Account 1    |
+    And I go to "Account" Home Page
+    And I click on New "Account"
+    And I fill the Account form with:
+      | ACCOUNT_NAME | New Account 1 |
 
   @deleteOpportunity @deleteCampaign
   Scenario: Create a new Opportunity
@@ -36,8 +35,3 @@ Feature: Create Opportunity
     Then the Opportunity should be displayed
     And I go to "Opportunit" Home Page
     And the Opportunity should be displayed on Home Page
-
-
-
-
-
