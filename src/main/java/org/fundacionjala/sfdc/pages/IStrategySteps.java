@@ -3,6 +3,7 @@ package org.fundacionjala.sfdc.pages;
 /**
  * Interface to perform Steps.
  */
+@FunctionalInterface
 public interface IStrategySteps {
 
     /**
