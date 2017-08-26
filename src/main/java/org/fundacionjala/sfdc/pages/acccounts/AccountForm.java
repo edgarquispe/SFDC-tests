@@ -1,9 +1,11 @@
 package org.fundacionjala.sfdc.pages.acccounts;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -18,6 +20,8 @@ import org.fundacionjala.sfdc.pages.base.FormBase;
  * Class to Account Form.
  */
 public class AccountForm extends FormBase {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     //Account Information
     @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div/descendant::input")
@@ -106,6 +110,8 @@ public class AccountForm extends FormBase {
             CommonActions.setInputField(accountNameNewInputField, accountName);
         } catch (TimeoutException | NoSuchElementException e) {
             CommonActions.setInputField(accountNameEditInputField, accountName);
+            LOGGER.error("Timeout exception triggered");
+            LOGGER.info(e);
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
@@ -268,7 +274,7 @@ public class AccountForm extends FormBase {
      * @return Map AccountFormField, IStrategySteps.
      */
     private Map<AccountFormField, IStrategySteps> getStrategyMap(Map<AccountFormField, String> formMap) {
-        Map<AccountFormField, IStrategySteps> strategyMap = new HashMap<>();
+        EnumMap<AccountFormField, IStrategySteps> strategyMap = new EnumMap<>(AccountFormField.class);
         strategyMap.put(AccountFormField.ACCOUNT_NAME,
                 () -> setAccountNameInputText(formMap.get(AccountFormField.ACCOUNT_NAME)));
         strategyMap.put(AccountFormField.ACCOUNT_TYPE,
