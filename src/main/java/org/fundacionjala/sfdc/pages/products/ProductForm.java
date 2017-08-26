@@ -1,14 +1,15 @@
 package org.fundacionjala.sfdc.pages.products;
 
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.pages.IStrategySteps;
-import org.fundacionjala.sfdc.pages.base.FormBase;
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.IStrategySteps;
+import org.fundacionjala.sfdc.pages.base.FormBase;
 
 /**
  * Class containing Product Form Page.
@@ -104,7 +105,7 @@ public class ProductForm extends FormBase {
      * @return Map ProductFormField, IStrategySteps.
      */
     private Map<ProductFormField, IStrategySteps> getStrategyMap(Map<ProductFormField, String> formMap) {
-        Map<ProductFormField, IStrategySteps> strategyMap = new HashMap<>();
+        EnumMap<ProductFormField, IStrategySteps> strategyMap = new EnumMap<>(ProductFormField.class);
         strategyMap.put(ProductFormField.PRODUCT_NAME,
                 () -> setProductNameInputText(formMap.get(ProductFormField.PRODUCT_NAME)));
         strategyMap.put(ProductFormField.PRODUCT_CODE,

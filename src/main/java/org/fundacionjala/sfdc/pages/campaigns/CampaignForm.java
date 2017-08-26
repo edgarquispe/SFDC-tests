@@ -1,13 +1,14 @@
 package org.fundacionjala.sfdc.pages.campaigns;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
 import org.fundacionjala.sfdc.pages.base.FormBase;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 /**
  * Class containing Campaign Form Page.
@@ -44,7 +45,7 @@ public class CampaignForm extends FormBase {
      * @return Map.
      */
     private Map<CampaignFormField, IStrategySteps> getStrategyMap(Map<CampaignFormField, String> formMap) {
-        Map<CampaignFormField, IStrategySteps> strategyMap = new HashMap<>();
+        EnumMap<CampaignFormField, IStrategySteps> strategyMap = new EnumMap<>(CampaignFormField.class);
         strategyMap.put(CampaignFormField.CAMPAIGN_NAME,
                 () -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));
         return strategyMap;

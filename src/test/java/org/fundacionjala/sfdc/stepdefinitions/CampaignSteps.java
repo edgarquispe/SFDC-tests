@@ -17,7 +17,7 @@ import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * Created by Administrator on 8/16/2017.
+ * Create steps for campaign.
  */
 public class CampaignSteps {
 

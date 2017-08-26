@@ -19,7 +19,7 @@ import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
 
 /**
- * Created by Administrator on 8/16/2017.
+ * Create steps for opportunities.
  */
 public class OpportunitySteps {
 

@@ -1,7 +1,7 @@
 package org.fundacionjala.sfdc.pages.products;
 
 /**
- * Created by abelb on 8/14/2017.
+ * Enum containing all the Product Form Field.
  */
 public enum ProductFormField {
     PRODUCT_NAME,
