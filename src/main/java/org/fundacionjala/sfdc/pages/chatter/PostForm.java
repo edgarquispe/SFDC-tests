@@ -65,7 +65,6 @@ public class PostForm extends BasePage {
     @FindBy(css = ".forceModalSpinner.hideEl")
     private WebElement spinner;
 
-
     /**
      * Click On Post Text Area Field.
      */
@@ -91,7 +90,6 @@ public class PostForm extends BasePage {
     public void clickShareforSavePost() {
         CommonActions.clickElement(shareButton);
     }
-
 
     /**
      * Click Post To Delete.
@@ -173,28 +171,28 @@ public class PostForm extends BasePage {
     /**
      * Generate Xpath.
      *
-     * @param action      action.
+     * @param chatterActions     action.
      * @param messagePost message.
      * @return xpath final.
      */
-    public String generateXpath(String action, String messagePost) {
-        Map<String, String> actionMap = new HashMap<>();
-        actionMap.put("Menu", concatXpath(messagePost, ACTION_MENU));
-        actionMap.put("Comment", concatXpath(messagePost, ACTION_COMMENT));
-        actionMap.put("Like", concatXpath(messagePost, ACTION_LIKE));
-        actionMap.put("UnLike", concatXpath(messagePost, ACTION_UNLIKE));
-        actionMap.put("Shared", concatXpath(messagePost, ACTION_SHARED));
-        return actionMap.get(action);
+    public String generateXpath(ChatterActions chatterActions, String messagePost) {
+        Map<ChatterActions, String> actionMap = new HashMap<>();
+        actionMap.put(ChatterActions.MENU, concatXpath(messagePost, ACTION_MENU));
+        actionMap.put(ChatterActions.COMMENT, concatXpath(messagePost, ACTION_COMMENT));
+        actionMap.put(ChatterActions.LIKE, concatXpath(messagePost, ACTION_LIKE));
+        actionMap.put(ChatterActions.UNLIKE, concatXpath(messagePost, ACTION_UNLIKE));
+        actionMap.put(ChatterActions.SHARED, concatXpath(messagePost, ACTION_SHARED));
+        return actionMap.get(chatterActions);
     }
 
     /**
      * Click Action on Post.
      *
-     * @param action      String.
+     * @param chatterActions     enum.
      * @param messagePost String.
      */
-    public void clickActionOnPost(String action, String messagePost) {
-        WebElement webElement = driver.findElement(By.xpath(generateXpath(action, messagePost)));
+    public void clickActionOnPost(ChatterActions chatterActions, String messagePost) {
+        WebElement webElement = driver.findElement(By.xpath(generateXpath(chatterActions, messagePost)));
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -247,7 +245,7 @@ public class PostForm extends BasePage {
      * @param postText String.
      */
     public void deletePost(String postText) {
-        clickActionOnPost("Menu", postText);
+        clickActionOnPost(ChatterActions.MENU, postText);
         clickPostToDelete();
         clickOnConfirmToDeleteThePost();
     }
@@ -259,7 +257,7 @@ public class PostForm extends BasePage {
      * @param postEdit String.
      */
     public void editPost(String postText, String postEdit) {
-        clickActionOnPost("Menu", postText);
+        clickActionOnPost(ChatterActions.MENU, postText);
         clickPostToEdit();
         setEditTextAreaField(postEdit);
         clickSaveEdition();
@@ -272,7 +270,7 @@ public class PostForm extends BasePage {
      * @param commentForPost String.
      */
     public void commentPost(String postText, String commentForPost) {
-        clickActionOnPost("Comment", postText);
+        clickActionOnPost(ChatterActions.COMMENT, postText);
         setComment(commentForPost);
         clickSaveComment();
     }
