@@ -1,5 +1,7 @@
 package org.fundacionjala.sfdc.core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -11,6 +13,8 @@ import org.fundacionjala.sfdc.core.driver.DriverManager;
  * Class containing the common actions for the framework.
  */
 public final class CommonActions {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Constructor private.
@@ -104,7 +108,8 @@ public final class CommonActions {
             DriverManager.getInstance().getWait()
                     .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
         } catch (TimeoutException e) {
-
+            LOGGER.error("Timeout exception triggered");
+            LOGGER.error(e.getMessage());
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
