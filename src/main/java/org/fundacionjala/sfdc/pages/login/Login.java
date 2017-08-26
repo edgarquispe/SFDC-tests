@@ -1,5 +1,7 @@
 package org.fundacionjala.sfdc.pages.login;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +21,8 @@ public class Login extends BasePage {
     private static final String URL = Env.getInstance().getLoginUrl();
 
     private static final int TIME_WAIT_DURATION = 5;
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     //All WebElements are identified by @FindBy annotation.
     @FindBy(id = "username")
@@ -95,6 +99,8 @@ public class Login extends BasePage {
             homePage = verifyCorrectUser(userName, password, homePage);
             homePage.clickHomeLink();
         } catch (WebDriverException e) {
+            LOGGER.error("WebDriverException");
+            LOGGER.error(e.getMessage());
             DriverManager.getInstance().getDriver().get(URL);
             homePage = loginAs(userName, password);
         } finally {
@@ -115,7 +121,7 @@ public class Login extends BasePage {
         Profile profile = homePage.clickProfileLinkLabel();
         if (!profile.isCorrectUserLogged(userName)) {
             homePage.clickLogOutLink();
-            homePage = loginAs(userName, password);
+            loginAs(userName, password);
         }
         return homePage;
     }
@@ -130,7 +136,6 @@ public class Login extends BasePage {
 
     }
 
-
     /**
      * This method make a login Initial.
      *
@@ -142,5 +147,4 @@ public class Login extends BasePage {
         Login login = new Login();
         return login.isUserLogged() ? login.loginOtherUser(userName, password) : login.loginAs(userName, password);
     }
-
 }
