@@ -1,7 +1,6 @@
 package org.fundacionjala.sfdc.pages;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -121,7 +120,7 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase mapActions(SObject item) {
-        Map<SObject, HomeBase> map = new HashMap<>();
+        EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductHome());
         map.put(SObject.ACCOUNT, new AccountHome());
         map.put(SObject.OPPORTUNIT, new OpportunityHome());
