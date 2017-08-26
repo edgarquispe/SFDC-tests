@@ -100,7 +100,7 @@ public class Login extends BasePage {
             homePage.clickHomeLink();
         } catch (WebDriverException e) {
             LOGGER.error("WebDriverException");
-            LOGGER.error(e.getMessage());
+            LOGGER.info(e);
             DriverManager.getInstance().getDriver().get(URL);
             homePage = loginAs(userName, password);
         } finally {
