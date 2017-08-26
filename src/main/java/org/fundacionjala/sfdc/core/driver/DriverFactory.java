@@ -1,7 +1,6 @@
 package org.fundacionjala.sfdc.core.driver;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 
 import org.openqa.selenium.WebDriver;
 
@@ -24,7 +23,7 @@ public final class DriverFactory {
      * @return Current WebDriver.
      */
     public static WebDriver getDriverManager(final DriverType driverType) {
-        Map<DriverType, IBrowser> map = new HashMap<>();
+        EnumMap<DriverType, IBrowser> map = new EnumMap<>(DriverType.class);
         map.put(DriverType.CHROME, new ChromeBrowser());
         map.put(DriverType.FIREFOX, new FirefoxBrowser());
         map.put(DriverType.SAUCELABS, new SauceLabs());
