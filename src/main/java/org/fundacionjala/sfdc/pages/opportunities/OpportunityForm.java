@@ -1,18 +1,21 @@
 package org.fundacionjala.sfdc.pages.opportunities;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.fundacionjala.sfdc.pages.base.FormBase;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Class containing Opportunity Form Page..
@@ -72,7 +75,9 @@ public class OpportunityForm extends FormBase {
     private WebElement opportunityDescriptionInputField;
 
     @FindBy(css = "button[title='Save']")
-    private WebElement saveButton;
+    private WebElement saveOpportunityButton;
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * @param opportunityName field.
@@ -236,7 +241,7 @@ public class OpportunityForm extends FormBase {
      * @return strategyMap.
      */
     private Map<OpportunityFormField, IStrategySteps> getStrategyMap(Map<OpportunityFormField, String> formMap) {
-        Map<OpportunityFormField, IStrategySteps> strategyMap = new HashMap<>();
+        EnumMap<OpportunityFormField, IStrategySteps> strategyMap = new EnumMap<>(OpportunityFormField.class);
 
         strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME,
                 () -> setOpportunityNameInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NAME)));
@@ -245,7 +250,7 @@ public class OpportunityForm extends FormBase {
                 () -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
 
         strategyMap.put(OpportunityFormField.DATE,
-                () -> setCloseDateSelect());
+                this::setCloseDateSelect);
 
         strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE,
                 () -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
@@ -295,6 +300,7 @@ public class OpportunityForm extends FormBase {
 
     /**
      * Selected Div Form Element.
+     *
      * @param element String.
      * @return WebElement.
      */
@@ -322,7 +328,8 @@ public class OpportunityForm extends FormBase {
             DriverManager.getInstance().setUpdateWait(3);
             driver.findElement(By.xpath(xpathSelector)).click();
         } catch (NotFoundException e) {
-            //TODO Logger exception.
+            LOGGER.error("Timeout exception triggered");
+            LOGGER.info(e);
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
