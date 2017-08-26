@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Interface for getting the current browser.
  */
+@FunctionalInterface
 public interface IBrowser {
 
     /**
