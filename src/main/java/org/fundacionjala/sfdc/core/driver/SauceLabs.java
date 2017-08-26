@@ -5,11 +5,13 @@ import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.fundacionjala.sfdc.core.Env;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import org.fundacionjala.sfdc.core.Env;
+import org.fundacionjala.sfdc.core.MyRuntimeException;
 
 /**
  * SauceLabs class that implements IBrowsers.
@@ -53,7 +55,8 @@ public class SauceLabs implements IBrowser {
             driver = new RemoteWebDriver(new URL(URL), setCapabilities());
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
-            throw new RuntimeException();
+            LOGGER.info(e);
+            throw new MyRuntimeException(e);
         }
         return driver;
     }
