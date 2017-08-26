@@ -1,10 +1,9 @@
 package org.fundacionjala.sfdc.pages.base;
 
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.core.driver.DriverManager;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -57,6 +56,7 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(String name) {
         try {
+            driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
             return CommonActions.isElementDisplayed(displayedItem);
