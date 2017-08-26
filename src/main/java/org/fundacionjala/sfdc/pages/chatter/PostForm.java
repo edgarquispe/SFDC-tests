@@ -2,6 +2,9 @@ package org.fundacionjala.sfdc.pages.chatter;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -25,6 +28,8 @@ public class PostForm extends BasePage {
     private static final String ACTION_UNLIKE = "unlike-target";
 
     private static final String ACTION_SHARED = "shareMenuTrigger";
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @FindBy(xpath = "//span[text()='Post']")
     private WebElement clickPostTabBar;
@@ -212,6 +217,8 @@ public class PostForm extends BasePage {
             return webElement.isDisplayed();
 
         } catch (WebDriverException e) {
+            LOGGER.error("WebDriverException");
+            LOGGER.info(e);
             return false;
         }
     }
@@ -227,6 +234,8 @@ public class PostForm extends BasePage {
             CommonActions.getTextElement(webElement);
             return true;
         } catch (WebDriverException e) {
+            LOGGER.error("WebDriverException");
+            LOGGER.info(e);
             return false;
         }
     }
