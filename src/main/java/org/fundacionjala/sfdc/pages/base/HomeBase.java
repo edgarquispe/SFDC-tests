@@ -2,6 +2,9 @@ package org.fundacionjala.sfdc.pages.base;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -12,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * Abstract class that gets common info in Home Page.
  */
 public abstract class HomeBase extends BasePage {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     @FindBy(css = "a[title='New']")
     protected WebElement newButton;
@@ -56,6 +61,8 @@ public abstract class HomeBase extends BasePage {
             displayedItem = driver.findElement(By.xpath(xpathSelector));
             return CommonActions.isElementDisplayed(displayedItem);
         } catch (NoSuchElementException e) {
+            LOGGER.error("No Such Element Exception");
+            LOGGER.info(e);
             return false;
         } finally {
             DriverManager.getInstance().backPreviousWait();
@@ -101,7 +108,6 @@ public abstract class HomeBase extends BasePage {
      * Clicks the Delete Button.
      */
     public void clickDeleteButton() {
-
         CommonActions.clickElement(deleteButton);
     }
 
