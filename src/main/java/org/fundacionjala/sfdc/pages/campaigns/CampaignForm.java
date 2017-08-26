@@ -45,9 +45,8 @@ public class CampaignForm extends FormBase {
      */
     private Map<CampaignFormField, IStrategySteps> getStrategyMap(Map<CampaignFormField, String> formMap) {
         Map<CampaignFormField, IStrategySteps> strategyMap = new HashMap<>();
-        strategyMap.put(CampaignFormField.CAMPAIGN_NAME, ()
-                -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));
+        strategyMap.put(CampaignFormField.CAMPAIGN_NAME,
+                () -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));
         return strategyMap;
     }
-
 }
