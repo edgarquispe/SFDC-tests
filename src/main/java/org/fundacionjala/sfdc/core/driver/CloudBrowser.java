@@ -20,20 +20,20 @@ public abstract class CloudBrowser implements IBrowser {
     private String url;
 
     /**
+     * This is the constructor.
+     *
+     * @param url This variable contains the url authentication.
+     */
+    public CloudBrowser(String url) {
+        this.url = url;
+    }
+
+    /**
      * This method sets the capabilities of the Cloud Browser.
      *
      * @return a Desired Capabilities instance.
      */
     abstract DesiredCapabilities setCapabilities();
-
-    /**
-     * This is the constructor.
-     *
-     * @param url This variable contains the url authentication.
-     */
-    CloudBrowser(String url) {
-        this.url = url;
-    }
 
     /**
      * {@inheritDoc}
