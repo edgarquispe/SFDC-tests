@@ -28,9 +28,11 @@ public final class Env {
             properties.load(input);
         } catch (FileNotFoundException e) {
             LOGGER.error("File not found.");
+            LOGGER.info(e);
             throw new MyRuntimeException(e);
         } catch (IOException e) {
             LOGGER.error("File broken.");
+            LOGGER.info(e);
             throw new MyRuntimeException(e);
         }
     }

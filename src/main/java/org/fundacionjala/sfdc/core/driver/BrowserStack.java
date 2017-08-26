@@ -10,6 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import org.fundacionjala.sfdc.core.Env;
+import org.fundacionjala.sfdc.core.MyRuntimeException;
 
 /**
  * BrowserStack class that implements IBrowsers.
@@ -56,7 +57,8 @@ public class BrowserStack implements IBrowser {
             driver = new RemoteWebDriver(new URL(URL), setCapabilities());
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
-            throw new RuntimeException();
+            LOGGER.info(e);
+            throw new MyRuntimeException(e);
         }
         return driver;
     }
