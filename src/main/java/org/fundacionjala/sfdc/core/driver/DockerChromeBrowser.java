@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import org.fundacionjala.sfdc.core.Env;
+import org.fundacionjala.sfdc.core.MyRuntimeException;
 
 /**
  * DockerChromeBrowser class that implements IBrowsers.
@@ -18,12 +19,6 @@ import org.fundacionjala.sfdc.core.Env;
 public class DockerChromeBrowser implements IBrowser {
 
     private static final Logger LOGGER = LogManager.getLogger();
-
-    /**
-     * Default Constructor.
-     */
-    public DockerChromeBrowser() {
-    }
 
     /**
      * {@inheritDoc}
@@ -36,8 +31,9 @@ public class DockerChromeBrowser implements IBrowser {
             driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerUrl()), chromeCapabilities);
 
         } catch (MalformedURLException e) {
-            LOGGER.error(e.getMessage());
-            throw new RuntimeException();
+            LOGGER.error("Not instance driver");
+            LOGGER.info(e);
+            throw new MyRuntimeException(e);
         }
         return driver;
     }
