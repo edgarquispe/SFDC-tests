@@ -23,7 +23,9 @@ public class CampaignForm extends FormBase {
      * @param campaignName String.
      */
     private void setCampaignNameInputText(String campaignName) {
-        CommonActions.setInputField(campaignNameInputText, campaignName);
+        if (CommonActions.isElementDisplayed(campaignNameInputText)) {
+            CommonActions.setInputField(campaignNameInputText, campaignName);
+        }
     }
 
     /**
@@ -47,5 +49,4 @@ public class CampaignForm extends FormBase {
                 () -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));
         return strategyMap;
     }
-
 }
