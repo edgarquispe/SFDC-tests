@@ -109,7 +109,7 @@ public final class CommonActions {
                     .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
         } catch (TimeoutException e) {
             LOGGER.error("Timeout exception triggered");
-            LOGGER.error(e.getMessage());
+            LOGGER.info(e);
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
