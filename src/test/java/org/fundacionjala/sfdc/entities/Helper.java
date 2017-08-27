@@ -1,5 +1,8 @@
 package org.fundacionjala.sfdc.entities;
 
+import org.testng.asserts.Assertion;
+import org.testng.asserts.SoftAssert;
+
 /**
  * Helper class with Dependency Injection for all Steps.
  */
@@ -14,6 +17,15 @@ public class Helper {
     private String campaignName;
 
     private String opportunityName;
+
+    private Assertion assertion;
+
+    /**
+     * This method is a constructor.
+     */
+    public Helper() {
+        assertion = new Assertion();
+    }
 
     /**
      * Get the Item Name for edit and delete purposes.
@@ -71,6 +83,7 @@ public class Helper {
 
     /**
      * Get Campaign Name.
+     *
      * @return String.
      */
     public String getCampaignName() {
@@ -79,6 +92,7 @@ public class Helper {
 
     /**
      * Set Account Name.
+     *
      * @param campaignName String.
      */
     public void setCampaignName(String campaignName) {
@@ -87,6 +101,7 @@ public class Helper {
 
     /**
      * Get Opportunity Name.
+     *
      * @return String.
      */
     public String getOpportunityName() {
@@ -95,9 +110,28 @@ public class Helper {
 
     /**
      * Set Opportunity Name.
+     *
      * @param opportunityName String.
      */
     public void setOpportunityName(String opportunityName) {
         this.opportunityName = opportunityName;
+    }
+
+    /**
+     * Get Assertion.
+     *
+     * @return a instance of Assertion.
+     */
+    public Assertion getAssertion() {
+        return assertion;
+    }
+
+    /**
+     * Set assertion instance.
+     *
+     * @param assertion a instance of Soft Assertion.
+     */
+    public void setAssertion(SoftAssert assertion) {
+        this.assertion = assertion;
     }
 }

@@ -2,9 +2,6 @@ package org.fundacionjala.sfdc.stepdefinitions;
 
 import java.util.Map;
 
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -61,7 +58,8 @@ public class CampaignSteps {
     public void theCampaignShouldBeDisplayed() {
         CampaignDetail campaignDetail = new CampaignDetail();
         campaignDetail.waitObjectNameIs(helper.getCampaignName());
-        assertTrue(campaignDetail.getCampaignNameText().equals(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        helper.getAssertion()
+                .assertTrue(campaignDetail.getCampaignNameText().equals(map.get(CampaignFormField.CAMPAIGN_NAME)));
     }
 
     /**
@@ -71,7 +69,7 @@ public class CampaignSteps {
     public void theCampaignShouldBeDisplayedOnHomePage() {
         CampaignHome campaignHome = new CampaignHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Campaign"));
-        assertTrue(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        helper.getAssertion().assertTrue(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
 
     }
 
@@ -89,7 +87,7 @@ public class CampaignSteps {
     @Then("^the Campaign should not be displayed on Home Page$")
     public void theCampaignShouldNotBeDisplayedOnHomePage() {
         CampaignHome campaignHome = new CampaignHome();
-        assertFalse(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        helper.getAssertion().assertFalse(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
     }
 
 }

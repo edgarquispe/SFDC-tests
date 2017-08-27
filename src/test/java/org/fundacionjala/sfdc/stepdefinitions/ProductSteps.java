@@ -11,9 +11,6 @@ import org.fundacionjala.sfdc.pages.products.ProductForm;
 import org.fundacionjala.sfdc.pages.products.ProductFormField;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
-
 /**
  * Create Steps for Products.
  */
@@ -62,12 +59,14 @@ public class ProductSteps {
         ProductDetail productDetail = new ProductDetail();
         productDetail.waitObjectNameIs(helper.getItemName());
         productDetail.waitUntilSuccessMessage();
-        assertTrue(productDetail.getProductNameText().equals(map.get(ProductFormField.PRODUCT_NAME)));
-        assertTrue(productDetail.getProductCodeText().equals(map.get(ProductFormField.PRODUCT_CODE)));
-        assertTrue(productDetail.getProductDescriptionText().equals(
-                map.get(ProductFormField.PRODUCT_DESCRIPTION)));
-        assertTrue(productDetail.getProductFamilyText().equals(
-                map.get(ProductFormField.PRODUCT_FAMILY)));
+        helper.getAssertion().assertTrue(productDetail.getProductNameText()
+                .equals(map.get(ProductFormField.PRODUCT_NAME)));
+        helper.getAssertion().assertTrue(productDetail.getProductCodeText()
+                .equals(map.get(ProductFormField.PRODUCT_CODE)));
+        helper.getAssertion().assertTrue(productDetail.getProductDescriptionText()
+                .equals(map.get(ProductFormField.PRODUCT_DESCRIPTION)));
+        helper.getAssertion().assertTrue(productDetail.getProductFamilyText()
+                .equals(map.get(ProductFormField.PRODUCT_FAMILY)));
     }
 
     /**
@@ -77,14 +76,15 @@ public class ProductSteps {
     public void theProductShouldBeDisplayedOnHomePage() {
         ProductHome productHome = new ProductHome();
         productHome.waitUntilSpinnerIsHidden();
-        assertTrue(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
-        assertTrue(productHome.isProductFieldDisplayed(
+        helper.getAssertion().assertTrue(productHome
+                .isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
+        helper.getAssertion().assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
                 map.get(ProductFormField.PRODUCT_CODE)));
-        assertTrue(productHome.isProductFieldDisplayed(
+        helper.getAssertion().assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
                 map.get(ProductFormField.PRODUCT_DESCRIPTION)));
-        assertTrue(productHome.isProductFieldDisplayed(
+        helper.getAssertion().assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
                 map.get(ProductFormField.PRODUCT_FAMILY)));
     }
@@ -103,6 +103,6 @@ public class ProductSteps {
     @Then("^the Product should not be displayed on Home Page$")
     public void theProductShouldNotBeDisplayedOnHomePage() {
         ProductHome productHome = new ProductHome();
-        assertFalse(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
+        helper.getAssertion().assertFalse(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
     }
 }
