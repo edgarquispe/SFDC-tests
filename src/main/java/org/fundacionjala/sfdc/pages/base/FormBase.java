@@ -1,8 +1,9 @@
 package org.fundacionjala.sfdc.pages.base;
 
-import org.fundacionjala.sfdc.core.CommonActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.fundacionjala.sfdc.core.CommonActions;
 
 /**
  * Abstract class that gets common info in Form Page.
@@ -17,6 +18,9 @@ public abstract class FormBase extends BasePage {
 
     @FindBy(css = ".modal-footer button[title='Cancel']")
     protected WebElement cancelButton;
+
+    @FindBy(xpath = "//ul[@class='errorsList']/child::li")
+    protected WebElement requiredFieldsText;
 
     /**
      * Clicks the Save Button of the Form.
@@ -37,5 +41,14 @@ public abstract class FormBase extends BasePage {
      */
     public void clickCancelButton() {
         CommonActions.clickElement(cancelButton);
+    }
+
+    /**
+     * Return the complete text of the error notification.
+     *
+     * @return error notification content.
+     */
+    public String errorNotificationText() {
+        return CommonActions.getTextElement(requiredFieldsText);
     }
 }

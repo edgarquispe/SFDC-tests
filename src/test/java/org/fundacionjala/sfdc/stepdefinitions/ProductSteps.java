@@ -5,6 +5,7 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.products.ProductDetail;
 import org.fundacionjala.sfdc.pages.products.ProductForm;
@@ -55,6 +56,23 @@ public class ProductSteps {
     }
 
     /**
+     * Click on Delete button on Detail Page.
+     */
+    @When("^I click on Delete from Product$")
+    public void iClickOnDeleteFromProduct() {
+        new ProductDetail().deleteItem();
+    }
+
+    /**
+     * The Product shouldn't be displayed on Home Page After Delete.
+     */
+    @Then("^the Product should not be displayed on Home Page$")
+    public void theProductShouldNotBeDisplayedOnHomePage() {
+        ProductHome productHome = new ProductHome();
+        assertFalse(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
+    }
+
+    /**
      * The Product data should be displayed on Product Detail Page.
      */
     @Then("^the Product should be displayed$")
@@ -87,22 +105,5 @@ public class ProductSteps {
         assertTrue(productHome.isProductFieldDisplayed(
                 map.get(ProductFormField.PRODUCT_NAME),
                 map.get(ProductFormField.PRODUCT_FAMILY)));
-    }
-
-    /**
-     * Click on Delete button on Detail Page.
-     */
-    @When("^I Click on Delete from Product$")
-    public void iClickOnDeleteFromProduct() {
-        new ProductDetail().deleteItem();
-    }
-
-    /**
-     * The Product shouldn't be displayed on Home Page After Delete.
-     */
-    @Then("^the Product should not be displayed on Home Page$")
-    public void theProductShouldNotBeDisplayedOnHomePage() {
-        ProductHome productHome = new ProductHome();
-        assertFalse(productHome.isDisplayedItem(map.get(ProductFormField.PRODUCT_NAME)));
     }
 }
