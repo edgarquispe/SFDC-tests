@@ -51,7 +51,7 @@ public class ProductSteps {
     /**
      * Click on Delete button on Detail Page.
      */
-    @When("^I Click on Delete from Product$")
+    @When("^I click on Delete from Product$")
     public void iClickOnDeleteFromProduct() {
         new ProductDetail().deleteItem();
     }

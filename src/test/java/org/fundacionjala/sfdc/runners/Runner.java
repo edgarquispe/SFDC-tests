@@ -18,7 +18,7 @@ import org.fundacionjala.sfdc.pages.login.Login;
                 "html:target/test-report",
                 "json:target/test-report.json",
                 "junit:target/test-report.xml"},
-        features = {"src/test/resources/features/accounts"},
+        features = {"src/test/resources/features/products"},
         glue = {"org.fundacionjala.sfdc"})
 public class Runner extends AbstractTestNGCucumberTests {
 

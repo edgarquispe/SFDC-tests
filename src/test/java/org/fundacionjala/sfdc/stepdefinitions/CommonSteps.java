@@ -66,4 +66,14 @@ public class CommonSteps {
     public void iDeleteThe(SObject sObject) {
         Navigator.mapActions(sObject).deleteElement(helper.getItemName());
     }
+
+    /**
+     * Click on a specified item of the list.
+     *
+     * @param sObject SObject.
+     */
+    @And("^I click on the \"([^\"]*)\" item$")
+    public void iClickOnTheItem(SObject sObject) {
+        Navigator.mapActions(sObject).clickItemList(helper.getItemName());
+    }
 }
