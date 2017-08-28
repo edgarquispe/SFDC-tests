@@ -9,8 +9,6 @@ import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.SObject;
 
-import static org.testng.Assert.assertTrue;
-
 /**
  * Common assert step definitions.
  */
