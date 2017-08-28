@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.Assertion;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -14,9 +15,6 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
-
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
 
 /**
  * Create steps for opportunities.
@@ -27,6 +25,8 @@ public class OpportunitySteps {
 
     private Map<OpportunityFormField, String> map;
 
+    private Assertion assertion;
+
     /**
      * Constructor with Dependency Injection.
      *
@@ -34,6 +34,7 @@ public class OpportunitySteps {
      */
     public OpportunitySteps(Helper helper) {
         this.helper = helper;
+        assertion = helper.getAssertion();
     }
 
     /**
@@ -67,10 +68,11 @@ public class OpportunitySteps {
         OpportunityDetail opportunityDetail1Detail = new OpportunityDetail();
         opportunityDetail1Detail.waitObjectNameIs(helper.getOpportunityName());
         OpportunityDetail opportunityDetail = new OpportunityDetail();
-        assertTrue(opportunityDetail.getOpportunityNameText().equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
-        assertTrue(opportunityDetail.getOpportunityAccountText()
+        assertion.assertTrue(opportunityDetail.getOpportunityNameText()
+                .equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
+        assertion.assertTrue(opportunityDetail.getOpportunityAccountText()
                 .equals(map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
-        assertTrue(opportunityDetail.getOpportunityAmountText()
+        assertion.assertTrue(opportunityDetail.getOpportunityAmountText()
                 .contains(map.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
     }
 
@@ -82,8 +84,9 @@ public class OpportunitySteps {
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
-        assertTrue(opportunityHome.isDisplayedItem(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
-        assertTrue(opportunityHome.isOpportunityLinkDisplayed(
+        assertion.assertTrue(opportunityHome.isDisplayedItem(
+                map.get(OpportunityFormField.OPPORTUNITY_NAME)));
+        assertion.assertTrue(opportunityHome.isOpportunityLinkDisplayed(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME),
                 map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
     }
@@ -104,7 +107,8 @@ public class OpportunitySteps {
     @Then("^the Opportunity should not be displayed on Home Page$")
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
-        assertFalse(opportunityHome.isDisplayedItem(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
+        helper.getAssertion().assertFalse(opportunityHome.isDisplayedItem(
+                map.get(OpportunityFormField.OPPORTUNITY_NAME)));
     }
 
     /**

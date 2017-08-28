@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.Assertion;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
@@ -14,9 +15,6 @@ import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountFormField;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
-
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertFalse;
 
 /**
  * Create Steps for Accounts.
@@ -27,6 +25,8 @@ public class AccountsSteps {
 
     private Map<AccountFormField, String> map;
 
+    private Assertion assertion;
+
     /**
      * Constructor with Dependency Injection.
      *
@@ -34,6 +34,7 @@ public class AccountsSteps {
      */
     public AccountsSteps(Helper helper) {
         this.helper = helper;
+        assertion = helper.getAssertion();
     }
 
     /**
@@ -59,12 +60,12 @@ public class AccountsSteps {
         CommonActions.waitForAppear();
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getItemName()));
         accountDetail.clickDetailButton();
-        assertTrue(accountDetail.getAccountNameText().equals(map.get(AccountFormField.ACCOUNT_NAME)));
-        assertTrue(accountDetail.getTypeText().equals(map.get(AccountFormField.ACCOUNT_TYPE)));
-        assertTrue(accountDetail.getDescriptionText().equals(map.get(AccountFormField.ACCOUNT_DESCRIPTION)));
-        assertTrue(accountDetail.getPhoneText().equals(map.get(AccountFormField.ACCOUNT_PHONE)));
-        assertTrue(accountDetail.getIndustryText().equals(map.get(AccountFormField.ACCOUNT_INDUSTRY)));
-        assertTrue(accountDetail.getEmployeesText().equals(map.get(AccountFormField.ACCOUNT_EMPLOYEES)));
+        assertion.assertTrue(accountDetail.getAccountNameText().equals(map.get(AccountFormField.ACCOUNT_NAME)));
+        assertion.assertTrue(accountDetail.getTypeText().equals(map.get(AccountFormField.ACCOUNT_TYPE)));
+        assertion.assertTrue(accountDetail.getDescriptionText().equals(map.get(AccountFormField.ACCOUNT_DESCRIPTION)));
+        assertion.assertTrue(accountDetail.getPhoneText().equals(map.get(AccountFormField.ACCOUNT_PHONE)));
+        assertion.assertTrue(accountDetail.getIndustryText().equals(map.get(AccountFormField.ACCOUNT_INDUSTRY)));
+        assertion.assertTrue(accountDetail.getEmployeesText().equals(map.get(AccountFormField.ACCOUNT_EMPLOYEES)));
     }
 
     /**
@@ -75,8 +76,8 @@ public class AccountsSteps {
         AccountHome accountHome = new AccountHome();
         accountHome.waitUntilSpinnerIsHidden();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Account"));
-        assertTrue(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
-        assertTrue(accountHome.isAccountFieldDisplayed(map.get(AccountFormField.ACCOUNT_NAME),
+        assertion.assertTrue(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
+        assertion.assertTrue(accountHome.isAccountFieldDisplayed(map.get(AccountFormField.ACCOUNT_NAME),
                 map.get(AccountFormField.ACCOUNT_PHONE)));
     }
 
@@ -102,6 +103,6 @@ public class AccountsSteps {
     @Then("^the Account should not be displayed on Home Page$")
     public void theAccountShouldNotBeDisplayedOnHomePage() {
         AccountHome accountHome = new AccountHome();
-        assertFalse(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
+        assertion.assertFalse(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)));
     }
 }
