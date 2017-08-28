@@ -5,13 +5,15 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.Assertion;
+
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignDetail;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignForm;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignFormField;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Create steps for campaign.
@@ -22,6 +24,8 @@ public class CampaignSteps {
 
     private Map<CampaignFormField, String> map;
 
+    private Assertion assertion;
+
     /**
      * Constructor with Dependency Injection.
      *
@@ -29,6 +33,7 @@ public class CampaignSteps {
      */
     public CampaignSteps(Helper helper) {
         this.helper = helper;
+        assertion = helper.getAssertion();
     }
 
     /**
@@ -58,8 +63,7 @@ public class CampaignSteps {
     public void theCampaignShouldBeDisplayed() {
         CampaignDetail campaignDetail = new CampaignDetail();
         campaignDetail.waitObjectNameIs(helper.getCampaignName());
-        helper.getAssertion()
-                .assertTrue(campaignDetail.getCampaignNameText().equals(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        assertion.assertTrue(campaignDetail.getCampaignNameText().equals(map.get(CampaignFormField.CAMPAIGN_NAME)));
     }
 
     /**
@@ -69,7 +73,7 @@ public class CampaignSteps {
     public void theCampaignShouldBeDisplayedOnHomePage() {
         CampaignHome campaignHome = new CampaignHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Campaign"));
-        helper.getAssertion().assertTrue(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        assertion.assertTrue(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
 
     }
 
@@ -87,7 +91,7 @@ public class CampaignSteps {
     @Then("^the Campaign should not be displayed on Home Page$")
     public void theCampaignShouldNotBeDisplayedOnHomePage() {
         CampaignHome campaignHome = new CampaignHome();
-        helper.getAssertion().assertFalse(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
+        assertion.assertFalse(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
     }
 
 }
