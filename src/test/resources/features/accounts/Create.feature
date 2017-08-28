@@ -1,7 +1,6 @@
-@bvt
 Feature: Create Account
 
-  @deleteAccount
+  @bvt @deleteAccount
   Scenario: Create a new Account
     Given I go to "Account" Home Page
     And I click on New "Account"
