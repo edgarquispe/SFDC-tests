@@ -1,8 +1,6 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.asserts.Assertion;
 
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
@@ -15,8 +13,6 @@ public class ChatterSteps {
 
     private Helper helper;
 
-    private Assertion assertion;
-
     /**
      * Constructor with Dependency Injection.
      *
@@ -24,7 +20,6 @@ public class ChatterSteps {
      */
     public ChatterSteps(Helper helper) {
         this.helper = helper;
-        assertion = helper.getAssertion();
     }
 
     /**
@@ -64,17 +59,6 @@ public class ChatterSteps {
         DriverManager.getInstance().getDriver().navigate().refresh();
     }
 
-    /**
-     * The post edited should be displayed.
-     *
-     * @param message String.
-     */
-    @Then("^On the Chatter page should not display the \"([^\"]*)\"$")
-    public void onTheChatterPageShouldNotDisplayThe(String message) {
-        PostForm postForm = new PostForm();
-        assertion.assertFalse(postForm.isPostDisplayed(message));
-    }
-
     //Comment
 
     /**
@@ -89,21 +73,5 @@ public class ChatterSteps {
         postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
     }
 
-    /**
-     * The comment for the Post should be displayed.
-     */
-    @Then("^On the Chatter page the comment should be displayed$")
-    public void onTheChatterPageTheCommentShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
-        assertion.assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
-    }
 
-    /**
-     * The Chatter page should be displayed.
-     */
-    @Then("^On the Chatter page should be displayed$")
-    public void onTheChatterPageShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
-        assertion.assertTrue(postForm.isPostDisplayed(helper.getPostMessage()));
-    }
 }

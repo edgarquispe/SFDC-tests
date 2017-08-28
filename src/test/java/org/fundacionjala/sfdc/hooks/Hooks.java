@@ -1,12 +1,12 @@
 package org.fundacionjala.sfdc.hooks;
 
 import cucumber.api.java.After;
-
 import cucumber.api.java.Before;
+import org.testng.asserts.SoftAssert;
+
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
-import org.testng.asserts.SoftAssert;
 
 /**
  * Hooks Class for actions to run before and after Scenarios.
@@ -75,7 +75,7 @@ public class Hooks {
     /**
      * Clean the helper.
      */
-    @After(order = 10)
+    @After(order = 5)
     public void cleanHelper() {
         helper = new Helper();
     }
