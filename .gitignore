@@ -10,3 +10,4 @@ gradlew.bat
 build/
 target/
 logs/
+debug*
