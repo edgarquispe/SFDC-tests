@@ -12,6 +12,7 @@ import org.fundacionjala.sfdc.pages.chatter.PostForm;
 public class ChatterSteps {
 
     private Helper helper;
+    private PostForm postForm;
 
     /**
      * Constructor with Dependency Injection.
@@ -20,6 +21,7 @@ public class ChatterSteps {
      */
     public ChatterSteps(Helper helper) {
         this.helper = helper;
+        this.postForm = new PostForm();
     }
 
     /**
@@ -30,7 +32,6 @@ public class ChatterSteps {
     @When("^I create a new Post with \"([^\"]*)\"$")
     public void iCreateANewPostWith(String message) {
         helper.setPostMessage(message);
-        PostForm postForm = new PostForm();
         postForm.savePost(message);
 
     }
@@ -44,7 +45,7 @@ public class ChatterSteps {
      */
     @When("^I Edit the Post with \"([^\"]*)\"$")
     public void iEditThePostWith(String newMessage) {
-        new PostForm().editPost(helper.getPostMessage(), newMessage);
+        postForm.editPost(helper.getPostMessage(), newMessage);
         helper.setPostMessage(newMessage);
     }
 
@@ -55,7 +56,7 @@ public class ChatterSteps {
      */
     @When("^I Delete the Post$")
     public void iDeleteThePost() {
-        new PostForm().deletePost(helper.getPostMessage());
+        postForm.deletePost(helper.getPostMessage());
         DriverManager.getInstance().getDriver().navigate().refresh();
     }
 
@@ -69,9 +70,27 @@ public class ChatterSteps {
     @When("^I comment in Post \"([^\"]*)\"$")
     public void iCommentInPost(String comment) {
         helper.setCommentPostMessage(comment);
-        PostForm postForm = new PostForm();
         postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
     }
 
+    /**
+     * This Step save post with a defined number of characters.
+     *
+     * @param number this variable contains the number of characters.
+     */
+    @When("^I set post with \"([^\"]*)\" characters$")
+    public void iCreateANewPostWithCharacters(String number) {
+        postForm.savePost(postForm.generatePostMessage(number));
+    }
+
+    /**
+     * This Step edit post with a defined number of characters.
+     *
+     * @param number this variable contains the number of characters.
+     */
+    @When("^I Edit the Post with \"([^\"]*)\" characters$")
+    public void iEditThePostWithCharacters(String number) {
+        postForm.editPost(helper.getPostMessage(), postForm.generatePostMessage(number));
+    }
 
 }
