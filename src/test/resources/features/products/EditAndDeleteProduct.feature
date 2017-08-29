@@ -16,12 +16,13 @@ Feature: Edit and Delete Product
       | PRODUCT_CODE        | 123Edited               |
       | PRODUCT_DESCRIPTION | Just Something Edited   |
       | PRODUCT_FAMILY      | None                    |
-    Then the Product should be displayed
+    Then "Product "AutomatedDemoAT04Edited" was saved." message should be displayed in "Product" Detail Page
+    And the Product should be displayed
     And I go to "Product" Home Page
     And the Product should be displayed on Home Page
     And Assert all
 
-  @deleteProduct
+  @deleteProduct @SoftAssert
   Scenario: Edit the Product Home Page
     When I go to "Product" Home Page
     And I click on Edit "Product"
@@ -30,15 +31,18 @@ Feature: Edit and Delete Product
       | PRODUCT_CODE        | 123Edited               |
       | PRODUCT_DESCRIPTION | Just Something Edited   |
       | PRODUCT_FAMILY      | None                    |
+    Then "Product "AutomatedDemoAT04Edited" was saved." message should be displayed in "Product" Home Page
     And I go to "Product" Home Page
-    Then the Product should be displayed on Home Page
+    And the Product should be displayed on Home Page
     And Assert all
 
   Scenario: Delete the Product on Home Page
     And I delete the "Product"
-    Then the Product should not be displayed on Home Page
+    Then "Product "AutomatedDemoAT04" was deleted." message should be displayed in "Product" Home Page
+    And the Product should not be displayed on Home Page
 
   Scenario: Delete the Product on Detail Page
     And I click on the "Product" item
     And I click on Delete from Product
-    Then the Product should not be displayed on Home Page
+    Then "Product "AutomatedDemoAT04" was deleted." message should be displayed in "Product" Home Page
+    And the Product should not be displayed on Home Page

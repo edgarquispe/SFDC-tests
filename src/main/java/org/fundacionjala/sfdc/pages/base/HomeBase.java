@@ -152,4 +152,13 @@ public abstract class HomeBase extends BasePage {
     public void waitUntilSpinnerIsHidden() {
         wait.until(ExpectedConditions.invisibilityOf(spinner));
     }
+
+    /**
+     * Return the success text message.
+     *
+     * @return the success message content.
+     */
+    public String successMessageText() {
+        return CommonActions.getTextElement(successMessage);
+    }
 }
