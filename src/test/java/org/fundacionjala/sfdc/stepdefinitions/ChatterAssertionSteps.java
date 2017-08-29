@@ -15,6 +15,8 @@ public class ChatterAssertionSteps {
 
     private Assertion assertion;
 
+    private PostForm postForm;
+
     /**
      * Constructor with Dependency Injection.
      *
@@ -23,6 +25,7 @@ public class ChatterAssertionSteps {
     public ChatterAssertionSteps(Helper helper) {
         this.helper = helper;
         this.assertion = helper.getAssertion();
+        postForm = new PostForm();
     }
 
     /**
@@ -32,7 +35,6 @@ public class ChatterAssertionSteps {
      */
     @Then("^On the Chatter page should not display the \"([^\"]*)\"$")
     public void onTheChatterPageShouldNotDisplayThe(String message) {
-        PostForm postForm = new PostForm();
         assertion.assertFalse(postForm.isPostDisplayed(message));
     }
 
@@ -41,7 +43,6 @@ public class ChatterAssertionSteps {
      */
     @Then("^On the Chatter page the comment should be displayed$")
     public void onTheChatterPageTheCommentShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
         assertion.assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
     }
 
@@ -50,7 +51,17 @@ public class ChatterAssertionSteps {
      */
     @Then("^On the Chatter page should be displayed$")
     public void onTheChatterPageShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
         assertion.assertTrue(postForm.isPostDisplayed(helper.getPostMessage()));
+    }
+
+    /**
+     * The Error message should be displayed.
+     *
+     * @param errorMessage this variable contains the error message.
+     */
+    @Then("^the message error \"([^\"]*)\" should be displayed$")
+    public void onTheChatterPageTheMessageErrorShouldBeDisplayed(String errorMessage) {
+        assertion.assertTrue(postForm.isVisibleErrorMessage(errorMessage));
+
     }
 }
