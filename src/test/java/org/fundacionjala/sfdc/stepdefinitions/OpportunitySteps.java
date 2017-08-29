@@ -55,7 +55,6 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
-        System.out.println(helper.getOpportunityName());
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().deleteItem();

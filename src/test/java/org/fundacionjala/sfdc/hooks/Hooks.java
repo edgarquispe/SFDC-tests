@@ -4,6 +4,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.testng.asserts.SoftAssert;
 
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
@@ -87,4 +88,13 @@ public class Hooks {
     public void assertSelection() {
         helper.setAssertion(new SoftAssert());
     }
+
+    /**
+     * wait three seconds.
+     */
+    @Before(order = 15)
+    public void waitBefore() {
+        CommonActions.waitForAppear();
+    }
+
 }

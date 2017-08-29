@@ -3,7 +3,9 @@ package org.fundacionjala.sfdc.stepdefinitions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.SObject;
@@ -31,6 +33,7 @@ public class CommonSteps {
      */
     @Given("^I go to \"([^\"]*)\" Home Page$")
     public void iGoToHomePage(SObject sObject) {
+        DriverManager.getInstance().getDriver().navigate().refresh();
         CommonActions.waitForAppear();
         Navigator.gotoPage(sObject);
     }
@@ -43,7 +46,10 @@ public class CommonSteps {
     @And("^I click on New \"([^\"]*)\"$")
     public void iClickOnNew(SObject sObject) {
         CommonActions.waitForAppear();
+        DriverManager.getInstance().getDriver().navigate().refresh();
+        CommonActions.waitForAppear();
         Navigator.mapActions(sObject).clickNewButton();
+        CommonActions.waitForAppear();
     }
 
     /**
@@ -74,5 +80,14 @@ public class CommonSteps {
     @And("^I click on the \"([^\"]*)\" item$")
     public void iClickOnTheItem(SObject sObject) {
         Navigator.mapActions(sObject).clickItemList(helper.getItemName());
+    }
+
+    /**
+     * This method refresh page.
+     */
+    @And("^refresh page$")
+    public void refreshPage() {
+        DriverManager.getInstance().getDriver().navigate().refresh();
+        CommonActions.waitForAppear();
     }
 }
