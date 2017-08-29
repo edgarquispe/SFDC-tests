@@ -21,7 +21,7 @@ Feature: Edit and Delete Product
     And the Product should be displayed on Home Page
     And Assert all
 
-  @deleteProduct
+  @deleteProduct @SoftAssert
   Scenario: Edit the Product Home Page
     When I go to "Product" Home Page
     And I click on Edit "Product"
