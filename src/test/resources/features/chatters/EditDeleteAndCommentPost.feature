@@ -17,3 +17,7 @@ Feature: Edit Post
   Scenario: Comment an existing Post
     When I comment in Post "Comment the post"
     Then On the Chatter page the comment should be displayed
+
+  Scenario: Edit an existing Post with a invalid name 10001 characters
+    When I Edit the Post with "10001" characters
+    Then the message error "Review the errors on this page" should be displayed
