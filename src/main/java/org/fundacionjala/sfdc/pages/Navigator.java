@@ -117,6 +117,7 @@ public final class Navigator {
      * @return ProductHome.
      */
     public static AccountHome goToAccountsHome() {
+        CommonActions.waitForAppear();
         if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Account")) {
             clickAppLauncher().clickAccountTextLink();
         }
@@ -130,6 +131,7 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase mapActions(SObject item) {
+        CommonActions.waitForAppear();
         EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductHome());
         map.put(SObject.ACCOUNT, new AccountHome());
