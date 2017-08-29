@@ -56,6 +56,7 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(String name) {
         try {
+            CommonActions.waitForAppear();
             driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
@@ -98,8 +99,7 @@ public abstract class HomeBase extends BasePage {
      * @param name String.
      */
     public void clickDropDownListLink(String name) {
-        String xpathSelector = String.format("//a[contains(text(),'%s')]/ancestor::tr/"
-                + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]", name);
+        String xpathSelector = String.format("//a[contains(text(),'%s')]/ancestor::tr/" + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]", name);
         dropDownListLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathSelector)));
         dropDownListLink.click();
     }

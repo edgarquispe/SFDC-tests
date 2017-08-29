@@ -2,6 +2,7 @@ package org.fundacionjala.sfdc.stepdefinitions;
 
 import java.util.Map;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -68,10 +69,8 @@ public class OpportunitySteps {
         opportunityDetail1Detail.waitObjectNameIs(helper.getOpportunityName());
         OpportunityDetail opportunityDetail = new OpportunityDetail();
         assertTrue(opportunityDetail.getOpportunityNameText().equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
-        assertTrue(opportunityDetail.getOpportunityAccountText()
-                .equals(map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
-        assertTrue(opportunityDetail.getOpportunityAmountText()
-                .contains(map.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
+        assertTrue(opportunityDetail.getOpportunityAccountText().equals(map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
+        assertTrue(opportunityDetail.getOpportunityAmountText().contains(map.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
     }
 
 
@@ -81,11 +80,10 @@ public class OpportunitySteps {
     @And("^the Opportunity should be displayed on Home Page$")
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
+        DriverManager.getInstance().getWait();
+        DriverManager.getInstance().getDriver().navigate().refresh();
         assertTrue(opportunityHome.isDisplayedItem(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
-        assertTrue(opportunityHome.isOpportunityLinkDisplayed(
-                map.get(OpportunityFormField.OPPORTUNITY_NAME),
-                map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
+        assertTrue(opportunityHome.isOpportunityLinkDisplayed(map.get(OpportunityFormField.OPPORTUNITY_NAME), map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
     }
 
     /**
@@ -93,6 +91,7 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
+        System.out.println(helper.getOpportunityName());
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().deleteItem();
@@ -115,5 +114,17 @@ public class OpportunitySteps {
         CommonActions.waitForAppear();
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityHome().clickNewButton();
+    }
+
+    @Then("^message displayed \"([^\"]*)\"$")
+    public void theOpportunityShouldBeMessageDisplayed(String errorMessage) {
+        OpportunityForm opportunityForm = new OpportunityForm();
+        assertTrue(opportunityForm.messageIsDisplayed(errorMessage));
+    }
+
+    @Then("^message displayed when field is invalid \"([^\"]*)\"$")
+    public void messageDisplayedWhenFieldIsInvalid(String error) {
+        OpportunityForm opportunityForm = new OpportunityForm();
+        assertTrue(opportunityForm.messageFieldInvalidIsDisplayed(error));
     }
 }
