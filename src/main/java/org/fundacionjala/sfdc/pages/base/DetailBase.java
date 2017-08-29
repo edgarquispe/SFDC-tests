@@ -1,10 +1,11 @@
 package org.fundacionjala.sfdc.pages.base;
 
-import org.fundacionjala.sfdc.core.CommonActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.fundacionjala.sfdc.core.CommonActions;
 
 /**
  * Abstract class that gets common info in Details Page.
@@ -66,5 +67,14 @@ public abstract class DetailBase extends BasePage {
      */
     public void waitUntilSuccessMessage() {
         wait.until(ExpectedConditions.visibilityOf(successMessage));
+    }
+
+    /**
+     * Return the success text message.
+     *
+     * @return the success message content.
+     */
+    public String successMessageText() {
+        return CommonActions.getTextElement(successMessage);
     }
 }

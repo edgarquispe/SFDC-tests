@@ -33,7 +33,7 @@ public class DockerFirefoxBrowser implements IBrowser {
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
             LOGGER.info(e);
-            throw new MyRuntimeException(e);
+            throw new MyRuntimeException("Not instance driver", e);
         }
         return driver;
     }

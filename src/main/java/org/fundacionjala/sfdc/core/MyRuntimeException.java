@@ -8,9 +8,10 @@ public class MyRuntimeException extends RuntimeException {
     /**
      * Constructor for the custom Runtime Exception.
      *
-     * @param e exception event.
+     * @param message contains the message of exception.
+     * @param cause   contains the runtime exception.
      */
-    public MyRuntimeException(Exception e) {
-        super(e);
+    public MyRuntimeException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

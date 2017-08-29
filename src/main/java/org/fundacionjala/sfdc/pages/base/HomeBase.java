@@ -62,6 +62,7 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(String name) {
         try {
+            CommonActions.waitForAppear();
             driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
@@ -150,5 +151,14 @@ public abstract class HomeBase extends BasePage {
      */
     public void waitUntilSpinnerIsHidden() {
         wait.until(ExpectedConditions.invisibilityOf(spinner));
+    }
+
+    /**
+     * Return the success text message.
+     *
+     * @return the success message content.
+     */
+    public String successMessageText() {
+        return CommonActions.getTextElement(successMessage);
     }
 }

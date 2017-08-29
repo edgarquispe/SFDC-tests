@@ -3,7 +3,6 @@ package org.fundacionjala.sfdc.stepdefinitions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;

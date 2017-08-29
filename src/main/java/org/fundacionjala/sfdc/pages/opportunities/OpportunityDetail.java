@@ -7,7 +7,7 @@ import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 
 /**
- *  Class containing Opportunity Detail Page.
+ * Class containing Opportunity Detail Page.
  */
 public class OpportunityDetail extends DetailBase {
 
@@ -25,6 +25,10 @@ public class OpportunityDetail extends DetailBase {
 
     @FindBy(xpath = "//span[contains(@class,'current')]/following-sibling::span")
     private WebElement stageText;
+
+    @FindBy(className = "errorsList")
+    private WebElement errorMessage;
+
 
     /**
      * {@inheritDoc}
@@ -82,13 +86,5 @@ public class OpportunityDetail extends DetailBase {
         return amountText.getText();
     }
 
-    /**
-     * Gets the Opportunity Stage Text.
-     *
-     * @return String.
-     */
-    public String getOpportunityStageText() {
-        return stageText.getText();
-    }
 }
 
