@@ -1,5 +1,6 @@
 package org.fundacionjala.sfdc.pages.chatter;
 
+import java.util.Collections;
 import java.util.EnumMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -68,6 +69,10 @@ public class PostForm extends BasePage {
 
     @FindBy(css = ".forceModalSpinner.hideEl")
     private WebElement spinner;
+
+    //Error message
+    @FindBy(css = "div[class='desktop  forcePageError'] span[class='genericError uiOutputText']")
+    private WebElement errorMessage;
 
     /**
      * Click On Post Text Area Field.
@@ -282,4 +287,25 @@ public class PostForm extends BasePage {
         setComment(commentForPost);
         clickSaveComment();
     }
+
+    /**
+     * This method return true if the error message is visible.
+     *
+     * @param errorMessage this variable contains the error message.
+     * @return true if the error message is visible.
+     */
+    public Boolean isVisibleErrorMessage(String errorMessage) {
+        return this.errorMessage.getText().contains(errorMessage);
+    }
+
+    /**
+     * This method generate post message whit defined number of characters.
+     *
+     * @param number this variable contains the number of characters.
+     * @return pot message.
+     */
+    public String generatePostMessage(String number) {
+        return String.join("", Collections.nCopies(Integer.parseInt(number), "a"));
+    }
+
 }

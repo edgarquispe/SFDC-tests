@@ -1,13 +1,10 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
-
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
 
 /**
  * Create Steps for Chatter.
@@ -15,6 +12,7 @@ import static org.testng.Assert.assertTrue;
 public class ChatterSteps {
 
     private Helper helper;
+    private PostForm postForm;
 
     /**
      * Constructor with Dependency Injection.
@@ -23,6 +21,7 @@ public class ChatterSteps {
      */
     public ChatterSteps(Helper helper) {
         this.helper = helper;
+        this.postForm = new PostForm();
     }
 
     /**
@@ -33,7 +32,6 @@ public class ChatterSteps {
     @When("^I create a new Post with \"([^\"]*)\"$")
     public void iCreateANewPostWith(String message) {
         helper.setPostMessage(message);
-        PostForm postForm = new PostForm();
         postForm.savePost(message);
 
     }
@@ -42,11 +40,12 @@ public class ChatterSteps {
 
     /**
      * Edit a the post.
+     *
      * @param newMessage String.
      */
     @When("^I Edit the Post with \"([^\"]*)\"$")
     public void iEditThePostWith(String newMessage) {
-        new PostForm().editPost(helper.getPostMessage(), newMessage);
+        postForm.editPost(helper.getPostMessage(), newMessage);
         helper.setPostMessage(newMessage);
     }
 
@@ -57,49 +56,41 @@ public class ChatterSteps {
      */
     @When("^I Delete the Post$")
     public void iDeleteThePost() {
-        new PostForm().deletePost(helper.getPostMessage());
+        postForm.deletePost(helper.getPostMessage());
         DriverManager.getInstance().getDriver().navigate().refresh();
-    }
-
-    /**
-     * The post edited should be displayed.
-     * @param message String.
-     */
-    @Then("^On the Chatter page should not display the \"([^\"]*)\"$")
-    public void onTheChatterPageShouldNotDisplayThe(String message) {
-        PostForm postForm = new PostForm();
-        assertFalse(postForm.isPostDisplayed(message));
     }
 
     //Comment
 
     /**
      * Comment in Post.
+     *
      * @param comment String.
      */
     @When("^I comment in Post \"([^\"]*)\"$")
     public void iCommentInPost(String comment) {
         helper.setCommentPostMessage(comment);
-        PostForm postForm = new PostForm();
         postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
     }
 
     /**
-     * The comment for the Post should be displayed.
+     * This Step save post with a defined number of characters.
+     *
+     * @param number this variable contains the number of characters.
      */
-    @Then("^On the Chatter page the comment should be displayed$")
-    public void onTheChatterPageTheCommentShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
-        assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
+    @When("^I set post with \"([^\"]*)\" characters$")
+    public void iCreateANewPostWithCharacters(String number) {
+        postForm.savePost(postForm.generatePostMessage(number));
     }
 
     /**
-     * The Chatter page should be displayed.
+     * This Step edit post with a defined number of characters.
+     *
+     * @param number this variable contains the number of characters.
      */
-    @Then("^On the Chatter page should be displayed$")
-    public void onTheChatterPageShouldBeDisplayed() {
-        PostForm postForm = new PostForm();
-        assertTrue(postForm.isPostDisplayed(helper.getPostMessage()));
+    @When("^I Edit the Post with \"([^\"]*)\" characters$")
+    public void iEditThePostWithCharacters(String number) {
+        postForm.editPost(helper.getPostMessage(), postForm.generatePostMessage(number));
     }
-}
 
+}

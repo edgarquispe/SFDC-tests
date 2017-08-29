@@ -4,12 +4,17 @@ import java.util.EnumMap;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignForm;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
+import org.fundacionjala.sfdc.pages.products.ProductForm;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
@@ -114,7 +119,7 @@ public final class Navigator {
     }
 
     /**
-     * Static method  to map Actions.
+     * Static method to map Actions.
      *
      * @param item SObject.
      * @return HomeBase.
@@ -125,6 +130,21 @@ public final class Navigator {
         map.put(SObject.ACCOUNT, new AccountHome());
         map.put(SObject.OPPORTUNIT, new OpportunityHome());
         map.put(SObject.CAMPAIGN, new OpportunityHome());
+        return map.get(item);
+    }
+
+    /**
+     * Static method to return a specific Form page.
+     *
+     * @param item SObject.
+     * @return FormBase.
+     */
+    public static FormBase mapForm(SObject item) {
+        EnumMap<SObject, FormBase> map = new EnumMap<>(SObject.class);
+        map.put(SObject.PRODUCT, new ProductForm());
+        map.put(SObject.ACCOUNT, new AccountForm());
+        map.put(SObject.OPPORTUNIT, new OpportunityForm());
+        map.put(SObject.CAMPAIGN, new CampaignForm());
         return map.get(item);
     }
 }

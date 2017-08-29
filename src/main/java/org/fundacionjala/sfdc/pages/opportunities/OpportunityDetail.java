@@ -86,19 +86,5 @@ public class OpportunityDetail extends DetailBase {
         return amountText.getText();
     }
 
-    /**
-     * Gets the Opportunity Stage Text.
-     *
-     * @return String.
-     */
-    public String getOpportunityStageText() {
-        return stageText.getText();
-    }
-
-    public boolean messageISDisplayed(String message) {
-        System.out.println(errorMessage.getText() + "<----------");
-        System.out.println("----------" + message);
-        return errorMessage.getText().contains(message);
-    }
 }
 

@@ -1,14 +1,17 @@
 package org.fundacionjala.sfdc.pages.base;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.core.driver.DriverManager;
 
 /**
  * Abstract class that gets common info in Home Page.
@@ -38,6 +41,9 @@ public abstract class HomeBase extends BasePage {
 
     @FindBy(xpath = "//span[contains(@class, 'toastMessage')]")
     protected WebElement successMessage;
+
+    @FindBy(xpath = "//a[@class='slds-truncate outputLookupLink slds-truncate forceOutputLookup']")
+    protected List<WebElement> itemsList;
 
     /**
      * Gets the Displayed Item.
@@ -99,7 +105,8 @@ public abstract class HomeBase extends BasePage {
      * @param name String.
      */
     public void clickDropDownListLink(String name) {
-        String xpathSelector = String.format("//a[contains(text(),'%s')]/ancestor::tr/" + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]", name);
+        final String xpathSelector = String.format("//a[contains(text(),'%s')]/ancestor::tr/"
+                + "descendant::a[contains(@class,'slds-button slds-button--icon-x-small')]", name);
         dropDownListLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathSelector)));
         dropDownListLink.click();
     }
@@ -119,6 +126,16 @@ public abstract class HomeBase extends BasePage {
     }
 
     /**
+     * Clicks on a item list.
+     *
+     * @param name the item name.
+     */
+    public void clickItemList(String name) {
+        driver.navigate().refresh();
+        CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
+    }
+
+    /**
      * Deletes the Element.
      *
      * @param name String.
@@ -135,5 +152,4 @@ public abstract class HomeBase extends BasePage {
     public void waitUntilSpinnerIsHidden() {
         wait.until(ExpectedConditions.invisibilityOf(spinner));
     }
-
 }

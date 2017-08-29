@@ -1,6 +1,8 @@
 package org.fundacionjala.sfdc.hooks;
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import org.testng.asserts.SoftAssert;
 
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
@@ -68,5 +70,21 @@ public class Hooks {
     @After(order = 5)
     public void refreshCurrentPage() {
         DriverManager.getInstance().getDriver().navigate().refresh();
+    }
+
+    /**
+     * Clean the helper.
+     */
+    @After(order = 5)
+    public void cleanHelper() {
+        helper = new Helper();
+    }
+
+    /**
+     * Set a instance of Soft Assert to helper.
+     */
+    @Before(value = "@SoftAssert", order = 10)
+    public void assertSelection() {
+        helper.setAssertion(new SoftAssert());
     }
 }

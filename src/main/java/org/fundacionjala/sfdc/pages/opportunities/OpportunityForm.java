@@ -25,7 +25,7 @@ public class OpportunityForm extends FormBase {
     @FindBy(xpath = "//span[text()='Opportunity Name']/parent::label/following-sibling::input")
     private WebElement opportunityNameInputField;
 
-        @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div")
+    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div")
     private WebElement opportunityAccountNameInputField;
 
     @FindBy(css = ".lookup__list .lookup__item.default.uiAutocompleteOption.forceSearchInputLookupDesktopOption > a")
@@ -34,7 +34,8 @@ public class OpportunityForm extends FormBase {
     @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
     private WebElement opportunityTypeInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Primary Campaign Source')]/parent::label" + "/following-sibling::div/descendant::input")
+    @FindBy(xpath = "//span[contains(text(),'Primary Campaign Source')]/parent::label"
+            + "/following-sibling::div/descendant::input")
     private WebElement opportunityCampaignInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Close Date')]/parent::label/following-sibling::div")
@@ -252,35 +253,49 @@ public class OpportunityForm extends FormBase {
     private Map<OpportunityFormField, IStrategySteps> getStrategyMap(Map<OpportunityFormField, String> formMap) {
         EnumMap<OpportunityFormField, IStrategySteps> strategyMap = new EnumMap<>(OpportunityFormField.class);
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME, () -> setOpportunityNameInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NAME)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME, ()
+                -> setOpportunityNameInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NAME)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_ACCOUNT, () -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_ACCOUNT, ()
+                -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
 
         strategyMap.put(OpportunityFormField.DATE, this::setCloseDateSelect);
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE, () -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE, ()
+                -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_PROBABILITY, () -> setProbabilityInputText(formMap.get(OpportunityFormField.OPPORTUNITY_PROBABILITY)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_PROBABILITY, ()
+                -> setProbabilityInputText(formMap.get(OpportunityFormField.OPPORTUNITY_PROBABILITY)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_CAMPAIGN, () -> setPrimaryCampaignSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_CAMPAIGN)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_CAMPAIGN, ()
+                -> setPrimaryCampaignSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_CAMPAIGN)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_AMOUNT, () -> setAmountInputText(formMap.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_AMOUNT, ()
+                -> setAmountInputText(formMap.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
 
-        strategyMap.put(OpportunityFormField.BUDGE, () -> setBudgetConfirmedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.BUDGE))));
+        strategyMap.put(OpportunityFormField.BUDGE, ()
+                -> setBudgetConfirmedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.BUDGE))));
 
-        strategyMap.put(OpportunityFormField.DISCOVERY, () -> setDiscoveryCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.DISCOVERY))));
+        strategyMap.put(OpportunityFormField.DISCOVERY, ()
+                -> setDiscoveryCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.DISCOVERY))));
 
-        strategyMap.put(OpportunityFormField.ROI, () -> setRoiAnalysisCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.ROI))));
+        strategyMap.put(OpportunityFormField.ROI, ()
+                -> setRoiAnalysisCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.ROI))));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_REASON, () -> setLossReasonSelect(formMap.get(OpportunityFormField.OPPORTUNITY_REASON)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_REASON, ()
+                -> setLossReasonSelect(formMap.get(OpportunityFormField.OPPORTUNITY_REASON)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_LEAD, () -> setLeadSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_LEAD)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_LEAD, ()
+                -> setLeadSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_LEAD)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_NEXT, () -> setNextStepInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NEXT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_NEXT, ()
+                -> setNextStepInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NEXT)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_DESCRIPTION, () -> setDescriptionTextArea(formMap.get(OpportunityFormField.OPPORTUNITY_DESCRIPTION)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_DESCRIPTION, ()
+                -> setDescriptionTextArea(formMap.get(OpportunityFormField.OPPORTUNITY_DESCRIPTION)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_STAGE, () -> setStageSelect(formMap.get(OpportunityFormField.OPPORTUNITY_STAGE)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_STAGE, ()
+                -> setStageSelect(formMap.get(OpportunityFormField.OPPORTUNITY_STAGE)));
         return strategyMap;
     }
 
@@ -316,7 +331,8 @@ public class OpportunityForm extends FormBase {
      * @param accountName field.
      */
     public void clickDeleteAccountIcon(String accountName) {
-        String xpathSelector = String.format("//span[text()='%s']/following-sibling::a/" + "child::span[@class='deleteIcon']", accountName);
+        String xpathSelector = String.format("//span[text()='%s']/following-sibling::a/"
+                + "child::span[@class='deleteIcon']", accountName);
         try {
             DriverManager.getInstance().setUpdateWait(3);
             driver.findElement(By.xpath(xpathSelector)).click();
@@ -328,11 +344,24 @@ public class OpportunityForm extends FormBase {
         }
     }
 
+    /**
+     * This method verify error message.
+     *
+     * @param message is error message.
+     * @return if message is correct.
+     */
     public Boolean messageIsDisplayed(String message) {
         return errorMessage.getText().contains(message);
     }
 
+    /**
+     * This method verify error message.
+     *
+     * @param error is error.
+     * @return if message is correct.
+     */
     public boolean messageFieldInvalidIsDisplayed(String error) {
-        return errorFieldInvalidAccount.getText().contains(error) && errorFieldInvalidCampaign.getText().contains(error);
+        return errorFieldInvalidAccount.getText().contains(error)
+                && errorFieldInvalidCampaign.getText().contains(error);
     }
 }

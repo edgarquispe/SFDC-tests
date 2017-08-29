@@ -4,7 +4,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
 import org.fundacionjala.sfdc.pages.SObject;
@@ -66,5 +65,15 @@ public class CommonSteps {
     @And("^I delete the \"([^\"]*)\"$")
     public void iDeleteThe(SObject sObject) {
         Navigator.mapActions(sObject).deleteElement(helper.getItemName());
+    }
+
+    /**
+     * Click on a specified item of the list.
+     *
+     * @param sObject SObject.
+     */
+    @And("^I click on the \"([^\"]*)\" item$")
+    public void iClickOnTheItem(SObject sObject) {
+        Navigator.mapActions(sObject).clickItemList(helper.getItemName());
     }
 }
