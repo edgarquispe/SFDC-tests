@@ -62,6 +62,7 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(String name) {
         try {
+            CommonActions.waitForAppear();
             driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));

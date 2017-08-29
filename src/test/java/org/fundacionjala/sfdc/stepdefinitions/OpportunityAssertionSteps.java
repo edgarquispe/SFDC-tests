@@ -4,6 +4,7 @@ import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
@@ -73,5 +74,27 @@ public class OpportunityAssertionSteps {
         OpportunityHome opportunityHome = new OpportunityHome();
         assertion.assertFalse(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
+    }
+
+    /**
+     * This method verify if message is displayed.
+     *
+     * @param errorMessage is message error.
+     */
+    @Then("^message displayed \"([^\"]*)\"$")
+    public void theOpportunityShouldBeMessageDisplayed(String errorMessage) {
+        OpportunityForm opportunityForm = new OpportunityForm();
+        assertion.assertTrue(opportunityForm.messageIsDisplayed(errorMessage));
+    }
+
+    /**
+     * This method verify if message is displayed.
+     *
+     * @param error is message error.
+     */
+    @Then("^message displayed when field is invalid \"([^\"]*)\"$")
+    public void messageDisplayedWhenFieldIsInvalid(String error) {
+        OpportunityForm opportunityForm = new OpportunityForm();
+        assertion.assertTrue(opportunityForm.messageFieldInvalidIsDisplayed(error));
     }
 }

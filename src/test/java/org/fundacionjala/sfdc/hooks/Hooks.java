@@ -43,7 +43,7 @@ public class Hooks {
     /**
      * Delete Account.
      */
-    @After(value = "@deleteAccount", order = 10)
+    @After(value = "@deleteAccount", order = 8)
     public void deleteCreatedAccount() {
         Navigator.goToAccountsHome().deleteElement(helper.getItemName());
     }
@@ -51,7 +51,7 @@ public class Hooks {
     /**
      * Delete Opportunity.
      */
-    @After(value = "@deleteOpportunity", order = 10)
+    @After(value = "@deleteOpportunity", order = 9)
     public void deleteCreatedItemOpportunity() {
         Navigator.goToOpportunityHome().deleteElement(helper.getOpportunityName());
     }

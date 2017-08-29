@@ -77,6 +77,16 @@ public class OpportunityForm extends FormBase {
     @FindBy(css = "button[title='Save']")
     private WebElement saveOpportunityButton;
 
+    @FindBy(className = "errorsList")
+    private WebElement errorMessage;
+
+    @FindBy(xpath = "//span[contains(text(),'Account Name')]/ancestor::div/following-sibling::ul")
+    private WebElement errorFieldInvalidAccount;
+
+    @FindBy(xpath = "//span[contains(text(),'Primary Campaign Source')]/ancestor::div/following-sibling::ul")
+    private WebElement errorFieldInvalidCampaign;
+
+
     private static final Logger LOGGER = LogManager.getLogger();
 
     /**
@@ -249,8 +259,7 @@ public class OpportunityForm extends FormBase {
         strategyMap.put(OpportunityFormField.OPPORTUNITY_ACCOUNT,
                 () -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
 
-        strategyMap.put(OpportunityFormField.DATE,
-                this::setCloseDateSelect);
+        strategyMap.put(OpportunityFormField.DATE, this::setCloseDateSelect);
 
         strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE,
                 () -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
@@ -333,5 +342,26 @@ public class OpportunityForm extends FormBase {
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
+    }
+
+    /**
+     * This method verify error message.
+     *
+     * @param message is error message.
+     * @return if message is correct.
+     */
+    public Boolean messageIsDisplayed(String message) {
+        return errorMessage.getText().contains(message);
+    }
+
+    /**
+     * This method verify error message.
+     *
+     * @param error is error.
+     * @return if message is correct.
+     */
+    public boolean messageFieldInvalidIsDisplayed(String error) {
+        return errorFieldInvalidAccount.getText().contains(error)
+                && errorFieldInvalidCampaign.getText().contains(error);
     }
 }

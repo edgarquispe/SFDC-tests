@@ -1,11 +1,7 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
-import java.util.Map;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
@@ -13,6 +9,8 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.Map;
 
 /**
  * Create steps for opportunities.
@@ -57,6 +55,7 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
+        System.out.println(helper.getOpportunityName());
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().deleteItem();
@@ -71,4 +70,5 @@ public class OpportunitySteps {
         DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityHome().clickNewButton();
     }
+
 }
