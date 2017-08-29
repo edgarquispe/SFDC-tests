@@ -11,7 +11,7 @@ Feature: Create Opportunity
     And I fill the Account form with:
       | ACCOUNT_NAME | New Account 1 |
 
-  @deleteCampaign @deleteOpportunity @deleteAccount
+  @bvt @deleteCampaign @deleteOpportunity @deleteAccount
   Scenario: Create a new Opportunity
     Given I go to "Opportunit" Home Page
     And I click on New "Opportunit"

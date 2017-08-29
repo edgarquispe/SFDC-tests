@@ -10,7 +10,6 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.Map;
 
 /**

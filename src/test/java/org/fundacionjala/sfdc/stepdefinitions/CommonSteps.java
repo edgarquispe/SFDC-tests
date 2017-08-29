@@ -43,7 +43,6 @@ public class CommonSteps {
     @And("^I click on New \"([^\"]*)\"$")
     public void iClickOnNew(SObject sObject) {
         CommonActions.waitForAppear();
-//        DriverManager.getInstance().getDriver().navigate().refresh();
         Navigator.mapActions(sObject).clickNewButton();
     }
 

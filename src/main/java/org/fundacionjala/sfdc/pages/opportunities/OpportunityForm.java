@@ -253,49 +253,49 @@ public class OpportunityForm extends FormBase {
     private Map<OpportunityFormField, IStrategySteps> getStrategyMap(Map<OpportunityFormField, String> formMap) {
         EnumMap<OpportunityFormField, IStrategySteps> strategyMap = new EnumMap<>(OpportunityFormField.class);
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME, ()
-                -> setOpportunityNameInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NAME)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME,
+                () -> setOpportunityNameInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NAME)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_ACCOUNT, ()
-                -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_ACCOUNT,
+                () -> setAccountNameSelect(formMap.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
 
         strategyMap.put(OpportunityFormField.DATE, this::setCloseDateSelect);
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE, ()
-                -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_TYPE,
+                () -> setTypeSelect(formMap.get(OpportunityFormField.OPPORTUNITY_TYPE)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_PROBABILITY, ()
-                -> setProbabilityInputText(formMap.get(OpportunityFormField.OPPORTUNITY_PROBABILITY)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_PROBABILITY,
+                () -> setProbabilityInputText(formMap.get(OpportunityFormField.OPPORTUNITY_PROBABILITY)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_CAMPAIGN, ()
-                -> setPrimaryCampaignSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_CAMPAIGN)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_CAMPAIGN,
+                () -> setPrimaryCampaignSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_CAMPAIGN)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_AMOUNT, ()
-                -> setAmountInputText(formMap.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_AMOUNT,
+                () -> setAmountInputText(formMap.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
 
-        strategyMap.put(OpportunityFormField.BUDGE, ()
-                -> setBudgetConfirmedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.BUDGE))));
+        strategyMap.put(OpportunityFormField.BUDGE,
+                () -> setBudgetConfirmedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.BUDGE))));
 
-        strategyMap.put(OpportunityFormField.DISCOVERY, ()
-                -> setDiscoveryCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.DISCOVERY))));
+        strategyMap.put(OpportunityFormField.DISCOVERY,
+                () -> setDiscoveryCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.DISCOVERY))));
 
-        strategyMap.put(OpportunityFormField.ROI, ()
-                -> setRoiAnalysisCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.ROI))));
+        strategyMap.put(OpportunityFormField.ROI,
+                () -> setRoiAnalysisCompletedCheckBox(Boolean.parseBoolean(formMap.get(OpportunityFormField.ROI))));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_REASON, ()
-                -> setLossReasonSelect(formMap.get(OpportunityFormField.OPPORTUNITY_REASON)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_REASON,
+                () -> setLossReasonSelect(formMap.get(OpportunityFormField.OPPORTUNITY_REASON)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_LEAD, ()
-                -> setLeadSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_LEAD)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_LEAD,
+                () -> setLeadSourceSelect(formMap.get(OpportunityFormField.OPPORTUNITY_LEAD)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_NEXT, ()
-                -> setNextStepInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NEXT)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_NEXT,
+                () -> setNextStepInputText(formMap.get(OpportunityFormField.OPPORTUNITY_NEXT)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_DESCRIPTION, ()
-                -> setDescriptionTextArea(formMap.get(OpportunityFormField.OPPORTUNITY_DESCRIPTION)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_DESCRIPTION,
+                () -> setDescriptionTextArea(formMap.get(OpportunityFormField.OPPORTUNITY_DESCRIPTION)));
 
-        strategyMap.put(OpportunityFormField.OPPORTUNITY_STAGE, ()
-                -> setStageSelect(formMap.get(OpportunityFormField.OPPORTUNITY_STAGE)));
+        strategyMap.put(OpportunityFormField.OPPORTUNITY_STAGE,
+                () -> setStageSelect(formMap.get(OpportunityFormField.OPPORTUNITY_STAGE)));
         return strategyMap;
     }
 
