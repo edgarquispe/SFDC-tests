@@ -4,7 +4,7 @@ Feature: Edit Account
     Given I go to "Account" Home Page
     And I click on New "Account"
     When I fill the Account form with:
-      | ACCOUNT_NAME             | AutomatedDemoAT04          |
+      | ACCOUNT_NAME | AutomatedDemoAT04 |
 
   @deleteAccount
   Scenario: Edit the Account on Detail Page
@@ -30,6 +30,30 @@ Feature: Edit Account
     Then the Account should be displayed
     And I go to "Account" Home Page
     And the Account should be displayed on Home Page
+
+  @deleteAccount
+  Scenario: Edit an Account with an empty name
+    When I click on Edit from Account
+    And I fill the Account form with:
+      | ACCOUNT_NAME             |                            |
+      | ACCOUNT_TYPE             | Analyst                    |
+      | ACCOUNT_WEBSITE          | www.somepage.com           |
+      | ACCOUNT_DESCRIPTION      | This is a Description test |
+      | ACCOUNT_PHONE            | 59179732801                |
+      | ACCOUNT_INDUSTRY         | Banking                    |
+      | ACCOUNT_EMPLOYEES        | 25                         |
+      | ACCOUNT_BILLING_STREET   | Some Street                |
+      | ACCOUNT_BILLING_CITY     | Cochabamba                 |
+      | ACCOUNT_BILLING_ZIP      | 3001                       |
+      | ACCOUNT_BILLING_STATE    | Cercado                    |
+      | ACCOUNT_BILLING_COUNTRY  | Bolivia                    |
+      | ACCOUNT_SHIPPING_STREET  | This is a Shipping Street  |
+      | ACCOUNT_SHIPPING_CITY    | Cochabamba                 |
+      | ACCOUNT_SHIPPING_ZIP     | 3001                       |
+      | ACCOUNT_SHIPPING_STATE   | Cercado                    |
+      | ACCOUNT_SHIPPING_COUNTRY | Bolivia                    |
+    Then "required fields must be completed" message should be displayed in "Account" form
+
 
 #  @deleteProduct
 #  Scenario: Edit the Product Home Page

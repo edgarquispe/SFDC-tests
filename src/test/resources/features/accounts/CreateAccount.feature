@@ -25,3 +25,10 @@ Feature: Create Account
     Then the Account should be displayed
     And I go to "Account" Home Page
     And the Account should be displayed on Home Page
+
+  Scenario: Create a new Account with empty name
+    Given I go to "Account" Home Page
+    And I click on New "Account"
+    When I fill the Product form with:
+      | ACCOUNT_NAME  |  |
+    Then "required fields must be completed" message should be displayed in "Account" form
