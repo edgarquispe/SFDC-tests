@@ -4,16 +4,21 @@ import java.util.EnumMap;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignDetail;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignForm;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
 import org.fundacionjala.sfdc.pages.chatter.PostForm;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
+import org.fundacionjala.sfdc.pages.products.ProductDetail;
 import org.fundacionjala.sfdc.pages.products.ProductForm;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
@@ -145,6 +150,21 @@ public final class Navigator {
         map.put(SObject.ACCOUNT, new AccountForm());
         map.put(SObject.OPPORTUNIT, new OpportunityForm());
         map.put(SObject.CAMPAIGN, new CampaignForm());
+        return map.get(item);
+    }
+
+    /**
+     * Static method to return a specific Detail page.
+     *
+     * @param item SObject.
+     * @return DetailBase.
+     */
+    public static DetailBase mapDetail(SObject item) {
+        EnumMap<SObject, DetailBase> map = new EnumMap<>(SObject.class);
+        map.put(SObject.PRODUCT, new ProductDetail());
+        map.put(SObject.ACCOUNT, new AccountDetail());
+        map.put(SObject.OPPORTUNIT, new OpportunityDetail());
+        map.put(SObject.CAMPAIGN, new CampaignDetail());
         return map.get(item);
     }
 }

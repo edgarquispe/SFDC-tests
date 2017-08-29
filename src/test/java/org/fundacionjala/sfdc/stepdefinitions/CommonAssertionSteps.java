@@ -43,11 +43,33 @@ public class CommonAssertionSteps {
     /**
      * Assertion step to verify the error message displayed.
      *
-     * @param msg     error message that should be displayed.
+     * @param msg     error message that should be displayed in a Form Page.
      * @param sObject SObject enum parameter.
      */
     @Then("^\"([^\"]*)\" message should be displayed in \"([^\"]*)\" form$")
     public void messageShouldBeDisplayedInForm(String msg, SObject sObject) {
         assertion.assertTrue(Navigator.mapForm(sObject).errorNotificationText().contains(msg));
+    }
+
+    /**
+     * Assertion step to verify the success message displayed in a Home page.
+     *
+     * @param msg     error message displayed.
+     * @param sObject SObject enum parameter.
+     */
+    @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Home Page$")
+    public void messageShouldBeDisplayedInHomePage(String msg, SObject sObject) {
+        assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msg));
+    }
+
+    /**
+     * Assertion step to verify the succes message displayed in a Detail Page.
+     *
+     * @param msg     error message displayed.
+     * @param sObject SObject enum parameter.
+     */
+    @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Detail Page$")
+    public void automateddemoatMessageShouldBeDisplayedInDetailPage(String msg, SObject sObject) {
+        assertion.assertTrue(Navigator.mapDetail(sObject).successMessageText().contains(msg));
     }
 }
