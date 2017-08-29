@@ -4,12 +4,12 @@ Feature: Create Opportunity
     Given I go to "Campaign" Home Page
     And I click on New "Campaign"
     And I fill the Campaign form with:
-      | CAMPAIGN_NAME | campaign9 |
+      | CAMPAIGN_NAME | campaign |
     And the Campaign should be displayed
     And I go to "Account" Home Page
     And I click on New "Account"
     And I fill the Account form with:
-      | ACCOUNT_NAME | New Account 1 |
+      | ACCOUNT_NAME | New Account |
 
   @bvt @deleteCampaign @deleteOpportunity @deleteAccount
   Scenario: Create a new Opportunity
@@ -17,11 +17,11 @@ Feature: Create Opportunity
     And I click on New "Opportunit"
     When I fill the Opportunity form with:
       | OPPORTUNITY_NAME        | OpportunityDemo1  |
-      | OPPORTUNITY_ACCOUNT     | New Account 1     |
+      | OPPORTUNITY_ACCOUNT     | New Account       |
       | DATE                    | Today             |
       | OPPORTUNITY_STAGE       | Proposal          |
       | OPPORTUNITY_TYPE        | Existing Business |
-      | OPPORTUNITY_CAMPAIGN    | campaign9         |
+      | OPPORTUNITY_CAMPAIGN    | campaign          |
       | OPPORTUNITY_PROBABILITY | 80                |
       | OPPORTUNITY_AMOUNT      | 70                |
       | OPPORTUNITY_REASON      | Price             |

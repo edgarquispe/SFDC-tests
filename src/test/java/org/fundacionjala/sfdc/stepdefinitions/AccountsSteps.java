@@ -2,6 +2,7 @@ package org.fundacionjala.sfdc.stepdefinitions;
 
 import java.util.Map;
 
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
@@ -33,6 +34,7 @@ public class AccountsSteps {
      */
     @When("^I fill the Account form with:$")
     public void iFillTheAccountFormWith(Map<AccountFormField, String> formMapData) {
+        CommonActions.waitForAppear();
         helper.setAccountMap(formMapData);
         if (!formMapData.get(AccountFormField.ACCOUNT_NAME).isEmpty()) {
             helper.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));

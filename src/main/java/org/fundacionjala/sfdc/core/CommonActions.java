@@ -102,11 +102,11 @@ public final class CommonActions {
     }
 
     /**
-     * Method for wait 1 second.
+     * Method for wait 3 second.
      */
     public static void waitForAppear() {
         try {
-            DriverManager.getInstance().setUpdateWait(1);
+            DriverManager.getInstance().setUpdateWait(3);
             DriverManager.getInstance().getWait()
                     .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
         } catch (TimeoutException e) {

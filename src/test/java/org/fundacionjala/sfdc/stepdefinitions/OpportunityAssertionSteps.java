@@ -4,6 +4,8 @@ import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
@@ -59,6 +61,7 @@ public class OpportunityAssertionSteps {
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
+        CommonActions.waitForAppear();
         assertion.assertTrue(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertion.assertTrue(opportunityHome.isOpportunityLinkDisplayed(
@@ -72,6 +75,8 @@ public class OpportunityAssertionSteps {
     @Then("^the Opportunity should not be displayed on Home Page$")
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
+        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
+        CommonActions.waitForAppear();
         assertion.assertFalse(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
     }

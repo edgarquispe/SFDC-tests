@@ -23,10 +23,9 @@ Feature: Edit Opportunity
     When I click on Edit Opportunity
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME        | OpportunityDemo2  |
-      | OPPORTUNITY_ACCOUNT     | New Account 1     |
-      | DATE                    | 13/08/2017        |
+      | DATE                    | Today             |
+      | OPPORTUNITY_STAGE       | Proposal          |
       | OPPORTUNITY_TYPE        | Existing Business |
-      | OPPORTUNITY_CAMPAIGN    | campaign9         |
       | OPPORTUNITY_PROBABILITY | 80                |
       | OPPORTUNITY_AMOUNT      | 70                |
       | OPPORTUNITY_REASON      | Price             |
@@ -39,7 +38,6 @@ Feature: Edit Opportunity
     Then the Opportunity should be displayed
     And I go to "Opportunit" Home Page
     And the Opportunity should be displayed on Home Page
-
 
   @deleteCampaign @deleteAccount
   Scenario: Delete the Opportunity on Detail Page
