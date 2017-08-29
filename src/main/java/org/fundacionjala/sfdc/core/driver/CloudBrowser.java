@@ -40,13 +40,13 @@ public abstract class CloudBrowser implements IBrowser {
      */
     @Override
     public WebDriver getBrowser() {
-        WebDriver driver = null;
+        WebDriver driver;
         try {
             driver = new RemoteWebDriver(new URL(url), setCapabilities());
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
             LOGGER.info(e);
-            throw new MyRuntimeException(e);
+            throw new MyRuntimeException("Not instance driver", e);
         }
         return driver;
     }
