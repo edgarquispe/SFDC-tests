@@ -1,5 +1,8 @@
 package org.fundacionjala.sfdc.entities;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.EnumMap;
 import java.util.Map;
 
 import org.testng.asserts.Assertion;
@@ -15,15 +18,15 @@ import org.fundacionjala.sfdc.pages.products.ProductFormField;
  */
 public class Helper {
 
-    private String itemName;
+    private String itemName = "";
 
-    private String postMessage;
+    private String postMessage = "";
 
-    private String commentPostMessage;
+    private String commentPostMessage = "";
 
-    private String campaignName;
+    private String campaignName = "";
 
-    private String opportunityName;
+    private String opportunityName = "";
 
     private Assertion assertion;
 
@@ -34,6 +37,8 @@ public class Helper {
     private Map<OpportunityFormField, String> opportunityMap;
 
     private Map<ProductFormField, String> productMap;
+
+    private static final String REGEX_QUOTES_INSIDE = "(?<=\")(.*?)(?=\")";
 
     /**
      * This method is a constructor.
@@ -57,7 +62,7 @@ public class Helper {
      * @param itemName String.
      */
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.itemName = concatPrefixSuffix(itemName);
     }
 
     /**
@@ -93,7 +98,7 @@ public class Helper {
      * @param commentPostMessage String.
      */
     public void setCommentPostMessage(String commentPostMessage) {
-        this.commentPostMessage = commentPostMessage;
+        this.commentPostMessage = concatPrefixSuffix(commentPostMessage);
     }
 
     /**
@@ -111,7 +116,7 @@ public class Helper {
      * @param campaignName String.
      */
     public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName;
+        this.campaignName = concatPrefixSuffix(campaignName);
     }
 
     /**
@@ -129,7 +134,7 @@ public class Helper {
      * @param opportunityName String.
      */
     public void setOpportunityName(String opportunityName) {
-        this.opportunityName = opportunityName;
+        this.opportunityName = concatPrefixSuffix(opportunityName);
     }
 
     /**
@@ -165,7 +170,8 @@ public class Helper {
      * @param accountMap is the account map.
      */
     public void setAccountMap(Map<AccountFormField, String> accountMap) {
-        this.accountMap = accountMap;
+        this.accountMap = new EnumMap<>(accountMap);
+        this.accountMap.replace(AccountFormField.ACCOUNT_NAME, getItemName());
     }
 
     /**
@@ -183,7 +189,8 @@ public class Helper {
      * @param campaignMap is the campaign map.
      */
     public void setCampaignMap(Map<CampaignFormField, String> campaignMap) {
-        this.campaignMap = campaignMap;
+        this.campaignMap = new EnumMap<>(campaignMap);
+        this.campaignMap.replace(CampaignFormField.CAMPAIGN_NAME, getCampaignName());
     }
 
     /**
@@ -201,7 +208,10 @@ public class Helper {
      * @param opportunityMap is the opportunity map.
      */
     public void setOpportunityMap(Map<OpportunityFormField, String> opportunityMap) {
-        this.opportunityMap = opportunityMap;
+        this.opportunityMap = new EnumMap<>(opportunityMap);
+        this.opportunityMap.replace(OpportunityFormField.OPPORTUNITY_NAME, getOpportunityName());
+        this.opportunityMap.replace(OpportunityFormField.OPPORTUNITY_CAMPAIGN, getCampaignName());
+        this.opportunityMap.replace(OpportunityFormField.OPPORTUNITY_ACCOUNT, getItemName());
     }
 
     /**
@@ -219,6 +229,28 @@ public class Helper {
      * @param productMap is the product map.
      */
     public void setProductMap(Map<ProductFormField, String> productMap) {
-        this.productMap = productMap;
+        this.productMap = new EnumMap<>(productMap);
+        this.productMap.replace(ProductFormField.PRODUCT_NAME, getItemName());
+    }
+
+    /**
+     * Rebuilt an asertion message, replacing the item string value in the message.
+     *
+     * @param msg expected message.
+     * @return the rebuilt message.
+     */
+    public String rebuiltMessage(String msg) {
+        return msg.replaceAll(REGEX_QUOTES_INSIDE, getItemName());
+    }
+
+    /**
+     * Concat a specified prefix (AT-04) and a unix timestamp suffix (in HEX representation).
+     *
+     * @param name the original parameter name.
+     * @return the concat result.
+     */
+    private String concatPrefixSuffix(String name) {
+        final Date date = Calendar.getInstance().getTime();
+        return name.isEmpty() ? name : String.format("%s%s%s", "AT-04", name, Long.toHexString(date.getTime()));
     }
 }

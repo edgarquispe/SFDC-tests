@@ -99,12 +99,19 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
+     * This method perform a click in the account name text box.
+     */
+    public void clickAccountName() {
+        CommonActions.clickElement(opportunityAccountNameInputField);
+    }
+
+    /**
      * @param accountName field.
      * @return this.
      */
     public OpportunityForm setAccountNameSelect(String accountName) {
         clickDeleteAccountIcon(accountName);
-        CommonActions.clickElement(opportunityAccountNameInputField);
+        clickAccountName();
         CommonActions.clickElement(selectedDivFormElement(accountName));
 
         return this;
@@ -121,14 +128,19 @@ public class OpportunityForm extends FormBase {
     }
 
     /**
+     * This method perform a click in the campaign input name.
+     */
+    public void clickCampaignInputName() {
+        CommonActions.clickElement(opportunityCampaignInputField);
+    }
+
+    /**
      * @param campaignName field.
      * @return this.
      */
     public OpportunityForm setPrimaryCampaignSourceSelect(String campaignName) {
-
-        CommonActions.clickElement(opportunityCampaignInputField);
+        clickCampaignInputName();
         CommonActions.clickElement(selectedDivFormElement(campaignName));
-
         return this;
     }
 
@@ -201,7 +213,6 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setLossReasonSelect(String lossReason) {
-
         CommonActions.clickElement(opportunityLossReasonInputField);
         selectedAformElement(lossReason);
         return this;

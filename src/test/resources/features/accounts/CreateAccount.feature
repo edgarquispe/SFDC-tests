@@ -5,7 +5,7 @@ Feature: Create Account
     Given I go to "Account" Home Page
     And I click on New "Account"
     When I fill the Account form with:
-      | ACCOUNT_NAME             | AutomatedDemoAT04          |
+      | ACCOUNT_NAME             | Automation                 |
       | ACCOUNT_TYPE             | Analyst                    |
       | ACCOUNT_WEBSITE          | www.somepage.com           |
       | ACCOUNT_DESCRIPTION      | This is a Description test |
@@ -22,8 +22,8 @@ Feature: Create Account
       | ACCOUNT_SHIPPING_ZIP     | 3001                       |
       | ACCOUNT_SHIPPING_STATE   | Cercado                    |
       | ACCOUNT_SHIPPING_COUNTRY | Bolivia                    |
-    Then "Account "AutomatedDemoAT04" was created." message should be displayed in "Account" Detail Page
-    Then the Account should be displayed
+    Then "Account "${ACCOUNT_NAME}" was created." message should be displayed in "Account" Detail Page
+    And the Account should be displayed
     And I go to "Account" Home Page
     And the Account should be displayed on Home Page
     And Assert all
@@ -33,4 +33,4 @@ Feature: Create Account
     And I click on New "Account"
     When I fill the Account form with:
       | ACCOUNT_NAME |  |
-    Then "required fields must be completed" message should be displayed in "Account" form
+    Then "These required fields must be completed: Account Name" message should be displayed in "Account" form

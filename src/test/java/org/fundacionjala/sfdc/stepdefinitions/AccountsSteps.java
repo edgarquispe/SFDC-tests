@@ -2,14 +2,13 @@ package org.fundacionjala.sfdc.stepdefinitions;
 
 import java.util.Map;
 
-import org.fundacionjala.sfdc.core.CommonActions;
+import cucumber.api.java.en.When;
+
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
 import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 import org.fundacionjala.sfdc.pages.acccounts.AccountFormField;
 import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
-
-import cucumber.api.java.en.When;
 
 /**
  * Create Steps for Accounts.
@@ -34,15 +33,11 @@ public class AccountsSteps {
      */
     @When("^I fill the Account form with:$")
     public void iFillTheAccountFormWith(Map<AccountFormField, String> formMapData) {
-        CommonActions.waitForAppear();
+        helper.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));
         helper.setAccountMap(formMapData);
-        if (!formMapData.get(AccountFormField.ACCOUNT_NAME).isEmpty()) {
-            helper.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));
-        }
-        new AccountForm().fillAndSaveForm(formMapData);
+        new AccountForm().fillAndSaveForm(helper.getAccountMap());
         new AccountHome().waitUntilSpinnerIsHidden();
     }
-
 
     /**
      * Click on Edit from Account.

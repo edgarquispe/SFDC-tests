@@ -33,9 +33,9 @@ public class ProductSteps {
      */
     @When("^I fill the Product form with:$")
     public void iFillTheProductFormWith(Map<ProductFormField, String> formMapData) {
-        helper.setProductMap(formMapData);
         helper.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
-        new ProductForm().fillAndSaveForm(formMapData);
+        helper.setProductMap(formMapData);
+        new ProductForm().fillAndSaveForm(helper.getProductMap());
         new ProductHome().waitUntilSpinnerIsHidden();
 
     }

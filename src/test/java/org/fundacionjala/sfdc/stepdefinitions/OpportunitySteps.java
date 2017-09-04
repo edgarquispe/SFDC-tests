@@ -1,7 +1,11 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
@@ -9,8 +13,6 @@ import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.util.Map;
 
 /**
  * Create steps for opportunities.
@@ -35,9 +37,10 @@ public class OpportunitySteps {
      */
     @When("^I fill the Opportunity form with:$")
     public void iFillTheOpportunityFormWith(Map<OpportunityFormField, String> formMapData) {
-        helper.setOpportunityMap(formMapData);
         helper.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
-        new OpportunityForm().fillAndSaveForm(formMapData);
+        helper.setOpportunityMap(formMapData);
+        new OpportunityForm().fillAndSaveForm(helper.getOpportunityMap());
+        CommonActions.waitFixedTime();
     }
 
     /**
@@ -46,7 +49,6 @@ public class OpportunitySteps {
     @When("^I click on Edit Opportunity$")
     public void iClickOnEditOpportunity() {
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
-        DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().clickEditButton();
     }
 
@@ -56,7 +58,6 @@ public class OpportunitySteps {
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
-        DriverManager.getInstance().getDriver().navigate().refresh();
         new OpportunityDetail().deleteItem();
     }
 
@@ -65,8 +66,7 @@ public class OpportunitySteps {
      */
     @And("^I click on New Opportunit$")
     public void iClickOnNewOpportunit() {
-        CommonActions.waitForAppear();
-        DriverManager.getInstance().getDriver().navigate().refresh();
+        CommonActions.waitFixedTime();
         new OpportunityHome().clickNewButton();
     }
 

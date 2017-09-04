@@ -55,7 +55,7 @@ public class OpportunityDetail extends DetailBase {
      * @return String.
      */
     public String getOpportunityNameText() {
-        return opportunityNameText.getText();
+        return CommonActions.getTextElement(opportunityNameText);
     }
 
     /**
@@ -64,8 +64,7 @@ public class OpportunityDetail extends DetailBase {
      * @return String.
      */
     public String getOpportunityAccountText() {
-
-        return accountNameText.getText();
+        return CommonActions.getTextElement(accountNameText);
     }
 
     /**

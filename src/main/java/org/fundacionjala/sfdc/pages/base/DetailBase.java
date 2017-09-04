@@ -15,7 +15,7 @@ public abstract class DetailBase extends BasePage {
     @FindBy(css = "a[title='Edit']")
     protected WebElement editButton;
 
-    @FindBy(css = "a[title='Delete']")
+    @FindBy(css = "div[title='Delete']")
     protected WebElement deleteButton;
 
     @FindBy(css = "button[title='Delete']")

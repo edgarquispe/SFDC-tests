@@ -61,8 +61,9 @@ public final class Navigator {
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
-        CommonActions.waitForAppear();
-        new AppLauncher().clickChatterTextLink();
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("chatter")) {
+            new AppLauncher().clickChatterTextLink();
+        }
         return new PostForm();
     }
 
@@ -72,9 +73,7 @@ public final class Navigator {
      * @return OpportunityHome.
      */
     public static OpportunityHome goToOpportunityHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Opportunity")) {
-            new AppLauncher().clickOpportunityButton();
-        }
+        new AppLauncher().clickOpportunityButton();
         return new OpportunityHome();
     }
 
@@ -117,7 +116,6 @@ public final class Navigator {
      * @return ProductHome.
      */
     public static AccountHome goToAccountsHome() {
-        CommonActions.waitForAppear();
         if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Account")) {
             clickAppLauncher().clickAccountTextLink();
         }
@@ -131,12 +129,12 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase mapActions(SObject item) {
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
         EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductHome());
         map.put(SObject.ACCOUNT, new AccountHome());
         map.put(SObject.OPPORTUNIT, new OpportunityHome());
-        map.put(SObject.CAMPAIGN, new OpportunityHome());
+        map.put(SObject.CAMPAIGN, new CampaignHome());
         return map.get(item);
     }
 

@@ -20,7 +20,7 @@ public abstract class HomeBase extends BasePage {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    @FindBy(css = "a[title='New']")
+    @FindBy(xpath = "//a[@title='New']")
     protected WebElement newButton;
 
     protected WebElement displayedItem;
@@ -62,7 +62,7 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(String name) {
         try {
-            CommonActions.waitForAppear();
+            CommonActions.waitFixedTime();
             driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
