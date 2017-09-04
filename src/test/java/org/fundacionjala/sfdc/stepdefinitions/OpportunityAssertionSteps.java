@@ -4,15 +4,14 @@ import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-
-import org.fundacionjala.sfdc.core.CommonActions;
-import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
+import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityDetail;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityForm;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityFormField;
 import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 
@@ -50,8 +49,6 @@ public class OpportunityAssertionSteps {
                 .equals(map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertion.assertTrue(opportunityDetail.getOpportunityAccountText()
                 .equals(map.get(OpportunityFormField.OPPORTUNITY_ACCOUNT)));
-        assertion.assertTrue(opportunityDetail.getOpportunityAmountText()
-                .contains(map.get(OpportunityFormField.OPPORTUNITY_AMOUNT)));
     }
 
     /**
@@ -61,7 +58,7 @@ public class OpportunityAssertionSteps {
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
         assertion.assertTrue(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertion.assertTrue(opportunityHome.isOpportunityLinkDisplayed(
@@ -76,7 +73,7 @@ public class OpportunityAssertionSteps {
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
         assertion.assertFalse(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
     }

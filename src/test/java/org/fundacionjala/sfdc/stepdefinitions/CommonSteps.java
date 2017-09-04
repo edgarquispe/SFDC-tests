@@ -34,7 +34,7 @@ public class CommonSteps {
     @Given("^I go to \"([^\"]*)\" Home Page$")
     public void iGoToHomePage(SObject sObject) {
         DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
         Navigator.gotoPage(sObject);
     }
 
@@ -45,11 +45,8 @@ public class CommonSteps {
      */
     @And("^I click on New \"([^\"]*)\"$")
     public void iClickOnNew(SObject sObject) {
-        CommonActions.waitForAppear();
-        DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
         Navigator.mapActions(sObject).clickNewButton();
-        CommonActions.waitForAppear();
     }
 
     /**
@@ -88,6 +85,6 @@ public class CommonSteps {
     @And("^refresh page$")
     public void refreshPage() {
         DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
     }
 }

@@ -1,14 +1,14 @@
 package org.fundacionjala.sfdc.stepdefinitions;
 
-import org.fundacionjala.sfdc.entities.Helper;
-import org.fundacionjala.sfdc.pages.Navigator;
-import org.fundacionjala.sfdc.pages.SObject;
-import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
+
+import org.fundacionjala.sfdc.entities.Helper;
+import org.fundacionjala.sfdc.pages.Navigator;
+import org.fundacionjala.sfdc.pages.SObject;
+import org.fundacionjala.sfdc.pages.acccounts.AccountForm;
 
 /**
  * Common assert step definitions.
@@ -62,6 +62,7 @@ public class CommonAssertionSteps {
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Home Page$")
     public void messageShouldBeDisplayedInHomePage(String msg, SObject sObject) {
+        msg = helper.rebuiltMessage(msg);
         assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msg));
     }
 
@@ -72,7 +73,8 @@ public class CommonAssertionSteps {
      * @param sObject SObject enum parameter.
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Detail Page$")
-    public void automateddemoatMessageShouldBeDisplayedInDetailPage(String msg, SObject sObject) {
+    public void messageShouldBeDisplayedInDetailPage(String msg, SObject sObject) {
+        msg = helper.rebuiltMessage(msg);
         assertion.assertTrue(Navigator.mapDetail(sObject).successMessageText().contains(msg));
     }
 }

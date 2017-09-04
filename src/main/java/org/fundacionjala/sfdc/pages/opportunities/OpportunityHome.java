@@ -1,10 +1,11 @@
 package org.fundacionjala.sfdc.pages.opportunities;
 
+import org.openqa.selenium.By;
+
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
-import org.openqa.selenium.By;
 
 /**
  * Class containing Opportunity Home Page.
@@ -16,8 +17,21 @@ public class OpportunityHome extends HomeBase {
      */
     @Override
     public FormBase clickNewButton() {
-        CommonActions.clickElement(newButton);
+        workaroundOpportunityForm();
+        CommonActions.jsClickButton(newButton);
         return new OpportunityForm();
+    }
+
+    /**
+     * This method perform the actions for the workaround and prevent that the
+     * account name and the campaign name not appear in the form.
+     */
+    private void workaroundOpportunityForm() {
+        OpportunityForm opportunityForm = new OpportunityForm();
+        CommonActions.jsClickButton(newButton);
+        opportunityForm.clickCampaignInputName();
+        opportunityForm.clickAccountName();
+        opportunityForm.clickCloseButton();
     }
 
     /**

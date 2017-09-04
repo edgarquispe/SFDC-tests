@@ -1,28 +1,28 @@
 Feature: Edit Opportunity
 
   Background:
-    Given I go to "Campaign" Home Page
-    And I click on New "Campaign"
-    And I fill the Campaign form with:
-      | CAMPAIGN_NAME | campaign9 |
-    And the Campaign should be displayed
-    And I go to "Account" Home Page
+    Given I go to "Account" Home Page
     And I click on New "Account"
     And I fill the Account form with:
-      | ACCOUNT_NAME | New Account 1 |
+      | ACCOUNT_NAME | account |
+    And I go to "Campaign" Home Page
+    And I click on New "Campaign"
+    And I fill the Campaign form with:
+      | CAMPAIGN_NAME | campaign |
     And I go to "Opportunit" Home Page
     And I click on New "Opportunit"
     And I fill the Opportunity form with:
-      | OPPORTUNITY_NAME    | OpportunityDemo1 |
-      | OPPORTUNITY_ACCOUNT | New Account 1    |
-      | DATE                | 13/08/2017       |
-      | OPPORTUNITY_STAGE   | Proposal         |
+      | OPPORTUNITY_NAME     | Opportunity      |
+      | OPPORTUNITY_ACCOUNT  | ${ACCOUNT_NAME}  |
+      | DATE                 | 13/08/2017       |
+      | OPPORTUNITY_STAGE    | Proposal         |
+      | OPPORTUNITY_CAMPAIGN | ${CAMPAIGN_NAME} |
 
-  @deleteCampaign @deleteAccount
+  @deleteAccount @deleteCampaign
   Scenario: Edit the Opportunity on Detail Page
     When I click on Edit Opportunity
     And I fill the Opportunity form with:
-      | OPPORTUNITY_NAME        | OpportunityDemo2  |
+      | OPPORTUNITY_NAME        | OpportunityEdit   |
       | DATE                    | Today             |
       | OPPORTUNITY_STAGE       | Proposal          |
       | OPPORTUNITY_TYPE        | Existing Business |
@@ -39,7 +39,7 @@ Feature: Edit Opportunity
     And I go to "Opportunit" Home Page
     And the Opportunity should be displayed on Home Page
 
-  @deleteCampaign @deleteAccount
+  @deleteAccount @deleteCampaign
   Scenario: Delete the Opportunity on Detail Page
     When I Click on Delete from Opportunity
     Then the Opportunity should not be displayed on Home Page

@@ -47,23 +47,15 @@ public class Hooks {
     /**
      * Delete Account.
      */
-    @After(value = "@deleteAccount", order = 8)
+    @After(value = "@deleteAccount", order = 10)
     public void deleteCreatedAccount() {
         Navigator.goToAccountsHome().deleteElement(helper.getItemName());
     }
 
     /**
-     * Delete Opportunity.
-     */
-    @After(value = "@deleteOpportunity", order = 9)
-    public void deleteCreatedItemOpportunity() {
-        Navigator.goToOpportunityHome().deleteElement(helper.getOpportunityName());
-    }
-
-    /**
      * Delete Campaign.
      */
-    @After(value = "@deleteCampaign", order = 10)
+    @After(value = "@deleteCampaign", order = 9)
     public void deleteCreatedItemCampaign() {
         Navigator.goToCampaignHome().deleteElement(helper.getCampaignName());
     }
@@ -107,11 +99,11 @@ public class Hooks {
     }
 
     /**
-     * wait three seconds.
+     * wait two seconds.
      */
     @Before(order = 15)
     public void waitBefore() {
-        CommonActions.waitForAppear();
+        CommonActions.waitFixedTime();
     }
 
 }

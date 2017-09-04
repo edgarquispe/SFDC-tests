@@ -22,11 +22,21 @@ public abstract class FormBase extends BasePage {
     @FindBy(xpath = "//ul[@class='errorsList']/child::li")
     protected WebElement requiredFieldsText;
 
+    @FindBy(xpath = "//button[contains(@class, 'slds-button slds-modal__close closeIcon ')]")
+    protected WebElement closeButton;
+
     /**
      * Clicks the Save Button of the Form.
      */
     public void clickSaveButton() {
         CommonActions.clickElement(saveButton);
+    }
+
+    /**
+     * Clicks the close form button.
+     */
+    public void clickCloseButton() {
+        CommonActions.clickElement(closeButton);
     }
 
     /**

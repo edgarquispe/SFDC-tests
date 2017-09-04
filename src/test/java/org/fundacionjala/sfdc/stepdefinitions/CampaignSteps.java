@@ -32,9 +32,9 @@ public class CampaignSteps {
      */
     @When("^I fill the Campaign form with:$")
     public void iFillTheCampaignFormWith(Map<CampaignFormField, String> formMapData) {
-        helper.setCampaignMap(formMapData);
         helper.setCampaignName(formMapData.get(CampaignFormField.CAMPAIGN_NAME));
-        new CampaignForm().fillAndSaveForm(formMapData);
+        helper.setCampaignMap(formMapData);
+        new CampaignForm().fillAndSaveForm(helper.getCampaignMap());
     }
 
     /**

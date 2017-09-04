@@ -1,8 +1,9 @@
 package org.fundacionjala.sfdc.pages.products;
 
+import org.openqa.selenium.By;
+
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.pages.base.HomeBase;
-import org.openqa.selenium.By;
 
 /**
  * Class containing Product Home Page.
@@ -14,7 +15,7 @@ public class ProductHome extends HomeBase {
      */
     @Override
     public ProductForm clickNewButton() {
-        CommonActions.clickElement(newButton);
+        CommonActions.jsClickButton(newButton);
         return new ProductForm();
     }
 
