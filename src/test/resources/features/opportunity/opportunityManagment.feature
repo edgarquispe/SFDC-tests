@@ -6,8 +6,5 @@ Feature: Negative Testing
 
   Scenario: I can't create a new Opportunity without fields required.
     When I fill the Opportunity form with:
-      | OPPORTUNITY_TYPE        | Existing Business |
-      | OPPORTUNITY_DESCRIPTION | description       |
-      | BUDGE                   | true              |
-      | DISCOVERY               | true              |
+      | OPPORTUNITY_NAME |  |
     Then message displayed "These required fields must be completed: Account Name, Close Date, Opportunity Name, Stage"

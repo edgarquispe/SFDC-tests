@@ -24,7 +24,6 @@ Feature: Edit Opportunity
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME        | OpportunityEdit   |
       | DATE                    | Today             |
-      | OPPORTUNITY_STAGE       | Proposal          |
       | OPPORTUNITY_TYPE        | Existing Business |
       | OPPORTUNITY_PROBABILITY | 80                |
       | OPPORTUNITY_AMOUNT      | 70                |

@@ -29,7 +29,6 @@ public class CommonAssertionSteps {
         assertion = this.helper.getAssertion();
     }
 
-
     /**
      * This method executes all soft asserts.
      */
@@ -39,7 +38,6 @@ public class CommonAssertionSteps {
             ((SoftAssert) assertion).assertAll();
         }
     }
-
 
     /**
      * Assertion step to verify the error message displayed.
@@ -62,8 +60,8 @@ public class CommonAssertionSteps {
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Home Page$")
     public void messageShouldBeDisplayedInHomePage(String msg, SObject sObject) {
-        msg = helper.rebuiltMessage(msg);
-        assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msg));
+        final String msgExpected = helper.rebuiltMessage(msg);
+        assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msgExpected));
     }
 
     /**
@@ -74,7 +72,7 @@ public class CommonAssertionSteps {
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Detail Page$")
     public void messageShouldBeDisplayedInDetailPage(String msg, SObject sObject) {
-        msg = helper.rebuiltMessage(msg);
-        assertion.assertTrue(Navigator.mapDetail(sObject).successMessageText().contains(msg));
+        final String msgExpected = helper.rebuiltMessage(msg);
+        assertion.assertTrue(Navigator.mapDetail(sObject).successMessageText().contains(msgExpected));
     }
 }

@@ -67,6 +67,7 @@ public class Home extends BasePage {
 
     /**
      * This method verify that error message is Displayed.
+     *
      * @return True if the element is Displayed.
      */
     public boolean isErrorMessageDisplayed() {
@@ -83,6 +84,7 @@ public class Home extends BasePage {
 
     /**
      * This method make  click on Profile link label.
+     *
      * @return Profile pageObject.
      */
     public Profile clickProfileLinkLabel() {
@@ -93,6 +95,7 @@ public class Home extends BasePage {
 
     /**
      * This method make click on Home link label.
+     *
      * @return Home pageObject.
      */
     public Home clickHomeLink() {
@@ -102,10 +105,11 @@ public class Home extends BasePage {
 
     /**
      * Loads the App Launcher by clicking on its button.
+     *
      * @return AppLauncher.
      */
     public AppLauncher clickAppLauncher() {
-        CommonActions.clickElement(appLauncherButton);
+        CommonActions.jsClickClassButton(appLauncherButton);
         return new AppLauncher();
     }
 }

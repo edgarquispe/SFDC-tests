@@ -25,7 +25,7 @@ public class AccountHome extends HomeBase {
      */
     @Override
     public AccountForm clickNewButton() {
-        CommonActions.jsClickButton(newButton);
+        CommonActions.jsClickCssButton(newButton);
         return new AccountForm();
     }
 
@@ -35,7 +35,7 @@ public class AccountHome extends HomeBase {
     @Override
     public AccountForm clickEditButton(String name) {
         clickDropDownListLink(name);
-        CommonActions.jsClickButton(editButton);
+        CommonActions.jsClickCssButton(editButton);
         return new AccountForm();
     }
 

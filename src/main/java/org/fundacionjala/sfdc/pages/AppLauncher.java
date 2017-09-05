@@ -1,15 +1,14 @@
 package org.fundacionjala.sfdc.pages;
 
-import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
-import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
-import org.fundacionjala.sfdc.pages.chatter.PostForm;
-
-import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.sfdc.core.CommonActions;
+import org.fundacionjala.sfdc.pages.acccounts.AccountHome;
 import org.fundacionjala.sfdc.pages.base.BasePage;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignHome;
+import org.fundacionjala.sfdc.pages.chatter.PostForm;
+import org.fundacionjala.sfdc.pages.opportunities.OpportunityHome;
 import org.fundacionjala.sfdc.pages.products.ProductHome;
 
 /**
@@ -26,7 +25,6 @@ public class AppLauncher extends BasePage {
     @FindBy(css = ".salesforceIdentityAppLauncherDesktopInternal .uiButton")
     private WebElement openAllAppsButton;
 
-    //@FindBy(css = "one-app-launcher-header")
     @FindBy(xpath = "//button[@class='slds-button']")
     private WebElement openAllItemsButton;
 
@@ -41,6 +39,9 @@ public class AppLauncher extends BasePage {
 
     @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Campaigns']")
     private WebElement campaignTextLink;
+
+    @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Chatter']")
+    private WebElement chatterTextLink;
 
     @FindBy(css = "a[title='Opportunities']")
     private WebElement opportunityButton;
@@ -58,9 +59,9 @@ public class AppLauncher extends BasePage {
      * @return ProductHome.
      */
     public ProductHome clickProductsTextLink() {
-            waitModal();
-            CommonActions.clickElement(openAllAppsButton);
-            CommonActions.clickElement(productsTextLink);
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(productsTextLink);
         return new ProductHome();
     }
 
@@ -70,7 +71,9 @@ public class AppLauncher extends BasePage {
      * @return PostForm
      */
     public PostForm clickChatterTextLink() {
-        CommonActions.clickElement(chatterButton);
+        waitModal();
+        CommonActions.clickElement(openAllAppsButton);
+        CommonActions.clickElement(chatterTextLink);
         return new PostForm();
     }
 
@@ -100,6 +103,7 @@ public class AppLauncher extends BasePage {
 
     /**
      * Clicks the Opportunity Button.
+     *
      * @return OpportunityHome.
      */
     public OpportunityHome clickOpportunityButton() {
