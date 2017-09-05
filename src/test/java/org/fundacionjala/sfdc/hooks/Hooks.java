@@ -5,14 +5,14 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
-import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
-import org.fundacionjala.sfdc.pages.campaigns.CampaignDetail;
+import org.fundacionjala.sfdc.pages.SObject;
 
 /**
  * Hooks Class for actions to run before and after Scenarios.
@@ -51,8 +51,7 @@ public class Hooks {
      */
     @After(value = "@deleteAccount", order = 10)
     public void deleteCreatedAccount() {
-        Navigator.goToAccountsHome().clickItemList(helper.getItemName());
-        new AccountDetail().deleteItem();
+        Navigator.goToAccountsHome().clickItemList(SObject.ACCOUNT, helper.getItemName()).deleteItem();
     }
 
     /**
@@ -60,8 +59,7 @@ public class Hooks {
      */
     @After(value = "@deleteCampaign", order = 7)
     public void deleteCreatedItemCampaign() {
-        Navigator.goToCampaignHome().clickItemList(helper.getCampaignName());
-        new CampaignDetail().deleteItem();
+        Navigator.goToAccountsHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
     }
 
     /**
@@ -70,14 +68,6 @@ public class Hooks {
     @After(order = 5)
     public void refreshCurrentPage() {
         DriverManager.getInstance().getDriver().navigate().refresh();
-    }
-
-    /**
-     * Clean the helper.
-     */
-    @After(order = 3)
-    public void cleanHelper() {
-        helper = new Helper();
     }
 
     /**
@@ -98,9 +88,18 @@ public class Hooks {
      * Set a instance of Soft Assert to helper.
      */
     @Before(value = "@SoftAssert", order = 10)
-    public void assertSelection() {
+    public void setSoftAssertion() {
         helper.setAssertion(new SoftAssert());
     }
+
+    /**
+     * Set a instance of Hard Assert to helper.
+     */
+    @Before(order = 1)
+    public void setHardAssertion() {
+        helper.setAssertion(new Assertion());
+    }
+
 
     /**
      * wait two seconds.

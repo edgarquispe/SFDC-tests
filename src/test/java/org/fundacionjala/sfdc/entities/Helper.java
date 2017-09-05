@@ -6,7 +6,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import org.testng.asserts.Assertion;
-import org.testng.asserts.SoftAssert;
 
 import org.fundacionjala.sfdc.pages.acccounts.AccountFormField;
 import org.fundacionjala.sfdc.pages.campaigns.CampaignFormField;
@@ -39,13 +38,6 @@ public class Helper {
     private Map<ProductFormField, String> productMap;
 
     private static final String REGEX_QUOTES_INSIDE = "(?<=\")(.*?)(?=\")";
-
-    /**
-     * This method is a constructor.
-     */
-    public Helper() {
-        assertion = new Assertion();
-    }
 
     /**
      * Get the Item Name for edit and delete purposes.
@@ -151,7 +143,7 @@ public class Helper {
      *
      * @param assertion a instance of Soft Assertion.
      */
-    public void setAssertion(SoftAssert assertion) {
+    public void setAssertion(Assertion assertion) {
         this.assertion = assertion;
     }
 

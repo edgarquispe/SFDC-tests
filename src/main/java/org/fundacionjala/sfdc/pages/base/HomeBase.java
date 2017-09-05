@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
+import org.fundacionjala.sfdc.pages.Navigator;
+import org.fundacionjala.sfdc.pages.SObject;
 
 /**
  * Abstract class that gets common info in Home Page.
@@ -131,8 +133,19 @@ public abstract class HomeBase extends BasePage {
      * @param name the item name.
      */
     public void clickItemList(String name) {
-        driver.navigate().refresh();
         CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
+    }
+
+    /**
+     * Clicks on a item list.
+     *
+     * @param sObject object enum.
+     * @param name the item name.
+     * @return a detail base instance.
+     */
+    public DetailBase clickItemList(SObject sObject, String name) {
+        CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
+        return Navigator.mapDetail(sObject);
     }
 
     /**
