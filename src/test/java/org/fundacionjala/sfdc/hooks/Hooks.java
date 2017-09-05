@@ -59,7 +59,7 @@ public class Hooks {
      */
     @After(value = "@deleteCampaign", order = 7)
     public void deleteCreatedItemCampaign() {
-        Navigator.goToAccountsHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
+        Navigator.goToCampaignHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
     }
 
     /**
