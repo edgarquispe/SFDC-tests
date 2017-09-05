@@ -17,21 +17,23 @@ public class OpportunityHome extends HomeBase {
      */
     @Override
     public FormBase clickNewButton() {
-        workaroundOpportunityForm();
-        CommonActions.jsClickButton(newButton);
-        return new OpportunityForm();
+        return workaroundOpportunityForm();
     }
 
     /**
      * This method perform the actions for the workaround and prevent that the
      * account name and the campaign name not appear in the form.
+     *
+     * @return opportunity form instance.
      */
-    private void workaroundOpportunityForm() {
+    private OpportunityForm workaroundOpportunityForm() {
         OpportunityForm opportunityForm = new OpportunityForm();
-        CommonActions.jsClickButton(newButton);
+        CommonActions.jsClickCssButton(newButton);
         opportunityForm.clickCampaignInputName();
         opportunityForm.clickAccountName();
         opportunityForm.clickCloseButton();
+        CommonActions.jsClickCssButton(newButton);
+        return opportunityForm;
     }
 
     /**

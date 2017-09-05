@@ -15,7 +15,7 @@ public class ProductHome extends HomeBase {
      */
     @Override
     public ProductForm clickNewButton() {
-        CommonActions.jsClickButton(newButton);
+        CommonActions.jsClickCssButton(newButton);
         return new ProductForm();
     }
 

@@ -135,12 +135,22 @@ public final class CommonActions {
     }
 
     /**
-     * This method perform a click in a non visible element in the UI.
+     * This method perform a click in a non visible element in the UI using css locator.
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClickButton(WebElement webElement) {
+    public static void jsClickCssButton(WebElement webElement) {
         ((JavascriptExecutor) DriverManager.getInstance().getDriver())
                 .executeScript(String.format(JS_SCRIPT, webElement.getAttribute("title")));
+    }
+
+    /**
+     * This method perform a click in a non visible element in the UI using class locator.
+     *
+     * @param webElement the WebElement non visible in the UI.
+     */
+    public static void jsClickClassButton(WebElement webElement) {
+        ((JavascriptExecutor) DriverManager.getInstance().getDriver())
+                .executeScript("arguments[0].click();", webElement);
     }
 }

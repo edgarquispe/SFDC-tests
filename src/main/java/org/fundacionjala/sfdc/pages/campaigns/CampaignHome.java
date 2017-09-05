@@ -17,7 +17,7 @@ public class CampaignHome extends HomeBase {
      */
     @Override
     public FormBase clickNewButton() {
-        CommonActions.jsClickButton(newButton);
+        CommonActions.jsClickCssButton(newButton);
         return new CampaignForm();
     }
 

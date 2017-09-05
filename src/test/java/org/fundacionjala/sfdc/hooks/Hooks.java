@@ -11,6 +11,8 @@ import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.entities.Helper;
 import org.fundacionjala.sfdc.pages.Navigator;
+import org.fundacionjala.sfdc.pages.acccounts.AccountDetail;
+import org.fundacionjala.sfdc.pages.campaigns.CampaignDetail;
 
 /**
  * Hooks Class for actions to run before and after Scenarios.
@@ -49,15 +51,17 @@ public class Hooks {
      */
     @After(value = "@deleteAccount", order = 10)
     public void deleteCreatedAccount() {
-        Navigator.goToAccountsHome().deleteElement(helper.getItemName());
+        Navigator.goToAccountsHome().clickItemList(helper.getItemName());
+        new AccountDetail().deleteItem();
     }
 
     /**
      * Delete Campaign.
      */
-    @After(value = "@deleteCampaign", order = 9)
+    @After(value = "@deleteCampaign", order = 7)
     public void deleteCreatedItemCampaign() {
-        Navigator.goToCampaignHome().deleteElement(helper.getCampaignName());
+        Navigator.goToCampaignHome().clickItemList(helper.getCampaignName());
+        new CampaignDetail().deleteItem();
     }
 
     /**
@@ -71,7 +75,7 @@ public class Hooks {
     /**
      * Clean the helper.
      */
-    @After(order = 5)
+    @After(order = 3)
     public void cleanHelper() {
         helper = new Helper();
     }

@@ -62,7 +62,7 @@ public final class Navigator {
      */
     public static PostForm goToChatterHome() {
         if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("chatter")) {
-            new AppLauncher().clickChatterTextLink();
+            clickAppLauncher().clickChatterTextLink();
         }
         return new PostForm();
     }
@@ -73,7 +73,9 @@ public final class Navigator {
      * @return OpportunityHome.
      */
     public static OpportunityHome goToOpportunityHome() {
-        new AppLauncher().clickOpportunityButton();
+        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Opportunity")) {
+            clickAppLauncher().clickOpportunityTextLink();
+        }
         return new OpportunityHome();
     }
 
