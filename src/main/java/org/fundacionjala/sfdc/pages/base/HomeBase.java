@@ -133,6 +133,7 @@ public abstract class HomeBase extends BasePage {
      * @param name the item name.
      */
     public void clickItemList(String name) {
+        DriverManager.getInstance().getDriver().navigate().refresh();
         CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
     }
 
@@ -144,6 +145,7 @@ public abstract class HomeBase extends BasePage {
      * @return a detail base instance.
      */
     public DetailBase clickItemList(SObject sObject, String name) {
+        DriverManager.getInstance().getDriver().navigate().refresh();
         CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
         return Navigator.mapDetail(sObject);
     }
