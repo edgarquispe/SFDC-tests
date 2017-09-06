@@ -61,14 +61,6 @@ public class Hooks {
     public void deleteCreatedItemCampaign() {
         Navigator.goToCampaignHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
     }
-/*
-    *//**
-     * Refresh Page for an initial fresh state.
-     *//*
-    @After(order = 5)
-    public void refreshCurrentPage() {
-        DriverManager.getInstance().getDriver().navigate().refresh();
-    }*/
 
     /**
      * Takes a snapshot when a scenario fails.
