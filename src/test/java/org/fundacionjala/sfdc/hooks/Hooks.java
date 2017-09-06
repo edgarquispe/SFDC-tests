@@ -49,7 +49,7 @@ public class Hooks {
     /**
      * Delete Account.
      */
-    @After(value = "@deleteAccount", order = 10)
+    @After(value = "@deleteAccount", order = 5)
     public void deleteCreatedAccount() {
         Navigator.goToAccountsHome().clickItemList(SObject.ACCOUNT, helper.getItemName()).deleteItem();
     }
@@ -59,15 +59,7 @@ public class Hooks {
      */
     @After(value = "@deleteCampaign", order = 7)
     public void deleteCreatedItemCampaign() {
-        Navigator.goToAccountsHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
-    }
-
-    /**
-     * Refresh Page for an initial fresh state.
-     */
-    @After(order = 5)
-    public void refreshCurrentPage() {
-        DriverManager.getInstance().getDriver().navigate().refresh();
+        Navigator.goToCampaignHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
     }
 
     /**
