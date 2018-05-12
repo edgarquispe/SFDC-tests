@@ -31,7 +31,7 @@ public class OpportunityAssertionSteps {
      *
      * @param helper Helper.
      */
-    public OpportunityAssertionSteps(Helper helper) {
+    public OpportunityAssertionSteps(final Helper helper) {
         this.helper = helper;
         this.map = this.helper.getOpportunityMap();
         assertion = this.helper.getAssertion();
@@ -84,7 +84,7 @@ public class OpportunityAssertionSteps {
      * @param errorMessage is message error.
      */
     @Then("^message displayed \"([^\"]*)\"$")
-    public void theOpportunityShouldBeMessageDisplayed(String errorMessage) {
+    public void theOpportunityShouldBeMessageDisplayed(final String errorMessage) {
         OpportunityForm opportunityForm = new OpportunityForm();
         assertion.assertTrue(opportunityForm.messageIsDisplayed(errorMessage));
     }
@@ -95,7 +95,7 @@ public class OpportunityAssertionSteps {
      * @param error is message error.
      */
     @Then("^message displayed when field is invalid \"([^\"]*)\"$")
-    public void messageDisplayedWhenFieldIsInvalid(String error) {
+    public void messageDisplayedWhenFieldIsInvalid(final String error) {
         OpportunityForm opportunityForm = new OpportunityForm();
         assertion.assertTrue(opportunityForm.messageFieldInvalidIsDisplayed(error));
     }

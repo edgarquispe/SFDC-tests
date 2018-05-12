@@ -25,7 +25,7 @@ public class CampaignHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public FormBase clickEditButton(String name) {
+    public FormBase clickEditButton(final String name) {
         clickDropDownListLink(name);
         CommonActions.clickElement(editButton);
         return new CampaignForm();
@@ -35,7 +35,7 @@ public class CampaignHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public DetailBase clickDisplayedItem(String name) {
+    public DetailBase clickDisplayedItem(final String name) {
         isDisplayedItem(name);
         CommonActions.clickElement(displayedItem);
         return new CampaignDetail();
@@ -48,7 +48,7 @@ public class CampaignHome extends HomeBase {
      * @param campaignField Product Field like Code, Family.
      * @return boolean.
      */
-    public boolean isCampaignFieldDisplayed(String campaignName, String campaignField) {
+    public boolean isCampaignFieldDisplayed(final String campaignName, final String campaignField) {
         String xpathSelector = String.format("//a[text()='%s']/ancestor::tr/descendant::span[text()='%s']",
                 campaignName, campaignField);
         return driver.findElement(By.xpath(xpathSelector)).isDisplayed();

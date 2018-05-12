@@ -22,9 +22,6 @@ public class Home extends BasePage {
     @FindBy(css = "h1.profile-card-name > a.profile-link-label")
     private WebElement nameProfileLabel;
 
-    @FindBy(css = "div.profile-card-toplinks > a.profile-link-label")
-    private WebElement settingButton;
-
     @FindBy(id = "error")
     private WebElement errorMessageId;
 

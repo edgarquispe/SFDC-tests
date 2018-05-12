@@ -97,7 +97,7 @@ public final class Navigator {
      * @param endPoint SObject.
      * @return HomeBase.
      */
-    public static BasePage gotoPage(SObject endPoint) {
+    public static BasePage gotoPage(final SObject endPoint) {
         switch (endPoint) {
             case ACCOUNT:
                 return goToAccountsHome();
@@ -130,7 +130,7 @@ public final class Navigator {
      * @param item SObject.
      * @return HomeBase.
      */
-    public static HomeBase mapActions(SObject item) {
+    public static HomeBase mapActions(final SObject item) {
         CommonActions.waitFixedTime();
         EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductHome());
@@ -146,7 +146,7 @@ public final class Navigator {
      * @param item SObject.
      * @return FormBase.
      */
-    public static FormBase mapForm(SObject item) {
+    public static FormBase mapForm(final SObject item) {
         EnumMap<SObject, FormBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductForm());
         map.put(SObject.ACCOUNT, new AccountForm());
@@ -161,7 +161,7 @@ public final class Navigator {
      * @param item SObject.
      * @return DetailBase.
      */
-    public static DetailBase mapDetail(SObject item) {
+    public static DetailBase mapDetail(final SObject item) {
         EnumMap<SObject, DetailBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductDetail());
         map.put(SObject.ACCOUNT, new AccountDetail());

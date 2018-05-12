@@ -31,7 +31,7 @@ public final class CommonActions {
      *
      * @param webElement WebElement to wait and clear.
      */
-    public static void clearTextField(WebElement webElement) {
+    public static void clearTextField(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
     }
@@ -42,7 +42,7 @@ public final class CommonActions {
      * @param webElement WebElement to wait and fill.
      * @param text       Text to fill.
      */
-    public static void setInputField(WebElement webElement, String text) {
+    public static void setInputField(final WebElement webElement, final String text) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         clearTextField(webElement);
         webElement.sendKeys(text);
@@ -53,7 +53,7 @@ public final class CommonActions {
      *
      * @param webElement WebElement to wait and click.
      */
-    public static void clickElement(WebElement webElement) {
+    public static void clickElement(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -64,7 +64,7 @@ public final class CommonActions {
      * @param webElement WebElement to wait and get the text.
      * @return Text of element.
      */
-    public static String getTextElement(WebElement webElement) {
+    public static String getTextElement(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
     }
@@ -75,7 +75,7 @@ public final class CommonActions {
      * @param webElement WebElement.
      * @return True if the element is Displayed.
      */
-    public static boolean isElementDisplayed(WebElement webElement) {
+    public static boolean isElementDisplayed(final WebElement webElement) {
         DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.isDisplayed();
     }
@@ -97,7 +97,7 @@ public final class CommonActions {
      * @param element WebElement.
      * @param flag    boolean.
      */
-    public static void setCheckBox(WebElement element, boolean flag) {
+    public static void setCheckBox(final WebElement element, boolean flag) {
         if (!isElementSelected(element) && flag) {
             clickElement(element);
         }
@@ -127,7 +127,7 @@ public final class CommonActions {
      * @param content  is the content parameter.
      * @return the WebElement search result.
      */
-    public static WebElement findWebElement(List<WebElement> elements, String content) {
+    public static WebElement findWebElement(final List<WebElement> elements, final String content) {
         return elements.stream()
                 .filter(element -> content.contains(element.getText()))
                 .findAny()
@@ -139,7 +139,7 @@ public final class CommonActions {
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClickCssButton(WebElement webElement) {
+    public static void jsClickCssButton(final WebElement webElement) {
         ((JavascriptExecutor) DriverManager.getInstance().getDriver())
                 .executeScript(String.format(JS_SCRIPT, webElement.getAttribute("title")));
     }
@@ -149,7 +149,7 @@ public final class CommonActions {
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClickClassButton(WebElement webElement) {
+    public static void jsClickClassButton(final WebElement webElement) {
         ((JavascriptExecutor) DriverManager.getInstance().getDriver())
                 .executeScript("arguments[0].click();", webElement);
     }

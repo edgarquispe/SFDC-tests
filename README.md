@@ -1,5 +1,9 @@
 # sfdc-tests
 
+[![Build status](https://travis-ci.org/AT-04/sfdc-tests.svg?branch=develop)](https://travis-ci.org/AT-04/sfdc-tests) 
+
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=at-04-sfdc-tests&metric=alert_status)](https://sonarcloud.io/dashboard/index/at-04-sfdc-tests)
+
 WHAT IS IT?
 -----------
 

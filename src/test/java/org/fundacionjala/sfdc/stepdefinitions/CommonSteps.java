@@ -22,7 +22,7 @@ public class CommonSteps {
      *
      * @param helper Helper.
      */
-    public CommonSteps(Helper helper) {
+    public CommonSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -32,7 +32,7 @@ public class CommonSteps {
      * @param sObject SObject.
      */
     @Given("^I go to \"([^\"]*)\" Home Page$")
-    public void iGoToHomePage(SObject sObject) {
+    public void iGoToHomePage(final SObject sObject) {
         DriverManager.getInstance().getDriver().navigate().refresh();
         CommonActions.waitFixedTime();
         Navigator.gotoPage(sObject);
@@ -44,7 +44,7 @@ public class CommonSteps {
      * @param sObject SObject.
      */
     @And("^I click on New \"([^\"]*)\"$")
-    public void iClickOnNew(SObject sObject) {
+    public void iClickOnNew(final SObject sObject) {
         CommonActions.waitFixedTime();
         Navigator.mapActions(sObject).clickNewButton();
     }
@@ -55,7 +55,7 @@ public class CommonSteps {
      * @param sObject SObject.
      */
     @When("^I click on Edit \"([^\"]*)\"$")
-    public void iClickOnEdit(SObject sObject) {
+    public void iClickOnEdit(final SObject sObject) {
         Navigator.mapActions(sObject).clickEditButton(helper.getItemName());
     }
 
@@ -65,7 +65,7 @@ public class CommonSteps {
      * @param sObject SObject.
      */
     @And("^I delete the \"([^\"]*)\"$")
-    public void iDeleteThe(SObject sObject) {
+    public void iDeleteThe(final SObject sObject) {
         Navigator.mapActions(sObject).deleteElement(helper.getItemName());
     }
 
@@ -75,7 +75,7 @@ public class CommonSteps {
      * @param sObject SObject.
      */
     @And("^I click on the \"([^\"]*)\" item$")
-    public void iClickOnTheItem(SObject sObject) {
+    public void iClickOnTheItem(final SObject sObject) {
         Navigator.mapActions(sObject).clickItemList(helper.getItemName());
     }
 

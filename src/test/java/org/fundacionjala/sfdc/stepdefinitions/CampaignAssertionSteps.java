@@ -29,7 +29,7 @@ public class CampaignAssertionSteps {
      *
      * @param helper Helper.
      */
-    public CampaignAssertionSteps(Helper helper) {
+    public CampaignAssertionSteps(final Helper helper) {
         this.helper = helper;
         this.map = this.helper.getCampaignMap();
         this.assertion = helper.getAssertion();

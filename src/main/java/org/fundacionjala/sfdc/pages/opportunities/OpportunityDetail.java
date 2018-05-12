@@ -23,13 +23,6 @@ public class OpportunityDetail extends DetailBase {
     @FindBy(xpath = " //p[contains(text(), 'Amount')]/following-sibling::P")
     private WebElement amountText;
 
-    @FindBy(xpath = "//span[contains(@class,'current')]/following-sibling::span")
-    private WebElement stageText;
-
-    @FindBy(className = "errorsList")
-    private WebElement errorMessage;
-
-
     /**
      * {@inheritDoc}
      */

@@ -39,9 +39,6 @@ public class AccountForm extends FormBase {
     @FindBy(xpath = "//span[text()='Description']/parent::label/following-sibling::textarea")
     private WebElement descriptionInputField;
 
-    @FindBy(xpath = "//span[text()='Parent Account']/parent::label/following-sibling::div")
-    private WebElement parentAccountSearch;
-
     @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
     private WebElement phoneInputField;
 
@@ -82,16 +79,10 @@ public class AccountForm extends FormBase {
     @FindBy(xpath = "//span[text()='Shipping Country']/parent::label/following-sibling::input")
     private WebElement shippingCountryInputField;
 
-    @FindBy(css = "button[title='Save']")
-    private WebElement saveAccountButton;
-
-    @FindBy(xpath = "//div[@title='Edit']")
-    private WebElement selectParent;
-
     /**
      * {@inheritDoc}
      */
-    public AccountDetail newItem(String name) {
+    public AccountDetail newItem(final String name) {
         setAccountNameInputText(name);
         clickSaveButton();
         return new AccountDetail();
@@ -104,9 +95,10 @@ public class AccountForm extends FormBase {
      *
      * @param accountName String.
      */
-    private void setAccountNameInputText(String accountName) {
+    private void setAccountNameInputText(final String accountName) {
         try {
-            DriverManager.getInstance().setUpdateWait(3);
+            final int timeout = 3;
+            DriverManager.getInstance().setUpdateWait(timeout);
             CommonActions.setInputField(accountNameNewInputField, accountName);
         } catch (TimeoutException | NoSuchElementException e) {
             CommonActions.setInputField(accountNameEditInputField, accountName);
@@ -122,7 +114,7 @@ public class AccountForm extends FormBase {
      *
      * @param type String.
      */
-    private void setTypeDropDownList(String type) {
+    private void setTypeDropDownList(final String type) {
         CommonActions.clickElement(typeDropDownList);
         String cssSelector = String.format("a[title='%s']", type);
         driver.findElement(By.cssSelector(cssSelector)).click();
@@ -133,7 +125,7 @@ public class AccountForm extends FormBase {
      *
      * @param webSite String.
      */
-    private void setWebsiteInputText(String webSite) {
+    private void setWebsiteInputText(final String webSite) {
         CommonActions.setInputField(websiteInputField, webSite);
     }
 
@@ -142,7 +134,7 @@ public class AccountForm extends FormBase {
      *
      * @param description String.
      */
-    private void setDescriptionInputText(String description) {
+    private void setDescriptionInputText(final String description) {
         CommonActions.setInputField(descriptionInputField, description);
     }
 
@@ -151,7 +143,7 @@ public class AccountForm extends FormBase {
      *
      * @param phone String.
      */
-    private void setPhoneInputText(String phone) {
+    private void setPhoneInputText(final String phone) {
         CommonActions.setInputField(phoneInputField, phone);
     }
 
@@ -160,7 +152,7 @@ public class AccountForm extends FormBase {
      *
      * @param industry String.
      */
-    private void setIndustryDropDownList(String industry) {
+    private void setIndustryDropDownList(final String industry) {
         CommonActions.clickElement(industryDropDownList);
         String cssSelector = String.format("a[title='%s']", industry);
         driver.findElement(By.cssSelector(cssSelector)).click();
@@ -171,7 +163,7 @@ public class AccountForm extends FormBase {
      *
      * @param employees String.
      */
-    private void setEmployeesInputText(String employees) {
+    private void setEmployeesInputText(final String employees) {
         CommonActions.setInputField(employeesInputField, employees);
     }
 
@@ -182,7 +174,7 @@ public class AccountForm extends FormBase {
      *
      * @param billingStreet String.
      */
-    private void setBillingStreetInputText(String billingStreet) {
+    private void setBillingStreetInputText(final String billingStreet) {
         CommonActions.setInputField(billingStreetTextArea, billingStreet);
     }
 
@@ -191,7 +183,7 @@ public class AccountForm extends FormBase {
      *
      * @param billingCity String.
      */
-    private void setBillingCityInputText(String billingCity) {
+    private void setBillingCityInputText(final String billingCity) {
         CommonActions.setInputField(billingCityInputField, billingCity);
     }
 
@@ -200,7 +192,7 @@ public class AccountForm extends FormBase {
      *
      * @param billingZip String.
      */
-    private void setBillingZipInputText(String billingZip) {
+    private void setBillingZipInputText(final String billingZip) {
         CommonActions.setInputField(billingZipInputField, billingZip);
     }
 
@@ -209,7 +201,7 @@ public class AccountForm extends FormBase {
      *
      * @param billingState String.
      */
-    private void setBillingStateInputText(String billingState) {
+    private void setBillingStateInputText(final String billingState) {
         CommonActions.setInputField(billingStateInputField, billingState);
     }
 
@@ -218,7 +210,7 @@ public class AccountForm extends FormBase {
      *
      * @param billingCountry String.
      */
-    private void setBillingCountryInputText(String billingCountry) {
+    private void setBillingCountryInputText(final String billingCountry) {
         CommonActions.setInputField(billingCountryInputField, billingCountry);
     }
 
@@ -227,7 +219,7 @@ public class AccountForm extends FormBase {
      *
      * @param shippingStreet String.
      */
-    private void setShippingStreetInputText(String shippingStreet) {
+    private void setShippingStreetInputText(final String shippingStreet) {
         CommonActions.setInputField(shippingStreetInputField, shippingStreet);
     }
 
@@ -236,7 +228,7 @@ public class AccountForm extends FormBase {
      *
      * @param shippingCity String.
      */
-    private void setShippingCityInputText(String shippingCity) {
+    private void setShippingCityInputText(final String shippingCity) {
         CommonActions.setInputField(shippingCityInputField, shippingCity);
     }
 
@@ -245,7 +237,7 @@ public class AccountForm extends FormBase {
      *
      * @param shippingZip String.
      */
-    private void setShippingZipInputText(String shippingZip) {
+    private void setShippingZipInputText(final String shippingZip) {
         CommonActions.setInputField(shippingZipInputField, shippingZip);
     }
 
@@ -254,7 +246,7 @@ public class AccountForm extends FormBase {
      *
      * @param shippingState String.
      */
-    private void setShippingStateInputText(String shippingState) {
+    private void setShippingStateInputText(final String shippingState) {
         CommonActions.setInputField(shippingStateInputField, shippingState);
     }
 
@@ -263,7 +255,7 @@ public class AccountForm extends FormBase {
      *
      * @param shippingCountry String.
      */
-    private void setShippingCountryInputText(String shippingCountry) {
+    private void setShippingCountryInputText(final String shippingCountry) {
         CommonActions.setInputField(shippingCountryInputField, shippingCountry);
     }
 
@@ -273,7 +265,7 @@ public class AccountForm extends FormBase {
      * @param formMap Map<AccountFormField, String>.
      * @return Map AccountFormField, IStrategySteps.
      */
-    private Map<AccountFormField, IStrategySteps> getStrategyMap(Map<AccountFormField, String> formMap) {
+    private Map<AccountFormField, IStrategySteps> getStrategyMap(final Map<AccountFormField, String> formMap) {
         EnumMap<AccountFormField, IStrategySteps> strategyMap = new EnumMap<>(AccountFormField.class);
         strategyMap.put(AccountFormField.ACCOUNT_NAME,
                 () -> setAccountNameInputText(formMap.get(AccountFormField.ACCOUNT_NAME)));
@@ -315,7 +307,7 @@ public class AccountForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public AccountDetail fillAndSaveForm(Map<AccountFormField, String> formMapData) {
+    public AccountDetail fillAndSaveForm(final Map<AccountFormField, String> formMapData) {
         formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
         clickSaveButton();
         return new AccountDetail();

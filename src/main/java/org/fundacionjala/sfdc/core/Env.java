@@ -55,7 +55,7 @@ public final class Env {
      * @param env String option.
      * @return String result.
      */
-    public String getEnv(String env) {
+    public String getEnv(final String env) {
         String property = System.getProperty(env);
         if (property == null) {
             return properties.getProperty(env);

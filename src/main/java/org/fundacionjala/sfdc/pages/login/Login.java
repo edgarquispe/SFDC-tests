@@ -47,7 +47,7 @@ public class Login extends BasePage {
      * @param username User Name for Sales Force.
      * @return Login pageObject.
      */
-    public Login setUserName(String username) {
+    public Login setUserName(final String username) {
         CommonActions.setInputField(userNameInputField, username);
         return this;
     }
@@ -58,7 +58,7 @@ public class Login extends BasePage {
      * @param password Password for Sales Force.
      * @return Login pageObject.
      */
-    public Login setPassword(String password) {
+    public Login setPassword(final String password) {
         CommonActions.setInputField(passwordInputField, password);
         return this;
     }
@@ -80,7 +80,7 @@ public class Login extends BasePage {
      * @param password Password for Sales Force.
      * @return Home page after login to Salesforce application.
      */
-    public Home loginAs(String username, String password) {
+    public Home loginAs(final String username, final String password) {
         return setUserName(username).setPassword(password).clickLogin();
     }
 
@@ -91,12 +91,11 @@ public class Login extends BasePage {
      * @param password Password for Sales Force with other user.
      * @return Home page after login to Salesforce application.
      */
-    public Home loginOtherUser(String userName, String password) {
+    public Home loginOtherUser(final String userName, final String password) {
         Home homePage;
         try {
             DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
-            homePage = new Home();
-            homePage = verifyCorrectUser(userName, password, homePage);
+            homePage = verifyCorrectUser(userName, password);
             homePage.clickHomeLink();
         } catch (WebDriverException e) {
             LOGGER.error("WebDriverException");
@@ -114,10 +113,10 @@ public class Login extends BasePage {
      *
      * @param userName User Name for Sales Force with other user.
      * @param password Password for Sales Force with other user.
-     * @param homePage pageObject.
      * @return Home page after login with correct session.
      */
-    private Home verifyCorrectUser(String userName, String password, Home homePage) {
+    private Home verifyCorrectUser(final String userName, final String password) {
+        final Home homePage = new Home();
         Profile profile = homePage.clickProfileLinkLabel();
         if (!profile.isCorrectUserLogged(userName)) {
             homePage.clickLogOutLink();
@@ -143,7 +142,7 @@ public class Login extends BasePage {
      * @param password Password for Sales Force with other user.
      * @return Home page after login to Salesforce application.
      */
-    public static Home loginInitial(String userName, String password) {
+    public static Home loginInitial(final String userName, final String password) {
         Login login = new Login();
         return login.isUserLogged() ? login.loginOtherUser(userName, password) : login.loginAs(userName, password);
     }

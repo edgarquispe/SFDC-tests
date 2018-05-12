@@ -53,7 +53,7 @@ public class Helper {
      *
      * @param itemName String.
      */
-    public void setItemName(String itemName) {
+    public void setItemName(final String itemName) {
         this.itemName = concatPrefixSuffix(itemName);
     }
 
@@ -71,7 +71,7 @@ public class Helper {
      *
      * @param postMessage String.
      */
-    public void setPostMessage(String postMessage) {
+    public void setPostMessage(final String postMessage) {
         this.postMessage = postMessage;
     }
 
@@ -89,7 +89,7 @@ public class Helper {
      *
      * @param commentPostMessage String.
      */
-    public void setCommentPostMessage(String commentPostMessage) {
+    public void setCommentPostMessage(final String commentPostMessage) {
         this.commentPostMessage = concatPrefixSuffix(commentPostMessage);
     }
 
@@ -107,7 +107,7 @@ public class Helper {
      *
      * @param campaignName String.
      */
-    public void setCampaignName(String campaignName) {
+    public void setCampaignName(final String campaignName) {
         this.campaignName = concatPrefixSuffix(campaignName);
     }
 
@@ -125,7 +125,7 @@ public class Helper {
      *
      * @param opportunityName String.
      */
-    public void setOpportunityName(String opportunityName) {
+    public void setOpportunityName(final String opportunityName) {
         this.opportunityName = concatPrefixSuffix(opportunityName);
     }
 
@@ -143,7 +143,7 @@ public class Helper {
      *
      * @param assertion a instance of Soft Assertion.
      */
-    public void setAssertion(Assertion assertion) {
+    public void setAssertion(final Assertion assertion) {
         this.assertion = assertion;
     }
 
@@ -161,7 +161,7 @@ public class Helper {
      *
      * @param accountMap is the account map.
      */
-    public void setAccountMap(Map<AccountFormField, String> accountMap) {
+    public void setAccountMap(final Map<AccountFormField, String> accountMap) {
         this.accountMap = new EnumMap<>(accountMap);
         this.accountMap.replace(AccountFormField.ACCOUNT_NAME, getItemName());
     }
@@ -180,7 +180,7 @@ public class Helper {
      *
      * @param campaignMap is the campaign map.
      */
-    public void setCampaignMap(Map<CampaignFormField, String> campaignMap) {
+    public void setCampaignMap(final Map<CampaignFormField, String> campaignMap) {
         this.campaignMap = new EnumMap<>(campaignMap);
         this.campaignMap.replace(CampaignFormField.CAMPAIGN_NAME, getCampaignName());
     }
@@ -199,7 +199,7 @@ public class Helper {
      *
      * @param opportunityMap is the opportunity map.
      */
-    public void setOpportunityMap(Map<OpportunityFormField, String> opportunityMap) {
+    public void setOpportunityMap(final Map<OpportunityFormField, String> opportunityMap) {
         this.opportunityMap = new EnumMap<>(opportunityMap);
         this.opportunityMap.replace(OpportunityFormField.OPPORTUNITY_NAME, getOpportunityName());
         this.opportunityMap.replace(OpportunityFormField.OPPORTUNITY_CAMPAIGN, getCampaignName());
@@ -220,7 +220,7 @@ public class Helper {
      *
      * @param productMap is the product map.
      */
-    public void setProductMap(Map<ProductFormField, String> productMap) {
+    public void setProductMap(final Map<ProductFormField, String> productMap) {
         this.productMap = new EnumMap<>(productMap);
         this.productMap.replace(ProductFormField.PRODUCT_NAME, getItemName());
     }
@@ -231,7 +231,7 @@ public class Helper {
      * @param msg expected message.
      * @return the rebuilt message.
      */
-    public String rebuiltMessage(String msg) {
+    public String rebuiltMessage(final String msg) {
         return msg.replaceAll(REGEX_QUOTES_INSIDE, getItemName());
     }
 
@@ -241,7 +241,7 @@ public class Helper {
      * @param name the original parameter name.
      * @return the concat result.
      */
-    private String concatPrefixSuffix(String name) {
+    private String concatPrefixSuffix(final String name) {
         final Date date = Calendar.getInstance().getTime();
         return name.isEmpty() ? name : String.format("%s%s%s", "AT-04", name, Long.toHexString(date.getTime()));
     }

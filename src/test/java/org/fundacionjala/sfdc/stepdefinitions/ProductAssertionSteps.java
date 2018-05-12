@@ -27,7 +27,7 @@ public class ProductAssertionSteps {
      *
      * @param helper Helper.
      */
-    public ProductAssertionSteps(Helper helper) {
+    public ProductAssertionSteps(final Helper helper) {
         this.helper = helper;
         this.map = this.helper.getProductMap();
         this.assertion = helper.getAssertion();

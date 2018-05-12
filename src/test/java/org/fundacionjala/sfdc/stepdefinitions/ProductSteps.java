@@ -22,7 +22,7 @@ public class ProductSteps {
      *
      * @param helper Helper.
      */
-    public ProductSteps(Helper helper) {
+    public ProductSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -32,7 +32,7 @@ public class ProductSteps {
      * @param formMapData Map.
      */
     @When("^I fill the Product form with:$")
-    public void iFillTheProductFormWith(Map<ProductFormField, String> formMapData) {
+    public void iFillTheProductFormWith(final Map<ProductFormField, String> formMapData) {
         helper.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
         helper.setProductMap(formMapData);
         new ProductForm().fillAndSaveForm(helper.getProductMap());

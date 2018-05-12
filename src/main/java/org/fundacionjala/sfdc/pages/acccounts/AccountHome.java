@@ -14,7 +14,7 @@ public class AccountHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public AccountDetail clickDisplayedItem(String name) {
+    public AccountDetail clickDisplayedItem(final String name) {
         isDisplayedItem(name);
         displayedItem.click();
         return new AccountDetail();
@@ -33,7 +33,7 @@ public class AccountHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public AccountForm clickEditButton(String name) {
+    public AccountForm clickEditButton(final String name) {
         clickDropDownListLink(name);
         CommonActions.jsClickCssButton(editButton);
         return new AccountForm();
@@ -46,7 +46,7 @@ public class AccountHome extends HomeBase {
      * @param accountField Account Fields .
      * @return boolean.
      */
-    public boolean isAccountFieldDisplayed(String accountName, String accountField) {
+    public boolean isAccountFieldDisplayed(final String accountName, final String accountField) {
         String xpathSelector = String.format("//a[text()='%s']/ancestor::tr/descendant::span[text()='%s']",
                 accountName, accountField);
         return driver.findElement(By.xpath(xpathSelector)).isDisplayed();

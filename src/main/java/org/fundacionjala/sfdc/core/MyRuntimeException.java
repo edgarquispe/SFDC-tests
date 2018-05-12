@@ -11,7 +11,7 @@ public class MyRuntimeException extends RuntimeException {
      * @param message contains the message of exception.
      * @param cause   contains the runtime exception.
      */
-    public MyRuntimeException(String message, Throwable cause) {
+    public MyRuntimeException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }

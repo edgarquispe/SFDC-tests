@@ -17,7 +17,7 @@ public class Profile extends BasePage {
      * @param userName userName of Sales Force.
      * @return True if the user is correct logged.
      */
-    public boolean isCorrectUserLogged(String userName) {
+    public boolean isCorrectUserLogged(final String userName) {
         return userName.equals(currentUserEmail.getText());
     }
 }

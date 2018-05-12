@@ -22,7 +22,7 @@ public class AccountsSteps {
      *
      * @param helper Helper.
      */
-    public AccountsSteps(Helper helper) {
+    public AccountsSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -32,7 +32,7 @@ public class AccountsSteps {
      * @param formMapData Map.
      */
     @When("^I fill the Account form with:$")
-    public void iFillTheAccountFormWith(Map<AccountFormField, String> formMapData) {
+    public void iFillTheAccountFormWith(final Map<AccountFormField, String> formMapData) {
         helper.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));
         helper.setAccountMap(formMapData);
         new AccountForm().fillAndSaveForm(helper.getAccountMap());

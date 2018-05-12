@@ -34,7 +34,7 @@ public class ProductForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public ProductDetail newItem(String name) {
+    public ProductDetail newItem(final String name) {
         setProductNameInputText(name);
         clickSaveButton();
         return new ProductDetail();
@@ -43,7 +43,7 @@ public class ProductForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public ProductDetail fillAndSaveForm(Map<ProductFormField, String> formMapData) {
+    public ProductDetail fillAndSaveForm(final Map<ProductFormField, String> formMapData) {
         formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
         clickSaveButton();
         return new ProductDetail();
@@ -54,7 +54,7 @@ public class ProductForm extends FormBase {
      *
      * @param productName String.
      */
-    private void setProductNameInputText(String productName) {
+    private void setProductNameInputText(final String productName) {
         CommonActions.setInputField(productNameInputText, productName);
     }
 
@@ -63,7 +63,7 @@ public class ProductForm extends FormBase {
      *
      * @param productCode String.
      */
-    private void setProductCodeInputText(String productCode) {
+    private void setProductCodeInputText(final String productCode) {
         CommonActions.setInputField(productCodeInputText, productCode);
     }
 
@@ -72,7 +72,7 @@ public class ProductForm extends FormBase {
      *
      * @param productDescription String.
      */
-    private void setProductDescriptionTextArea(String productDescription) {
+    private void setProductDescriptionTextArea(final String productDescription) {
         CommonActions.setInputField(productDescriptionTextArea, productDescription);
     }
 
@@ -81,7 +81,7 @@ public class ProductForm extends FormBase {
      *
      * @param productFamily String.
      */
-    private void setProductFamilySelect(String productFamily) {
+    private void setProductFamilySelect(final String productFamily) {
         CommonActions.clickElement(productFamilySelect);
         String cssSelector = String.format("a[title='%s']", productFamily);
         driver.findElement(By.cssSelector(cssSelector)).click();
@@ -104,7 +104,7 @@ public class ProductForm extends FormBase {
      * @param formMap Map<ProductFormField, String>.
      * @return Map ProductFormField, IStrategySteps.
      */
-    private Map<ProductFormField, IStrategySteps> getStrategyMap(Map<ProductFormField, String> formMap) {
+    private Map<ProductFormField, IStrategySteps> getStrategyMap(final Map<ProductFormField, String> formMap) {
         EnumMap<ProductFormField, IStrategySteps> strategyMap = new EnumMap<>(ProductFormField.class);
         strategyMap.put(ProductFormField.PRODUCT_NAME,
                 () -> setProductNameInputText(formMap.get(ProductFormField.PRODUCT_NAME)));

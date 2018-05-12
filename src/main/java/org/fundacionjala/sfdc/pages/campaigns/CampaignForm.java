@@ -23,7 +23,7 @@ public class CampaignForm extends FormBase {
      *
      * @param campaignName String.
      */
-    private void setCampaignNameInputText(String campaignName) {
+    private void setCampaignNameInputText(final String campaignName) {
         if (CommonActions.isElementDisplayed(campaignNameInputText)) {
             CommonActions.setInputField(campaignNameInputText, campaignName);
         }
@@ -32,7 +32,7 @@ public class CampaignForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public CampaignDetail fillAndSaveForm(Map<CampaignFormField, String> formMapData) {
+    public CampaignDetail fillAndSaveForm(final Map<CampaignFormField, String> formMapData) {
         formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
         clickSaveButton();
         return new CampaignDetail();
@@ -44,7 +44,7 @@ public class CampaignForm extends FormBase {
      * @param formMap Map.
      * @return Map.
      */
-    private Map<CampaignFormField, IStrategySteps> getStrategyMap(Map<CampaignFormField, String> formMap) {
+    private Map<CampaignFormField, IStrategySteps> getStrategyMap(final Map<CampaignFormField, String> formMap) {
         EnumMap<CampaignFormField, IStrategySteps> strategyMap = new EnumMap<>(CampaignFormField.class);
         strategyMap.put(CampaignFormField.CAMPAIGN_NAME,
                 () -> setCampaignNameInputText(formMap.get(CampaignFormField.CAMPAIGN_NAME)));

@@ -24,7 +24,7 @@ public class CommonAssertionSteps {
      *
      * @param helper Helper.
      */
-    public CommonAssertionSteps(Helper helper) {
+    public CommonAssertionSteps(final Helper helper) {
         this.helper = helper;
         assertion = this.helper.getAssertion();
     }
@@ -46,7 +46,7 @@ public class CommonAssertionSteps {
      * @param sObject SObject enum parameter.
      */
     @Then("^\"([^\"]*)\" message should be displayed in \"([^\"]*)\" form$")
-    public void messageShouldBeDisplayedInForm(String msg, SObject sObject) {
+    public void messageShouldBeDisplayedInForm(final String msg, final SObject sObject) {
         assertion.assertTrue(Navigator.mapForm(sObject).errorNotificationText().contains(msg));
         AccountForm accountForm = new AccountForm();
         accountForm.clickCancelButton();
@@ -59,7 +59,7 @@ public class CommonAssertionSteps {
      * @param sObject SObject enum parameter.
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Home Page$")
-    public void messageShouldBeDisplayedInHomePage(String msg, SObject sObject) {
+    public void messageShouldBeDisplayedInHomePage(final String msg, final SObject sObject) {
         final String msgExpected = helper.rebuiltMessage(msg);
         assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msgExpected));
     }
@@ -71,7 +71,7 @@ public class CommonAssertionSteps {
      * @param sObject SObject enum parameter.
      */
     @Then("^\"(.*)\" message should be displayed in \"([^\"]*)\" Detail Page$")
-    public void messageShouldBeDisplayedInDetailPage(String msg, SObject sObject) {
+    public void messageShouldBeDisplayedInDetailPage(final String msg, final SObject sObject) {
         final String msgExpected = helper.rebuiltMessage(msg);
         assertion.assertTrue(Navigator.mapDetail(sObject).successMessageText().contains(msgExpected));
     }

@@ -25,12 +25,6 @@ public class AppLauncher extends BasePage {
     @FindBy(css = ".salesforceIdentityAppLauncherDesktopInternal .uiButton")
     private WebElement openAllAppsButton;
 
-    @FindBy(xpath = "//button[@class='slds-button']")
-    private WebElement openAllItemsButton;
-
-    @FindBy(css = "a[title='Chatter']")
-    private WebElement chatterButton;
-
     @FindBy(xpath = "//span[contains(@class, 'label-ctr')]/child::span[text()='Accounts']")
     private WebElement accountsTextLink;
 

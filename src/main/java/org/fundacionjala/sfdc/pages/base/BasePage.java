@@ -29,7 +29,7 @@ public abstract class BasePage {
      *
      * @param url Url of web page.
      */
-    public void loadUrlPage(String url) {
+    public void loadUrlPage(final String url) {
         driver.get(url);
     }
 

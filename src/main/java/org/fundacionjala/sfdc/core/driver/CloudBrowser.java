@@ -24,7 +24,7 @@ public abstract class CloudBrowser implements IBrowser {
      *
      * @param url This variable contains the url authentication.
      */
-    public CloudBrowser(String url) {
+    public CloudBrowser(final String url) {
         this.url = url;
     }
 

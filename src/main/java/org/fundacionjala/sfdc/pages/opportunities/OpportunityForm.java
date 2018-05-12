@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.fundacionjala.sfdc.core.CommonActions;
 import org.fundacionjala.sfdc.core.driver.DriverManager;
 import org.fundacionjala.sfdc.pages.IStrategySteps;
-import org.fundacionjala.sfdc.pages.base.DetailBase;
 import org.fundacionjala.sfdc.pages.base.FormBase;
 
 /**
@@ -27,9 +26,6 @@ public class OpportunityForm extends FormBase {
 
     @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div")
     private WebElement opportunityAccountNameInputField;
-
-    @FindBy(css = ".lookup__list .lookup__item.default.uiAutocompleteOption.forceSearchInputLookupDesktopOption > a")
-    private WebElement selectOpportunityAccountNameInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
     private WebElement opportunityTypeInputField;
@@ -74,9 +70,6 @@ public class OpportunityForm extends FormBase {
     @FindBy(xpath = "//span[contains(text(),'Description')]/parent::label/following-sibling::textarea")
     private WebElement opportunityDescriptionInputField;
 
-    @FindBy(css = "button[title='Save']")
-    private WebElement saveOpportunityButton;
-
     @FindBy(className = "errorsList")
     private WebElement errorMessage;
 
@@ -93,7 +86,7 @@ public class OpportunityForm extends FormBase {
      * @param opportunityName field.
      * @return this.
      */
-    public OpportunityForm setOpportunityNameInputText(String opportunityName) {
+    public OpportunityForm setOpportunityNameInputText(final String opportunityName) {
         CommonActions.setInputField(opportunityNameInputField, opportunityName);
         return this;
     }
@@ -109,7 +102,7 @@ public class OpportunityForm extends FormBase {
      * @param accountName field.
      * @return this.
      */
-    public OpportunityForm setAccountNameSelect(String accountName) {
+    public OpportunityForm setAccountNameSelect(final String accountName) {
         clickDeleteAccountIcon(accountName);
         clickAccountName();
         CommonActions.clickElement(selectedDivFormElement(accountName));
@@ -121,7 +114,7 @@ public class OpportunityForm extends FormBase {
      * @param opportunityType field.
      * @return this.
      */
-    public OpportunityForm setTypeSelect(String opportunityType) {
+    public OpportunityForm setTypeSelect(final String opportunityType) {
         CommonActions.clickElement(opportunityTypeInputField);
         selectedAformElement(opportunityType);
         return this;
@@ -138,7 +131,7 @@ public class OpportunityForm extends FormBase {
      * @param campaignName field.
      * @return this.
      */
-    public OpportunityForm setPrimaryCampaignSourceSelect(String campaignName) {
+    public OpportunityForm setPrimaryCampaignSourceSelect(final String campaignName) {
         clickCampaignInputName();
         CommonActions.clickElement(selectedDivFormElement(campaignName));
         return this;
@@ -159,7 +152,7 @@ public class OpportunityForm extends FormBase {
      * @param stage field.
      * @return this.
      */
-    public OpportunityForm setStageSelect(String stage) {
+    public OpportunityForm setStageSelect(final String stage) {
 
         CommonActions.clickElement(opportunityStageInputField);
         selectedAformElement(stage);
@@ -171,7 +164,7 @@ public class OpportunityForm extends FormBase {
      * @param probability field.
      * @return this.
      */
-    public OpportunityForm setProbabilityInputText(String probability) {
+    public OpportunityForm setProbabilityInputText(final String probability) {
         CommonActions.setInputField(opportunityProbabilityInputField, probability);
         return this;
     }
@@ -202,7 +195,7 @@ public class OpportunityForm extends FormBase {
      * @param amount field.
      * @return this.
      */
-    public OpportunityForm setAmountInputText(String amount) {
+    public OpportunityForm setAmountInputText(final String amount) {
 
         CommonActions.setInputField(opportunityAmountInputField, amount);
         return this;
@@ -212,7 +205,7 @@ public class OpportunityForm extends FormBase {
      * @param lossReason field.
      * @return this.
      */
-    public OpportunityForm setLossReasonSelect(String lossReason) {
+    public OpportunityForm setLossReasonSelect(final String lossReason) {
         CommonActions.clickElement(opportunityLossReasonInputField);
         selectedAformElement(lossReason);
         return this;
@@ -222,7 +215,7 @@ public class OpportunityForm extends FormBase {
      * @param lead field.
      * @return this.
      */
-    public OpportunityForm setLeadSourceSelect(String lead) {
+    public OpportunityForm setLeadSourceSelect(final String lead) {
 
         CommonActions.clickElement(opportunityLeadInputField);
         selectedAformElement(lead);
@@ -233,7 +226,7 @@ public class OpportunityForm extends FormBase {
      * @param nextStep field.
      * @return this.
      */
-    public OpportunityForm setNextStepInputText(String nextStep) {
+    public OpportunityForm setNextStepInputText(final String nextStep) {
 
         CommonActions.setInputField(opportunityNextStepInputField, nextStep);
         return this;
@@ -243,25 +236,16 @@ public class OpportunityForm extends FormBase {
      * @param description field.
      * @return this.
      */
-    public OpportunityForm setDescriptionTextArea(String description) {
+    public OpportunityForm setDescriptionTextArea(final String description) {
         CommonActions.setInputField(opportunityDescriptionInputField, description);
         return this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public DetailBase setObject(Map<OpportunityFormField, String> formMapData) {
-        formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
-        clickSaveButton();
-        return new OpportunityDetail();
     }
 
     /**
      * @param formMap strategy.
      * @return strategyMap.
      */
-    private Map<OpportunityFormField, IStrategySteps> getStrategyMap(Map<OpportunityFormField, String> formMap) {
+    private Map<OpportunityFormField, IStrategySteps> getStrategyMap(final Map<OpportunityFormField, String> formMap) {
         EnumMap<OpportunityFormField, IStrategySteps> strategyMap = new EnumMap<>(OpportunityFormField.class);
 
         strategyMap.put(OpportunityFormField.OPPORTUNITY_NAME,
@@ -313,7 +297,7 @@ public class OpportunityForm extends FormBase {
     /**
      * @param element web.
      */
-    public void selectedAformElement(String element) {
+    public void selectedAformElement(final String element) {
         String selector = String.format("//a[contains(@title,'%s')]", element);
         driver.findElement(By.xpath(selector)).click();
     }
@@ -324,7 +308,7 @@ public class OpportunityForm extends FormBase {
      * @param element String.
      * @return WebElement.
      */
-    public WebElement selectedDivFormElement(String element) {
+    public WebElement selectedDivFormElement(final String element) {
         String selector = String.format("div[title = '%s']", element);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
     }
@@ -332,7 +316,7 @@ public class OpportunityForm extends FormBase {
     /**
      * {@inheritDoc}
      */
-    public OpportunityDetail fillAndSaveForm(Map<OpportunityFormField, String> formMapData) {
+    public OpportunityDetail fillAndSaveForm(final Map<OpportunityFormField, String> formMapData) {
         formMapData.forEach((key, value) -> getStrategyMap(formMapData).get(key).performStep());
         clickSaveButton();
         return new OpportunityDetail();
@@ -341,11 +325,12 @@ public class OpportunityForm extends FormBase {
     /**
      * @param accountName field.
      */
-    public void clickDeleteAccountIcon(String accountName) {
+    public void clickDeleteAccountIcon(final String accountName) {
         String xpathSelector = String.format("//span[text()='%s']/following-sibling::a/"
                 + "child::span[@class='deleteIcon']", accountName);
         try {
-            DriverManager.getInstance().setUpdateWait(3);
+            final int timeOut = 3;
+            DriverManager.getInstance().setUpdateWait(timeOut);
             driver.findElement(By.xpath(xpathSelector)).click();
         } catch (NotFoundException e) {
             LOGGER.error("Timeout exception triggered");
@@ -361,7 +346,7 @@ public class OpportunityForm extends FormBase {
      * @param message is error message.
      * @return if message is correct.
      */
-    public Boolean messageIsDisplayed(String message) {
+    public Boolean messageIsDisplayed(final String message) {
         return errorMessage.getText().contains(message);
     }
 
@@ -371,7 +356,7 @@ public class OpportunityForm extends FormBase {
      * @param error is error.
      * @return if message is correct.
      */
-    public boolean messageFieldInvalidIsDisplayed(String error) {
+    public boolean messageFieldInvalidIsDisplayed(final String error) {
         return errorFieldInvalidAccount.getText().contains(error)
                 && errorFieldInvalidCampaign.getText().contains(error);
     }

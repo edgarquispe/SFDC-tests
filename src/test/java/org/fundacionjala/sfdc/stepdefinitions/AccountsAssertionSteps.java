@@ -30,7 +30,7 @@ public class AccountsAssertionSteps {
      *
      * @param helper Helper.
      */
-    public AccountsAssertionSteps(Helper helper) {
+    public AccountsAssertionSteps(final Helper helper) {
         this.helper = helper;
         this.map = this.helper.getAccountMap();
         this.assertion = helper.getAssertion();

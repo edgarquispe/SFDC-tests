@@ -31,9 +31,6 @@ public class PostForm extends BasePage {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    @FindBy(xpath = "//span[text()='Post']")
-    private WebElement clickPostTabBar;
-
     @FindBy(css = ".dummyControlsContainer .slds-button--neutral.uiButton")
     private WebElement sectionPostTextAreaField;
 
@@ -64,12 +61,6 @@ public class PostForm extends BasePage {
     @FindBy(xpath = "//span[text()='Comment']")
     private WebElement confirmCommentButton;
 
-    @FindBy(css = ".cuf-publisherAttachmentButton")
-    private WebElement attachmentIcon;
-
-    @FindBy(css = ".forceModalSpinner.hideEl")
-    private WebElement spinner;
-
     //Error message
     @FindBy(css = "div[class='desktop  forcePageError'] span[class='genericError uiOutputText']")
     private WebElement errorMessage;
@@ -87,7 +78,7 @@ public class PostForm extends BasePage {
      * @param postText text.
      * @return PostForm pageObject.
      */
-    public PostForm setTextPost(String postText) {
+    public PostForm setTextPost(final String postText) {
         clickOnPostTextAreaField();
         CommonActions.setInputField(postTextAreaField, postText);
         return this;
@@ -136,7 +127,7 @@ public class PostForm extends BasePage {
      *
      * @param messageEdited String.
      */
-    public void setEditTextAreaField(String messageEdited) {
+    public void setEditTextAreaField(final String messageEdited) {
         clickOnEditTextAreaField();
         CommonActions.setInputField(editTextAreaField, messageEdited);
     }
@@ -153,7 +144,7 @@ public class PostForm extends BasePage {
      *
      * @param commentText String.
      */
-    public void setComment(String commentText) {
+    public void setComment(final String commentText) {
         CommonActions.setInputField(commentTextAreaField, commentText);
     }
 
@@ -171,7 +162,7 @@ public class PostForm extends BasePage {
      * @param action      action.
      * @return string concat.
      */
-    public String concatXpath(String messagePost, String action) {
+    public String concatXpath(final String messagePost, final String action) {
         String selectorOfPost = String.format("//span[contains(text(),'%s')]", messagePost);
         String clickAction = String.format("/ancestor::article/descendant::a[contains(@class,'%s')]", action);
         return selectorOfPost.concat(clickAction);
@@ -184,7 +175,7 @@ public class PostForm extends BasePage {
      * @param messagePost    message.
      * @return xpath final.
      */
-    public String generateXpath(ChatterActions chatterActions, String messagePost) {
+    public String generateXpath(final ChatterActions chatterActions, final String messagePost) {
         EnumMap<ChatterActions, String> actionMap = new EnumMap<>(ChatterActions.class);
         actionMap.put(ChatterActions.MENU, concatXpath(messagePost, ACTION_MENU));
         actionMap.put(ChatterActions.COMMENT, concatXpath(messagePost, ACTION_COMMENT));
@@ -200,7 +191,7 @@ public class PostForm extends BasePage {
      * @param chatterActions enum.
      * @param messagePost    String.
      */
-    public void clickActionOnPost(ChatterActions chatterActions, String messagePost) {
+    public void clickActionOnPost(final ChatterActions chatterActions, final String messagePost) {
         WebElement webElement = driver.findElement(By.xpath(generateXpath(chatterActions, messagePost)));
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
@@ -212,7 +203,7 @@ public class PostForm extends BasePage {
      * @param postText String.
      * @return boolean.
      */
-    public boolean isPostDisplayed(String postText) {
+    public boolean isPostDisplayed(final String postText) {
         try {
             String selector = String.format("//span[contains(text(),'%s')]", postText);
             WebElement webElement = driver.findElement(By.xpath(selector));
@@ -231,7 +222,7 @@ public class PostForm extends BasePage {
      * @param webElement webElement.
      * @return boolean.
      */
-    public static boolean isElementPresent(WebElement webElement) {
+    public static boolean isElementPresent(final WebElement webElement) {
         try {
             CommonActions.getTextElement(webElement);
             return true;
@@ -247,7 +238,7 @@ public class PostForm extends BasePage {
      *
      * @param postText String.
      */
-    public void savePost(String postText) {
+    public void savePost(final String postText) {
         setTextPost(postText);
         clickShareforSavePost();
     }
@@ -257,7 +248,7 @@ public class PostForm extends BasePage {
      *
      * @param postText String.
      */
-    public void deletePost(String postText) {
+    public void deletePost(final String postText) {
         clickActionOnPost(ChatterActions.MENU, postText);
         clickPostToDelete();
         clickOnConfirmToDeleteThePost();
@@ -269,7 +260,7 @@ public class PostForm extends BasePage {
      * @param postText String.
      * @param postEdit String.
      */
-    public void editPost(String postText, String postEdit) {
+    public void editPost(final String postText, final String postEdit) {
         clickActionOnPost(ChatterActions.MENU, postText);
         clickPostToEdit();
         setEditTextAreaField(postEdit);
@@ -282,7 +273,7 @@ public class PostForm extends BasePage {
      * @param postText       String.
      * @param commentForPost String.
      */
-    public void commentPost(String postText, String commentForPost) {
+    public void commentPost(final String postText, final String commentForPost) {
         clickActionOnPost(ChatterActions.COMMENT, postText);
         setComment(commentForPost);
         clickSaveComment();
@@ -294,7 +285,7 @@ public class PostForm extends BasePage {
      * @param errorMessage this variable contains the error message.
      * @return true if the error message is visible.
      */
-    public Boolean isVisibleErrorMessage(String errorMessage) {
+    public Boolean isVisibleErrorMessage(final String errorMessage) {
         return this.errorMessage.getText().contains(errorMessage);
     }
 
@@ -304,7 +295,7 @@ public class PostForm extends BasePage {
      * @param number this variable contains the number of characters.
      * @return pot message.
      */
-    public String generatePostMessage(String number) {
+    public String generatePostMessage(final String number) {
         return String.join("", Collections.nCopies(Integer.parseInt(number), "a"));
     }
 

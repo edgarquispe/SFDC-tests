@@ -19,7 +19,7 @@ public class ChatterSteps {
      *
      * @param helper Helper.
      */
-    public ChatterSteps(Helper helper) {
+    public ChatterSteps(final Helper helper) {
         this.helper = helper;
         this.postForm = new PostForm();
     }
@@ -30,7 +30,7 @@ public class ChatterSteps {
      * @param message String.
      */
     @When("^I create a new Post with \"([^\"]*)\"$")
-    public void iCreateANewPostWith(String message) {
+    public void iCreateANewPostWith(final String message) {
         helper.setPostMessage(message);
         postForm.savePost(message);
 
@@ -44,7 +44,7 @@ public class ChatterSteps {
      * @param newMessage String.
      */
     @When("^I Edit the Post with \"([^\"]*)\"$")
-    public void iEditThePostWith(String newMessage) {
+    public void iEditThePostWith(final String newMessage) {
         postForm.editPost(helper.getPostMessage(), newMessage);
         helper.setPostMessage(newMessage);
     }
@@ -68,7 +68,7 @@ public class ChatterSteps {
      * @param comment String.
      */
     @When("^I comment in Post \"([^\"]*)\"$")
-    public void iCommentInPost(String comment) {
+    public void iCommentInPost(final String comment) {
         helper.setCommentPostMessage(comment);
         postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
     }
@@ -79,7 +79,7 @@ public class ChatterSteps {
      * @param number this variable contains the number of characters.
      */
     @When("^I set post with \"([^\"]*)\" characters$")
-    public void iCreateANewPostWithCharacters(String number) {
+    public void iCreateANewPostWithCharacters(final String number) {
         postForm.savePost(postForm.generatePostMessage(number));
     }
 
@@ -89,7 +89,7 @@ public class ChatterSteps {
      * @param number this variable contains the number of characters.
      */
     @When("^I Edit the Post with \"([^\"]*)\" characters$")
-    public void iEditThePostWithCharacters(String number) {
+    public void iEditThePostWithCharacters(final String number) {
         postForm.editPost(helper.getPostMessage(), postForm.generatePostMessage(number));
     }
 

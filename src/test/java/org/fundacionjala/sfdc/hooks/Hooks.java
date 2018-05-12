@@ -26,7 +26,7 @@ public class Hooks {
      *
      * @param helper Helper.
      */
-    public Hooks(Helper helper) {
+    public Hooks(final Helper helper) {
         this.helper = helper;
     }
 
@@ -68,7 +68,7 @@ public class Hooks {
      * @param scenario variable for Cucumber features.
      */
     @After
-    public void takeScreenShot(Scenario scenario) {
+    public void takeScreenShot(final Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver())
                     .getScreenshotAs(OutputType.BYTES);

@@ -26,7 +26,7 @@ public class OpportunitySteps {
      *
      * @param helper Helper.
      */
-    public OpportunitySteps(Helper helper) {
+    public OpportunitySteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -36,7 +36,7 @@ public class OpportunitySteps {
      * @param formMapData Map.
      */
     @When("^I fill the Opportunity form with:$")
-    public void iFillTheOpportunityFormWith(Map<OpportunityFormField, String> formMapData) {
+    public void iFillTheOpportunityFormWith(final Map<OpportunityFormField, String> formMapData) {
         helper.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
         helper.setOpportunityMap(formMapData);
         new OpportunityForm().fillAndSaveForm(helper.getOpportunityMap());

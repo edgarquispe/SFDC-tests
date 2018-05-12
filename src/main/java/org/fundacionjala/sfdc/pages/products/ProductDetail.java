@@ -22,9 +22,6 @@ public class ProductDetail extends DetailBase {
     @FindBy(xpath = "//span[text()='Product Description']/parent::div/following-sibling::div")
     private WebElement productDescriptionText;
 
-    @FindBy(xpath = "//span[text()='Active']/parent::div/following-sibling::div")
-    private WebElement activeCheckbox;
-
     /**
      * {@inheritDoc}
      */

@@ -40,7 +40,7 @@ public class OpportunityHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public FormBase clickEditButton(String name) {
+    public FormBase clickEditButton(final String name) {
         clickDropDownListLink(name);
         CommonActions.clickElement(editButton);
         return new OpportunityForm();
@@ -50,7 +50,7 @@ public class OpportunityHome extends HomeBase {
      * {@inheritDoc}
      */
     @Override
-    public DetailBase clickDisplayedItem(String name) {
+    public DetailBase clickDisplayedItem(final String name) {
         isDisplayedItem(name);
         CommonActions.clickElement(displayedItem);
         return new OpportunityDetail();
@@ -63,7 +63,7 @@ public class OpportunityHome extends HomeBase {
      * @param opportunityField Opportunity Field like Code, Family.
      * @return boolean.
      */
-    public boolean isOpportunityFieldDisplayed(String opportunityName, String opportunityField) {
+    public boolean isOpportunityFieldDisplayed(final String opportunityName, final String opportunityField) {
         String xpathSelector = String.format("//a[text()='%s']/ancestor::tr/descendant::span[text()='%s']",
                 opportunityName, opportunityField);
         return driver.findElement(By.xpath(xpathSelector)).isDisplayed();
@@ -74,7 +74,7 @@ public class OpportunityHome extends HomeBase {
      * @param opportunityField field.
      * @return driver.
      */
-    public boolean isOpportunityLinkDisplayed(String opportunityName, String opportunityField) {
+    public boolean isOpportunityLinkDisplayed(final String opportunityName, final String opportunityField) {
         String xpathSelector = String.format("//a[text()='%s']/ancestor::tr/descendant::a[text()='%s']",
                 opportunityName, opportunityField);
         return driver.findElement(By.xpath(xpathSelector)).isDisplayed();

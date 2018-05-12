@@ -21,7 +21,7 @@ public class CampaignSteps {
      *
      * @param helper Helper.
      */
-    public CampaignSteps(Helper helper) {
+    public CampaignSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -31,7 +31,7 @@ public class CampaignSteps {
      * @param formMapData Map.
      */
     @When("^I fill the Campaign form with:$")
-    public void iFillTheCampaignFormWith(Map<CampaignFormField, String> formMapData) {
+    public void iFillTheCampaignFormWith(final Map<CampaignFormField, String> formMapData) {
         helper.setCampaignName(formMapData.get(CampaignFormField.CAMPAIGN_NAME));
         helper.setCampaignMap(formMapData);
         new CampaignForm().fillAndSaveForm(helper.getCampaignMap());

@@ -22,7 +22,7 @@ public class ChatterAssertionSteps {
      *
      * @param helper Helper.
      */
-    public ChatterAssertionSteps(Helper helper) {
+    public ChatterAssertionSteps(final Helper helper) {
         this.helper = helper;
         this.assertion = helper.getAssertion();
         postForm = new PostForm();
@@ -34,7 +34,7 @@ public class ChatterAssertionSteps {
      * @param message String.
      */
     @Then("^On the Chatter page should not display the \"([^\"]*)\"$")
-    public void onTheChatterPageShouldNotDisplayThe(String message) {
+    public void onTheChatterPageShouldNotDisplayThe(final String message) {
         assertion.assertFalse(postForm.isPostDisplayed(message));
     }
 
@@ -60,7 +60,7 @@ public class ChatterAssertionSteps {
      * @param errorMessage this variable contains the error message.
      */
     @Then("^the message error \"([^\"]*)\" should be displayed$")
-    public void onTheChatterPageTheMessageErrorShouldBeDisplayed(String errorMessage) {
+    public void onTheChatterPageTheMessageErrorShouldBeDisplayed(final String errorMessage) {
         assertion.assertTrue(postForm.isVisibleErrorMessage(errorMessage));
 
     }
