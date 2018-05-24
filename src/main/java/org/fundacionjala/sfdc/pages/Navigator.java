@@ -103,7 +103,7 @@ public final class Navigator {
                 return goToAccountsHome();
             case CHATTER:
                 return goToChatterHome();
-            case OPPORTUNIT:
+            case OPPORTUNITY:
                 return goToOpportunityHome();
             case CAMPAIGN:
                 return goToCampaignHome();
@@ -135,7 +135,7 @@ public final class Navigator {
         EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductHome());
         map.put(SObject.ACCOUNT, new AccountHome());
-        map.put(SObject.OPPORTUNIT, new OpportunityHome());
+        map.put(SObject.OPPORTUNITY, new OpportunityHome());
         map.put(SObject.CAMPAIGN, new CampaignHome());
         return map.get(item);
     }
@@ -150,7 +150,7 @@ public final class Navigator {
         EnumMap<SObject, FormBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductForm());
         map.put(SObject.ACCOUNT, new AccountForm());
-        map.put(SObject.OPPORTUNIT, new OpportunityForm());
+        map.put(SObject.OPPORTUNITY, new OpportunityForm());
         map.put(SObject.CAMPAIGN, new CampaignForm());
         return map.get(item);
     }
@@ -165,7 +165,7 @@ public final class Navigator {
         EnumMap<SObject, DetailBase> map = new EnumMap<>(SObject.class);
         map.put(SObject.PRODUCT, new ProductDetail());
         map.put(SObject.ACCOUNT, new AccountDetail());
-        map.put(SObject.OPPORTUNIT, new OpportunityDetail());
+        map.put(SObject.OPPORTUNITY, new OpportunityDetail());
         map.put(SObject.CAMPAIGN, new CampaignDetail());
         return map.get(item);
     }

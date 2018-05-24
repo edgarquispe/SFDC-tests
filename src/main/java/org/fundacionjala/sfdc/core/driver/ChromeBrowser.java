@@ -13,6 +13,8 @@ public class ChromeBrowser implements IBrowser {
      */
     @Override
     public WebDriver getBrowser() {
+        System.setProperty("webdriver.chrome.driver",
+                "drivers/chromedriver.exe");
         return new ChromeDriver();
     }
 }

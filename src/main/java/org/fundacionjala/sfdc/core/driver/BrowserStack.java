@@ -7,7 +7,7 @@ import org.fundacionjala.sfdc.core.Env;
 /**
  * BrowserStack class that implements IBrowsers.
  */
-public class BrowserStack extends CloudBrowser implements IBrowser {
+public class BrowserStack extends CloudBrowser {
 
     private static final Env ENV = Env.getInstance();
 

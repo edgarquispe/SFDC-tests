@@ -7,6 +7,6 @@ public enum SObject {
     ACCOUNT,
     PRODUCT,
     CHATTER,
-    OPPORTUNIT,
+    OPPORTUNITY,
     CAMPAIGN
 }

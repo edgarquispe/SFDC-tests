@@ -8,7 +8,7 @@ import org.fundacionjala.sfdc.core.Env;
 /**
  * SauceLabs class that implements IBrowsers.
  */
-public class SauceLabs extends CloudBrowser implements IBrowser {
+public class SauceLabs extends CloudBrowser {
     private static final Env ENV = Env.getInstance();
 
     private static final String USERNAME = ENV.getRemoteUserName();
