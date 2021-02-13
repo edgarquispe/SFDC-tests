@@ -3,7 +3,7 @@ Feature: Create Post
   Background: Create Post
     Given I go to "Chatter" Home Page
 
-  @deletePost @bvt
+  @deletePost
   Scenario: Create a new Post
     When I create a new Post with "Hi my name is Simon"
     Then On the Chatter page should be displayed

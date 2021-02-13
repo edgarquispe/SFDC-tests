@@ -16,7 +16,7 @@ Feature: Edit and Delete Product
       | PRODUCT_CODE        | 123Edited             |
       | PRODUCT_DESCRIPTION | Just Something Edited |
       | PRODUCT_FAMILY      | None                  |
-    Then "Product "${PRODUCT_NAME}" was saved." message should be displayed in "Product" Detail Page
+    Then "Product \"${PRODUCT_NAME}\" was saved." message should be displayed in "Product" Detail Page
     And the Product should be displayed
     And I go to "Product" Home Page
     And the Product should be displayed on Home Page
@@ -30,18 +30,18 @@ Feature: Edit and Delete Product
       | PRODUCT_CODE        | 123Edited               |
       | PRODUCT_DESCRIPTION | Just Something Edited   |
       | PRODUCT_FAMILY      | None                    |
-    Then "Product "${PRODUCT_NAME}" was saved." message should be displayed in "Product" Home Page
+    Then "Product \"${PRODUCT_NAME}\" was saved." message should be displayed in "Product" Home Page
     And I go to "Product" Home Page
     And the Product should be displayed on Home Page
     And Assert all
 
   Scenario: Delete the Product on Home Page
     When I delete the "Product"
-    Then "Product "${PRODUCT_NAME}" was deleted." message should be displayed in "Product" Home Page
+    Then "Product \"${PRODUCT_NAME}\" was deleted." message should be displayed in "Product" Home Page
     And the Product should not be displayed on Home Page
 
   Scenario: Delete the Product on Detail Page
     When I click on the "Product" item
     And I click on Delete from Product
-    Then "Product "${PRODUCT_NAME}" was deleted." message should be displayed in "Product" Home Page
+    Then "Product \"${PRODUCT_NAME}\" was deleted." message should be displayed in "Product" Home Page
     And the Product should not be displayed on Home Page

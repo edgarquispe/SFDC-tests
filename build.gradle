@@ -1,16 +1,12 @@
 import net.masterthought.cucumber.Configuration
 import net.masterthought.cucumber.ReportBuilder
 
-group 'org.fundacionjala.sfdc'
+group 'org.example.sfdc'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
-apply plugin: 'pmd'
-apply plugin: 'findbugs'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -28,55 +24,29 @@ buildscript {
     }
 }
 
-ext {
-    CUCUMBER_VERSION = '1.2.5'
-    SELENIUM_VERSION = '3.5.1'
-}
-
 dependencies {
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.11.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.3.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
-    testCompile group: 'io.cucumber', name: 'cucumber-java', version: '2.4.0'
-    testCompile group: 'io.cucumber', name: 'cucumber-testng', version: '2.4.0'
-    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '2.4.0'
+    compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.9.1'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '6.9.1'
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '6.9.1'
 }
 
 // Checkstyle configuration
 checkstyle {
-    toolVersion = '8.9'
+    toolVersion = '8.23'
 }
 
-// FindBugs configuration
-findbugs {
-    toolVersion = '3.0.1'
-}
-tasks.withType(FindBugs) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-// PMD configuration
-pmd {
-    ruleSets = ["java-basic", "java-braces", "java-unnecessary", "java-unusedcode", "java-strictexception"]
-    toolVersion = '6.0.0'
-}
-tasks.withType(Pmd) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-task executeFeatures(type: Test) {
+task runFeatures(type: Test) {
     // enable TestNG support (default is JUnit)
     useTestNG()
     options {
         useDefaultListeners = false
         jvmArgs = ['-Dcucumber.options= ' +
-                           '--glue org.fundacionjala.sfdc ' +
+                           '--glue org.example.sfdc ' +
                            '--plugin pretty ' +
                            '--plugin json:build/cucumber/cucumber.json ' +
                            '--plugin rerun:build/cucumber/rerun.txt ' +
@@ -109,7 +79,7 @@ task executeFeatures(type: Test) {
     }
 }
 
-task reExecuteFeatures(type: Test) {
+task reRunFeatures(type: Test) {
     File failedScenariosFile = new File('build/cucumber/rerun.txt')
     if (failedScenariosFile.exists() && !failedScenariosFile.getText().isEmpty()) {
 
@@ -118,7 +88,7 @@ task reExecuteFeatures(type: Test) {
         options {
             useDefaultListeners = false
             jvmArgs = ['-Dcucumber.options=@build/cucumber/rerun.txt ' +
-                               '--glue org.fundacionjala.sfdc ' +
+                               '--glue org.example.sfdc ' +
                                '--plugin pretty ' +
                                '--plugin json:build/cucumber/retry/cucumber.json ' +
                                '--plugin rerun:build/cucumber/retry/rerun.txt ' +

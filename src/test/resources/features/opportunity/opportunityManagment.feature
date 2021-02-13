@@ -1,8 +1,8 @@
 Feature: Negative Testing
 
   Background:
-    Given I go to "Opportunit" Home Page
-    And I click on New "Opportunit"
+    Given I go to Opportunity Home Page
+    And I click on New Opportunity
 
   Scenario: I can't create a new Opportunity without fields required.
     When I fill the Opportunity form with:

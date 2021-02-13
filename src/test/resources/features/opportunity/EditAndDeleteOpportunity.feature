@@ -1,44 +1,35 @@
 Feature: Edit Opportunity
 
   Background:
-    Given I go to "Account" Home Page
-    And I click on New "Account"
+    Given I go to Account Home Page
+    And I click on New Account
     And I fill the Account form with:
       | ACCOUNT_NAME | account |
-    And I go to "Campaign" Home Page
-    And I click on New "Campaign"
-    And I fill the Campaign form with:
-      | CAMPAIGN_NAME | campaign |
-    And I go to "Opportunit" Home Page
-    And I click on New "Opportunit"
+    And I go to Opportunity Home Page
+    And I click on New Opportunity
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME     | Opportunity      |
       | OPPORTUNITY_ACCOUNT  | ${ACCOUNT_NAME}  |
       | DATE                 | 13/08/2017       |
       | OPPORTUNITY_STAGE    | Proposal         |
-      | OPPORTUNITY_CAMPAIGN | ${CAMPAIGN_NAME} |
 
-  @deleteAccount @deleteCampaign
+  @bvt @deleteAccount
   Scenario: Edit the Opportunity on Detail Page
-    When I click on Edit Opportunity
+    When I edit the Opportunity
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME        | OpportunityEdit   |
+      | OPPORTUNITY_ACCOUNT     | ${ACCOUNT_NAME}   |
       | DATE                    | Today             |
-      | OPPORTUNITY_TYPE        | Existing Business |
-      | OPPORTUNITY_PROBABILITY | 80                |
+      | OPPORTUNITY_TYPE        | New Customer      |
       | OPPORTUNITY_AMOUNT      | 70                |
-      | OPPORTUNITY_REASON      | Price             |
       | OPPORTUNITY_LEAD        | Advertisement     |
       | OPPORTUNITY_NEXT        | step              |
       | OPPORTUNITY_DESCRIPTION | description       |
-      | BUDGE                   | true              |
-      | DISCOVERY               | true              |
-      | ROI                     | true              |
     Then the Opportunity should be displayed
-    And I go to "Opportunit" Home Page
+    And I go to Opportunity Home Page
     And the Opportunity should be displayed on Home Page
 
-  @deleteAccount @deleteCampaign
+  @bvt @deleteAccount
   Scenario: Delete the Opportunity on Detail Page
     When I Click on Delete from Opportunity
     Then the Opportunity should not be displayed on Home Page
