@@ -6,31 +6,55 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
+import org.example.sfdc.pages.acccounts.AccountFormField;
+import org.example.sfdc.pages.campaigns.CampaignFormField;
+import org.example.sfdc.pages.opportunities.OpportunityFormField;
+import org.example.sfdc.pages.products.ProductFormField;
 
 /**
  * Common Steps for all features.
  */
 public class CommonSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public CommonSteps(final Helper helper) {
-        this.helper = helper;
+    public CommonSteps(final ScenarioContext context) {
+        this.context = context;
     }
 
     @ParameterType(".*")
     public SObject sObject(final String sObject) {
         return SObject.valueOf(sObject.toUpperCase());
+    }
+
+    @DataTableType
+    public AccountFormField accountMap(final String accountFormField) {
+        return AccountFormField.valueOf(accountFormField.toUpperCase());
+    }
+
+    @DataTableType
+    public CampaignFormField campaignMap(final String campaignFormField) {
+        return CampaignFormField.valueOf(campaignFormField.toUpperCase());
+    }
+
+    @DataTableType
+    public OpportunityFormField opportunityMap(final String opportunityFormField) {
+        return OpportunityFormField.valueOf(opportunityFormField.toUpperCase());
+    }
+
+    @DataTableType
+    public ProductFormField productMap(final String productFormField) {
+        return ProductFormField.valueOf(productFormField.toUpperCase());
     }
 
     @DataTableType(replaceWithEmptyString = "[blank]")
@@ -67,7 +91,7 @@ public class CommonSteps {
      */
     @When("I click on Edit {sObject}")
     public void iClickOnEditSObject(final SObject sObject) {
-        Navigator.mapActions(sObject).clickEditButton(helper.getItemName());
+        Navigator.mapActions(sObject).clickEditButton(context.getItemName());
     }
 
     /**
@@ -77,7 +101,7 @@ public class CommonSteps {
      */
     @And("I delete the {sObject}")
     public void iDeleteThe(final SObject sObject) {
-        Navigator.mapActions(sObject).deleteElement(helper.getItemName());
+        Navigator.mapActions(sObject).deleteElement(context.getItemName());
     }
 
     /**
@@ -87,7 +111,7 @@ public class CommonSteps {
      */
     @And("I click on the {sObject} item")
     public void iClickOnTheItem(final SObject sObject) {
-        Navigator.mapActions(sObject).clickItemList(helper.getItemName());
+        Navigator.mapActions(sObject).clickItemList(context.getItemName());
     }
 
     /**

@@ -6,12 +6,12 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.Env;
+import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.Home;
 import org.example.sfdc.pages.Profile;
-import org.example.sfdc.core.ui.BasePage;
 
 /**
  * Class for the login page.

@@ -2,12 +2,12 @@ package org.example.sfdc.pages;
 
 import java.util.EnumMap;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
+import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountForm;
 import org.example.sfdc.pages.acccounts.AccountHome;
-import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.pages.base.DetailBase;
 import org.example.sfdc.pages.base.FormBase;
 import org.example.sfdc.pages.base.HomeBase;

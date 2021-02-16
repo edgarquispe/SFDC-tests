@@ -3,7 +3,7 @@ package org.example.sfdc.stepdefinitions;
 import io.cucumber.java.en.Then;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.chatter.PostForm;
 
 /**
@@ -11,7 +11,7 @@ import org.example.sfdc.pages.chatter.PostForm;
  */
 public class ChatterAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Assertion assertion;
 
@@ -20,11 +20,11 @@ public class ChatterAssertionSteps {
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public ChatterAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        this.assertion = helper.getAssertion();
+    public ChatterAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        this.assertion = context.getAssertion();
         postForm = new PostForm();
     }
 
@@ -43,7 +43,7 @@ public class ChatterAssertionSteps {
      */
     @Then("^On the Chatter page the comment should be displayed$")
     public void onTheChatterPageTheCommentShouldBeDisplayed() {
-        assertion.assertTrue(postForm.isPostDisplayed(helper.getCommentPostMessage()));
+        assertion.assertTrue(postForm.isPostDisplayed(context.getCommentPostMessage()));
     }
 
     /**
@@ -51,7 +51,7 @@ public class ChatterAssertionSteps {
      */
     @Then("^On the Chatter page should be displayed$")
     public void onTheChatterPageShouldBeDisplayed() {
-        assertion.assertTrue(postForm.isPostDisplayed(helper.getPostMessage()));
+        assertion.assertTrue(postForm.isPostDisplayed(context.getPostMessage()));
     }
 
     /**

@@ -3,7 +3,7 @@ package org.example.sfdc.stepdefinitions;
 import io.cucumber.java.en.When;
 
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.chatter.PostForm;
 
 /**
@@ -11,16 +11,16 @@ import org.example.sfdc.pages.chatter.PostForm;
  */
 public class ChatterSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
     private PostForm postForm;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public ChatterSteps(final Helper helper) {
-        this.helper = helper;
+    public ChatterSteps(final ScenarioContext context) {
+        this.context = context;
         this.postForm = new PostForm();
     }
 
@@ -31,7 +31,7 @@ public class ChatterSteps {
      */
     @When("^I create a new Post with \"([^\"]*)\"$")
     public void iCreateANewPostWith(final String message) {
-        helper.setPostMessage(message);
+        context.setPostMessage(message);
         postForm.savePost(message);
 
     }
@@ -45,8 +45,8 @@ public class ChatterSteps {
      */
     @When("^I Edit the Post with \"([^\"]*)\"$")
     public void iEditThePostWith(final String newMessage) {
-        postForm.editPost(helper.getPostMessage(), newMessage);
-        helper.setPostMessage(newMessage);
+        postForm.editPost(context.getPostMessage(), newMessage);
+        context.setPostMessage(newMessage);
     }
 
     //Delete
@@ -56,7 +56,7 @@ public class ChatterSteps {
      */
     @When("^I Delete the Post$")
     public void iDeleteThePost() {
-        postForm.deletePost(helper.getPostMessage());
+        postForm.deletePost(context.getPostMessage());
         DriverManager.getInstance().getDriver().navigate().refresh();
     }
 
@@ -69,8 +69,8 @@ public class ChatterSteps {
      */
     @When("^I comment in Post \"([^\"]*)\"$")
     public void iCommentInPost(final String comment) {
-        helper.setCommentPostMessage(comment);
-        postForm.commentPost(helper.getPostMessage(), helper.getCommentPostMessage());
+        context.setCommentPostMessage(comment);
+        postForm.commentPost(context.getPostMessage(), context.getCommentPostMessage());
     }
 
     /**
@@ -90,7 +90,7 @@ public class ChatterSteps {
      */
     @When("^I Edit the Post with \"([^\"]*)\" characters$")
     public void iEditThePostWithCharacters(final String number) {
-        postForm.editPost(helper.getPostMessage(), postForm.generatePostMessage(number));
+        postForm.editPost(context.getPostMessage(), postForm.generatePostMessage(number));
     }
 
 }

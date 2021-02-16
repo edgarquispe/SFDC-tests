@@ -2,7 +2,7 @@ package org.example.sfdc.pages.campaigns;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 import org.example.sfdc.pages.base.FormBase;
 import org.example.sfdc.pages.base.HomeBase;

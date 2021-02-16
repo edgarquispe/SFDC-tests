@@ -4,7 +4,7 @@ import java.util.Map;
 
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.campaigns.CampaignDetail;
 import org.example.sfdc.pages.campaigns.CampaignForm;
 import org.example.sfdc.pages.campaigns.CampaignFormField;
@@ -14,15 +14,15 @@ import org.example.sfdc.pages.campaigns.CampaignFormField;
  */
 public class CampaignSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public CampaignSteps(final Helper helper) {
-        this.helper = helper;
+    public CampaignSteps(final ScenarioContext context) {
+        this.context = context;
     }
 
     /**
@@ -32,9 +32,9 @@ public class CampaignSteps {
      */
     @When("^I fill the Campaign form with:$")
     public void iFillTheCampaignFormWith(final Map<CampaignFormField, String> formMapData) {
-        helper.setCampaignName(formMapData.get(CampaignFormField.CAMPAIGN_NAME));
-        helper.setCampaignMap(formMapData);
-        new CampaignForm().fillAndSaveForm(helper.getCampaignMap());
+        context.setCampaignName(formMapData.get(CampaignFormField.CAMPAIGN_NAME));
+        context.setCampaignMap(formMapData);
+        new CampaignForm().fillAndSaveForm(context.getCampaignMap());
     }
 
     /**

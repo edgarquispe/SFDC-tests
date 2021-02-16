@@ -15,7 +15,7 @@ import org.example.sfdc.pages.products.ProductFormField;
 /**
  * Helper class with Dependency Injection for all Steps.
  */
-public class Helper {
+public class ScenarioContext {
 
     private String itemName = "";
 

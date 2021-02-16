@@ -4,7 +4,7 @@ import java.util.Map;
 
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.products.ProductDetail;
 import org.example.sfdc.pages.products.ProductForm;
 import org.example.sfdc.pages.products.ProductFormField;
@@ -15,15 +15,15 @@ import org.example.sfdc.pages.products.ProductHome;
  */
 public class ProductSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public ProductSteps(final Helper helper) {
-        this.helper = helper;
+    public ProductSteps(final ScenarioContext context) {
+        this.context = context;
     }
 
     /**
@@ -33,9 +33,9 @@ public class ProductSteps {
      */
     @When("^I fill the Product form with:$")
     public void iFillTheProductFormWith(final Map<ProductFormField, String> formMapData) {
-        helper.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
-        helper.setProductMap(formMapData);
-        new ProductForm().fillAndSaveForm(helper.getProductMap());
+        context.setItemName(formMapData.get(ProductFormField.PRODUCT_NAME));
+        context.setProductMap(formMapData);
+        new ProductForm().fillAndSaveForm(context.getProductMap());
         new ProductHome().waitUntilSpinnerIsHidden();
 
     }

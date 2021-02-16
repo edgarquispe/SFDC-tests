@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.campaigns.CampaignDetail;
 import org.example.sfdc.pages.campaigns.CampaignFormField;
 import org.example.sfdc.pages.campaigns.CampaignHome;
@@ -18,7 +18,7 @@ import org.example.sfdc.pages.campaigns.CampaignHome;
  */
 public class CampaignAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Map<CampaignFormField, String> map;
 
@@ -27,12 +27,12 @@ public class CampaignAssertionSteps {
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public CampaignAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        this.map = this.helper.getCampaignMap();
-        this.assertion = helper.getAssertion();
+    public CampaignAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        this.map = this.context.getCampaignMap();
+        this.assertion = context.getAssertion();
     }
 
     /**
@@ -41,7 +41,7 @@ public class CampaignAssertionSteps {
     @Then("^the Campaign should be displayed$")
     public void theCampaignShouldBeDisplayed() {
         CampaignDetail campaignDetail = new CampaignDetail();
-        campaignDetail.waitObjectNameIs(helper.getCampaignName());
+        campaignDetail.waitObjectNameIs(context.getCampaignName());
         assertion.assertTrue(campaignDetail.getCampaignNameText().equals(map.get(CampaignFormField.CAMPAIGN_NAME)));
     }
 

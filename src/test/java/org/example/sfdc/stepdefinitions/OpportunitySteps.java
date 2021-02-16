@@ -6,9 +6,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
 import org.example.sfdc.pages.opportunities.OpportunityForm;
 import org.example.sfdc.pages.opportunities.OpportunityFormField;
@@ -19,15 +19,15 @@ import org.example.sfdc.pages.opportunities.OpportunityHome;
  */
 public class OpportunitySteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public OpportunitySteps(final Helper helper) {
-        this.helper = helper;
+    public OpportunitySteps(final ScenarioContext context) {
+        this.context = context;
     }
 
     /**
@@ -37,9 +37,9 @@ public class OpportunitySteps {
      */
     @When("^I fill the Opportunity form with:$")
     public void iFillTheOpportunityFormWith(final Map<OpportunityFormField, String> formMapData) {
-        helper.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
-        helper.setOpportunityMap(formMapData);
-        new OpportunityForm().fillAndSaveForm(helper.getOpportunityMap());
+        context.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
+        context.setOpportunityMap(formMapData);
+        new OpportunityForm().fillAndSaveForm(context.getOpportunityMap());
         CommonActions.waitFixedTime();
     }
 
@@ -48,7 +48,7 @@ public class OpportunitySteps {
      */
     @When("^I edit the Opportunity$")
     public void iEditTheOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getOpportunityName()));
         new OpportunityDetail().clickEditButton();
     }
 
@@ -57,7 +57,7 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getOpportunityName()));
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getOpportunityName()));
         new OpportunityDetail().deleteItem();
     }
 

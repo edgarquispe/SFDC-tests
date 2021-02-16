@@ -8,9 +8,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
 
@@ -19,15 +19,15 @@ import org.example.sfdc.pages.SObject;
  */
 public class Hooks {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Default Constructor.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public Hooks(final Helper helper) {
-        this.helper = helper;
+    public Hooks(final ScenarioContext context) {
+        this.context = context;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Hooks {
      */
     @After(value = "@deleteProduct", order = 10)
     public void deleteCreatedItem() {
-        Navigator.goToProductsHome().deleteElement(helper.getItemName());
+        Navigator.goToProductsHome().deleteElement(context.getItemName());
     }
 
     /**
@@ -43,7 +43,7 @@ public class Hooks {
      */
     @After(value = "@deletePost", order = 10)
     public void deleteCreatedIPost() {
-        Navigator.goToChatterHome().deletePost(helper.getPostMessage());
+        Navigator.goToChatterHome().deletePost(context.getPostMessage());
     }
 
     /**
@@ -51,7 +51,7 @@ public class Hooks {
      */
     @After(value = "@deleteAccount", order = 5)
     public void deleteCreatedAccount() {
-        Navigator.goToAccountsHome().clickItemList(SObject.ACCOUNT, helper.getItemName()).deleteItem();
+        Navigator.goToAccountsHome().clickItemList(SObject.ACCOUNT, context.getItemName()).deleteItem();
     }
 
     /**
@@ -59,7 +59,7 @@ public class Hooks {
      */
     @After(value = "@deleteCampaign", order = 7)
     public void deleteCreatedItemCampaign() {
-        Navigator.goToCampaignHome().clickItemList(SObject.CAMPAIGN, helper.getCampaignName()).deleteItem();
+        Navigator.goToCampaignHome().clickItemList(SObject.CAMPAIGN, context.getCampaignName()).deleteItem();
     }
 
     /**
@@ -81,7 +81,7 @@ public class Hooks {
      */
     @Before(value = "@SoftAssert", order = 10)
     public void setSoftAssertion() {
-        helper.setAssertion(new SoftAssert());
+        context.setAssertion(new SoftAssert());
     }
 
     /**
@@ -89,7 +89,7 @@ public class Hooks {
      */
     @Before(order = 1)
     public void setHardAssertion() {
-        helper.setAssertion(new Assertion());
+        context.setAssertion(new Assertion());
     }
 
 

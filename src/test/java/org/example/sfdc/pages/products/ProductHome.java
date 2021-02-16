@@ -2,7 +2,7 @@ package org.example.sfdc.pages.products;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.HomeBase;
 
 /**

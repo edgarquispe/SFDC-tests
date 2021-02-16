@@ -11,7 +11,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountForm;
 import org.example.sfdc.pages.acccounts.AccountFormField;
@@ -15,15 +15,15 @@ import org.example.sfdc.pages.acccounts.AccountHome;
  */
 public class AccountsSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public AccountsSteps(final Helper helper) {
-        this.helper = helper;
+    public AccountsSteps(final ScenarioContext context) {
+        this.context = context;
     }
 
     /**
@@ -33,9 +33,9 @@ public class AccountsSteps {
      */
     @When("^I fill the Account form with:$")
     public void iFillTheAccountFormWith(final Map<AccountFormField, String> formMapData) {
-        helper.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));
-        helper.setAccountMap(formMapData);
-        new AccountForm().fillAndSaveForm(helper.getAccountMap());
+        context.setItemName(formMapData.get(AccountFormField.ACCOUNT_NAME));
+        context.setAccountMap(formMapData);
+        new AccountForm().fillAndSaveForm(context.getAccountMap());
         new AccountHome().waitUntilSpinnerIsHidden();
     }
 

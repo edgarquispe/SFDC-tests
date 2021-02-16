@@ -6,7 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.products.ProductDetail;
 import org.example.sfdc.pages.products.ProductFormField;
 import org.example.sfdc.pages.products.ProductHome;
@@ -16,7 +16,7 @@ import org.example.sfdc.pages.products.ProductHome;
  */
 public class ProductAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Map<ProductFormField, String> map;
 
@@ -25,12 +25,12 @@ public class ProductAssertionSteps {
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public ProductAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        this.map = this.helper.getProductMap();
-        this.assertion = helper.getAssertion();
+    public ProductAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        this.map = this.context.getProductMap();
+        this.assertion = context.getAssertion();
     }
 
     /**
@@ -39,7 +39,7 @@ public class ProductAssertionSteps {
     @Then("^the Product should be displayed$")
     public void theProductShouldBeDisplayed() {
         ProductDetail productDetail = new ProductDetail();
-        productDetail.waitObjectNameIs(helper.getItemName());
+        productDetail.waitObjectNameIs(context.getItemName());
         productDetail.waitUntilSuccessMessage();
         assertion.assertTrue(productDetail.getProductNameText()
                 .equals(map.get(ProductFormField.PRODUCT_NAME)));

@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountFormField;
 import org.example.sfdc.pages.acccounts.AccountHome;
@@ -19,7 +19,7 @@ import org.example.sfdc.pages.acccounts.AccountHome;
  */
 public class AccountsAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Map<AccountFormField, String> map;
 
@@ -28,12 +28,12 @@ public class AccountsAssertionSteps {
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public AccountsAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        this.map = this.helper.getAccountMap();
-        this.assertion = helper.getAssertion();
+    public AccountsAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        this.map = this.context.getAccountMap();
+        this.assertion = context.getAssertion();
     }
 
     /**
@@ -43,7 +43,7 @@ public class AccountsAssertionSteps {
     public void theAccountShouldBeDisplayed() {
         AccountDetail accountDetail = new AccountDetail();
         CommonActions.waitFixedTime();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(helper.getItemName()));
+        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getItemName()));
         accountDetail.clickDetailButton();
         assertion.assertEquals(accountDetail.getAccountNameText(), map.get(AccountFormField.ACCOUNT_NAME));
         assertion.assertEquals(accountDetail.getTypeText(), map.get(AccountFormField.ACCOUNT_TYPE));

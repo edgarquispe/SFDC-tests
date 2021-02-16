@@ -1,4 +1,4 @@
-package org.example.sfdc.core;
+package org.example.sfdc.core.ui;
 
 import java.util.List;
 

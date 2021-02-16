@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
 import org.example.sfdc.pages.acccounts.AccountForm;
@@ -15,18 +15,18 @@ import org.example.sfdc.pages.acccounts.AccountForm;
  */
 public class CommonAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Assertion assertion;
 
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public CommonAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        assertion = this.helper.getAssertion();
+    public CommonAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        assertion = this.context.getAssertion();
     }
 
     /**
@@ -60,7 +60,7 @@ public class CommonAssertionSteps {
      */
     @Then("{string} message should be displayed in {sObject} Home Page")
     public void messageShouldBeDisplayedInHomePage(final String msg, final SObject sObject) {
-        final String msgExpected = helper.rebuiltMessage(msg);
+        final String msgExpected = context.rebuiltMessage(msg);
         assertion.assertTrue(Navigator.mapActions(sObject).successMessageText().contains(msgExpected));
     }
 
@@ -72,7 +72,7 @@ public class CommonAssertionSteps {
      */
     @Then("{string} message should be displayed in {sObject} Detail Page")
     public void messageShouldBeDisplayedInDetailPage(final String msg, final SObject sObject) {
-        final String msgExpected = helper.rebuiltMessage(msg);
+        final String msgExpected = context.rebuiltMessage(msg);
         assertion.assertEquals(Navigator.mapDetail(sObject).successMessageText(), msgExpected);
     }
 }

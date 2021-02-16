@@ -3,9 +3,9 @@ package org.example.sfdc.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.CommonActions;
-import org.example.sfdc.pages.acccounts.AccountHome;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
+import org.example.sfdc.pages.acccounts.AccountHome;
 import org.example.sfdc.pages.campaigns.CampaignHome;
 import org.example.sfdc.pages.chatter.PostForm;
 import org.example.sfdc.pages.opportunities.OpportunityHome;

@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.CommonActions;
+import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
-import org.example.sfdc.entities.Helper;
+import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
 import org.example.sfdc.pages.opportunities.OpportunityForm;
 import org.example.sfdc.pages.opportunities.OpportunityFormField;
@@ -20,7 +20,7 @@ import org.example.sfdc.pages.opportunities.OpportunityHome;
  */
 public class OpportunityAssertionSteps {
 
-    private Helper helper;
+    private ScenarioContext context;
 
     private Map<OpportunityFormField, String> map;
 
@@ -29,12 +29,12 @@ public class OpportunityAssertionSteps {
     /**
      * Constructor with Dependency Injection.
      *
-     * @param helper Helper.
+     * @param context Helper.
      */
-    public OpportunityAssertionSteps(final Helper helper) {
-        this.helper = helper;
-        this.map = this.helper.getOpportunityMap();
-        assertion = this.helper.getAssertion();
+    public OpportunityAssertionSteps(final ScenarioContext context) {
+        this.context = context;
+        this.map = this.context.getOpportunityMap();
+        assertion = this.context.getAssertion();
     }
 
     /**

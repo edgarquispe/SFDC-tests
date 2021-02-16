@@ -1,9 +1,10 @@
 package org.example.sfdc.pages.products;
 
-import org.example.sfdc.core.CommonActions;
-import org.example.sfdc.pages.base.DetailBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.example.sfdc.core.ui.CommonActions;
+import org.example.sfdc.pages.base.DetailBase;
 
 /**
  * Class containing Product Detail Page.
