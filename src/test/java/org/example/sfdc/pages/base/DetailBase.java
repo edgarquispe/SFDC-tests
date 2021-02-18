@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 
 /**
@@ -36,7 +35,8 @@ public abstract class DetailBase extends BasePage {
      * Click Detail Button.
      */
     public void clickDetailButton() {
-        CommonActions.clickElement(detailsTab);
+        action.waitFixedTime();
+        action.clickElement(detailsTab);
     }
 
     /**
@@ -60,14 +60,14 @@ public abstract class DetailBase extends BasePage {
      * Click the delete button of the current Item.
      */
     public void clickDeleteButton() {
-        CommonActions.jsClick(deleteButton);
+        action.jsClick(deleteButton);
     }
 
     /**
      * Click the Confirm Delete Button from the current Item.
      */
     public void clickConfirmDeleteButton() {
-        CommonActions.clickElement(confirmDeleteButton);
+        action.clickElement(confirmDeleteButton);
     }
 
     /**
@@ -90,6 +90,6 @@ public abstract class DetailBase extends BasePage {
      * @return the success message content.
      */
     public String successMessageText() {
-        return CommonActions.getTextElement(successMessage);
+        return action.getTextElement(successMessage);
     }
 }

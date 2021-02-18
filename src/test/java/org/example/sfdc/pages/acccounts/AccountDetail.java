@@ -3,7 +3,6 @@ package org.example.sfdc.pages.acccounts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 
 /**
@@ -52,7 +51,7 @@ public class AccountDetail extends DetailBase {
      */
     @Override
     public AccountForm clickEditButton() {
-        CommonActions.clickElement(editButton);
+        action.clickElement(editButton);
         return new AccountForm();
     }
 
@@ -72,7 +71,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getAccountNameText() {
-        return CommonActions.getTextElement(accountNameLabel);
+        return action.getTextElement(accountNameLabel);
     }
 
     /**
@@ -81,7 +80,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getTypeText() {
-        return CommonActions.getTextElement(typeLabel);
+        return action.getTextElement(typeLabel);
     }
 
     /**
@@ -90,7 +89,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getWebsiteText() {
-        return CommonActions.getTextElement(websiteLabel);
+        return action.getTextElement(websiteLabel);
     }
 
     /**
@@ -99,7 +98,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getDescriptionText() {
-        return CommonActions.getTextElement(descriptionLabel);
+        return action.getTextElement(descriptionLabel);
     }
 
     /**
@@ -108,7 +107,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getPhoneText() {
-        return CommonActions.getTextElement(phoneLabel);
+        return action.getTextElement(phoneLabel);
     }
 
     /**
@@ -117,7 +116,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getIndustryText() {
-        return CommonActions.getTextElement(industryLabel);
+        return action.getTextElement(industryLabel);
     }
 
     /**
@@ -126,7 +125,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getEmployeesText() {
-        return CommonActions.getTextElement(employeesLabel);
+        return action.getTextElement(employeesLabel);
     }
 
     /**
@@ -135,7 +134,7 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getBillingAddressText() {
-        return CommonActions.getTextElement(billingAddressTextLink);
+        return action.getTextElement(billingAddressTextLink);
     }
 
     /**
@@ -144,20 +143,20 @@ public class AccountDetail extends DetailBase {
      * @return String.
      */
     public String getShippingAddressText() {
-        return CommonActions.getTextElement(shippingAddressTextLink);
+        return action.getTextElement(shippingAddressTextLink);
     }
 
     /**
      * Click Edit Shipping Address.
      */
     public void clickEditShippingAddress() {
-        CommonActions.clickElement(editShippingAddress);
+        action.clickElement(editShippingAddress);
     }
 
     /**
      * Click Edit Billing Address.
      */
     public void clickEditBillingAddress() {
-        CommonActions.clickElement(editBillingAddress);
+        action.clickElement(editBillingAddress);
     }
 }

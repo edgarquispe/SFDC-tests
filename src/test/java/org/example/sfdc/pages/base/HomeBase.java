@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.Navigator;
@@ -65,11 +64,11 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(final String name) {
         try {
-            CommonActions.waitFixedTime();
+            action.waitFixedTime();
             driver.navigate().refresh();
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
-            return CommonActions.isElementDisplayed(displayedItem);
+            return action.isElementDisplayed(displayedItem);
         } catch (NoSuchElementException e) {
             LOGGER.error("No Such Element Exception");
             LOGGER.info(e);
@@ -118,14 +117,14 @@ public abstract class HomeBase extends BasePage {
      * Clicks the Delete Button.
      */
     public void clickDeleteButton() {
-        CommonActions.clickElement(deleteButton);
+        action.clickElement(deleteButton);
     }
 
     /**
      * Clicks the Confirm Delete Button.
      */
     public void clickConfirmDeleteButton() {
-        CommonActions.clickElement(confirmDeleteButton);
+        action.clickElement(confirmDeleteButton);
     }
 
     /**
@@ -134,8 +133,8 @@ public abstract class HomeBase extends BasePage {
      * @param name the item name.
      */
     public void clickItemList(final String name) {
-        DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
+        driver.navigate().refresh();
+        action.clickElement(action.findWebElement(itemsList, name));
     }
 
     /**
@@ -146,8 +145,8 @@ public abstract class HomeBase extends BasePage {
      * @return a detail base instance.
      */
     public DetailBase clickItemList(final SObject sObject, final String name) {
-        DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.clickElement(CommonActions.findWebElement(itemsList, name));
+        driver.navigate().refresh();
+        action.clickElement(action.findWebElement(itemsList, name));
         return Navigator.mapDetail(sObject);
     }
 
@@ -175,6 +174,6 @@ public abstract class HomeBase extends BasePage {
      * @return the success message content.
      */
     public String successMessageText() {
-        return CommonActions.getTextElement(successMessage);
+        return action.getTextElement(successMessage);
     }
 }

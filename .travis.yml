@@ -1,17 +1,12 @@
 language: java
-jdk:
-- oraclejdk8
 sudo: required
-
-branches:
-only: develop
-
+jdk:
+  - openjdk11
 before_script:
-  - wget http://services.gradle.org/distributions/gradle-4.7-bin.zip
-  - unzip gradle-4.7-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-4.7
+  - wget https://services.gradle.org/distributions/gradle-6.5-bin.zip
+  - unzip gradle-6.5-bin.zip
+  - export GRADLE_HOME=$PWD/gradle-6.5
   - export PATH=$GRADLE_HOME/bin:$PATH
-
 addons:
   sonarcloud:
     organization: "carledriss-github"
@@ -25,6 +20,5 @@ script:
 - gradle compileJava compileTestJava
 - sonar-scanner
 - gradle check
-
 notifications:
   email: true

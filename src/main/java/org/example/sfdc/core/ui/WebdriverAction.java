@@ -7,24 +7,27 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import org.example.sfdc.core.ui.DriverManager;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Class containing the common actions for the framework.
  */
-public final class CommonActions {
+public class WebdriverAction {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static final String JS_SCRIPT = "document.querySelector(\"a[title='%s']\").click();";
 
-    /**
-     * Constructor private.
-     */
-    private CommonActions() {
+    private final WebDriver driver;
+
+    private final WebDriverWait wait;
+
+    public WebdriverAction(final WebDriver driver, final WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
     }
 
     /**
@@ -32,9 +35,8 @@ public final class CommonActions {
      *
      * @param webElement WebElement to wait and clear.
      */
-    public static void clearTextField(final WebElement webElement) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+    public void clearTextField(final WebElement webElement) {
+        wait.until(ExpectedConditions.visibilityOf(webElement)).clear();
     }
 
     /**
@@ -43,8 +45,7 @@ public final class CommonActions {
      * @param webElement WebElement to wait and fill.
      * @param text       Text to fill.
      */
-    public static void setInputField(final WebElement webElement, final String text) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
+    public void setInputField(final WebElement webElement, final String text) {
         clearTextField(webElement);
         webElement.sendKeys(text);
     }
@@ -54,8 +55,8 @@ public final class CommonActions {
      *
      * @param webElement WebElement to wait and click.
      */
-    public static void clickElement(final WebElement webElement) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(webElement)).click();
+    public void clickElement(final WebElement webElement) {
+        wait.until(ExpectedConditions.elementToBeClickable(webElement)).click();
     }
 
     /**
@@ -64,9 +65,8 @@ public final class CommonActions {
      * @param webElement WebElement to wait and get the text.
      * @return Text of element.
      */
-    public static String getTextElement(final WebElement webElement) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
-        return webElement.getText();
+    public String getTextElement(final WebElement webElement) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement)).getText();
     }
 
     /**
@@ -75,9 +75,8 @@ public final class CommonActions {
      * @param webElement WebElement.
      * @return True if the element is Displayed.
      */
-    public static boolean isElementDisplayed(final WebElement webElement) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.visibilityOf(webElement));
-        return webElement.isDisplayed();
+    public boolean isElementDisplayed(final WebElement webElement) {
+        return  wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
     }
 
     /**
@@ -86,9 +85,8 @@ public final class CommonActions {
      * @param element WebElement.
      * @return boolean.
      */
-    public static boolean isElementSelected(final WebElement element) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(element));
-        return element.isSelected();
+    public boolean isElementSelected(final WebElement element) {
+        return wait.until(ExpectedConditions.elementToBeClickable(element)).isSelected();
     }
 
     /**
@@ -97,7 +95,7 @@ public final class CommonActions {
      * @param element WebElement.
      * @param flag    boolean.
      */
-    public static void setCheckBox(final WebElement element, boolean flag) {
+    public void setCheckBox(final WebElement element, boolean flag) {
         if (!isElementSelected(element) && flag) {
             clickElement(element);
         }
@@ -107,11 +105,10 @@ public final class CommonActions {
      * This method generates a wait for a fixed time, uses the driver manager to generate
      * a explicit wait for a web element that does not exist.
      */
-    public static void waitFixedTime() {
+    public void waitFixedTime() {
         try {
             DriverManager.getInstance().setUpdateWait(2);
-            DriverManager.getInstance().getWait()
-                    .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
         } catch (TimeoutException e) {
             LOGGER.error("Timeout exception triggered");
         } finally {
@@ -126,11 +123,11 @@ public final class CommonActions {
      * @param content  is the content parameter.
      * @return the WebElement search result.
      */
-    public static WebElement findWebElement(final List<WebElement> elements, final String content) {
+    public WebElement findWebElement(final List<WebElement> elements, final String content) {
         return elements.stream()
                 .filter(element -> content.contains(element.getText()))
                 .findAny()
-                .orElse(null);
+                .orElseThrow();
     }
 
     /**
@@ -138,8 +135,8 @@ public final class CommonActions {
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClickCssButton(final WebElement webElement) {
-        ((JavascriptExecutor) DriverManager.getInstance().getDriver())
+    public void jsClickCssButton(final WebElement webElement) {
+        ((JavascriptExecutor) driver)
                 .executeScript(String.format(JS_SCRIPT, webElement.getAttribute("title")));
     }
 
@@ -148,13 +145,13 @@ public final class CommonActions {
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClick(final WebElement webElement) {
-        ((JavascriptExecutor) DriverManager.getInstance().getDriver())
+    public void jsClick(final WebElement webElement) {
+        ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].click();", webElement);
     }
 
-    public static void mouseClick(final WebElement element) {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.elementToBeClickable(element));
-        new Actions(DriverManager.getInstance().getDriver()).moveToElement(element).click().perform();
+    public void mouseClick(final WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        new Actions(driver).moveToElement(element).click().perform();
     }
 }

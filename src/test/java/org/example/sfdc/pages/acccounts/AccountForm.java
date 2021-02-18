@@ -11,7 +11,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
@@ -99,9 +98,9 @@ public class AccountForm extends FormBase {
         try {
             final int timeout = 3;
             DriverManager.getInstance().setUpdateWait(timeout);
-            CommonActions.setInputField(accountNameNewInputField, accountName);
+            action.setInputField(accountNameNewInputField, accountName);
         } catch (TimeoutException | NoSuchElementException e) {
-            CommonActions.setInputField(accountNameEditInputField, accountName);
+            action.setInputField(accountNameEditInputField, accountName);
             LOGGER.error("Timeout exception triggered");
         } finally {
             DriverManager.getInstance().backPreviousWait();
@@ -114,7 +113,7 @@ public class AccountForm extends FormBase {
      * @param type String.
      */
     private void setTypeDropDownList(final String type) {
-        CommonActions.clickElement(typeDropDownList);
+        action.clickElement(typeDropDownList);
         String cssSelector = String.format("a[title='%s']", type);
         driver.findElement(By.cssSelector(cssSelector)).click();
     }
@@ -125,7 +124,7 @@ public class AccountForm extends FormBase {
      * @param webSite String.
      */
     private void setWebsiteInputText(final String webSite) {
-        CommonActions.setInputField(websiteInputField, webSite);
+        action.setInputField(websiteInputField, webSite);
     }
 
     /**
@@ -134,7 +133,7 @@ public class AccountForm extends FormBase {
      * @param description String.
      */
     private void setDescriptionInputText(final String description) {
-        CommonActions.setInputField(descriptionInputField, description);
+        action.setInputField(descriptionInputField, description);
     }
 
     /**
@@ -143,7 +142,7 @@ public class AccountForm extends FormBase {
      * @param phone String.
      */
     private void setPhoneInputText(final String phone) {
-        CommonActions.setInputField(phoneInputField, phone);
+        action.setInputField(phoneInputField, phone);
     }
 
     /**
@@ -152,7 +151,7 @@ public class AccountForm extends FormBase {
      * @param industry String.
      */
     private void setIndustryDropDownList(final String industry) {
-        CommonActions.clickElement(industryDropDownList);
+        action.clickElement(industryDropDownList);
         String cssSelector = String.format("a[title='%s']", industry);
         driver.findElement(By.cssSelector(cssSelector)).click();
     }
@@ -163,7 +162,7 @@ public class AccountForm extends FormBase {
      * @param employees String.
      */
     private void setEmployeesInputText(final String employees) {
-        CommonActions.setInputField(employeesInputField, employees);
+        action.setInputField(employeesInputField, employees);
     }
 
     //Address Information
@@ -174,7 +173,7 @@ public class AccountForm extends FormBase {
      * @param billingStreet String.
      */
     private void setBillingStreetInputText(final String billingStreet) {
-        CommonActions.setInputField(billingStreetTextArea, billingStreet);
+        action.setInputField(billingStreetTextArea, billingStreet);
     }
 
     /**
@@ -183,7 +182,7 @@ public class AccountForm extends FormBase {
      * @param billingCity String.
      */
     private void setBillingCityInputText(final String billingCity) {
-        CommonActions.setInputField(billingCityInputField, billingCity);
+        action.setInputField(billingCityInputField, billingCity);
     }
 
     /**
@@ -192,7 +191,7 @@ public class AccountForm extends FormBase {
      * @param billingZip String.
      */
     private void setBillingZipInputText(final String billingZip) {
-        CommonActions.setInputField(billingZipInputField, billingZip);
+        action.setInputField(billingZipInputField, billingZip);
     }
 
     /**
@@ -201,7 +200,7 @@ public class AccountForm extends FormBase {
      * @param billingState String.
      */
     private void setBillingStateInputText(final String billingState) {
-        CommonActions.setInputField(billingStateInputField, billingState);
+        action.setInputField(billingStateInputField, billingState);
     }
 
     /**
@@ -210,7 +209,7 @@ public class AccountForm extends FormBase {
      * @param billingCountry String.
      */
     private void setBillingCountryInputText(final String billingCountry) {
-        CommonActions.setInputField(billingCountryInputField, billingCountry);
+        action.setInputField(billingCountryInputField, billingCountry);
     }
 
     /**
@@ -219,7 +218,7 @@ public class AccountForm extends FormBase {
      * @param shippingStreet String.
      */
     private void setShippingStreetInputText(final String shippingStreet) {
-        CommonActions.setInputField(shippingStreetInputField, shippingStreet);
+        action.setInputField(shippingStreetInputField, shippingStreet);
     }
 
     /**
@@ -228,7 +227,7 @@ public class AccountForm extends FormBase {
      * @param shippingCity String.
      */
     private void setShippingCityInputText(final String shippingCity) {
-        CommonActions.setInputField(shippingCityInputField, shippingCity);
+        action.setInputField(shippingCityInputField, shippingCity);
     }
 
     /**
@@ -237,7 +236,7 @@ public class AccountForm extends FormBase {
      * @param shippingZip String.
      */
     private void setShippingZipInputText(final String shippingZip) {
-        CommonActions.setInputField(shippingZipInputField, shippingZip);
+        action.setInputField(shippingZipInputField, shippingZip);
     }
 
     /**
@@ -246,7 +245,7 @@ public class AccountForm extends FormBase {
      * @param shippingState String.
      */
     private void setShippingStateInputText(final String shippingState) {
-        CommonActions.setInputField(shippingStateInputField, shippingState);
+        action.setInputField(shippingStateInputField, shippingState);
     }
 
     /**
@@ -255,7 +254,7 @@ public class AccountForm extends FormBase {
      * @param shippingCountry String.
      */
     private void setShippingCountryInputText(final String shippingCountry) {
-        CommonActions.setInputField(shippingCountryInputField, shippingCountry);
+        action.setInputField(shippingCountryInputField, shippingCountry);
     }
 
     /**

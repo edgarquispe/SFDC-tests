@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
@@ -40,7 +39,6 @@ public class OpportunitySteps {
         context.setOpportunityName(formMapData.get(OpportunityFormField.OPPORTUNITY_NAME));
         context.setOpportunityMap(formMapData);
         new OpportunityForm().fillAndSaveForm(context.getOpportunityMap());
-        CommonActions.waitFixedTime();
     }
 
     /**
@@ -64,9 +62,8 @@ public class OpportunitySteps {
     /**
      * Click on New Opportunity special for a weird behavior.
      */
-    @And("^I click on New Opportunit$")
-    public void iClickOnNewOpportunit() {
-        CommonActions.waitFixedTime();
+    @And("^I click on New Opportunity$")
+    public void iClickOnNewOpportunity() {
         new OpportunityHome().clickNewButton();
     }
 

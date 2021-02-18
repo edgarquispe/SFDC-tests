@@ -13,12 +13,15 @@ public abstract class BasePage {
 
     protected WebDriverWait wait;
 
+    protected WebdriverAction action;
+
     /**
      * Constructor.
      */
     protected BasePage() {
         driver = DriverManager.getInstance().getDriver();
         wait = DriverManager.getInstance().getWait();
+        this.action = new WebdriverAction(driver, wait);
         PageFactory.initElements(driver, this);
     }
 

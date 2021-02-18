@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.Env;
 import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.core.ui.DriverManager;
@@ -48,7 +47,7 @@ public class Login extends BasePage {
      * @return Login pageObject.
      */
     public Login setUserName(final String username) {
-        CommonActions.setInputField(userNameInputField, username);
+        action.setInputField(userNameInputField, username);
         return this;
     }
 
@@ -59,7 +58,7 @@ public class Login extends BasePage {
      * @return Login pageObject.
      */
     public Login setPassword(final String password) {
-        CommonActions.setInputField(passwordInputField, password);
+        action.setInputField(passwordInputField, password);
         return this;
     }
 
@@ -69,7 +68,7 @@ public class Login extends BasePage {
      * @return Home pageObject.
      */
     public Home clickLogin() {
-        CommonActions.clickElement(loginBtn);
+        action.clickElement(loginBtn);
         return new Home();
     }
 
@@ -100,7 +99,7 @@ public class Login extends BasePage {
         } catch (WebDriverException e) {
             LOGGER.error("WebDriverException");
             LOGGER.info(e);
-            DriverManager.getInstance().getDriver().get(URL);
+            driver.get(URL);
             homePage = loginAs(userName, password);
         } finally {
             DriverManager.getInstance().backPreviousWait();

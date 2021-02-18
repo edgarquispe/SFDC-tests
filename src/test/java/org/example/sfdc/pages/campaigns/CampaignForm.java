@@ -6,7 +6,6 @@ import java.util.Map;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
 
@@ -24,8 +23,8 @@ public class CampaignForm extends FormBase {
      * @param campaignName String.
      */
     private void setCampaignNameInputText(final String campaignName) {
-        if (CommonActions.isElementDisplayed(campaignNameInputText)) {
-            CommonActions.setInputField(campaignNameInputText, campaignName);
+        if (action.isElementDisplayed(campaignNameInputText)) {
+            action.setInputField(campaignNameInputText, campaignName);
         }
     }
 

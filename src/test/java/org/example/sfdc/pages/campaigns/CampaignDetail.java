@@ -3,7 +3,6 @@ package org.example.sfdc.pages.campaigns;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 import org.example.sfdc.pages.base.FormBase;
 import org.example.sfdc.pages.base.HomeBase;
@@ -30,7 +29,7 @@ public class CampaignDetail extends DetailBase {
      */
     @Override
     public FormBase clickEditButton() {
-        CommonActions.clickElement(editButton);
+        action.clickElement(editButton);
         return new CampaignForm();
     }
 

@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 
 /**
@@ -48,7 +47,7 @@ public class Home extends BasePage {
      * Method that make a click on the profile icon.
      */
     public void clickProfileIcon() {
-        CommonActions.clickElement(viewProfileIcon);
+        action.clickElement(viewProfileIcon);
     }
 
     /**
@@ -58,7 +57,7 @@ public class Home extends BasePage {
      */
     public String getUserNameOfHomePage() {
         clickProfileIcon();
-        return CommonActions.getTextElement(nameProfileLabel);
+        return action.getTextElement(nameProfileLabel);
     }
 
     /**
@@ -67,7 +66,7 @@ public class Home extends BasePage {
      * @return True if the element is Displayed.
      */
     public boolean isErrorMessageDisplayed() {
-        return CommonActions.isElementDisplayed(errorMessageId);
+        return action.isElementDisplayed(errorMessageId);
     }
 
     /**
@@ -75,7 +74,7 @@ public class Home extends BasePage {
      */
     public void clickLogOutLink() {
         clickProfileIcon();
-        CommonActions.clickElement(logOutButton);
+        action.clickElement(logOutButton);
     }
 
     /**
@@ -85,7 +84,7 @@ public class Home extends BasePage {
      */
     public Profile clickProfileLinkLabel() {
         clickProfileIcon();
-        CommonActions.clickElement(profileLinkLabel);
+        action.clickElement(profileLinkLabel);
         return new Profile();
     }
 
@@ -95,7 +94,7 @@ public class Home extends BasePage {
      * @return Home pageObject.
      */
     public Home clickHomeLink() {
-        CommonActions.clickElement(homeLink);
+        action.clickElement(homeLink);
         return new Home();
     }
 
@@ -105,7 +104,7 @@ public class Home extends BasePage {
      * @return AppLauncher.
      */
     public AppLauncher clickAppLauncher() {
-        CommonActions.mouseClick(appLauncherButton);
+        action.mouseClick(appLauncherButton);
         return new AppLauncher();
     }
 }

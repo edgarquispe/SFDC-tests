@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.acccounts.AccountDetail;
@@ -42,7 +41,6 @@ public class AccountsAssertionSteps {
     @Then("^the Account should be displayed$")
     public void theAccountShouldBeDisplayed() {
         AccountDetail accountDetail = new AccountDetail();
-        CommonActions.waitFixedTime();
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getItemName()));
         accountDetail.clickDetailButton();
         assertion.assertEquals(accountDetail.getAccountNameText(), map.get(AccountFormField.ACCOUNT_NAME));

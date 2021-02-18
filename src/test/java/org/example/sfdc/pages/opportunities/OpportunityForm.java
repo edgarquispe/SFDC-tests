@@ -11,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
@@ -75,7 +74,7 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setOpportunityNameInputText(final String opportunityName) {
-        CommonActions.setInputField(opportunityNameInputField, opportunityName);
+        action.setInputField(opportunityNameInputField, opportunityName);
         return this;
     }
 
@@ -83,7 +82,7 @@ public class OpportunityForm extends FormBase {
      * This method perform a click in the account name text box.
      */
     public void clickAccountName() {
-        CommonActions.clickElement(opportunityAccountNameInputField);
+        action.clickElement(opportunityAccountNameInputField);
     }
 
     /**
@@ -93,7 +92,7 @@ public class OpportunityForm extends FormBase {
     public OpportunityForm setAccountNameSelect(final String accountName) {
         clickDeleteAccountIcon(accountName);
         clickAccountName();
-        CommonActions.clickElement(selectedDivFormElement(accountName));
+        action.clickElement(selectedDivFormElement(accountName));
 
         return this;
     }
@@ -103,7 +102,7 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setTypeSelect(final String opportunityType) {
-        CommonActions.clickElement(opportunityTypeInputField);
+        action.clickElement(opportunityTypeInputField);
         selectedAformElement(opportunityType);
         return this;
     }
@@ -112,7 +111,7 @@ public class OpportunityForm extends FormBase {
      * This method perform a click in the campaign input name.
      */
     public void clickCampaignInputName() {
-        CommonActions.clickElement(opportunityCampaignInputField);
+        action.clickElement(opportunityCampaignInputField);
     }
 
     /**
@@ -121,7 +120,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setPrimaryCampaignSourceSelect(final String campaignName) {
         clickCampaignInputName();
-        CommonActions.clickElement(selectedDivFormElement(campaignName));
+        action.clickElement(selectedDivFormElement(campaignName));
         return this;
     }
 
@@ -130,8 +129,8 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setCloseDateSelect() {
 
-        CommonActions.clickElement(opportunityDateInputField);
-        CommonActions.clickElement(selectOpportunityDateInputField);
+        action.clickElement(opportunityDateInputField);
+        action.clickElement(selectOpportunityDateInputField);
 
         return this;
     }
@@ -142,7 +141,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setStageSelect(final String stage) {
 
-        CommonActions.clickElement(opportunityStageInputField);
+        action.clickElement(opportunityStageInputField);
         selectedAformElement(stage);
 
         return this;
@@ -153,7 +152,7 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setProbabilityInputText(final String probability) {
-        CommonActions.setInputField(opportunityProbabilityInputField, probability);
+        action.setInputField(opportunityProbabilityInputField, probability);
         return this;
     }
 
@@ -163,7 +162,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setAmountInputText(final String amount) {
 
-        CommonActions.setInputField(opportunityAmountInputField, amount);
+        action.setInputField(opportunityAmountInputField, amount);
         return this;
     }
 
@@ -173,7 +172,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setLeadSourceSelect(final String lead) {
 
-        CommonActions.clickElement(opportunityLeadInputField);
+        action.clickElement(opportunityLeadInputField);
         selectedAformElement(lead);
         return this;
     }
@@ -184,7 +183,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setNextStepInputText(final String nextStep) {
 
-        CommonActions.setInputField(opportunityNextStepInputField, nextStep);
+        action.setInputField(opportunityNextStepInputField, nextStep);
         return this;
     }
 
@@ -193,7 +192,7 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setDescriptionTextArea(final String description) {
-        CommonActions.setInputField(opportunityDescriptionInputField, description);
+        action.setInputField(opportunityDescriptionInputField, description);
         return this;
     }
 

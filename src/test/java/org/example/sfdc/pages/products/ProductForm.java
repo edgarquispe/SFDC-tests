@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
 
@@ -55,7 +54,7 @@ public class ProductForm extends FormBase {
      * @param productName String.
      */
     private void setProductNameInputText(final String productName) {
-        CommonActions.setInputField(productNameInputText, productName);
+        action.setInputField(productNameInputText, productName);
     }
 
     /**
@@ -64,7 +63,7 @@ public class ProductForm extends FormBase {
      * @param productCode String.
      */
     private void setProductCodeInputText(final String productCode) {
-        CommonActions.setInputField(productCodeInputText, productCode);
+        action.setInputField(productCodeInputText, productCode);
     }
 
     /**
@@ -73,7 +72,7 @@ public class ProductForm extends FormBase {
      * @param productDescription String.
      */
     private void setProductDescriptionTextArea(final String productDescription) {
-        CommonActions.setInputField(productDescriptionTextArea, productDescription);
+        action.setInputField(productDescriptionTextArea, productDescription);
     }
 
     /**
@@ -82,7 +81,7 @@ public class ProductForm extends FormBase {
      * @param productFamily String.
      */
     private void setProductFamilySelect(final String productFamily) {
-        CommonActions.clickElement(productFamilySelect);
+        action.clickElement(productFamilySelect);
         String cssSelector = String.format("a[title='%s']", productFamily);
         driver.findElement(By.cssSelector(cssSelector)).click();
     }
@@ -94,7 +93,7 @@ public class ProductForm extends FormBase {
      */
     private void setActiveCheckBox(boolean flag) {
         if (flag) {
-            CommonActions.clickElement(activeCheckBox);
+            action.clickElement(activeCheckBox);
         }
     }
 

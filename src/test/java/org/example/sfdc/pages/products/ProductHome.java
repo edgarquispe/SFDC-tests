@@ -2,7 +2,6 @@ package org.example.sfdc.pages.products;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.HomeBase;
 
 /**
@@ -15,7 +14,8 @@ public class ProductHome extends HomeBase {
      */
     @Override
     public ProductForm clickNewButton() {
-        CommonActions.jsClickCssButton(newButton);
+        action.waitFixedTime();
+        action.jsClickCssButton(newButton);
         return new ProductForm();
     }
 
@@ -25,7 +25,7 @@ public class ProductHome extends HomeBase {
     @Override
     public ProductForm clickEditButton(final String name) {
         clickDropDownListLink(name);
-        CommonActions.clickElement(editButton);
+        action.clickElement(editButton);
         return new ProductForm();
     }
 

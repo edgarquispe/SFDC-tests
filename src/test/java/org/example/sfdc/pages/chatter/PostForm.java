@@ -11,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 
 /**
@@ -69,7 +68,7 @@ public class PostForm extends BasePage {
      * Click On Post Text Area Field.
      */
     public void clickOnPostTextAreaField() {
-        CommonActions.clickElement(sectionPostTextAreaField);
+        action.clickElement(sectionPostTextAreaField);
     }
 
     /**
@@ -80,7 +79,7 @@ public class PostForm extends BasePage {
      */
     public PostForm setTextPost(final String postText) {
         clickOnPostTextAreaField();
-        CommonActions.setInputField(postTextAreaField, postText);
+        action.setInputField(postTextAreaField, postText);
         return this;
     }
 
@@ -88,21 +87,21 @@ public class PostForm extends BasePage {
      * Click Share for Save Post.
      */
     public void clickShareforSavePost() {
-        CommonActions.clickElement(shareButton);
+        action.clickElement(shareButton);
     }
 
     /**
      * Click Post To Delete.
      */
     public void clickPostToDelete() {
-        CommonActions.clickElement(postOptionDeleteButton);
+        action.clickElement(postOptionDeleteButton);
     }
 
     /**
      * Click On Confirm To Delete The Post.
      */
     public void clickOnConfirmToDeleteThePost() {
-        CommonActions.clickElement(confirmDeleteButton);
+        action.clickElement(confirmDeleteButton);
     }
 
 
@@ -110,7 +109,7 @@ public class PostForm extends BasePage {
      * Click Post To Edit.
      */
     public void clickPostToEdit() {
-        CommonActions.clickElement(postOptionEditButton);
+        action.clickElement(postOptionEditButton);
     }
 
 
@@ -118,7 +117,7 @@ public class PostForm extends BasePage {
      * Click On Edit Text Area Field.
      */
     public void clickOnEditTextAreaField() {
-        CommonActions.clickElement(editTextAreaField);
+        action.clickElement(editTextAreaField);
 
     }
 
@@ -129,14 +128,14 @@ public class PostForm extends BasePage {
      */
     public void setEditTextAreaField(final String messageEdited) {
         clickOnEditTextAreaField();
-        CommonActions.setInputField(editTextAreaField, messageEdited);
+        action.setInputField(editTextAreaField, messageEdited);
     }
 
     /**
      * Click Save Edition.
      */
     public void clickSaveEdition() {
-        CommonActions.clickElement(saveEditButton);
+        action.clickElement(saveEditButton);
     }
 
     /**
@@ -145,14 +144,14 @@ public class PostForm extends BasePage {
      * @param commentText String.
      */
     public void setComment(final String commentText) {
-        CommonActions.setInputField(commentTextAreaField, commentText);
+        action.setInputField(commentTextAreaField, commentText);
     }
 
     /**
      * Click Save Comment.
      */
     public void clickSaveComment() {
-        CommonActions.clickElement(confirmCommentButton);
+        action.clickElement(confirmCommentButton);
     }
 
     /**
@@ -209,23 +208,6 @@ public class PostForm extends BasePage {
             WebElement webElement = driver.findElement(By.xpath(selector));
             return webElement.isDisplayed();
 
-        } catch (WebDriverException e) {
-            LOGGER.error("WebDriverException");
-            LOGGER.info(e);
-            return false;
-        }
-    }
-
-    /**
-     * Is Element Present.
-     *
-     * @param webElement webElement.
-     * @return boolean.
-     */
-    public static boolean isElementPresent(final WebElement webElement) {
-        try {
-            CommonActions.getTextElement(webElement);
-            return true;
         } catch (WebDriverException e) {
             LOGGER.error("WebDriverException");
             LOGGER.info(e);

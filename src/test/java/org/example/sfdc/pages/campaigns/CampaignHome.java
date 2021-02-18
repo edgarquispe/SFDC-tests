@@ -2,7 +2,6 @@ package org.example.sfdc.pages.campaigns;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 import org.example.sfdc.pages.base.FormBase;
 import org.example.sfdc.pages.base.HomeBase;
@@ -17,7 +16,8 @@ public class CampaignHome extends HomeBase {
      */
     @Override
     public FormBase clickNewButton() {
-        CommonActions.jsClickCssButton(newButton);
+        action.waitFixedTime();
+        action.jsClickCssButton(newButton);
         return new CampaignForm();
     }
 
@@ -27,7 +27,7 @@ public class CampaignHome extends HomeBase {
     @Override
     public FormBase clickEditButton(final String name) {
         clickDropDownListLink(name);
-        CommonActions.clickElement(editButton);
+        action.clickElement(editButton);
         return new CampaignForm();
     }
 
@@ -37,7 +37,7 @@ public class CampaignHome extends HomeBase {
     @Override
     public DetailBase clickDisplayedItem(final String name) {
         isDisplayedItem(name);
-        CommonActions.clickElement(displayedItem);
+        action.clickElement(displayedItem);
         return new CampaignDetail();
     }
 

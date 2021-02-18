@@ -2,7 +2,6 @@ package org.example.sfdc.pages.opportunities;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 import org.example.sfdc.pages.base.FormBase;
 import org.example.sfdc.pages.base.HomeBase;
@@ -17,7 +16,8 @@ public class OpportunityHome extends HomeBase {
      */
     @Override
     public FormBase clickNewButton() {
-        CommonActions.jsClick(newButton);
+        action.waitFixedTime();
+        action.jsClick(newButton);
         return new OpportunityForm();
     }
 
@@ -27,7 +27,7 @@ public class OpportunityHome extends HomeBase {
     @Override
     public FormBase clickEditButton(final String name) {
         clickDropDownListLink(name);
-        CommonActions.clickElement(editButton);
+        action.clickElement(editButton);
         return new OpportunityForm();
     }
 
@@ -37,7 +37,7 @@ public class OpportunityHome extends HomeBase {
     @Override
     public DetailBase clickDisplayedItem(final String name) {
         isDisplayedItem(name);
-        CommonActions.clickElement(displayedItem);
+        action.clickElement(displayedItem);
         return new OpportunityDetail();
     }
 

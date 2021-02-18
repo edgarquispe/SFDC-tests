@@ -3,7 +3,6 @@ package org.example.sfdc.pages.base;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 
 /**
@@ -30,28 +29,28 @@ public abstract class FormBase extends BasePage {
      * Clicks the Save Button of the Form.
      */
     public void clickSaveButton() {
-        CommonActions.clickElement(saveButton);
+        action.clickElement(saveButton);
     }
 
     /**
      * Clicks the close form button.
      */
     public void clickCloseButton() {
-        CommonActions.clickElement(closeButton);
+        action.clickElement(closeButton);
     }
 
     /**
      * Clicks the Save and New Button of the Form.
      */
     public void clickSaveAndNewButton() {
-        CommonActions.clickElement(saveAndNewButton);
+        action.clickElement(saveAndNewButton);
     }
 
     /**
      * Clicks the Cancel Button of the Form.
      */
     public void clickCancelButton() {
-        CommonActions.clickElement(cancelButton);
+        action.clickElement(cancelButton);
     }
 
     /**
@@ -60,6 +59,6 @@ public abstract class FormBase extends BasePage {
      * @return error notification content.
      */
     public String errorNotificationText() {
-        return CommonActions.getTextElement(requiredFieldsText);
+        return action.getTextElement(requiredFieldsText);
     }
 }

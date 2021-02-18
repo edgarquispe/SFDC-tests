@@ -8,7 +8,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
@@ -90,15 +89,6 @@ public class Hooks {
     @Before(order = 1)
     public void setHardAssertion() {
         context.setAssertion(new Assertion());
-    }
-
-
-    /**
-     * wait two seconds.
-     */
-    @Before(order = 15)
-    public void waitBefore() {
-        CommonActions.waitFixedTime();
     }
 
 }

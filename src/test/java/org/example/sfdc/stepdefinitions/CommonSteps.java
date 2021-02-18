@@ -6,8 +6,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.core.ui.CommonActions;
-import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
@@ -69,7 +67,6 @@ public class CommonSteps {
      */
     @Given("I go to {sObject} Home Page")
     public void iGoToHomePage(final SObject sObject) {
-        CommonActions.waitFixedTime();
         Navigator.gotoPage(sObject);
     }
 
@@ -80,7 +77,6 @@ public class CommonSteps {
      */
     @And("I click on New {sObject}")
     public void iClickOnNew(final SObject sObject) {
-        CommonActions.waitFixedTime();
         Navigator.mapActions(sObject).clickNewButton();
     }
 
@@ -114,12 +110,4 @@ public class CommonSteps {
         Navigator.mapActions(sObject).clickItemList(context.getItemName());
     }
 
-    /**
-     * This method refresh page.
-     */
-    @And("^refresh page$")
-    public void refreshPage() {
-        DriverManager.getInstance().getDriver().navigate().refresh();
-        CommonActions.waitFixedTime();
-    }
 }

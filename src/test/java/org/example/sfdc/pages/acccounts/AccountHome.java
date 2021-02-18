@@ -2,7 +2,6 @@ package org.example.sfdc.pages.acccounts;
 
 import org.openqa.selenium.By;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.HomeBase;
 
 /**
@@ -25,7 +24,8 @@ public class AccountHome extends HomeBase {
      */
     @Override
     public AccountForm clickNewButton() {
-        CommonActions.jsClick(newButton);
+        action.waitFixedTime();
+        action.jsClick(newButton);
         return new AccountForm();
     }
 
@@ -35,7 +35,7 @@ public class AccountHome extends HomeBase {
     @Override
     public AccountForm clickEditButton(final String name) {
         clickDropDownListLink(name);
-        CommonActions.jsClickCssButton(editButton);
+        action.jsClickCssButton(editButton);
         return new AccountForm();
     }
 

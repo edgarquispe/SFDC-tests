@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
@@ -55,7 +54,6 @@ public class OpportunityAssertionSteps {
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
-        CommonActions.waitFixedTime();
         assertion.assertTrue(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertion.assertTrue(opportunityHome.isOpportunityLinkDisplayed(
@@ -70,7 +68,6 @@ public class OpportunityAssertionSteps {
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
         DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
-        CommonActions.waitFixedTime();
         assertion.assertFalse(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
     }

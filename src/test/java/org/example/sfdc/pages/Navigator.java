@@ -1,8 +1,8 @@
 package org.example.sfdc.pages;
 
 import java.util.EnumMap;
+import java.util.function.Supplier;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.core.ui.BasePage;
 import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.acccounts.AccountDetail;
@@ -110,18 +110,13 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static BasePage gotoPage(final SObject endPoint) {
-        switch (endPoint) {
-            case ACCOUNT:
-                return goToAccountsHome();
-            case CHATTER:
-                return goToChatterHome();
-            case OPPORTUNITY:
-                return goToOpportunityHome();
-            case CAMPAIGN:
-                return goToCampaignHome();
-            default:
-                return goToProductsHome();
-        }
+        EnumMap<SObject, Supplier<BasePage>> map = new EnumMap<>(SObject.class);
+        map.put(SObject.ACCOUNT, Navigator::goToAccountsHome);
+        map.put(SObject.CHATTER, Navigator::goToChatterHome);
+        map.put(SObject.OPPORTUNITY, Navigator::goToOpportunityHome);
+        map.put(SObject.CAMPAIGN, Navigator::goToCampaignHome);
+        map.put(SObject.PRODUCT, Navigator::goToProductsHome);
+        return map.get(endPoint).get();
     }
 
     /**
@@ -131,13 +126,12 @@ public final class Navigator {
      * @return HomeBase.
      */
     public static HomeBase mapActions(final SObject item) {
-        CommonActions.waitFixedTime();
-        EnumMap<SObject, HomeBase> map = new EnumMap<>(SObject.class);
-        map.put(SObject.PRODUCT, new ProductHome());
-        map.put(SObject.ACCOUNT, new AccountHome());
-        map.put(SObject.OPPORTUNITY, new OpportunityHome());
-        map.put(SObject.CAMPAIGN, new CampaignHome());
-        return map.get(item);
+        EnumMap<SObject, Supplier<HomeBase>> map = new EnumMap<>(SObject.class);
+        map.put(SObject.PRODUCT, ProductHome::new);
+        map.put(SObject.ACCOUNT, AccountHome::new);
+        map.put(SObject.OPPORTUNITY, OpportunityHome::new);
+        map.put(SObject.CAMPAIGN, CampaignHome::new);
+        return map.get(item).get();
     }
 
     /**
@@ -147,12 +141,12 @@ public final class Navigator {
      * @return FormBase.
      */
     public static FormBase mapForm(final SObject item) {
-        EnumMap<SObject, FormBase> map = new EnumMap<>(SObject.class);
-        map.put(SObject.PRODUCT, new ProductForm());
-        map.put(SObject.ACCOUNT, new AccountForm());
-        map.put(SObject.OPPORTUNITY, new OpportunityForm());
-        map.put(SObject.CAMPAIGN, new CampaignForm());
-        return map.get(item);
+        EnumMap<SObject, Supplier<FormBase>> map = new EnumMap<>(SObject.class);
+        map.put(SObject.PRODUCT, ProductForm::new);
+        map.put(SObject.ACCOUNT, AccountForm::new);
+        map.put(SObject.OPPORTUNITY, OpportunityForm::new);
+        map.put(SObject.CAMPAIGN, CampaignForm::new);
+        return map.get(item).get();
     }
 
     /**
@@ -162,11 +156,11 @@ public final class Navigator {
      * @return DetailBase.
      */
     public static DetailBase mapDetail(final SObject item) {
-        EnumMap<SObject, DetailBase> map = new EnumMap<>(SObject.class);
-        map.put(SObject.PRODUCT, new ProductDetail());
-        map.put(SObject.ACCOUNT, new AccountDetail());
-        map.put(SObject.OPPORTUNITY, new OpportunityDetail());
-        map.put(SObject.CAMPAIGN, new CampaignDetail());
-        return map.get(item);
+        EnumMap<SObject, Supplier<DetailBase>> map = new EnumMap<>(SObject.class);
+        map.put(SObject.PRODUCT, ProductDetail::new);
+        map.put(SObject.ACCOUNT, AccountDetail::new);
+        map.put(SObject.OPPORTUNITY, OpportunityDetail::new);
+        map.put(SObject.CAMPAIGN, CampaignDetail::new);
+        return map.get(item).get();
     }
 }

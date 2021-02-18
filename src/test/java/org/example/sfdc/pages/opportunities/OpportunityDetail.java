@@ -3,7 +3,6 @@ package org.example.sfdc.pages.opportunities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.CommonActions;
 import org.example.sfdc.pages.base.DetailBase;
 
 /**
@@ -28,7 +27,7 @@ public class OpportunityDetail extends DetailBase {
      */
     @Override
     public OpportunityForm clickEditButton() {
-        CommonActions.jsClick(editButton);
+        action.jsClick(editButton);
         return new OpportunityForm();
     }
 
@@ -48,7 +47,7 @@ public class OpportunityDetail extends DetailBase {
      * @return String.
      */
     public String getOpportunityNameText() {
-        return CommonActions.getTextElement(opportunityNameText);
+        return action.getTextElement(opportunityNameText);
     }
 
     /**
@@ -57,7 +56,7 @@ public class OpportunityDetail extends DetailBase {
      * @return String.
      */
     public String getOpportunityAccountText() {
-        return CommonActions.getTextElement(accountNameText);
+        return action.getTextElement(accountNameText);
     }
 
     /**
