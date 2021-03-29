@@ -3,7 +3,7 @@ package org.example.sfdc.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.BasePage;
+import org.example.core.ui.BasePage;
 
 /**
  * Class for the Profile page.

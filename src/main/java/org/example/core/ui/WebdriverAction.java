@@ -1,6 +1,8 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +14,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.example.core.Env;
 
 /**
  * Class containing the common actions for the framework.
@@ -107,12 +111,14 @@ public class WebdriverAction {
      */
     public void waitFixedTime() {
         try {
-            DriverManager.getInstance().setUpdateWait(2);
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(3));
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Just For Wait']")));
         } catch (TimeoutException e) {
             LOGGER.error("Timeout exception triggered");
         } finally {
-            DriverManager.getInstance().backPreviousWait();
+            driver.manage().timeouts().implicitlyWait(Env.getInstance().getImplicitTimeWait(), TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(Env.getInstance().getExplicitTimeWait()));
         }
     }
 

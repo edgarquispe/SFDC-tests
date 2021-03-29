@@ -1,4 +1,4 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import org.example.sfdc.core.MyRuntimeException;
+import org.example.core.MyRuntimeException;
 
 /**
  * This class abstracts and implements common methods of the navigators in the cloud.

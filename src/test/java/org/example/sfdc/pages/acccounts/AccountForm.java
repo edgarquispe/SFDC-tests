@@ -2,16 +2,11 @@ package org.example.sfdc.pages.acccounts;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.DriverManager;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
 
@@ -20,62 +15,57 @@ import org.example.sfdc.pages.base.FormBase;
  */
 public class AccountForm extends FormBase {
 
-    private static final Logger LOGGER = LogManager.getLogger();
-
     //Account Information
-    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div/descendant::input")
+    @FindBy(xpath = "//label[text()='Account Name']/following-sibling::div/descendant::input")
     private WebElement accountNameNewInputField;
-
-    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::input")
-    private WebElement accountNameEditInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
     private WebElement typeDropDownList;
 
-    @FindBy(xpath = "//span[text()='Website']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Website']/following-sibling::div/input")
     private WebElement websiteInputField;
 
-    @FindBy(xpath = "//span[text()='Description']/parent::label/following-sibling::textarea")
+    @FindBy(xpath = "//label[text()='Description']/following-sibling::div/textarea")
     private WebElement descriptionInputField;
 
-    @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Phone']/following-sibling::div/input")
     private WebElement phoneInputField;
 
     @FindBy(xpath = "//span[text()='Industry']/parent::span/following-sibling::div/descendant::a")
     private WebElement industryDropDownList;
 
-    @FindBy(xpath = "//span[text()='Employees']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Employees']/following-sibling::div/input")
     private WebElement employeesInputField;
 
     //Address Information
-    @FindBy(xpath = "//span[text()='Billing Street']/parent::label/following-sibling::textarea")
+    @FindBy(xpath = "//label[text()='Billing Street']/following-sibling::div/textarea")
     private WebElement billingStreetTextArea;
 
-    @FindBy(xpath = "//span[text()='Billing City']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Billing City']/following-sibling::div/input")
     private WebElement billingCityInputField;
 
-    @FindBy(xpath = "//span[text()='Billing Zip/Postal Code']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Billing Zip/Postal Code']/following-sibling::div/input")
     private WebElement billingZipInputField;
 
-    @FindBy(xpath = "//span[text()='Billing State/Province']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Billing State/Province']/following-sibling::div/input")
     private WebElement billingStateInputField;
 
-    @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Billing Country']/following-sibling::div/input")
     private WebElement billingCountryInputField;
 
-    @FindBy(xpath = "//span[text()='Shipping Street']/parent::label/following-sibling::textarea")
+    @FindBy(xpath = "//label[text()='Shipping Street']/following-sibling::div/textarea")
     private WebElement shippingStreetInputField;
 
-    @FindBy(xpath = "//span[text()='Shipping City']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Shipping City']/following-sibling::div/input")
     private WebElement shippingCityInputField;
 
-    @FindBy(xpath = "//span[text()='Shipping Zip/Postal Code']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Shipping Zip/Postal Code']/following-sibling::div/input")
     private WebElement shippingZipInputField;
 
-    @FindBy(xpath = "//span[text()='Shipping State/Province']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Shipping State/Province']/following-sibling::div/input")
     private WebElement shippingStateInputField;
 
-    @FindBy(xpath = "//span[text()='Shipping Country']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//label[text()='Shipping Country']/following-sibling::div/input")
     private WebElement shippingCountryInputField;
 
     /**
@@ -95,16 +85,7 @@ public class AccountForm extends FormBase {
      * @param accountName String.
      */
     private void setAccountNameInputText(final String accountName) {
-        try {
-            final int timeout = 3;
-            DriverManager.getInstance().setUpdateWait(timeout);
-            action.setInputField(accountNameNewInputField, accountName);
-        } catch (TimeoutException | NoSuchElementException e) {
-            action.setInputField(accountNameEditInputField, accountName);
-            LOGGER.error("Timeout exception triggered");
-        } finally {
-            DriverManager.getInstance().backPreviousWait();
-        }
+        action.setInputField(accountNameNewInputField, accountName);
     }
 
     /**

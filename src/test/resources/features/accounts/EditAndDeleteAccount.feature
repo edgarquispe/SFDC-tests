@@ -11,11 +11,9 @@ Feature: Edit Account
     When I edit the Account
     And I fill the Account form with:
       | ACCOUNT_NAME            | AutomationEdit             |
-      | ACCOUNT_TYPE            | Analyst                    |
       | ACCOUNT_WEBSITE         | www.somepage.com           |
       | ACCOUNT_DESCRIPTION     | This is a Description test |
       | ACCOUNT_PHONE           | 59179732801                |
-      | ACCOUNT_INDUSTRY        | Banking                    |
       | ACCOUNT_EMPLOYEES       | 25                         |
       | ACCOUNT_BILLING_STREET  | Some Street                |
       | ACCOUNT_BILLING_CITY    | Cochabamba                 |

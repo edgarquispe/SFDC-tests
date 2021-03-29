@@ -1,13 +1,9 @@
 # sfdc-tests
 
-[![Build status](https://travis-ci.org/AT-04/sfdc-tests.svg?branch=develop)](https://travis-ci.org/AT-04/sfdc-tests) 
-
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=at-04-sfdc-tests&metric=alert_status)](https://sonarcloud.io/dashboard/index/at-04-sfdc-tests)
-
 WHAT IS IT?
 -----------
 
-sfdc-tests project has as main objective to automate acceptance test cases of SalesForce web page using REST-Assured,
+sfdc-tests project has as main objective to automate acceptance test cases of SalesForce web page using
 Selenium, TestNG and Cucumber technologies, and use other services like docker, BrowserStack and SauceLabs for automated
 testing.
 
@@ -15,39 +11,17 @@ Additional technologies:
 
     -SonarQube.
 
-FEATURES TESTED
----------------
-
-The following main features are implemented in this framework.
-
-Acceptance tests.
-
-    -Login.
-    -Account.
-        -Create.
-        -Edit, Delete.
-    -Chatters.
-        -Create.
-        -Edit, Delete and Comment Post.
-    -Opportunity.
-        -Create.
-        -Edit and Delete.
-    -Products.
-        -Create.
-        -Edit And Delete.
 
 REQUIREMENTS AND SET CONFIGURATIONS
 -----------------------------------
 
 The required configuration for this framework is the following:
 
-    -IntelliJ idea IDE.
-    -Download Gradle 3.5 or superior: https://gradle.org/gradle-download/
-    -Clone/download the project from GitHub repository: https://github.com/AT-04/sfdc-tests.git
+    -Java 11+
+    -Gradle
 
 Once those requirements are done, follow these steps:
 
-    -Open the project downloaded with the IntelliJ IDE.
     -Open the Gradle properties file e.g. gradle.properties file
 
 Set the required parameters:
@@ -79,23 +53,3 @@ To execute by command line you can use the following:
         -PremotePlatformVersion=remotePlatformVersion -PremotePlatform=remotePlatform -PremoteResolution=remoteResolution
 
         ```
-CONTACTS
---------
-
-    -If you want to be informed about new code releases, bug fixes, security fixes, general news and information about
-    pivotal-tests project check to the GitHub repository https://github.com/AT-04/sfdc-tests.git
-
-CONTRIBUTORS
-------------
-
-Current contributors:
-
-    -Juan Jose Torrez (JoseTorrez) - https://github.com/JoseTorrez
-    -Marcos Lara (marcos-x86) - https://github.com/marcos-x86
-    -Abel Barrientos (Sphinix27) - https://github.com/Sphinix27
-    -Richard Severiche (RichardSeverich) - https://github.com/RichardSeverich
-    -Sergio Navarro (GioSerden) - https://github.com/GioSerden
-    -Ovidio Miranda (OvidioMiranda) - https://github.com/OvidioMiranda
-    -Cynthia Terrazas  (CynthiaTerrazas) - https://github.com/CynthiaTerrazas
-    -Yury Ortuño (yuryver) - https://github.com/yuryver
-    -Carlos Gonzales (carledriss) - https://github.com/carledriss

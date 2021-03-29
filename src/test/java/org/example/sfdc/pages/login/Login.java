@@ -1,14 +1,16 @@
 package org.example.sfdc.pages.login;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.Env;
-import org.example.sfdc.core.ui.BasePage;
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.Env;
+import org.example.core.ui.BasePage;
 import org.example.sfdc.pages.Home;
 import org.example.sfdc.pages.Profile;
 
@@ -18,8 +20,6 @@ import org.example.sfdc.pages.Profile;
 public class Login extends BasePage {
 
     private static final String URL = Env.getInstance().getLoginUrl();
-
-    private static final int TIME_WAIT_DURATION = 5;
 
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -93,7 +93,8 @@ public class Login extends BasePage {
     public Home loginOtherUser(final String userName, final String password) {
         Home homePage;
         try {
-            DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(3));
             homePage = verifyCorrectUser(userName, password);
             homePage.clickHomeLink();
         } catch (WebDriverException e) {
@@ -102,7 +103,8 @@ public class Login extends BasePage {
             driver.get(URL);
             homePage = loginAs(userName, password);
         } finally {
-            DriverManager.getInstance().backPreviousWait();
+            driver.manage().timeouts().implicitlyWait(Env.getInstance().getImplicitTimeWait(), TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(Env.getInstance().getExplicitTimeWait()));
         }
         return homePage;
     }

@@ -1,7 +1,9 @@
 package org.example.sfdc.pages.opportunities;
 
+import java.time.Duration;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.Env;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
 
@@ -272,13 +274,14 @@ public class OpportunityForm extends FormBase {
         String xpathSelector = String.format("//span[text()='%s']/following-sibling::a/"
                 + "child::span[@class='deleteIcon']", accountName);
         try {
-            final int timeOut = 3;
-            DriverManager.getInstance().setUpdateWait(timeOut);
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(3));
             driver.findElement(By.xpath(xpathSelector)).click();
         } catch (NotFoundException e) {
             LOGGER.error("Timeout exception triggered");
         } finally {
-            DriverManager.getInstance().backPreviousWait();
+            driver.manage().timeouts().implicitlyWait(Env.getInstance().getImplicitTimeWait(), TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(Env.getInstance().getExplicitTimeWait()));
         }
     }
 

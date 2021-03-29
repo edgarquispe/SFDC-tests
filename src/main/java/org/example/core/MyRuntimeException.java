@@ -1,4 +1,4 @@
-package org.example.sfdc.core;
+package org.example.core;
 
 /**
  * Class that personalize the Runtime Exception.

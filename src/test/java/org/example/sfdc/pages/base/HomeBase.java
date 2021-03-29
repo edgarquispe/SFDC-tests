@@ -1,6 +1,8 @@
 package org.example.sfdc.pages.base;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.BasePage;
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.Env;
+import org.example.core.ui.BasePage;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
 
@@ -64,8 +66,9 @@ public abstract class HomeBase extends BasePage {
      */
     public boolean isDisplayedItem(final String name) {
         try {
-            action.waitFixedTime();
             driver.navigate().refresh();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(3));
             String xpathSelector = String.format("//a[contains(text(),'%s')]", name);
             displayedItem = driver.findElement(By.xpath(xpathSelector));
             return action.isElementDisplayed(displayedItem);
@@ -74,7 +77,8 @@ public abstract class HomeBase extends BasePage {
             LOGGER.info(e);
             return false;
         } finally {
-            DriverManager.getInstance().backPreviousWait();
+            driver.manage().timeouts().implicitlyWait(Env.getInstance().getImplicitTimeWait(), TimeUnit.SECONDS);
+            wait.withTimeout(Duration.ofSeconds(Env.getInstance().getExplicitTimeWait()));
         }
     }
 

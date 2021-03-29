@@ -3,8 +3,8 @@ package org.example.sfdc.pages;
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
-import org.example.sfdc.core.ui.BasePage;
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.ui.BasePage;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountForm;
 import org.example.sfdc.pages.acccounts.AccountHome;

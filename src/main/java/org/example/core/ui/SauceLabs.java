@@ -1,9 +1,9 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import org.example.sfdc.core.Env;
+import org.example.core.Env;
 
 /**
  * SauceLabs class that implements IBrowsers.

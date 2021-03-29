@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.BasePage;
+import org.example.core.ui.BasePage;
 
 /**
  * Abstract class that gets common info in Details Page.

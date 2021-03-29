@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountFormField;
@@ -44,11 +44,9 @@ public class AccountsAssertionSteps {
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getItemName()));
         accountDetail.clickDetailButton();
         assertion.assertEquals(accountDetail.getAccountNameText(), map.get(AccountFormField.ACCOUNT_NAME));
-        assertion.assertEquals(accountDetail.getTypeText(), map.get(AccountFormField.ACCOUNT_TYPE));
         assertion.assertEquals(accountDetail.getWebsiteText(), map.get(AccountFormField.ACCOUNT_WEBSITE));
         assertion.assertEquals(accountDetail.getDescriptionText(), map.get(AccountFormField.ACCOUNT_DESCRIPTION));
         assertion.assertEquals(accountDetail.getPhoneText(), map.get(AccountFormField.ACCOUNT_PHONE));
-        assertion.assertEquals(accountDetail.getIndustryText(), map.get(AccountFormField.ACCOUNT_INDUSTRY));
         assertion.assertEquals(accountDetail.getEmployeesText(), map.get(AccountFormField.ACCOUNT_EMPLOYEES));
     }
 

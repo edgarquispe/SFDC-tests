@@ -1,4 +1,4 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import org.example.sfdc.core.Env;
-import org.example.sfdc.core.MyRuntimeException;
+import org.example.core.Env;
+import org.example.core.MyRuntimeException;
 
 /**
  * DockerChromeBrowser class that implements IBrowsers.

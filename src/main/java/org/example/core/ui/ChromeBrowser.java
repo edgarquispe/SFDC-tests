@@ -1,4 +1,4 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

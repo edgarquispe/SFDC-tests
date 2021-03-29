@@ -5,8 +5,8 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import org.example.sfdc.core.Env;
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.Env;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.pages.login.Login;
 
 /**
@@ -18,7 +18,7 @@ import org.example.sfdc.pages.login.Login;
                 "json:target/test-report.json",
                 "junit:target/test-report.xml"},
         features = {"src/test/resources/features"},
-        glue = {"org.example.sfdc"},
+        glue = {"org.example"},
         tags = "@bvt"
 )
 public class Runner extends AbstractTestNGCucumberTests {

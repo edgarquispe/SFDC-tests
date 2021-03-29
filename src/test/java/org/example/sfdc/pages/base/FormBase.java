@@ -3,14 +3,14 @@ package org.example.sfdc.pages.base;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import org.example.sfdc.core.ui.BasePage;
+import org.example.core.ui.BasePage;
 
 /**
  * Abstract class that gets common info in Form Page.
  */
 public abstract class FormBase extends BasePage {
 
-    @FindBy(css = "button[title='Save']")
+    @FindBy(xpath = "//button[@name='SaveEdit']")
     protected WebElement saveButton;
 
     @FindBy(css = "button[title='Save & New']")

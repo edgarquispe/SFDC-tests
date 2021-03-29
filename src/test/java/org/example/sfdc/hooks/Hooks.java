@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;

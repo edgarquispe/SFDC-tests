@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.campaigns.CampaignDetail;
 import org.example.sfdc.pages.campaigns.CampaignFormField;

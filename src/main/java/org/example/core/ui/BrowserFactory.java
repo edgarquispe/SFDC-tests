@@ -1,4 +1,4 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
 import java.util.EnumMap;
 import java.util.function.Supplier;

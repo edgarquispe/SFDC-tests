@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.sfdc.core.ui.BasePage;
+import org.example.core.ui.BasePage;
 
 /**
  * Class for the Post Form page for Chatter.

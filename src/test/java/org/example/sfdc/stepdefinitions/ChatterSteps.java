@@ -2,7 +2,7 @@ package org.example.sfdc.stepdefinitions;
 
 import io.cucumber.java.en.When;
 
-import org.example.sfdc.core.ui.DriverManager;
+import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.chatter.PostForm;
 

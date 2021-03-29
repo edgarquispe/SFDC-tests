@@ -1,11 +1,12 @@
-package org.example.sfdc.core.ui;
+package org.example.core.ui;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import org.example.sfdc.core.Env;
+import org.example.core.Env;
 
 /**
  * Driver Manager class that implements singleton Instance.
@@ -27,7 +28,8 @@ public final class DriverManager {
         driver = BrowserFactory.getDriverManager(DriverType.valueOf(
                 Env.getInstance().getBrowser().toUpperCase()));
         driver.manage().window().maximize();
-        backPreviousWait();
+        driver.manage().timeouts().implicitlyWait(Env.getInstance().getImplicitTimeWait(), TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, Env.getInstance().getExplicitTimeWait());
     }
 
     /**
@@ -57,25 +59,7 @@ public final class DriverManager {
      * @param explicitTimeWait time for wait.
      */
     public void setExplicitTimeWait(int explicitTimeWait) {
-        wait = new WebDriverWait(driver, explicitTimeWait);
-    }
-
-    /**
-     * Set update waits.
-     *
-     * @param time time for implicit and explicit.
-     */
-    public void setUpdateWait(int time) {
-        setImplicitTimeWait(time);
-        setExplicitTimeWait(time);
-    }
-
-    /**
-     * Back previous set default times.
-     */
-    public void backPreviousWait() {
-        setImplicitTimeWait(Env.getInstance().getImplicitTimeWait());
-        setExplicitTimeWait(Env.getInstance().getExplicitTimeWait());
+        wait.withTimeout(Duration.ofSeconds(explicitTimeWait));
     }
 
     /**
