@@ -1,7 +1,8 @@
 Feature: Create Post
 
   Background: Create Post
-    Given I go to "Chatter" Home Page
+    Given I log in as default user
+    And I go to "Chatter" Home Page
 
   @deletePost
   Scenario: Create a new Post

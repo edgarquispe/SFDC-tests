@@ -6,11 +6,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
+import org.example.core.Env;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
 import org.example.sfdc.pages.acccounts.AccountFormField;
 import org.example.sfdc.pages.campaigns.CampaignFormField;
+import org.example.sfdc.pages.login.Login;
 import org.example.sfdc.pages.opportunities.OpportunityFormField;
 import org.example.sfdc.pages.products.ProductFormField;
 
@@ -58,6 +60,11 @@ public class CommonSteps {
     @DataTableType(replaceWithEmptyString = "[blank]")
     public String listOfStringListsType(final String cell) {
         return cell;
+    }
+
+    @Given("I log in as default user")
+    public void iLogInAsUser() {
+        Login.loginInitial(Env.getInstance().getUsername(), Env.getInstance().getPassword());
     }
 
     /**

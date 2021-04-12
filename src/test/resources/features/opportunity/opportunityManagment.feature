@@ -1,7 +1,8 @@
 Feature: Negative Testing
 
   Background:
-    Given I go to Opportunity Home Page
+    Given I log in as default user
+    And I go to Opportunity Home Page
     And I click on New Opportunity
 
   Scenario: I can't create a new Opportunity without fields required.

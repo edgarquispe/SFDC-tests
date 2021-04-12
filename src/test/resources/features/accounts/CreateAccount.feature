@@ -2,7 +2,8 @@ Feature: Create Account
 
   @bvt @deleteAccount @SoftAssert
   Scenario: Create a new Account
-    Given I go to Account Home Page
+    Given I log in as default user
+    And I go to Account Home Page
     And I click on New Account
     When I fill the Account form with:
       | ACCOUNT_NAME             | Automation                 |

@@ -1,7 +1,8 @@
 Feature: Edit Opportunity
 
   Background:
-    Given I go to Account Home Page
+    Given I log in as default user
+    And I go to Account Home Page
     And I click on New Account
     And I fill the Account form with:
       | ACCOUNT_NAME | account |

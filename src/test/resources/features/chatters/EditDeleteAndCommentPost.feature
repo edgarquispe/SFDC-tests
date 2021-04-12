@@ -1,7 +1,8 @@
 Feature: Edit Post
 
   Background: Create Post
-    Given I go to "Chatter" Home Page
+    Given I log in as default user
+    And I go to "Chatter" Home Page
     When I create a new Post with "Hi my name is Simon"
 
   @deletePost

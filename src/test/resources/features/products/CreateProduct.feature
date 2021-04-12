@@ -2,7 +2,8 @@ Feature: Create Product
 
   @deleteProduct @SoftAssert
   Scenario: Create a new Product
-    Given I go to "Product" Home Page
+    Given I log in as default user
+    And I go to "Product" Home Page
     And I click on New "Product"
     When I fill the Product form with:
       | PRODUCT_NAME        | Automation     |

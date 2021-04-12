@@ -5,9 +5,8 @@ import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import org.example.core.Env;
@@ -25,7 +24,7 @@ public class DockerChromeBrowser implements Browser {
      */
     @Override
     public WebDriver getBrowser() {
-        Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+        ChromeOptions chromeCapabilities = new ChromeOptions();
         WebDriver driver;
         try {
             driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerUrl()), chromeCapabilities);

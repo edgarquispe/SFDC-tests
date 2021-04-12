@@ -1,7 +1,8 @@
 Feature: Edit Account
 
   Background:
-    Given I go to Account Home Page
+    Given I log in as default user
+    And I go to Account Home Page
     And I click on New Account
     When I fill the Account form with:
       | ACCOUNT_NAME | Automation |

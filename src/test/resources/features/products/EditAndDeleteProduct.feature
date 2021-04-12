@@ -1,7 +1,8 @@
 Feature: Edit and Delete Product
 
   Background:
-    Given I go to "Product" Home Page
+    Given I log in as default user
+    And I go to "Product" Home Page
     And I click on New "Product"
     And I fill the Product form with:
       | PRODUCT_NAME | Automation |
