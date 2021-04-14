@@ -1,5 +1,6 @@
 package org.example.sfdc.pages.acccounts;
 
+import org.example.sfdc.pages.SFDCEnvironment;
 import org.openqa.selenium.By;
 
 import org.example.sfdc.pages.base.HomeBase;
@@ -47,8 +48,12 @@ public class AccountHome extends HomeBase {
      * @return boolean.
      */
     public boolean isAccountFieldDisplayed(final String accountName, final String accountField) {
-        String xpathSelector = String.format("//a[text()='%s']/ancestor::tr/descendant::span[text()='%s']",
-                accountName, accountField);
-        return driver.findElement(By.xpath(xpathSelector)).isDisplayed();
+        String xpathSelector;
+        if (SFDCEnvironment.isLightningExperience()) {
+            xpathSelector = "//a[text()='%s']/ancestor::tr/descendant::span[text()='%s']";
+        } else {
+            xpathSelector = "//a[text()='%s']/parent::th/parent::tr/descendant::td[text()='%s']";
+        }
+        return driver.findElement(By.xpath(String.format(xpathSelector, accountName, accountField))).isDisplayed();
     }
 }

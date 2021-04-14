@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.sfdc.pages.IStrategySteps;
@@ -16,56 +17,116 @@ import org.example.sfdc.pages.base.FormBase;
 public class AccountForm extends FormBase {
 
     //Account Information
-    @FindBy(xpath = "//label[text()='Account Name']/following-sibling::div/descendant::input")
+    @FindAll({
+            @FindBy(css = "#acc2"),
+
+            @FindBy(xpath = "//label[text()='Account Name']/following-sibling::div/descendant::input")
+    })
     private WebElement accountNameNewInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
     private WebElement typeDropDownList;
 
-    @FindBy(xpath = "//label[text()='Website']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc12"),
+
+            @FindBy(xpath = "//label[text()='Website']/following-sibling::div/input")
+    })
     private WebElement websiteInputField;
 
-    @FindBy(xpath = "//label[text()='Description']/following-sibling::div/textarea")
+    @FindAll({
+            @FindBy(css = "#acc20"),
+
+            @FindBy(xpath = "//label[text()='Description']/following-sibling::div/textarea")
+    })
     private WebElement descriptionInputField;
 
-    @FindBy(xpath = "//label[text()='Phone']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc10"),
+
+            @FindBy(xpath = "//label[text()='Phone']/following-sibling::div/input")
+    })
     private WebElement phoneInputField;
 
     @FindBy(xpath = "//span[text()='Industry']/parent::span/following-sibling::div/descendant::a")
     private WebElement industryDropDownList;
 
-    @FindBy(xpath = "//label[text()='Employees']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc15"),
+
+            @FindBy(xpath = "//label[text()='Employees']/following-sibling::div/input")
+    })
     private WebElement employeesInputField;
 
     //Address Information
-    @FindBy(xpath = "//label[text()='Billing Street']/following-sibling::div/textarea")
+    @FindAll({
+            @FindBy(css = "#acc17street"),
+
+            @FindBy(xpath = "//label[text()='Billing Street']/following-sibling::div/textarea")
+    })
     private WebElement billingStreetTextArea;
 
-    @FindBy(xpath = "//label[text()='Billing City']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc17city"),
+
+            @FindBy(xpath = "//label[text()='Billing City']/following-sibling::div/input")
+    })
     private WebElement billingCityInputField;
 
-    @FindBy(xpath = "//label[text()='Billing Zip/Postal Code']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc17zip"),
+
+            @FindBy(xpath = "//label[text()='Billing Zip/Postal Code']/following-sibling::div/input")
+    })
     private WebElement billingZipInputField;
 
-    @FindBy(xpath = "//label[text()='Billing State/Province']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc17state"),
+
+            @FindBy(xpath = "//label[text()='Billing State/Province']/following-sibling::div/input")
+    })
     private WebElement billingStateInputField;
 
-    @FindBy(xpath = "//label[text()='Billing Country']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc17country"),
+
+            @FindBy(xpath = "//label[text()='Billing Country']/following-sibling::div/input")
+    })
     private WebElement billingCountryInputField;
 
-    @FindBy(xpath = "//label[text()='Shipping Street']/following-sibling::div/textarea")
+    @FindAll({
+            @FindBy(css = "#acc18street"),
+
+            @FindBy(xpath = "//label[text()='Shipping Street']/following-sibling::div/textarea")
+    })
     private WebElement shippingStreetInputField;
 
-    @FindBy(xpath = "//label[text()='Shipping City']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc18city"),
+
+            @FindBy(xpath = "//label[text()='Shipping City']/following-sibling::div/input")
+    })
     private WebElement shippingCityInputField;
 
-    @FindBy(xpath = "//label[text()='Shipping Zip/Postal Code']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc18zip"),
+
+            @FindBy(xpath = "//label[text()='Shipping Zip/Postal Code']/following-sibling::div/input")
+    })
     private WebElement shippingZipInputField;
 
-    @FindBy(xpath = "//label[text()='Shipping State/Province']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc18state"),
+
+            @FindBy(xpath = "//label[text()='Shipping State/Province']/following-sibling::div/input")
+    })
     private WebElement shippingStateInputField;
 
-    @FindBy(xpath = "//label[text()='Shipping Country']/following-sibling::div/input")
+    @FindAll({
+            @FindBy(css = "#acc18country"),
+
+            @FindBy(xpath = "//label[text()='Shipping Country']/following-sibling::div/input")
+    })
     private WebElement shippingCountryInputField;
 
     /**

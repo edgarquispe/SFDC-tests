@@ -6,9 +6,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.sfdc.pages.SFDCEnvironment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -24,7 +26,11 @@ public abstract class HomeBase extends BasePage {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
-    @FindBy(xpath = "//a[@title='New']")
+    @FindAll({
+            @FindBy(css = "input[name='new']"),
+
+            @FindBy(xpath = "//a[@title='New']")
+    })
     protected WebElement newButton;
 
     protected WebElement displayedItem;
@@ -46,7 +52,11 @@ public abstract class HomeBase extends BasePage {
     @FindBy(xpath = "//span[contains(@class, 'toastMessage')]")
     protected WebElement successMessage;
 
-    @FindBy(css = ".slds-truncate.outputLookupLink.forceOutputLookup")
+    @FindAll({
+            @FindBy(css = "th.dataCell a"),
+
+            @FindBy(css = ".slds-truncate.outputLookupLink.forceOutputLookup")
+    })
     protected List<WebElement> itemsList;
 
     /**
@@ -169,7 +179,9 @@ public abstract class HomeBase extends BasePage {
      * Waits until the spinner is hidden.
      */
     public void waitUntilSpinnerIsHidden() {
-        wait.until(ExpectedConditions.invisibilityOf(spinner));
+        if (SFDCEnvironment.isLightningExperience()) {
+            wait.until(ExpectedConditions.invisibilityOf(spinner));
+        }
     }
 
     /**

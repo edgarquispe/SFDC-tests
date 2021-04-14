@@ -1,6 +1,7 @@
 package org.example.sfdc.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.core.ui.BasePage;
@@ -24,7 +25,11 @@ public class AppLauncher extends BasePage {
     @FindBy(xpath = "//one-app-launcher-menu/descendant::button")
     private WebElement openAllAppsButton;
 
-    @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Account')]")
+    @FindAll({
+            @FindBy(css = "a.accountBlock "),
+
+            @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Account')]")
+    })
     private WebElement accountsTextLink;
 
     @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Opportunity')]")
@@ -42,9 +47,13 @@ public class AppLauncher extends BasePage {
     /**
      * Waits for the modal is displayed.
      */
-    private void waitModal() {
+    public void waitModal() {
         action.waitFixedTime();
         action.isElementDisplayed(windowModal);
+    }
+
+    public void clickAllAppsButton() {
+        action.clickElement(openAllAppsButton);
     }
 
     /**
@@ -53,8 +62,6 @@ public class AppLauncher extends BasePage {
      * @return ProductHome.
      */
     public ProductHome clickProductsTextLink() {
-        waitModal();
-        action.clickElement(openAllAppsButton);
         action.jsClick(productsTextLink);
         return new ProductHome();
     }
@@ -65,8 +72,6 @@ public class AppLauncher extends BasePage {
      * @return PostForm
      */
     public PostForm clickChatterTextLink() {
-        waitModal();
-        action.clickElement(openAllAppsButton);
         action.jsClick(chatterTextLink);
         return new PostForm();
     }
@@ -77,8 +82,6 @@ public class AppLauncher extends BasePage {
      * @return ProductHome.
      */
     public AccountHome clickAccountTextLink() {
-        waitModal();
-        action.clickElement(openAllAppsButton);
         action.jsClick(accountsTextLink);
         return new AccountHome();
     }
@@ -89,8 +92,6 @@ public class AppLauncher extends BasePage {
      * @return OpportunityHome.
      */
     public OpportunityHome clickOpportunityTextLink() {
-        waitModal();
-        action.clickElement(openAllAppsButton);
         action.jsClick(opportunitiesTextLink);
         return new OpportunityHome();
     }
@@ -111,8 +112,6 @@ public class AppLauncher extends BasePage {
      * @return CampaignHome.
      */
     public CampaignHome clickCampaignTextLink() {
-        waitModal();
-        action.clickElement(openAllAppsButton);
         action.jsClick(campaignTextLink);
         return new CampaignHome();
     }

@@ -43,7 +43,8 @@ public class AccountsAssertionSteps {
         AccountDetail accountDetail = new AccountDetail();
         DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getItemName()));
         accountDetail.clickDetailButton();
-        assertion.assertEquals(accountDetail.getAccountNameText(), map.get(AccountFormField.ACCOUNT_NAME));
+        assertion.assertTrue(accountDetail.getAccountNameText().contains(map.get(AccountFormField.ACCOUNT_NAME)),
+                String.format("%s account name doesn't match.", map.get(AccountFormField.ACCOUNT_NAME)));
         assertion.assertEquals(accountDetail.getWebsiteText(), map.get(AccountFormField.ACCOUNT_WEBSITE));
         assertion.assertEquals(accountDetail.getDescriptionText(), map.get(AccountFormField.ACCOUNT_DESCRIPTION));
         assertion.assertEquals(accountDetail.getPhoneText(), map.get(AccountFormField.ACCOUNT_PHONE));
@@ -56,7 +57,6 @@ public class AccountsAssertionSteps {
     @And("^the Account should be displayed on Home Page$")
     public void theAccountShouldBeDisplayedOnHomePage() {
         AccountHome accountHome = new AccountHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Account"));
         assertion.assertTrue(accountHome.isDisplayedItem(map.get(AccountFormField.ACCOUNT_NAME)),
                 String.format("%s is not displayed", AccountFormField.ACCOUNT_NAME));
         assertion.assertTrue(accountHome.isAccountFieldDisplayed(map.get(AccountFormField.ACCOUNT_NAME),

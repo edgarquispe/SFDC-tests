@@ -63,6 +63,10 @@ public final class Env {
         return property;
     }
 
+    public String getExperience() {
+        return getEnv("experience");
+    }
+
     /**
      * Gets the Username value.
      *

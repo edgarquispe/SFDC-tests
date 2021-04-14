@@ -2,6 +2,7 @@ package org.example.sfdc.stepdefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.example.sfdc.pages.SFDCEnvironment;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
@@ -73,6 +74,8 @@ public class CommonAssertionSteps {
     @Then("{string} message should be displayed in {sObject} Detail Page")
     public void messageShouldBeDisplayedInDetailPage(final String msg, final SObject sObject) {
         final String msgExpected = context.rebuiltMessage(msg);
-        assertion.assertEquals(Navigator.mapDetail(sObject).successMessageText(), msgExpected);
+        if (SFDCEnvironment.isLightningExperience()) {
+            assertion.assertEquals(Navigator.mapDetail(sObject).successMessageText(), msgExpected);
+        }
     }
 }

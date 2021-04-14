@@ -1,6 +1,7 @@
 package org.example.sfdc.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -30,7 +31,11 @@ public class Home extends BasePage {
     @FindBy(css = "a[href='#/home']")
     private WebElement homeLink;
 
-    @FindBy(xpath = "//*[contains(@class, 'slds-icon-waffle_container')]")
+    @FindAll({
+            @FindBy(css = "#AllTab_Tab"),
+
+            @FindBy(xpath = "//*[contains(@class, 'slds-icon-waffle_container')]")
+    })
     private WebElement appLauncherButton;
 
     /**
@@ -105,6 +110,26 @@ public class Home extends BasePage {
      */
     public AppLauncher clickAppLauncher() {
         action.mouseClick(appLauncherButton);
-        return new AppLauncher();
+        AppLauncher appLauncher = new AppLauncher();
+        if (SFDCEnvironment.isLightningExperience()) {
+            appLauncher.waitModal();
+            appLauncher.clickAllAppsButton();
+        }
+        return appLauncher;
+    }
+
+    public Experience getCurrentExperience() {
+        return driver.getCurrentUrl().contains(Experience.LIGHTNING.toString().toLowerCase())
+                ? Experience.LIGHTNING : Experience.CLASSIC;
+    }
+
+    public void setUserExperience(final Experience userExperience) {
+        if (!userExperience.equals(getCurrentExperience())) {
+            if (Experience.LIGHTNING.equals(userExperience)) {
+                new TopMenuClassic().switchExperience();
+            } else {
+                new TopMenuLightning().switchExperience();
+            }
+        }
     }
 }

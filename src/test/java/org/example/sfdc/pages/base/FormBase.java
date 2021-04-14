@@ -1,6 +1,7 @@
 package org.example.sfdc.pages.base;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.core.ui.BasePage;
@@ -10,7 +11,11 @@ import org.example.core.ui.BasePage;
  */
 public abstract class FormBase extends BasePage {
 
-    @FindBy(xpath = "//button[@name='SaveEdit']")
+    @FindAll({
+            @FindBy(css = "input[name='save']"),
+
+            @FindBy(xpath = "//button[@name='SaveEdit']")
+    })
     protected WebElement saveButton;
 
     @FindBy(css = "button[title='Save & New']")

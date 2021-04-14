@@ -1,6 +1,7 @@
 package org.example.sfdc.pages.acccounts;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.sfdc.pages.base.DetailBase;
@@ -11,25 +12,45 @@ import org.example.sfdc.pages.base.DetailBase;
 public class AccountDetail extends DetailBase {
 
     //Details
-    @FindBy(xpath = "//span[text()='Account Name']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    @FindAll({
+            @FindBy(css = "#acc2_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Account Name']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    })
     private WebElement accountNameLabel;
 
     @FindBy(xpath = "//span[text()='Type']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
     private WebElement typeLabel;
 
-    @FindBy(xpath = "//span[text()='Website']/parent::div/following-sibling::div/descendant::lightning-formatted-url")
+    @FindAll({
+            @FindBy(css = "#acc12_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Website']/parent::div/following-sibling::div/descendant::lightning-formatted-url")
+    })
     private WebElement websiteLabel;
 
-    @FindBy(xpath = "//span[text()='Description']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    @FindAll({
+            @FindBy(css = "#acc20_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Description']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    })
     private WebElement descriptionLabel;
 
-    @FindBy(xpath = "//span[text()='Phone']/parent::div/following-sibling::div/descendant::lightning-formatted-phone")
+    @FindAll({
+            @FindBy(css = "#acc10_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Phone']/parent::div/following-sibling::div/descendant::lightning-formatted-phone")
+    })
     private WebElement phoneLabel;
 
     @FindBy(xpath = "//span[text()='Industry']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
     private WebElement industryLabel;
 
-    @FindBy(xpath = "//span[text()='Employees']/parent::div/following-sibling::div/descendant::lightning-formatted-number")
+    @FindAll({
+            @FindBy(css = "#acc15_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Employees']/parent::div/following-sibling::div/descendant::lightning-formatted-number")
+    })
     private WebElement employeesLabel;
 
     //Address Information.

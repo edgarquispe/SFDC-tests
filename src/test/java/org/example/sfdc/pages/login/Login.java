@@ -13,6 +13,7 @@ import org.example.core.Env;
 import org.example.core.ui.BasePage;
 import org.example.sfdc.pages.Home;
 import org.example.sfdc.pages.Profile;
+import org.example.sfdc.pages.SFDCEnvironment;
 
 /**
  * Class for the login page.
@@ -141,10 +142,10 @@ public class Login extends BasePage {
      *
      * @param userName User Name for Sales Force with other user.
      * @param password Password for Sales Force with other user.
-     * @return Home page after login to Salesforce application.
      */
-    public static Home loginInitial(final String userName, final String password) {
+    public static void loginInitial(final String userName, final String password) {
         Login login = new Login();
-        return login.isUserLogged() ? login.loginOtherUser(userName, password) : login.loginAs(userName, password);
+        Home home = login.isUserLogged() ? login.loginOtherUser(userName, password) : login.loginAs(userName, password);
+        home.setUserExperience(SFDCEnvironment.getExperience());
     }
 }
