@@ -109,7 +109,7 @@ public class Home extends BasePage {
      * @return AppLauncher.
      */
     public AppLauncher clickAppLauncher() {
-        action.mouseClick(appLauncherButton);
+        action.clickElement(appLauncherButton);
         AppLauncher appLauncher = new AppLauncher();
         if (SFDCEnvironment.isLightningExperience()) {
             appLauncher.waitModal();
