@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 import org.example.core.Env;
+import org.example.core.ui.driver.SharedDriver;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
@@ -21,14 +22,9 @@ import org.example.sfdc.pages.products.ProductFormField;
  */
 public class CommonSteps {
 
-    private ScenarioContext context;
+    private final ScenarioContext context;
 
-    /**
-     * Constructor with Dependency Injection.
-     *
-     * @param context Helper.
-     */
-    public CommonSteps(final ScenarioContext context) {
+    public CommonSteps(final SharedDriver sharedDriver, final ScenarioContext context) {
         this.context = context;
     }
 

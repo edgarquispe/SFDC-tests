@@ -2,7 +2,7 @@ package org.example.sfdc.stepdefinitions;
 
 import io.cucumber.java.en.When;
 
-import org.example.core.ui.DriverManager;
+import org.example.core.ui.driver.DriverFactory;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.chatter.PostForm;
 
@@ -11,8 +11,8 @@ import org.example.sfdc.pages.chatter.PostForm;
  */
 public class ChatterSteps {
 
-    private ScenarioContext context;
-    private PostForm postForm;
+    private final ScenarioContext context;
+    private final PostForm postForm;
 
     /**
      * Constructor with Dependency Injection.
@@ -57,7 +57,7 @@ public class ChatterSteps {
     @When("^I Delete the Post$")
     public void iDeleteThePost() {
         postForm.deletePost(context.getPostMessage());
-        DriverManager.getInstance().getDriver().navigate().refresh();
+        DriverFactory.getDriver().navigate().refresh();
     }
 
     //Comment

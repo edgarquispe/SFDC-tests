@@ -1,4 +1,4 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -6,29 +6,43 @@ import java.net.URL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import org.example.core.Env;
 import org.example.core.MyRuntimeException;
 
 /**
- * DockerChromeBrowser class that implements IBrowsers.
+ * This class abstracts and implements common methods of the navigators in the cloud.
  */
-public class DockerChromeBrowser implements Browser {
+public abstract class Cloud implements Browser {
 
     private static final Logger LOGGER = LogManager.getLogger();
+    private final String url;
+
+    /**
+     * This is the constructor.
+     *
+     * @param url This variable contains the url authentication.
+     */
+    protected Cloud(final String url) {
+        this.url = url;
+    }
+
+    /**
+     * This method sets the capabilities of the Cloud Browser.
+     *
+     * @return a Desired Capabilities instance.
+     */
+    abstract DesiredCapabilities setCapabilities();
 
     /**
      * {@inheritDoc}
      */
     @Override
     public WebDriver getBrowser() {
-        ChromeOptions chromeCapabilities = new ChromeOptions();
         WebDriver driver;
         try {
-            driver = new RemoteWebDriver(new URL(Env.getInstance().getDockerUrl()), chromeCapabilities);
-
+            driver = new RemoteWebDriver(new URL(url), setCapabilities());
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
             LOGGER.info(e);
