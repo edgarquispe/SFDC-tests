@@ -104,7 +104,7 @@ public class Home extends BasePage {
      * @return AppLauncher.
      */
     public AppLauncher clickAppLauncher() {
-        action.mouseClick(appLauncherButton);
+        action.clickElement(appLauncherButton);
         return new AppLauncher();
     }
 }
