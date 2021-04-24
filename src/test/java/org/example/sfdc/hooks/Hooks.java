@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
 
-import org.example.core.ui.DriverManager;
+import org.example.core.ui.driver.DriverFactory;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.Navigator;
 import org.example.sfdc.pages.SObject;
@@ -18,7 +18,7 @@ import org.example.sfdc.pages.SObject;
  */
 public class Hooks {
 
-    private ScenarioContext context;
+    private final ScenarioContext context;
 
     /**
      * Default Constructor.
@@ -69,7 +69,7 @@ public class Hooks {
     @After
     public void takeScreenShot(final Scenario scenario) {
         if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) DriverManager.getInstance().getDriver())
+            final byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver())
                     .getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
         }

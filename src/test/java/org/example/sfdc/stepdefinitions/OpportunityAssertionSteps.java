@@ -4,10 +4,8 @@ import java.util.Map;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
 import org.example.sfdc.pages.opportunities.OpportunityForm;
@@ -19,11 +17,9 @@ import org.example.sfdc.pages.opportunities.OpportunityHome;
  */
 public class OpportunityAssertionSteps {
 
-    private ScenarioContext context;
+    private final Map<OpportunityFormField, String> map;
 
-    private Map<OpportunityFormField, String> map;
-
-    private Assertion assertion;
+    private final Assertion assertion;
 
     /**
      * Constructor with Dependency Injection.
@@ -31,9 +27,8 @@ public class OpportunityAssertionSteps {
      * @param context Helper.
      */
     public OpportunityAssertionSteps(final ScenarioContext context) {
-        this.context = context;
-        this.map = this.context.getOpportunityMap();
-        assertion = this.context.getAssertion();
+        this.map = context.getOpportunityMap();
+        assertion = context.getAssertion();
     }
 
     /**
@@ -53,7 +48,6 @@ public class OpportunityAssertionSteps {
     @And("^the Opportunity should be displayed on Home Page$")
     public void theOpportunityShouldBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
         assertion.assertTrue(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
         assertion.assertTrue(opportunityHome.isOpportunityLinkDisplayed(
@@ -67,7 +61,6 @@ public class OpportunityAssertionSteps {
     @Then("^the Opportunity should not be displayed on Home Page$")
     public void theOpportunityShouldNotBeDisplayedOnHomePage() {
         OpportunityHome opportunityHome = new OpportunityHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Opportunity"));
         assertion.assertFalse(opportunityHome.isDisplayedItem(
                 map.get(OpportunityFormField.OPPORTUNITY_NAME)));
     }

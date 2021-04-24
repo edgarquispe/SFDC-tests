@@ -4,7 +4,7 @@ import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import org.example.core.ui.BasePage;
-import org.example.core.ui.DriverManager;
+import org.example.core.ui.driver.DriverFactory;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountForm;
 import org.example.sfdc.pages.acccounts.AccountHome;
@@ -49,7 +49,7 @@ public final class Navigator {
      * @return ProductHome.
      */
     public static ProductHome goToProductsHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Product2/list")) {
+        if (!DriverFactory.getDriver().getCurrentUrl().contains("Product2/list")) {
             clickAppLauncher().clickProductsTextLink();
         }
         return new ProductHome();
@@ -61,7 +61,7 @@ public final class Navigator {
      * @return PostForm.
      */
     public static PostForm goToChatterHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("chatter")) {
+        if (!DriverFactory.getDriver().getCurrentUrl().contains("chatter")) {
             clickAppLauncher().clickChatterTextLink();
         }
         return new PostForm();
@@ -73,7 +73,7 @@ public final class Navigator {
      * @return OpportunityHome.
      */
     public static OpportunityHome goToOpportunityHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Opportunity/list")) {
+        if (!DriverFactory.getDriver().getCurrentUrl().contains("Opportunity/list")) {
             clickAppLauncher().clickOpportunityTextLink();
         }
         return new OpportunityHome();
@@ -85,7 +85,7 @@ public final class Navigator {
      * @return CampaignHome.
      */
     public static CampaignHome goToCampaignHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Campaign/list")) {
+        if (!DriverFactory.getDriver().getCurrentUrl().contains("Campaign/list")) {
             clickAppLauncher().clickCampaignTextLink();
         }
         return new CampaignHome();
@@ -97,7 +97,7 @@ public final class Navigator {
      * @return ProductHome.
      */
     public static AccountHome goToAccountsHome() {
-        if (!DriverManager.getInstance().getDriver().getCurrentUrl().contains("Account/list")) {
+        if (!DriverFactory.getDriver().getCurrentUrl().contains("Account/list")) {
             clickAppLauncher().clickAccountTextLink();
         }
         return new AccountHome();

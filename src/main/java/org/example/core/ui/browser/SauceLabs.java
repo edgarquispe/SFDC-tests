@@ -1,4 +1,4 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -8,7 +8,7 @@ import org.example.core.Env;
 /**
  * SauceLabs class that implements IBrowsers.
  */
-public class SauceLabs extends CloudBrowser implements Browser {
+public class SauceLabs extends Cloud implements Browser {
     private static final Env ENV = Env.getInstance();
 
     private static final String USERNAME = ENV.getRemoteUserName();

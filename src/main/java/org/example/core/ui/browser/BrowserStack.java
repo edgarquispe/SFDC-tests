@@ -1,4 +1,4 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -7,7 +7,7 @@ import org.example.core.Env;
 /**
  * BrowserStack class that implements IBrowsers.
  */
-public class BrowserStack extends CloudBrowser implements Browser {
+public class BrowserStack extends Cloud implements Browser {
 
     private static final Env ENV = Env.getInstance();
 

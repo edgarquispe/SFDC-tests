@@ -4,9 +4,7 @@ import java.util.Map;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.opportunities.OpportunityDetail;
 import org.example.sfdc.pages.opportunities.OpportunityForm;
@@ -18,7 +16,7 @@ import org.example.sfdc.pages.opportunities.OpportunityHome;
  */
 public class OpportunitySteps {
 
-    private ScenarioContext context;
+    private final ScenarioContext context;
 
     /**
      * Constructor with Dependency Injection.
@@ -46,7 +44,6 @@ public class OpportunitySteps {
      */
     @When("^I edit the Opportunity$")
     public void iEditTheOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getOpportunityName()));
         new OpportunityDetail().clickEditButton();
     }
 
@@ -55,7 +52,6 @@ public class OpportunitySteps {
      */
     @When("^I Click on Delete from Opportunity")
     public void iClickOnDeleteFromOpportunity() {
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getOpportunityName()));
         new OpportunityDetail().deleteItem();
     }
 
