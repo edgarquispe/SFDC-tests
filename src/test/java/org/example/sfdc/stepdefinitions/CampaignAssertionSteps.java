@@ -4,10 +4,8 @@ import java.util.Map;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.campaigns.CampaignDetail;
 import org.example.sfdc.pages.campaigns.CampaignFormField;
@@ -18,11 +16,11 @@ import org.example.sfdc.pages.campaigns.CampaignHome;
  */
 public class CampaignAssertionSteps {
 
-    private ScenarioContext context;
+    private final ScenarioContext context;
 
-    private Map<CampaignFormField, String> map;
+    private final Map<CampaignFormField, String> map;
 
-    private Assertion assertion;
+    private final Assertion assertion;
 
     /**
      * Constructor with Dependency Injection.
@@ -31,7 +29,7 @@ public class CampaignAssertionSteps {
      */
     public CampaignAssertionSteps(final ScenarioContext context) {
         this.context = context;
-        this.map = this.context.getCampaignMap();
+        this.map = context.getCampaignMap();
         this.assertion = context.getAssertion();
     }
 
@@ -51,7 +49,6 @@ public class CampaignAssertionSteps {
     @And("^the Campaign should be displayed on Home Page$")
     public void theCampaignShouldBeDisplayedOnHomePage() {
         CampaignHome campaignHome = new CampaignHome();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.urlContains("Campaign"));
         assertion.assertTrue(campaignHome.isDisplayedItem(map.get(CampaignFormField.CAMPAIGN_NAME)));
 
     }

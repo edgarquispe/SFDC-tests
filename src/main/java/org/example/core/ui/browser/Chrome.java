@@ -1,4 +1,4 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 /**
  * ChromeBrowser class that implements IBrowsers.
  */
-public class ChromeBrowser implements Browser {
+public class Chrome implements Browser {
 
     /**
      * {@inheritDoc}

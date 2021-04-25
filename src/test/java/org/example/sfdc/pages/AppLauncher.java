@@ -26,7 +26,7 @@ public class AppLauncher extends BasePage {
     private WebElement openAllAppsButton;
 
     @FindAll({
-            @FindBy(css = "a.accountBlock "),
+            @FindBy(css = "a.accountBlock"),
 
             @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Account')]")
     })

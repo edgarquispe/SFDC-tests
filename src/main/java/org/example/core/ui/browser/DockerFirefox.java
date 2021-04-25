@@ -1,4 +1,4 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +15,7 @@ import org.example.core.MyRuntimeException;
 /**
  * DockerChromeBrowser class that implements IBrowsers.
  */
-public class DockerFirefoxBrowser implements Browser {
+public class DockerFirefox implements Browser {
 
     private static final Logger LOGGER = LogManager.getLogger();
 

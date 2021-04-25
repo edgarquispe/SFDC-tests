@@ -1,6 +1,6 @@
 Feature: Create Account
 
-  @LIGHTNING @deleteAccount @SoftAssert
+  @bvt @deleteAccount @SoftAssert
   Scenario: Create a new Account
     Given I log in as default user
     And I go to Account Home Page

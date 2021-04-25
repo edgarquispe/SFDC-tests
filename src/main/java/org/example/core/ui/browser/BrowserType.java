@@ -1,9 +1,9 @@
-package org.example.core.ui;
+package org.example.core.ui.browser;
 
 /**
  * Enum for the different types of Drivers.
  */
-public enum DriverType {
+public enum BrowserType {
     CHROME,
     FIREFOX,
     SAUCELABS,

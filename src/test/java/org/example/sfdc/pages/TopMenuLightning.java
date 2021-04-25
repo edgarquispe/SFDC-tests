@@ -13,6 +13,7 @@ public class TopMenuLightning extends TopMenu {
 
     @Override
     public void switchExperience() {
+        wait.until(ExpectedConditions.visibilityOf(userProfileLink));
         wait.until(ExpectedConditions.elementToBeClickable(userProfileLink));
         action.jsClick(userProfileLink);
         action.jsClick(switchThemeLink);

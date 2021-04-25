@@ -4,10 +4,8 @@ import java.util.Map;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.asserts.Assertion;
 
-import org.example.core.ui.DriverManager;
 import org.example.sfdc.entities.ScenarioContext;
 import org.example.sfdc.pages.acccounts.AccountDetail;
 import org.example.sfdc.pages.acccounts.AccountFormField;
@@ -18,11 +16,9 @@ import org.example.sfdc.pages.acccounts.AccountHome;
  */
 public class AccountsAssertionSteps {
 
-    private ScenarioContext context;
+    private final Map<AccountFormField, String> map;
 
-    private Map<AccountFormField, String> map;
-
-    private Assertion assertion;
+    private final Assertion assertion;
 
     /**
      * Constructor with Dependency Injection.
@@ -30,8 +26,7 @@ public class AccountsAssertionSteps {
      * @param context Helper.
      */
     public AccountsAssertionSteps(final ScenarioContext context) {
-        this.context = context;
-        this.map = this.context.getAccountMap();
+        this.map = context.getAccountMap();
         this.assertion = context.getAssertion();
     }
 
@@ -41,7 +36,6 @@ public class AccountsAssertionSteps {
     @Then("^the Account should be displayed$")
     public void theAccountShouldBeDisplayed() {
         AccountDetail accountDetail = new AccountDetail();
-        DriverManager.getInstance().getWait().until(ExpectedConditions.titleContains(context.getItemName()));
         accountDetail.clickDetailButton();
         assertion.assertTrue(accountDetail.getAccountNameText().contains(map.get(AccountFormField.ACCOUNT_NAME)),
                 String.format("%s account name doesn't match.", map.get(AccountFormField.ACCOUNT_NAME)));
