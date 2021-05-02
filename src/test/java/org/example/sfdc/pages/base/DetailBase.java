@@ -18,11 +18,15 @@ public abstract class DetailBase extends BasePage {
     @FindBy(xpath = "//div[contains(@class, 'oneContent active')]//a[@id='detailTab__item']")
     private WebElement detailsTab;
 
-    @FindBy(xpath = "//div[contains(@class, 'oneContent active')]//button[@name='Edit']")
+    @FindAll({
+            @FindBy(css = "input[name='edit']"),
+
+            @FindBy(xpath = "//div[contains(@class, 'oneContent active')]//button[@name='Edit']")
+    })
     protected WebElement editButton;
 
     @FindAll({
-            @FindBy(css = "input[name='delete']"),
+            @FindBy(css = "input[value='Delete']"),
 
             @FindBy(xpath = "//div[contains(@class, 'oneContent active')]//a[@title='Delete']"
                     + "|//div[contains(@class, 'oneContent active')]//button[@name='Delete']")

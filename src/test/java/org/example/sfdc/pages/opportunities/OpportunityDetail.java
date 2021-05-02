@@ -1,6 +1,7 @@
 package org.example.sfdc.pages.opportunities;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import org.example.sfdc.pages.base.DetailBase;
@@ -10,16 +11,32 @@ import org.example.sfdc.pages.base.DetailBase;
  */
 public class OpportunityDetail extends DetailBase {
 
-    @FindBy(xpath = "//span[text()='Opportunity Name']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    @FindAll({
+            @FindBy(css = "#opp3_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Opportunity Name']/parent::div/following-sibling::div/descendant::lightning-formatted-text")
+    })
     private WebElement opportunityNameText;
 
-    @FindBy(xpath = "//span[text()='Account Name']/parent::div/following-sibling::div/descendant::span[@force-hoverablelink_hoverablelink]")
+    @FindAll({
+            @FindBy(css = "#opp4_ileinner"),
+
+            @FindBy(xpath = "//span[text()='Account Name']/parent::div/following-sibling::div/descendant::span[@force-hoverablelink_hoverablelink]")
+    })
     private WebElement accountNameText;
 
-    @FindBy(xpath = "//p[contains(text(), 'Close Date')]/following-sibling::P")
+    @FindAll({
+            @FindBy(css = "#opp9_ileinner"),
+
+            @FindBy(xpath = "//p[contains(text(), 'Close Date')]/following-sibling::P")
+    })
     private WebElement closeDateText;
 
-    @FindBy(xpath = " //p[contains(text(), 'Amount')]/following-sibling::P")
+    @FindAll({
+            @FindBy(css = "#opp7_ileinner"),
+
+            @FindBy(xpath = " //p[contains(text(), 'Amount')]/following-sibling::P")
+    })
     private WebElement amountText;
 
     /**

@@ -32,7 +32,11 @@ public class AppLauncher extends BasePage {
     })
     private WebElement accountsTextLink;
 
-    @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Opportunity')]")
+    @FindAll({
+            @FindBy(css = "a.opportunityBlock"),
+
+            @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Opportunity')]")
+    })
     private WebElement opportunitiesTextLink;
 
     @FindBy(xpath = "//one-app-launcher-modal/descendant::a[contains(@href, 'Campaign')]")

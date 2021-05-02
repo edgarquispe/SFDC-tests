@@ -7,56 +7,96 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.sfdc.pages.SFDCEnvironment;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.example.core.Env;
 import org.example.sfdc.pages.IStrategySteps;
 import org.example.sfdc.pages.base.FormBase;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Class containing Opportunity Form Page..
  */
 public class OpportunityForm extends FormBase {
 
-    @FindBy(xpath = "//span[text()='Opportunity Name']/parent::label/following-sibling::input")
+    @FindAll({
+            @FindBy(css = "#opp3"),
+
+            @FindBy(xpath = "//label[text()='Opportunity Name']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityNameInputField;
 
-    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::div")
+    @FindAll({
+            @FindBy(css = "#opp4"),
+
+            @FindBy(xpath = "//label[text()='Account Name']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityAccountNameInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Type')]/parent::span/following-sibling::div/descendant::a")
+    @FindAll({
+            @FindBy(css = "#opp5"),
+
+            @FindBy(xpath = "//label[text()='Type']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityTypeInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Primary Campaign Source')]/parent::label"
             + "/following-sibling::div/descendant::input")
     private WebElement opportunityCampaignInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Close Date')]/parent::label/following-sibling::div")
+    @FindAll({
+            @FindBy(css = "#opp9"),
+
+            @FindBy(xpath = "//label[text()='Close Date']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityDateInputField;
 
-    @FindBy(css = ".today.slds-text-link")
+    @FindBy(xpath = "//*[text()='Today']")
     private WebElement selectOpportunityDateInputField;
 
-    @FindBy(css = ".uiMenu.uiInput")
+    @FindAll({
+            @FindBy(css = "#opp11"),
+
+            @FindBy(xpath = "//label[text()='Stage']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityStageInputField;
 
     @FindBy(xpath = "//span[contains(text(),'Probability (%)')]/parent::label/following-sibling::input")
     private WebElement opportunityProbabilityInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Amount')]/parent::label/following-sibling::input")
+    @FindAll({
+            @FindBy(css = "#opp7"),
+
+            @FindBy(xpath = "//label[text()='Amount']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityAmountInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Lead Source')]/parent::span/following-sibling::div/descendant::a")
+    @FindAll({
+            @FindBy(css = "#opp6"),
+
+            @FindBy(xpath = "//label[text()='Lead Source']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityLeadInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Next Step')]/parent::label/following-sibling::input")
+    @FindAll({
+            @FindBy(css = "#opp10"),
+
+            @FindBy(xpath = "//label[text()='Next Step']/following-sibling::div/descendant::input")
+    })
     private WebElement opportunityNextStepInputField;
 
-    @FindBy(xpath = "//span[contains(text(),'Description')]/parent::label/following-sibling::textarea")
+    @FindAll({
+            @FindBy(css = "#opp14"),
+
+            @FindBy(xpath = "//label[text()='Description']/following-sibling::div/descendant::textarea")
+    })
     private WebElement opportunityDescriptionInputField;
 
     @FindBy(className = "errorsList")
@@ -92,11 +132,24 @@ public class OpportunityForm extends FormBase {
      * @return this.
      */
     public OpportunityForm setAccountNameSelect(final String accountName) {
-        clickDeleteAccountIcon(accountName);
         clickAccountName();
-        action.clickElement(selectedDivFormElement(accountName));
+        if (SFDCEnvironment.isLightningExperience()) clickDeleteAccountIcon(accountName);
+        action.setInputField(opportunityAccountNameInputField, accountName);
+        if (SFDCEnvironment.isLightningExperience())
+            action.clickElement(selectComboBoxFormElement(accountName));
 
         return this;
+    }
+
+    /**
+     * Select ComboBox Form Element.
+     *
+     * @param element String.
+     * @return WebElement.
+     */
+    public WebElement selectComboBoxFormElement(final String element) {
+        String selector = String.format("//strong[text()='%s']", element);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(selector)));
     }
 
     /**
@@ -143,6 +196,7 @@ public class OpportunityForm extends FormBase {
      */
     public OpportunityForm setStageSelect(final String stage) {
 
+        if (!SFDCEnvironment.isLightningExperience()) action.clickElement(opportunityAccountNameInputField);
         action.clickElement(opportunityStageInputField);
         selectedAformElement(stage);
 
@@ -243,7 +297,16 @@ public class OpportunityForm extends FormBase {
      * @param element web.
      */
     public void selectedAformElement(final String element) {
-        String selector = String.format("//a[contains(@title,'%s')]", element);
+
+        String selector;
+
+        if (SFDCEnvironment.isLightningExperience()) {
+            selector = String.format("//span[contains(@title,'%s')]", element);
+
+        } else {
+            selector = String.format("//option[contains(text(),'%s')]", element);
+        }
+
         driver.findElement(By.xpath(selector)).click();
     }
 
@@ -254,7 +317,7 @@ public class OpportunityForm extends FormBase {
      * @return WebElement.
      */
     public WebElement selectedDivFormElement(final String element) {
-        String selector = String.format("div[title = '%s']", element);
+        String selector = String.format("span[title = '%s']", element);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(selector)));
     }
 
@@ -271,8 +334,7 @@ public class OpportunityForm extends FormBase {
      * @param accountName field.
      */
     public void clickDeleteAccountIcon(final String accountName) {
-        String xpathSelector = String.format("//span[text()='%s']/following-sibling::a/"
-                + "child::span[@class='deleteIcon']", accountName);
+        String xpathSelector = String.format("//*[contains(@placeholder, '%s')]/parent::div/descendant::button", accountName);
         try {
             driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             wait.withTimeout(Duration.ofSeconds(3));

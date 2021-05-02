@@ -7,7 +7,7 @@ Feature: Edit Opportunity
     And I fill the Account form with:
       | ACCOUNT_NAME | account |
     And I go to Opportunity Home Page
-    And I click on New Opportunity
+    And I click on a New Opportunity
     And I fill the Opportunity form with:
       | OPPORTUNITY_NAME     | Opportunity      |
       | OPPORTUNITY_ACCOUNT  | ${ACCOUNT_NAME}  |

@@ -58,7 +58,7 @@ public class OpportunitySteps {
     /**
      * Click on New Opportunity special for a weird behavior.
      */
-    @And("^I click on New Opportunity$")
+    @And("^I click on a New Opportunity$")
     public void iClickOnNewOpportunity() {
         new OpportunityHome().clickNewButton();
     }
