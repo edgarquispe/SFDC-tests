@@ -7,7 +7,7 @@ import org.example.core.Env;
 /**
  * BrowserStack class that implements IBrowsers.
  */
-public class BrowserStack extends Cloud implements Browser {
+public class BrowserStack extends Cloud {
 
     private static final Env ENV = Env.getInstance();
 
@@ -32,7 +32,7 @@ public class BrowserStack extends Cloud implements Browser {
      * {@inheritDoc}
      */
     @Override
-    public DesiredCapabilities setCapabilities() {
+    public DesiredCapabilities buildCapabilities() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(BROWSER, ENV.getRemoteBrowser());
         caps.setCapability(VERSION, ENV.getRemoteBrowserVersion());

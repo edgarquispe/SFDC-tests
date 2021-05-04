@@ -8,7 +8,7 @@ import org.example.core.Env;
 /**
  * SauceLabs class that implements IBrowsers.
  */
-public class SauceLabs extends Cloud implements Browser {
+public class SauceLabs extends Cloud {
     private static final Env ENV = Env.getInstance();
 
     private static final String USERNAME = ENV.getRemoteUserName();
@@ -29,7 +29,7 @@ public class SauceLabs extends Cloud implements Browser {
      * {@inheritDoc}
      */
     @Override
-    public DesiredCapabilities setCapabilities() {
+    public DesiredCapabilities buildCapabilities() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(CapabilityType.BROWSER_NAME, ENV.getRemoteBrowser());
         caps.setCapability(CapabilityType.VERSION, ENV.getRemoteBrowserVersion());

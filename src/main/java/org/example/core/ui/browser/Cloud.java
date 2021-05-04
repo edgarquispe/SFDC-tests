@@ -5,8 +5,8 @@ import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import org.example.core.MyRuntimeException;
@@ -33,7 +33,7 @@ public abstract class Cloud implements Browser {
      *
      * @return a Desired Capabilities instance.
      */
-    abstract DesiredCapabilities setCapabilities();
+    abstract MutableCapabilities buildCapabilities();
 
     /**
      * {@inheritDoc}
@@ -42,7 +42,7 @@ public abstract class Cloud implements Browser {
     public WebDriver getBrowser() {
         WebDriver driver;
         try {
-            driver = new RemoteWebDriver(new URL(url), setCapabilities());
+            driver = new RemoteWebDriver(new URL(url), buildCapabilities());
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
             LOGGER.info(e);
