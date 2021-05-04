@@ -14,6 +14,7 @@ public final class BrowserFactory {
     static {
         BROWSERS.put(BrowserType.CHROME, Chrome::new);
         BROWSERS.put(BrowserType.FIREFOX, Firefox::new);
+        BROWSERS.put(BrowserType.HEADLESS, Headless::new);
         BROWSERS.put(BrowserType.SAUCELABS, SauceLabs::new);
         BROWSERS.put(BrowserType.BROWSERSTACK, BrowserStack::new);
         BROWSERS.put(BrowserType.DOCKER_CHROME, DockerChrome::new);

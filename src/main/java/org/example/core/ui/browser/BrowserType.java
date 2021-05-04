@@ -6,6 +6,7 @@ package org.example.core.ui.browser;
 public enum BrowserType {
     CHROME,
     FIREFOX,
+    HEADLESS,
     SAUCELABS,
     BROWSERSTACK,
     DOCKER_CHROME,
