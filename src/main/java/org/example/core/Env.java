@@ -40,7 +40,7 @@ public final class Env {
     /**
      * Returns the Instance for Env.
      *
-     * @return Env instance.
+     * @return Environment instance.
      */
     public static Env getInstance() {
         if (instance == null) {
